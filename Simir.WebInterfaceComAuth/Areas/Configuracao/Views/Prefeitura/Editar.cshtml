@@ -1,0 +1,74 @@
+﻿@model Simir.Application.ViewModels.PrefeituraEditarVM
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    ViewBag.Title = "Cadastro da Prefeitura";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Sobre a Prefeitua
+        </div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                @Html.ValidationSummary(false, "(* campos obrigatórios)", new { @class = "text-danger" })
+                <div class="row">
+                    @Html.EditBootstrapFor(model => model.Nome)
+                </div>
+                <div class="row">
+                    @Html.EditBootstrapFor(model => model.Prefeito)
+                </div>
+                <div class="row">
+                    @Html.EditBootstrapFor(model => model.CNPJ)
+                </div>
+                <div class="row">
+                    @Html.EditBootstrapFor(model => model.Site)
+                </div>
+
+
+
+                <div class="row">
+                    @Html.EditBootstrapFor(model => model.qtHabitantesUrbanos)
+                    @Html.EditBootstrapFor(model => model.qthabitantesTotalAtendido)
+                </div>
+                <div class="row">
+                    @Html.EditBootstrapFor(model => model.qthabitantesAtendidoColetaDomiciliar)
+                    @Html.EditBootstrapFor(model => model.qthabitantesAtendidoColetaSeletiva)
+                </div>
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(x => x.Endereco)
+            </div>
+            <div class="col-md-12">
+                <hr />
+                <div class="form-group  pull-right">
+                    <a class="btn btn-default"  href="@Url.Action("Index", "Prefeitura", new { area = "Configuracao" })">
+                        Cancelar
+                    </a>
+                    <input type="submit" value="Salvar" class="btn btn-success" />
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $(window).load(disabilitaEndereco(true, false));
+
+    </script>
+}

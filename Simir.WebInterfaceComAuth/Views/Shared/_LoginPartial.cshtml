@@ -1,0 +1,52 @@
+﻿@using Simir.WebInterfaceComAuth.Helpers
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("DeslogarTodos", "Autenticacao", new { area = "Identificacao" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div style="color: white;
+    padding: 10px 20px 10px 20px;
+float: right;
+font-size: 18px;">
+
+            Olá, @User.Identity.GetNome()
+
+            <div class="btn-group pull-right" style="padding-left:5px;">
+                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-angle-double-down fa-2x"></i>
+                </button>
+                <ul class="dropdown-menu slidedown">
+                    <li>
+                        <a href="@Url.Action("ConfigurarConta", "Autenticacao", new { area = "Identificacao" })">
+                            <i class="fa fa-cog fa-spinhover fa-fw"></i> Configurar Conta
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("AlterarSenha", "Autenticacao", new { area = "Identificacao" })">
+                            <i class="fa fa-refresh fa-spinhover fa-fw"></i> Alterar Senha
+                        </a>
+                    </li>
+
+
+                    <li class="divider"></li>
+                    <li>
+                        <a href="javascript:document.getElementById('logoutForm').submit();">
+                            <i class="fa fa-sign-out fa-fw"></i> Sair
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;">
+        Identifique-se ao SIMIR @Html.ActionLink("Entrar", "Logar", "Autenticacao", new { area = "Identificacao" }, htmlAttributes: new { id = "loginLink", @class = "btn btn-danger square-btn-adjust" })
+    </div>
+}

@@ -1,0 +1,44 @@
+﻿@{
+
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RediVivus - @ViewBag.Title </title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/custom1")
+    @Styles.Render("~/Content/tabela")
+
+</head>
+<body class="naologado" >
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header simir-fundo">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse"></button>
+                @Html.ActionLink("RediVivus", "Index", "Home", new { @area = "" }, new { @class = "navbar-brand" })
+            </div>
+
+        </nav>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+        </nav>
+        <!-- /. NAV SIDE  -->
+        @RenderBody()
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    </div>
+    <!-- /. WRAPPER  -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/tabela")
+    @Scripts.Render("~/bundles/meuscript")
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
+

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="47fb9ac7-2a08-44b0-8c7f-662115439ce8" name="Cadastro de Prefeitura" linkedPackageId="6f8d4d2e-8a5c-4628-b98f-5db2c880872b" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="e536f1d7-c617-495f-ae9f-f51845f981b3">
+      <profileInstance Id="fa668268-7f2e-4854-844a-f7c6d982a7ef" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="61c07868-7583-4d93-b9c3-a31fb52fbe86">
+      <profileInstance Id="54a9adfb-1646-48dd-adb1-bd98f6b0a3db" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="49beb548-27e6-4bd6-a415-a4b616bd2abe" name="Usuário" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4c3d2d81-d1b4-4af4-97b5-7967b347934f" />
+        <targetEnds>
+          <association Id="032c9766-b087-42d8-aba4-59daddf752d2" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Visualizar dados da Prefeitura" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3959bace-5a8f-4bf3-a413-8155770595da" LastKnownName="Visualizar dados da Prefeitura" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7249e488-39ac-4706-9e3d-a01c6d0127c7" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2dcd54f5-ae28-4eea-b1b3-d09e2f8751e2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="010fa001-22dc-4436-b4cd-8d9d26e70870" name="Visualizar dados da Prefeitura" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8603eab6-f222-463b-8001-2791e77631b7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ec60aad1-95de-437f-b375-b124ddbd0a1b" />
+          </association>
+          <association Id="35d30f98-d1af-4f8e-8e98-2f165f7762c8" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Alterar dados da Prefeitura" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="dc122b5c-bbcb-4c25-b1e3-2da4de1aabd5" LastKnownName="Alterar dados da Prefeitura" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="11f41e54-6eff-4007-8910-c02f4f311ea2" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d91c2bf5-b43c-4641-b078-6db08d5c7a4d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0831c984-aa70-495f-8899-2a0db2d35e0e" name="Alterar dados da Prefeitura" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d20f0550-81a0-4c3c-916f-ce7b99ffb1c9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="382008ae-3c14-4397-af18-7d3bde7d789b" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3959bace-5a8f-4bf3-a413-8155770595da" name="Visualizar dados da Prefeitura" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="56574820-1604-4247-b0b3-c7273f4e0c74" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="dc122b5c-bbcb-4c25-b1e3-2da4de1aabd5" name="Alterar dados da Prefeitura" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="89d90afc-6528-418c-9c06-82d53337e87c" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="6f8d4d2e-8a5c-4628-b98f-5db2c880872b" name="Diagrama">
+    <elementDefinition Id="aeb13fbb-4674-41c2-8bc9-87da3b00454c" />
+  </package>
+</useCaseModelRoot>

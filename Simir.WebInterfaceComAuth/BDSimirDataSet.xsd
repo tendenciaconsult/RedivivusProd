@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="BDSimirDataSet" targetNamespace="http://tempuri.org/BDSimirDataSet.xsd" xmlns:mstns="http://tempuri.org/BDSimirDataSet.xsd" xmlns="http://tempuri.org/BDSimirDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="BDSimirConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="BDSimirConnectionString1 (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.BDSimirConnectionString1.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="V_Consult_Logradouro_Desv_Reg_AdmTableAdapter" GeneratorDataComponentClassName="V_Consult_Logradouro_Desv_Reg_AdmTableAdapter" Name="V_Consult_Logradouro_Desv_Reg_Adm" UserDataComponentName="V_Consult_Logradouro_Desv_Reg_AdmTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BDSimirConnectionString1 (Web.config)" DbObjectName="BDSimir.dbo.V_Consult_Logradouro_Desv_Reg_Adm" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT nmBairro, nmLogradouro, PrefeituraID, EnderecoCidadeID, RegiaoAdministrativaID FROM dbo.V_Consult_Logradouro_Desv_Reg_Adm</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nmBairro" DataSetColumn="nmBairro" />
+              <Mapping SourceColumn="nmLogradouro" DataSetColumn="nmLogradouro" />
+              <Mapping SourceColumn="PrefeituraID" DataSetColumn="PrefeituraID" />
+              <Mapping SourceColumn="EnderecoCidadeID" DataSetColumn="EnderecoCidadeID" />
+              <Mapping SourceColumn="RegiaoAdministrativaID" DataSetColumn="RegiaoAdministrativaID" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="BDSimirDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="BDSimirDataSet" msprop:Generator_UserDSName="BDSimirDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="V_Consult_Logradouro_Desv_Reg_Adm" msprop:Generator_TableClassName="V_Consult_Logradouro_Desv_Reg_AdmDataTable" msprop:Generator_TableVarName="tableV_Consult_Logradouro_Desv_Reg_Adm" msprop:Generator_TablePropName="V_Consult_Logradouro_Desv_Reg_Adm" msprop:Generator_RowDeletingName="V_Consult_Logradouro_Desv_Reg_AdmRowDeleting" msprop:Generator_RowChangingName="V_Consult_Logradouro_Desv_Reg_AdmRowChanging" msprop:Generator_RowEvHandlerName="V_Consult_Logradouro_Desv_Reg_AdmRowChangeEventHandler" msprop:Generator_RowDeletedName="V_Consult_Logradouro_Desv_Reg_AdmRowDeleted" msprop:Generator_UserTableName="V_Consult_Logradouro_Desv_Reg_Adm" msprop:Generator_RowChangedName="V_Consult_Logradouro_Desv_Reg_AdmRowChanged" msprop:Generator_RowEvArgName="V_Consult_Logradouro_Desv_Reg_AdmRowChangeEvent" msprop:Generator_RowClassName="V_Consult_Logradouro_Desv_Reg_AdmRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nmBairro" msprop:Generator_ColumnVarNameInTable="columnnmBairro" msprop:Generator_ColumnPropNameInRow="nmBairro" msprop:Generator_ColumnPropNameInTable="nmBairroColumn" msprop:Generator_UserColumnName="nmBairro">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nmLogradouro" msprop:Generator_ColumnVarNameInTable="columnnmLogradouro" msprop:Generator_ColumnPropNameInRow="nmLogradouro" msprop:Generator_ColumnPropNameInTable="nmLogradouroColumn" msprop:Generator_UserColumnName="nmLogradouro">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PrefeituraID" msprop:Generator_ColumnVarNameInTable="columnPrefeituraID" msprop:Generator_ColumnPropNameInRow="PrefeituraID" msprop:Generator_ColumnPropNameInTable="PrefeituraIDColumn" msprop:Generator_UserColumnName="PrefeituraID" type="xs:int" minOccurs="0" />
+              <xs:element name="EnderecoCidadeID" msprop:Generator_ColumnVarNameInTable="columnEnderecoCidadeID" msprop:Generator_ColumnPropNameInRow="EnderecoCidadeID" msprop:Generator_ColumnPropNameInTable="EnderecoCidadeIDColumn" msprop:Generator_UserColumnName="EnderecoCidadeID" type="xs:int" />
+              <xs:element name="RegiaoAdministrativaID" msprop:Generator_ColumnVarNameInTable="columnRegiaoAdministrativaID" msprop:Generator_ColumnPropNameInRow="RegiaoAdministrativaID" msprop:Generator_ColumnPropNameInTable="RegiaoAdministrativaIDColumn" msprop:Generator_UserColumnName="RegiaoAdministrativaID" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:V_Consult_Logradouro_Desv_Reg_Adm" />
+      <xs:field xpath="mstns:RegiaoAdministrativaID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

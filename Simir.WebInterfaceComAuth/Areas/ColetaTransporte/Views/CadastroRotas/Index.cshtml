@@ -1,0 +1,176 @@
+﻿@model Simir.Application.ViewModels.RotasVM
+@using Simir.WebInterfaceComAuth.Helpers
+@using Simir.Domain.Enuns
+
+@{
+    ViewBag.Title = "Cadastro de Rotas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.RotasID)
+    @Html.HiddenFor(x => x.PrefeituraID)
+    @Html.HiddenFor(x => x.Btn)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div style="font-weight: bold; font-size: 15px;">
+                <b>Cadastramento de Rotas</b>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ValidationSummary(false, "(* campos obrigatórios)", new { @class = "text-danger" })
+                    <div class="row" style="margin-left: -1%">
+                        <div class="col-md-6">
+                            @Html.EditBootstrapFor(model => model.nmRota, tudoTamanho: 12, inputTamanho: 12)
+                        </div>
+                        <div class="col-md-3" style="Margin-top: 2%; margin-left: -3%;">
+                            <div class="btn btn-success" onclick=" CarregaGrid(); " data-toggle="modal" data-target="#BuscaProgramacao">Localizar</div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left: -1%">
+                        <div class="col-md-4">
+                            @Html.EditBootstrapFor(model => model.ExtensaoRota, tudoTamanho: 12, inputTamanho: 8)
+                        </div>
+                        <div class="col-md-6">
+                            @Html.EditBootstrapFor(model => model.qtPopulacaoAtendida, tudoTamanho: 12, inputTamanho: 4)
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left: -1%">
+                        <div class="col-md-4">
+                            @Html.EditBootstrapFor(model => model.DistanciaGaragemRota, tudoTamanho: 12, inputTamanho: 8)
+                        </div>
+                        <div class="col-md-6">
+                            @Html.EditBootstrapFor(model => model.DistanciaRotaDescarregamento, tudoTamanho: 12, inputTamanho: 4)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" row col-md-5" style="margin-left: 0.5%">
+                            @Html.DDLBootstrapFor(model => model.LocalDestinoID, model => model.nmLocalDestino, "/ColetaTransporte/CadastroRotas/DestinoResiduos/", "", null)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="modal fade" id="BuscaProgramacao" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div id="modal">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        @Html.EditorFor(model => model.RotasDescricao, "IDescricaoRota")
+                    </div>
+                    <div class="form-group  pull-right">
+                        @if (User.Identity.TemPermicao(TipoPermissao.Incluir) || User.Identity.TemPermicao(TipoPermissao.Alterar))
+                        {
+                            <div class="btn btn-default" onclick=" Novo(); ">Novo</div>
+                            <div class="btn btn-success" onclick=" Salvar(); " data-confirm="Tem certeza que deseja salvar?">Salvar</div>
+                        }
+                        @if (User.Identity.TemPermicao(TipoPermissao.Excluir))
+                        {
+                            <div id="btnExcluir" class="btn btn-danger" onclick=" Excluir(); " data-confirm="Tem certeza que deseja excluir?">Excluir</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        function carregaPagina() {
+
+            if ($('#RotasID').val() == 0) {
+                $("#btnExcluir").hide();
+            }
+            else {
+                if ($("#RotaID").val() != "") {
+                    $("#btn-Sim").click()
+                }
+                else {
+                    $("#btn-Nao").click()
+                }
+            }
+        }
+
+        $(window).load(carregaPagina());
+
+        function Salvar() {
+
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#Btn').val("Salvar");
+                form.submit();
+                // return true;
+            }
+        }
+        function Novo() {
+
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#Btn').val("Novo");
+                form.submit();
+                // return true;
+            }
+        }
+        function Excluir() {
+            var form = $('form', '#page-inner');
+            $('#Btn').val("Excluir");
+
+            //$.desabilitaValidacao();
+            $("[data-val='true']").attr('data-val', 'false');
+
+            //Reset validation message
+            $('.field-validation-error')
+            .removeClass('field-validation-error')
+            .addClass('field-validation-valid');
+
+            //Reset input, select and textarea style
+            $('.input-validation-error')
+            .removeClass('input-validation-error')
+            .addClass('valid');
+
+            //Reset validation summary
+            $(".validation-summary-errors")
+            .removeClass("validation-summary-errors")
+            .addClass("validation-summary-valid");
+
+            //To reenable lazy validation (no validation until you submit the form)
+            $('form').removeData('unobtrusiveValidation');
+            $('form').removeData('validator');
+            $.validator.unobtrusive.parse($('form'));
+
+            form.submit();
+
+        }
+
+        $(document).on("input", "#Observacao", function () {
+            var limite = 800;
+            var caracteresDigitados = $(this).val().length;
+            var caracteresRestantes = limite - caracteresDigitados;
+
+            $(".caracteres").text(caracteresRestantes);
+        });
+
+
+        function CarregaGrid() {
+            $("#modal").load("/ColetaTransporte/CadastroRotas/BuscaProgramacao/");
+        }
+
+
+    </script>
+}

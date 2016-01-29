@@ -1,0 +1,165 @@
+﻿@model IList<Simir.Application.ViewModels.CaminhaoVM>
+
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    string nmPropriedade = ViewData.ModelMetadata.PropertyName;
+}
+
+<div id="@nmPropriedade" class="panel panel-default EquipamentosVM">
+    <div class="panel-heading">
+        @ViewData.ModelMetadata.DisplayName
+    </div>
+    <div class="panel-body">
+
+        <div class="">
+            <div class="col-xs-4">
+                <div class="form-group row">
+                    <label>Tipo</label>
+                    <div class="input-group col-xs-10">
+                        <input class="inpNovoNm form-control" maxlength="50" type="text" value="" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+
+                <div class="col-xs-3">
+                    <div class="form-group row">
+                        <label>Quant.</label>
+                        <div class="input-group col-xs-10">
+                            <input class="inpNovoQt form-control text-right" data-mask="000.000.000" data-mask-reverse="True" type="text" value="" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3">
+                    <div class="form-group row">
+                        <label>Vol. m³</label>
+                        <div class="input-group col-xs-10">
+                            <input class="inpNovoVol form-control text-right" data-mask="000.000.000" data-mask-reverse="True" type="text" value="" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-2">
+                    <label> </label>
+                    <div class="input-group">
+                        <div class="btn btn-primary btnAddEquipamento">
+                            <i class="fa fa-plus-circle "></i> Incluir
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        <div >
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Quant.</th>
+                        <th>Vol. m³</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td class="tdnmEquipamento col-xs-5">
+                                <input class="inpnmEquipamento form-control" maxlength="50" type="text" name="@String.Format("{0}[{1}].nmEquipamento", nmPropriedade , i)" value="@Model[i].nmEquipamento" />
+                            </td>
+                            <td class="tdqtEquipamento col-xs-3">
+                                <input class="inpqtEquipamento form-control text-right" data-mask="000.000.000" data-mask-reverse="True" type="text" name="@String.Format("{0}[{1}].qtEquipamento", nmPropriedade, i)" value="@Model[i].qtEquipamento" />
+                            </td>
+                            <td class="tdVolume col-xs-3">
+                                <input class="inpVolume form-control text-right" data-mask="000.000.000" data-mask-reverse="True" type="text" name="@String.Format("{0}[{1}].Volume", nmPropriedade, i)" value="@Model[i].Volume" />
+                            </td>
+                            <td class="col-xs-2">
+                                <input class="inpEquipamentoID" type="hidden" name="@String.Format("{0}[{1}].EquipamentoID", nmPropriedade, i)" value="@Model[i].EquipamentoID" />
+                                <input class="inpExcluir" type="hidden" name="@String.Format("{0}[{1}].Status", nmPropriedade, i)" value="1" />
+
+                                <div class="btn btn-danger btnExcluir">
+                                    <i class="fa fa-trash-o"></i>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+            $(".btnExcluir", "#@nmPropriedade").click(
+            function () {
+                var linha = $(this).closest('tr');
+                linha.find(".inpExcluir").val('8');
+                linha.hide();
+            });
+
+            $("input:text", "#@nmPropriedade .linhapronta").change(
+            function () {
+                var linha = $(this).closest('tr');
+                linha.find(".inpExcluir").val('2');
+            });
+
+            $(".btnAddEquipamento", "#@nmPropriedade").click(
+            function () {
+                var tabela = $(this).closest(".EquipamentosVM").find("tbody")
+                var i = $('tr', tabela).length;
+
+                var prefixo = '@nmPropriedade' + '[' + i + ']';
+
+                var nmEquipamento = $(".inpNovoNm", "#@nmPropriedade").val();
+                var qtEquipamento = $(".inpNovoQt", "#@nmPropriedade").val();
+                var volume = $(".inpNovoVol", "#@nmPropriedade").val();
+                $(".inpNovoNm", "#@nmPropriedade").val('');
+                $(".inpNovoQt", "#@nmPropriedade").val('');
+                $(".inpNovoVol", "#@nmPropriedade").val('');
+
+                tabela.append('<tr>' +
+                            '<td class="tdnmEquipamento col-xs-5">' +
+                                '<input class="inpnmEquipamento form-control" maxlength="50" type="text" name="' + prefixo + '.nmEquipamento" value="' + nmEquipamento + '" />' +
+                            '</td>' +
+                            '<td class="tdqtEquipamento col-xs-3">' +
+                                '<input class="inpqtEquipamento form-control text-right" data-mask="000.000.000" data-mask-reverse="True" type="text" name="' + prefixo + '.qtEquipamento" value="' + qtEquipamento + '" />' +
+                            '</td>' +
+                            '<td class="tdVolume col-xs-3">' +
+                                '<input class="inpVolume form-control text-right" data-mask="000.000.000" data-mask-reverse="True" type="text" name="' + prefixo + '.Volume" value="' + volume + '" />' +
+                            '</td>' +
+                            '<td class="col-xs-2">' +
+                                '<input class="inpEquipamentoID" type="hidden" name="' + prefixo + '.EquipamentoID" value="0" />' +
+                                '<input class="inpExcluir" type="hidden" name="' + prefixo + '.Status" value="4"  />' +
+                                '<div class="btn btn-danger btnExcluir"><i class="fa fa-trash-o "></i></div>' +
+                            '</td>' +
+                        '</tr>');
+
+
+                ultimalinha = $('tr', tabela).last();
+
+                ultimalinha.find('.btnExcluir').click(
+                function () {
+                    var linha = $(this).closest('tr');
+                    linha.remove();
+                });
+
+                $.applyDataMask(ultimalinha.find('.inpqtEquipamento'));
+                $.applyDataMask(ultimalinha.find('.inpVolume'));
+
+            });
+
+
+        </script>
+, false);
+}
+

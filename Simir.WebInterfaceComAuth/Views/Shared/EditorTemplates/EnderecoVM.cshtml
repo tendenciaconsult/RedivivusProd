@@ -1,0 +1,127 @@
+﻿@model Simir.Application.ViewModels.EnderecoVM
+@using Simir.WebInterfaceComAuth.Helpers
+@{
+    ViewBag.Titulo = "Editar endereço";
+    Layout = "~/Views/Shared/_Panel.cshtml";
+}
+
+
+<div id="EnderecoVMTemplate" class="col-md-12">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cep)
+        <div class="input-group">
+            @Html.TextBoxFor(model => model.Cep, new { @class = "form-control cepC", @data_mask="99999-999", @onchange="changeCep(this)"})
+            <span class="form-group input-group-btn">
+                @*@Ajax.ActionLink("Consultar", "ConsultaCep", new AjaxOptions { HttpMethod = "POST",UpdateTargetId="divLogradouro",InsertionMode = InsertionMode.Replace })*@
+                <button class="btn btn-default" type="button" onclick="consultaCep(this)" >Consultar!</button>
+            </span>
+        </div>
+        @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+    </div>
+
+    <hr />
+    @Html.HiddenFor(model => model.EnderecoVMId)
+
+    <div class="row">
+        @Html.EditBootstrapFor(model => model.Endereco)
+    </div>
+
+    <div class="row">
+        @Html.EditBootstrapFor(model => model.Numero)
+        @Html.EditBootstrapFor(model => model.Complemento)
+    </div>
+   
+
+    <div class="row">
+        @Html.DDLBootstrapFor(model => model.LocalidadeUfValor, model => model.LocalidadeUfDescricao, "/Cadastros/Endereco/GetHashUf/", "", model => model.LocalidadeMunicipioValor)
+        @Html.DDLBootstrapFor(model => model.LocalidadeMunicipioValor, model => model.LocalidadeMunicipioDescricao, "/Cadastros/Endereco/GetMunicipiosByUf/", model => model.LocalidadeUfValor, model => model.LocalidadeBairroValor)
+
+    </div>
+    <div class="row">
+        @Html.DDLBootstrapFor(model => model.LocalidadeBairroValor, model => model.LocalidadeBairroDescricao, "/Cadastros/Endereco/GetBairrosByMunicipio/", model => model.LocalidadeMunicipioValor, null)
+
+    </div>
+
+</div>
+
+@section scripts{
+    <script>
+        function disabilitaEndereco(desabilita, desabilitaN) {
+            $("select.LocalidadeUfValor").prop("disabled", desabilita);
+            $("select.LocalidadeMunicipioValor").prop("disabled", desabilita);
+            $("select.LocalidadeBairroValor").prop("disabled", desabilita);
+            $("#Endereco_Endereco").attr('readonly', desabilita);
+            $("#Endereco_Numero").attr('readonly', desabilitaN);
+            $("#Endereco_Complemento").attr('readonly', desabilitaN);
+
+        }
+
+        function consultaCep(ele) {
+            if ($("form").validate().element(".cepC")) {
+
+                
+                var cep = $(ele).parent().parent().find("input.form-control").val();
+                
+                var panel = $("#EnderecoVMTemplate");
+
+                if (cep == "") {
+                    $("span[data-valmsg-for='Endereco.Cep']").text("Digite o CEP");
+                    return;
+                }
+
+
+                var properties22 = {
+                    color: 'red'
+                };
+                $("span[data-valmsg-for='Endereco.Cep']").html('<p class="target" style="color:rgb(0,0, 0);">procurando...</p>');
+
+                var el = $("span[data-valmsg-for='Endereco.Cep'] .target");
+                el.pulse(properties22, {  pulses: 5 });
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/Cadastros/Endereco/ConsultaCep/' + cep,
+                    dataType: 'json',
+                    cache: false,
+                    async: true,
+                    success: function (data) {
+                        if (data.Success) {
+                            $("span[data-valmsg-for='Endereco.Cep'").html(' ');
+                            data = data.Dado;
+                            refresh = new Object();
+                            panel.find("#Endereco_Endereco").val(data.Endereco);
+                            panel.find("#Endereco_LocalidadeUfValor").val(data.LocalidadeUfValor);
+                            panel.find("#Endereco_LocalidadeBairroValor").val(data.LocalidadeBairroValor);
+                            panel.find("#Endereco_LocalidadeMunicipioValor").val(data.LocalidadeMunicipioValor);
+
+
+                            disabilitaEndereco(true,false)
+
+                            panel.find("select.LocalidadeUfValor").html("<option value='" + data.LocalidadeUfValor + "'>" + data.LocalidadeUfDescricao + "</option>");
+                            panel.find("select.LocalidadeMunicipioValor").html("<option value='" + data.LocalidadeMunicipioValor + "'>" + data.LocalidadeMunicipioDescricao + "</option>");
+                            panel.find("select.LocalidadeBairroValor").html("<option value='" + data.LocalidadeBairroValor + "'>" + data.LocalidadeBairroDescricao + "</option>");
+                        } else {
+
+                            $("span[data-valmsg-for='Endereco.Cep'").text(data.ErrorMessage);
+
+                            disabilitaEndereco(false,false);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        
+                        $("span[data-valmsg-for='Endereco.Cep'").text("erro interno, tente novamente mais tarde");
+                        disabilitaEndereco(false,false);
+                    }
+                });
+            }
+        };
+
+        function changeCep(ele) {
+            
+            disabilitaEndereco(true,true)
+        }
+
+</script>
+
+}
+

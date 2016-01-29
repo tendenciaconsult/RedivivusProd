@@ -1,0 +1,27 @@
+﻿@model Simir.Application.ViewModels.ColetaVM
+@using Simir.WebInterfaceComAuth.Helpers
+@{
+    ViewBag.Titulo = "Coleta";
+    Layout = "~/Views/Shared/_Panel.cshtml";
+}
+
+<ul class="nav nav-pills">
+    <li class="">
+        <a href="#publico-coleta" data-toggle="tab">Pública</a>
+    </li>
+    <li class="">
+        <a href="#particular-coleta" data-toggle="tab">Particular</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade" id="publico-coleta">
+    </div>
+    <div class="tab-pane fade" id="particular-coleta">
+        @Html.EditBootstrapFor(model => model.Nome)
+        @Html.EditBootstrapFor(model => model.Cnpj)
+        @Html.EditBootstrapFor(model => model.Dia)
+    </div>
+</div>
+
+@Html.EditBootstrapFor(model => model.Quantidade)

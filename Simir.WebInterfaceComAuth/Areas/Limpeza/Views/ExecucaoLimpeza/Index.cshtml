@@ -1,0 +1,202 @@
+﻿@model Simir.Application.ViewModels.LimpezaExecutadaVM
+@using Simir.WebInterfaceComAuth.Helpers
+@using Simir.Domain.Enuns
+
+@{
+    ViewBag.Title = "Limpeza Executada";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.ProgramacaoID)
+    @Html.HiddenFor(x => x.Btn)
+    @Html.HiddenFor(x => x.bProgramacaoNaoRealizada)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div style="font-weight: bold;font-size:15px;">
+                <b>Execução das Limpezas Programadas</b>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ValidationSummary(false, "(* campos obrigatórios)", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="row" style="margin-left:0.3%;">
+                                @Html.EditBootstrapFor(model => model.dtProgramacao, tudoTamanho: 9, inputTamanho: 7)
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    @Html.EditBootstrapFor(model => model.nmProgramacao, tudoTamanho: 12, inputTamanho: 12)
+                                    @*<button  type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#BuscaProgramacao">Open Modal</button>*@
+                                </div>
+                                <div class="col-md-1" style="Margin-top:4.6%;margin-left:-10%;">
+                                    <div class="btn btn-success" onclick="CarregaGrid();" data-toggle="modal" data-target="#BuscaProgramacao">Localizar</div>
+
+                                </div>
+                            </div>
+                        </div>
+                        @if (Model.ProgramacaoID > 0)
+                        {
+                            <div class="DescricaoLimpezaExecutada" id="DescricaoLE">
+                                <div class="panel panel-default">
+                                    <div class="tab-content">
+                                        <div class="panel-body">
+                                            <b>Data Inicial: </b>@Html.DisplayFor(model => model.dtInicioPlanejado) <br />
+                                            <b>Data de Conclusão: </b>@Html.DisplayFor(model => model.dtFimPlanejado)<br />
+                                            <b>Bairro: </b>@Html.DisplayFor(model => model.nmBairroPlanejado)<br />
+                                            <b>Logradouro: </b>@Html.DisplayFor(model => model.nmLogradouroPlanejado)<br />
+                                            @if (Model.nmOutroLocalPlanejado != null)
+                                            {<b>Outro Local: </b>@Html.DisplayFor(model => model.nmOutroLocalPlanejado)<br />}
+                                            <b>Feira Livre:  </b>@Html.DisplayFor(model => model.nmFeiraLivrePlanejado)<br />
+                                            <b>Prestadora de Serviço: </b>@Html.DisplayFor(model => model.nmPrestadoraServicoPlanejado)<br />
+                                            <b>Região administrativa: </b>@Html.DisplayFor(model => model.nmRegiaoAdministrativaPlanejada)<br />
+                                            <b>Tipo de Programação: </b>@Html.DisplayFor(model => model.nmTipoProgramacao)<br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="row">
+                        <div class="modal fade" id="BuscaProgramacao" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div id="modal">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @* --------------------- Realizou a Prgramacao? -------------- *@
+                    <div class="col-md-12" style="margin-left:-1.5%">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Programação concluída com sucesso?
+                            </div>
+                            <div class="panel-body">
+                                <ul class="nav nav-pills">
+                                    <li class="">
+                                        <a href="#ProgramacaoRealizada" data-toggle="tab" id="btn-Com-Area-Verde">Sim</a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#ProgramacaoNaoRealizada" data-toggle="tab" id="btn-Sem-Area-Verde">Não</a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane fade" id="ProgramacaoRealizada">
+                                        <div class="row" style="margin-left:1%; margin-top:8px;">
+                                            <div class="col-md-6" style="margin-left:-3.3%;">
+                                                @Html.EditBootstrapFor(model => model.dtInicio, tudoTamanho: 12, inputTamanho: 6)
+                                            </div>
+                                            <div class="col-md-6" style="margin-left:1%;">
+                                                @Html.EditBootstrapFor(model => model.dtFim, tudoTamanho: 11, inputTamanho: 6)
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6" style="margin-left:-1.7%;">
+                                                    @Html.EditBootstrapFor(model => model.qtGaris, tudoTamanho: 11, inputTamanho: 4)
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.EditBootstrapFor(model => model.qtSupervisor, tudoTamanho: 11, inputTamanho: 4)
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                @Html.EditBootstrapFor(model => model.qtEncarregado, tudoTamanho: 5, inputTamanho: 5)
+                                            </div>
+                                            @Html.EditorFor(model => model.Equipamentos, "IListEquipamentoVM")
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ProgramacaoNaoRealizada">
+                                        <div class="form-group">
+                                            <label>Motivo:</label><br />
+                                            @Html.TextAreaFor(model => model.MotivoProgramacaoNaoRealizada, 5, 130, new { maxlength = "800", @class = "form-control" })
+                                            <span class="caracteresProgramacaoNaoRealizada">800</span> Restantes <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Observação:</label><br />
+                        @Html.TextAreaFor(model => model.sObservacao, 5, 130, new { maxlength = "800", @class = "form-control" })
+                        <span class="caracteres">800</span> Restantes <br>
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    <hr />
+                    <div class="form-group  pull-right">
+                        @if (User.Identity.TemPermicao(TipoPermissao.Incluir) || User.Identity.TemPermicao(TipoPermissao.Alterar))
+                        {
+                            <div class="btn btn-success" onclick=" Salvar(); " data-confirm="Tem certeza que deseja salvar?">Salvar</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        function Salvar() {
+
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#Btn').val("Salvar");
+                form.submit();
+                // return true;
+            }
+        }
+
+        $(document).on("input", "#sObservacao", function () {
+            var limite = 800;
+            var caracteresDigitados = $(this).val().length;
+            var caracteresRestantes = limite - caracteresDigitados;
+
+            $(".caracteres").text(caracteresRestantes);
+        });
+
+        $(document).on("input", "#MotivoProgramacaoNaoRealizada", function () {
+            var limite = 800;
+            var caracteresDigitados = $(this).val().length;
+            var caracteresRestantes = limite - caracteresDigitados;
+
+            $(".caracteresProgramacaoNaoRealizada").text(caracteresRestantes);
+        });
+
+
+        $("#dtProgramacao").change(function () {
+            $("#bVarricaoManual").val('False');
+        })
+
+        $("#ProgramacaoRealizada").click(function () {
+            $("#bProgramacaoNaoRealizada").val('True');
+        })
+        $("#ProgramacaoNaoRealizada").click(function () {
+            $("#bProgramacaoNaoRealizada").val('False');
+        })
+
+        function CarregaGrid() {
+            $("#modal").load("/Limpeza/ExecucaoLimpeza/BuscaProgramacao/" + "0" +
+                "?dtRef=" + $("#dtProgramacao").val());
+        }
+
+    </script>
+}

@@ -1,0 +1,53 @@
+﻿@model IList<Simir.Application.ViewModels.MtrVM>
+<table id="exampleMtr" class="table table-hover" cellspacing="0">
+    <thead>
+        <tr>
+            <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().DataMtr)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td align='center'>
+                    @Html.DisplayFor(item => item[i].DataMtr)
+                </td>
+                <td>
+                    <button type="button" class="view-pdf btn btn-info btn-xs " data-link="@Model[i].Url" data-nome="@Model[i].MtrID"><i class="fa fa-search"></i> </button>
+                    <div id="btn-excluir-mtr" class="btn btn-primary btn-xs" data-confirm="Deseja escluir este MTR?" onclick="excluirMtr(@Model[i].MtrID);"><i class="fa fa-edit "></i> </div>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+
+    $(document).ready(function () {
+        $('#exampleMtr').dataTable({
+            "searching": false,
+            "lengthChange": false
+        });
+    });
+
+    $(function () {
+        $('.view-pdf').on('click', function () {
+
+            var pdf_link = $(this).attr('data-nome');
+            
+            var iframe = '<object type="application/pdf" data="/Externo/ColetaTransporte/VerMtr/' + pdf_link + '" width="100%" height="100%">No Support</object>'
+
+            var myModal = new jBox('Modal', {
+                width: '1000',
+                height: '500',
+                content: iframe
+            });
+
+            myModal.open();
+
+            return false;
+        });
+    });
+</script>

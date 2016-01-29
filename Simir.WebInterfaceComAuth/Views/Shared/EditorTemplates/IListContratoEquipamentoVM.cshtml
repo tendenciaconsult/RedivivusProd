@@ -1,0 +1,154 @@
+﻿@model IList<Simir.Application.ViewModels.ContratoVMs.ContratoEquipamentoVM>
+
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    string nmPropriedade = ViewData.ModelMetadata.PropertyName;
+}
+
+<div id="@nmPropriedade" class="panel panel-default EquipamentosVM">
+    <div class="panel-heading">
+        @ViewData.ModelMetadata.DisplayName
+    </div>
+    <div class="panel-body">
+
+        <div>
+
+
+
+            <div class="col-xs-8">
+                <div class="form-group row">
+                    <label>Tipo</label>
+                    <div class="input-group col-xs-12">
+                        <input class="inpNovoTipo form-control" maxlength="100" name="Tipo" type="text" value="" autocomplete="off">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-group row">
+                    <label>Quantidade</label>
+                    <div class="input-group col-xs-12">
+                        <input class="inpNovoQt form-control text-right" data-mask="000.000.000" data-mask-reverse="True" type="text" value="" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-group row">
+                    <label> </label>
+                    <div class="input-group">
+                        <div class="btn btn-primary btnAddEquipamento">
+                            <i class="fa fa-plus-circle "></i> Incluir
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="col-xs-8">Tipo</th>
+                        <th class="col-xs-2">Quantidade</th>
+                        <th class="col-xs-2"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr class="linhapronta">
+                            <td >
+                                @Model[i].TipoEquipamento
+                            </td>
+                            <td>
+                                @Model[i].Quantidade
+                            </td>
+                            <td >
+                                <input class="TipoEquipamento" type="hidden" name="@String.Format("{0}[{1}].TipoEquipamento", nmPropriedade, i)" value="@Model[i].TipoEquipamento" />
+                                <input class="Quantidade" type="hidden" name="@String.Format("{0}[{1}].Quantidade", nmPropriedade, i)" value="@Model[i].Quantidade" />
+                                <input class="ID" type="hidden" name="@String.Format("{0}[{1}].ID", nmPropriedade, i)" value="@Model[i].ID" />
+                                <input class="inpExcluir" type="hidden" name="@String.Format("{0}[{1}].Status", nmPropriedade, i)" value="1" />
+
+                                <div class="btn btn-danger btnExcluir">
+                                    <i class="fa fa-trash-o"></i>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+            $(".btnExcluir", "#@nmPropriedade").click(
+            function () {
+                var linha = $(this).closest('tr');
+                linha.find(".inpExcluir").val('8');
+                linha.hide();
+            });
+
+            $("input:text", "#@nmPropriedade .linhapronta").change(
+            function () {
+                var linha = $(this).closest('tr');
+                linha.find(".inpExcluir").val('2');
+            });
+
+            $(".btnAddEquipamento", "#@nmPropriedade").click(
+            function () {
+                var tabela = $(this).closest(".EquipamentosVM").find("tbody");
+                var i = $('tr', tabela).length;
+
+                var prefixo = '@nmPropriedade' + '[' + i + ']';
+
+  
+                var EncargoPagoPorFunc = $(".inpNovoTipo", "#@nmPropriedade").val();
+                var Quantidade = $(".inpNovoQt", "#@nmPropriedade").val();
+
+
+                $(".inpNovoTipo", "#@nmPropriedade").val('');
+                $(".inpNovoEncargo", "#@nmPropriedade").val('');
+                $(".inpNovoQt", "#@nmPropriedade").val('');
+
+                tabela.append('<tr>' +
+                            '<td >' +
+                                 EncargoPagoPorFunc +
+                            '</td>' +
+                            '<td >' +
+                                 Quantidade +
+                            '</td>' +
+                            '<td >' +
+                                '<input class="TipoEquipamento" type="hidden" name="' + prefixo + '.TipoEquipamento" value="' + EncargoPagoPorFunc + '" />' +
+                                '<input class="Quantidade" type="hidden" name="' + prefixo + '.Quantidade" value="' + Quantidade + '" />' +
+                                '<input class="inpExcluir" type="hidden" name="' + prefixo + '.Status" value="4"  />' +
+                                '<div class="btn btn-danger btnExcluir"><i class="fa fa-trash-o "></i></div>' +
+                            '</td>' +
+                        '</tr>');
+                ultimalinha = $('tr', tabela).last();
+
+                ultimalinha.find('.btnExcluir').click(
+                function () {
+                    var linha = $(this).closest('tr');
+                    linha.remove();
+                });
+
+
+            });
+
+
+        </script>
+, false);
+}
+
+

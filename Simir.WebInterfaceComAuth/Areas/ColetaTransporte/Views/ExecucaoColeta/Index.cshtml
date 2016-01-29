@@ -1,0 +1,333 @@
+﻿@model Simir.Application.ViewModels.ColetaExecutadaVM
+@using Simir.WebInterfaceComAuth.Helpers
+@using Simir.Domain.Enuns
+
+@{
+    ViewBag.Title = "Coleta Executada";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Btn)
+    @Html.HiddenFor(x => x.ColetaEventualID)
+    @Html.HiddenFor(x => x.ColetaExecutadaID)
+    @Html.HiddenFor(x => x.bColetaRealizada)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div style="font-weight: bold;font-size:15px;">
+                <b>Execução das Coletas Programadas</b>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ValidationSummary(false, "(* campos obrigatórios)", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="row" style="margin-left:0.3%;">
+                                @Html.EditBootstrapFor(model => model.dtReferencia, tudoTamanho: 9, inputTamanho: 7)
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    @Html.EditBootstrapFor(model => model.nmProgramacao, tudoTamanho: 12, inputTamanho: 12)
+                                </div>
+                                <div class="col-md-1" style="Margin-top:4.6%;margin-left:-10%;">
+                                    <div class="btn btn-success" onclick="CarregaGrid();" data-toggle="modal" data-target="#BuscaProgramacao">Localizar</div>
+                                </div>
+                            </div>
+                        </div>
+                        @if (Model.ColetaEventualID > 0)
+                        {
+                            <div class="DescricaoLimpezaExecutada" id="DescricaoLE">
+                                <div class="panel panel-default">
+                                    <div class="tab-content">
+                                        <div class="panel-body">
+                                            <b>Prestadora de Serviço: </b>@Html.DisplayFor(model => model.nmPrestadoraServicos)<br />
+                                            <b>Rota: </b>@Html.DisplayFor(model => model.nmRota)<br />
+                                            <b>Tipo de Programação: </b>@Html.DisplayFor(model => model.TipoColeta)<br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="row">
+                        <div class="modal fade" id="BuscaProgramacao" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div id="modal">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @* --------------------- Realizou a Prgramacao? -------------- *@
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Programação concluída com sucesso?
+                            </div>
+                            <div class="panel-body">
+                                <ul class="nav nav-pills">
+                                    <li class="">
+                                        <a href="#ProgramacaoRealizada" data-toggle="tab" id="btn-ProgramacaoRealizada">Sim</a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#ProgramacaoNaoRealizada" data-toggle="tab" id="btn-ProgramacaoNaoRealizada">Não</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade" id="ProgramacaoRealizada">
+
+                                        <div class="col-md-6">
+                                            <div class="row clockpicker">
+                                                @Html.EditBootstrapFor(model => model.HoraSaidaGaragem, tudoTamanho: 12, inputTamanho: 3)
+                                            </div>
+                                            <div class="row clockpicker">
+                                                @Html.EditBootstrapFor(model => model.HoraChegadaGaragem, tudoTamanho: 12, inputTamanho: 3)
+                                            </div>
+                                            
+                                            <div class="form-group ">
+                                                <label>Tipo Coleta</label>
+                                                <div class="form-group col-md-12">
+                                                    <div class="radio">
+                                                        <label>
+                                                            @Html.RadioButtonFor(x => x.ColetaConvencional, true) Coleta Convencional
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label>
+                                                            @Html.RadioButtonFor(x => x.ColetaConvencional, false) Coleta Seletiva
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group TipoColetaConvencional" style="display:none">
+                                                <label>Tipo Coleta</label>
+                                                <div class="form-group col-md-12">
+                                                    <div class="radio">
+                                                        <label>
+                                                            @Html.RadioButtonFor(x => x.TipoColetaConvencional, TipoColeta.RDO) RDO
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label>
+                                                            @Html.RadioButtonFor(x => x.TipoColetaConvencional, TipoColeta.RDU) RDU
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label>
+                                                            @Html.RadioButtonFor(x => x.TipoColetaConvencional, TipoColeta.Outros) Outros
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row TipoColetaEspecifiva" >
+                                                    @Html.EditBootstrapFor(model => model.TipoColetaEspecifica, tudoTamanho: 12, inputTamanho: 4)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                @Html.EditBootstrapFor(model => model.qtGaris, tudoTamanho: 12, inputTamanho: 4)
+                                            </div>
+                                            <div class="row">
+                                                @Html.EditBootstrapFor(model => model.ExtensaoPercorridaInicio, tudoTamanho: 12, inputTamanho: 4)
+                                            </div>
+                                            <div class="row">
+                                                @Html.EditBootstrapFor(model => model.DistanciaDescargaGaragem, tudoTamanho: 12, inputTamanho: 4)
+                                            </div>
+                                            <div class="form-group ">
+                                                <label>Realiza transbordo?</label>
+                                                <div class="form-group col-md-12">
+                                                    <div class="radio">
+                                                        <label>
+                                                            @Html.RadioButtonFor(x => x.RealizaTransbordo, true) Sim
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label>
+                                                            @Html.RadioButtonFor(x => x.RealizaTransbordo, false) Não
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row TransbordoUtilizado" style="display:none">
+                                                @Html.DDLBootstrapFor(model => model.TransbordoUtilizadoValor, Model.TransbordoUtilizadoDescricao, @Url.Action("Transbordos", "Transbordo", new { area = "Configuracao" }))
+                                            </div>
+
+
+                                            <div class="form-group ">
+                                                <label>Realiza Aterro?</label>
+                                                <div class="form-group col-md-12">
+                                                    <div class="radio">
+                                                        <label>
+                                                            @Html.RadioButtonFor(x => x.RealizaAterro, true) Sim
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label>
+                                                            @Html.RadioButtonFor(x => x.RealizaAterro, false) Não
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row AterroUtilizado" style="display:none">
+                                                @Html.DDLBootstrapFor(model => model.AterroUtilizadoValor, Model.AterroUtilizadoDescricao, @Url.Action("Aterros", "Aterro", new { area = "Configuracao" }))
+                                            </div>
+                                            <div class="row Destinadora" >
+                                                @Html.DDLBootstrapFor(model => model.DestinadoraValor, Model.DestinadoraDescricao, @Url.Action("Destinadoras", "PrestadoraServico", new { area = "Configuracao" }))
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.ListaDetalhamentoColeta, "IListaColetaExecutadaDetalhada")
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ProgramacaoNaoRealizada">
+                                        <div class="form-group">
+                                            <label>Motivo:</label><br />
+                                            @Html.TextAreaFor(model => model.Motivo, 5, 130, new { maxlength = "800", @class = "form-control" })
+                                            <span class="caracteresProgramacaoNaoRealizada">800</span> Restantes <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Observação:</label><br />
+                            @Html.TextAreaFor(model => model.Observacao, 5, 130, new { maxlength = "800", @class = "form-control" })
+                            <span class="caracteres">800</span> Restantes <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <hr />
+                    <div class="form-group  pull-right">
+                        @if (User.Identity.TemPermicao(TipoPermissao.Incluir) || User.Identity.TemPermicao(TipoPermissao.Alterar))
+                        {
+                            <div class="btn btn-success" onclick=" Salvar(); " data-confirm="Tem certeza que deseja salvar?">Salvar</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function carregaPagina() {
+            $('input[type=radio][name=ColetaConvencional]').change(function () {
+                if (this.value == 'True') {
+                    $('.TipoColetaConvencional').show();
+                }
+                else if (this.value == 'False') {
+                    $('.TipoColetaConvencional').hide();
+                }
+            });
+
+            $('input[type=radio][name=TipoColetaConvencional]').change(function () {
+                if (this.value == 'Outros') {
+                    $('.TipoColetaEspecifiva').show();
+                }
+                else {
+                    $('.TipoColetaEspecifiva').hide();
+                }
+            });
+
+            $('input[type=radio][name=RealizaTransbordo]').change(function () {
+                if (this.value == 'True') {
+                    $('.TransbordoUtilizado').show();
+                }
+                else if (this.value == 'False') {
+                    $('.TransbordoUtilizado').hide();
+                }
+            });
+
+
+            $('input[type=radio][name=RealizaAterro]').change(function () {
+                if (this.value == 'True') {
+                    $('.AterroUtilizado').show();
+                    $('.Destinadora').hide();
+                }
+                else if (this.value == 'False') {
+                    $('.AterroUtilizado').hide();
+                    $('.Destinadora').show();
+                }
+            });
+
+            if ($('#bColetaRealizada').val() == true) {
+                $("#btn-ProgramacaoRealizada").click()
+            }
+            else if ($('#Motivo').val() != "") {
+                $("#btn-ProgramacaoNaoRealizada").click()
+            }
+            //$('#nmProgramacao').attr('disabled', true);
+        }
+
+        $(window).load(carregaPagina());
+
+        function Salvar() {
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#Btn').val("Salvar");
+                form.submit();
+                // return true;
+            }
+        }
+
+        $(document).on("input", "#Observacao", function () {
+            var limite = 800;
+            var caracteresDigitados = $(this).val().length;
+            var caracteresRestantes = limite - caracteresDigitados;
+
+            $(".caracteres").text(caracteresRestantes);
+        });
+
+        $(document).on("input", "#Motivo", function () {
+            var limite = 800;
+            var caracteresDigitados = $(this).val().length;
+            var caracteresRestantes = limite - caracteresDigitados;
+
+            $(".caracteresProgramacaoNaoRealizada").text(caracteresRestantes);
+        });
+
+
+        $("#ProgramacaoRealizada").click(function () {
+            $("#bColetaRealizada").val('True');
+        })
+        $("#ProgramacaoNaoRealizada").click(function () {
+            $("#bColetaRealizada").val('False');
+        })
+
+        function CarregaGrid() {
+            $("#modal").load("/ColetaTransporte/ExecucaoColeta/BuscaProgramacao/" + "0" +
+                "?dtRef=" + $("#dtReferencia").val());
+        }
+
+        $('.clockpicker').clockpicker({
+            donetext: 'Incluir',
+            afterDone: function () {
+                alert("after done");
+            }
+        });
+
+    </script>
+}

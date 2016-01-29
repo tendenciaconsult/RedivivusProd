@@ -1,0 +1,192 @@
+﻿@model Simir.Application.ViewModels.DestinadorVMs.ResiduosTratadosVM
+@using Simir.Domain.Enuns
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    ViewBag.Title = "Destinador";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.Id)
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Tratamento de Destinação
+        </div>
+        <div class="panel-body">
+            @Html.ValidationSummary()
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.HiddenFor(x => x.emLitros)
+                    @Html.HiddenFor(x => x.ResiduosNaoTratados)
+                    <label class="pull-right"> No momento você possue
+                        <span class="ResiduosNaoTratados"></span>
+
+                        de rejeito a ser cadastrados </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        @Html.DDLBootstrapFor(model => model.TipoResiduoValor, Model.TipoResiduoDescricao, "/Externo/Destinador/ResiduosRecebidoNaoTratados")
+                    </div>
+                    <div class="form-group ">
+                        <label>Tipo de Destinação</label>
+
+                        <div class="form-group">
+                            <div class="radio-inline">
+
+                                <label>
+
+                                    @Html.RadioButtonFor(x => x.TipoDestinacao, (int)TipoTratamento.Reciclagem)Reciclagem
+                                </label>
+                            </div>
+                            <div class="radio-inline">
+                                <label>
+                                    @Html.RadioButtonFor(x => x.TipoDestinacao, (int)TipoTratamento.Compostagem)Compostagem
+                                </label>
+                            </div>
+                            <div class="radio-inline">
+                                <label>
+                                    @Html.RadioButtonFor(x => x.TipoDestinacao, (int)TipoTratamento.Incineracao)Incineração
+                                </label>
+                            </div>
+                            <div class="radio-inline">
+                                <label>
+                                    @Html.RadioButtonFor(x => x.TipoDestinacao, (int)TipoTratamento.Outros)Outros
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.Especifique)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.QuantidadeReaproveitadaInt)
+                        @Html.EditBootstrapFor(model => model.QuantidadeRejeitoInt)
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+                <div class="form-group  pull-right">
+                    <a class="btn btn-default" href="@Url.Action("ResiduosRecebidos", "Destinador", new {area = "Externo"})">
+                        Cancelar
+                    </a>
+                    <div onclick=" confirmar(); " data-confirm="Tem certeza que deseja salvar?" class="btn btn-success">
+                        Salvar
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title ">
+            Histórico de Resíduos Gerados
+            <div class="pull-right">
+                <div style="display: inline-block;">
+
+                    <div id="carregando" style="display: none;">
+                        <i class="fa fa-refresh fa-spin fa-fw"></i>Carregando...
+                    </div>
+                </div>
+                <div class="btn btn-success btn-xs" onclick="CarregaGrid();" data-toggle="modal" data-target="#BuscaProgramacao"><i class="fa fa-angle-double-down fa-fw"></i></div>
+
+            </div>
+        </div>
+
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+        <div class="panel-body">
+            <div id="modal">
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        function CarregaGrid() {
+            $('.collapse').collapse('show');
+            $('#carregando').show();
+            $("#modal").load("/Externo/Gerador/HistoricoGeracao/", function () {
+                $('#carregando').hide();
+            });
+        }
+        function carregaPagina() {
+            var ehLitro = @(Model.emLitros? @"true": @"false");
+                var valor = @Model.ResiduosNaoTratados;
+                if (ehLitro == false) {
+                    $('#QuantidadeReaproveitadaInt').next().html('kg');
+                    $('#QuantidadeRejeitoInt').next().html('kg');
+                    $('span.ResiduosNaoTratados').text(valor.toString() + ' kg');
+                } else {
+                    $('#QuantidadeReaproveitadaInt').next().html('l');
+                    $('#QuantidadeRejeitoInt').next().html('l');
+                    $('span.ResiduosNaoTratados').text(valor.toString() + ' litros');
+                }
+            }
+
+        $(window).load(carregaPagina());
+
+        $('#TipoResiduoValor').parent().find('select').change(function () {
+
+            var valor = $(this).find("option:selected").prop('title');
+
+
+
+            $('#ResiduosNaoTratados').val(valor);
+
+            var texto = $(this).find("option:selected").text();
+
+            var ehLitro = true;
+            if ((texto.length - texto.indexOf("(kg)") - 4) == 0) {
+                $('#emLitros').val("False");
+                $('#QuantidadeReaproveitadaInt').next().html('kg');
+                $('#QuantidadeRejeitoInt').next().html('kg');
+                $('span.ResiduosNaoTratados').html(valor + ' kg');
+            } else {
+                $('#emLitros').val("True");
+                $('#QuantidadeReaproveitadaInt').next().html('l');
+                $('#QuantidadeRejeitoInt').next().html('l');
+                $('span.ResiduosNaoTratados').html(valor + ' litros');
+            }
+
+        });
+
+
+        function confirmar() {
+
+            var form = $("form", "#page-inner");
+
+            if (form.valid()) {
+                form.submit();
+                // return true;
+            }
+
+
+        }
+    </script>
+    
+}
+
+
+
+

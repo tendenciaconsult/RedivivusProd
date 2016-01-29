@@ -1,0 +1,233 @@
+﻿@model Simir.Application.ViewModels.LimpezaConsultaVM
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    ViewBag.Title = "Consulta de Limpeza urbana";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Btn)
+    @Html.HiddenFor(x => x.bGridCarregado)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div style="font-weight: bold;font-size:15px;">
+                <b>Consulta das Programações de Limpeza Urbana</b>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        @Html.DDLBootstrapFor(model => model.RegiaoAdministrativaID, Model.nmRegiaoAdministrativa, "/Limpeza/ConsultaServicos/ReturnRegiaoAdministrativa/")
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        @Html.DDLBootstrapFor(model => model.PrestadoraServicosID, Model.nmPrestadoraServicos, "/Limpeza/ConsultaServicos/ReturnPrestadoraServicos/")
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="margin-left:-2%">
+                                    @Html.DDLBootstrapFor(model => model.EnderecoBairroID, model => model.nmEnderecoBairro, "/Limpeza/ConsultaServicos/ReturnBairros/", model => model.RegiaoAdministrativaID, null)
+                                </div>
+                                <div class="col-md-7">
+                                    @Html.DDLBootstrapFor(model => model.EnderecoLogradouroID, model => model.nmEnderecoLogradouro, "/Limpeza/ConsultaServicos/ReturnLogradouro/", "RegiaoAdministrativaID EnderecoBairroID", null)
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default" style="float:right">
+                                    <div class="panel-heading">
+                                        Intervalo de data
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group" id="GrupoTipoProgramacao">
+                                            <div class="row">
+                                                @Html.EditBootstrapFor(model => model.dtInicio, tudoTamanho: 12, inputTamanho: 11)
+                                            </div>
+                                            <div class="row">
+                                                @Html.EditBootstrapFor(model => model.dtFim, tudoTamanho: 12, inputTamanho: 11)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @* -------------------Informe o tipo de programação-------------------- *@
+                    <div class="col-md-12" style="margin-left:-1.7%;">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Informe o tipo de programação
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group" id="GrupoTipoProgramacao">
+                                    <div class="radio-inline" style="margin-left:1.5%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoProgramacao, 1) Capina
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoProgramacao, 2) Varrição
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoProgramacao, 3) Roçagem
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoProgramacao, 4) Raspagem
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoProgramacao, 5) Podas ou Arranquios de Árvores
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoProgramacao, 6) Lavagem de vias
+                                        </label>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.TipoProgramacao, 7) Limpeza de Galerias pluviais
+                                            </label>
+                                        </div>
+                                        <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.TipoProgramacao, 8, new { @class = "Pintura" }) Pintura de guias
+                                            </label>
+                                        </div>
+                                        <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.TipoProgramacao, 9) Limpeza de boca de lobos
+                                            </label>
+                                        </div>
+                                        <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.TipoProgramacao, 10) Multirão de Limpeza
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class=" row col-md-5" style="margin-left:0.5%">
+                            @Html.DDLBootstrapFor(model => model.TipoConsultaID, Model.nmTipoConsulta, "/Limpeza/ConsultaServicos/CarregaTipoConsulta/")
+                        </div>
+                        <div class=" row col-md-5" style="margin-top:1.5%;">
+                            <div class="radio-inline">
+                                @Html.CheckBoxBootstrapFor(model => model.bOrdinaria)
+                            </div>
+                            <div class="radio-inline">
+                                @Html.CheckBoxBootstrapFor(model => model.bEventual)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group  pull-right">
+                    <div style="margin-left:-20%" data-toggle="collapse" data-parent="#accordion" class="btn btn-success" onclick="Consultar();">Consultar</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div id="modal">
+
+</div>
+
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        function carregaPagina() {
+
+            if ($('#bGridCarregado').val() == false) {
+                $("#btnExportaExcel").hide();
+            }
+
+            if ($('#LimpezaEventualID').val() == 0) {
+                $("#collapseOne").hide();
+            };
+
+        }
+
+        $(window).load(carregaPagina());
+
+        function confirmaAlteracao() {
+            $.blockUI({ message: '<div class="ModalCarregando"></dic>' });
+            if ($('#bGridCarregado').val() == false) {
+                addErros("ValidaGrid", "Sem dados para realizar a Exportação!")
+                $.unblockUI();
+            }
+            else {
+                var form = $('form', '#page-inner');
+                if (form.validate()) {
+                    $('#Btn').val("ExportaGridExcel");
+                    form.submit();
+                    // return true;
+                }
+            }
+
+        }
+
+        $(function Consultar() {
+            $(".btn").click(function () {
+                $.blockUI({ message: '<div class="ModalCarregando"></dic>' });
+                if ($("#TipoConsultaID").val() == "") {
+                    addErros("TipoConsultaID", "Tipo de relatório não informado!")
+                    $.unblockUI();
+                }
+                else {
+                    $("#bGridCarregado").val(true);
+                    $("#modal").load("/Limpeza/ConsultaServicos/CarregaGrig/"
+                        + $("input[name='TipoProgramacao']:checked").val()
+                        + "?idRegiaoAdministrativa=" + $("#RegiaoAdministrativaID").val()
+                        + "&idPrestadora=" + $("#PrestadoraServicosID").val()
+                        + "&idLogradouro=" + $("#EnderecoLogradouroID").val()
+                        + "&idBairro=" + $("#EnderecoBairroID").val()
+                        + "&dtInicio=" + $("#dtInicio").val()
+                        + "&dtFim=" + $("#dtFim").val()
+                        + "&TipoConsultaID=" + $("#TipoConsultaID").val()
+                        + "&Ordinario=" + $("input[name='bOrdinaria']:checked").attr("checked")
+                        + "&Eventual=" + $("input[name='bEventual']:checked").attr("checked")
+                        + "&TipoProgramacao=" + $("input[name='TipoProgramacao']:checked").val()
+                        ).dialog();
+                }
+            });
+
+        });
+
+        $("#dtInicio").change(function () {
+            if ($("#dtInicio").val() > $("#dtFim").val()) {
+                $("#dtFim").val($("#dtInicio").val());
+            }
+        });
+
+        $("#dtFim").change(function () {
+            if ($("#dtFim").val() < $("#dtInicio").val()) {
+                addErros("dtFim", "Data Inválida!");
+                $("#dtFim").val($("#dtInicio").val());
+            }
+        });
+
+
+    </script>
+}

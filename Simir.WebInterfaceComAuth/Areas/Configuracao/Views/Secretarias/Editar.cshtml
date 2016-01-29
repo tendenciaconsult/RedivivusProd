@@ -1,0 +1,281 @@
+﻿@model Simir.Application.ViewModels.SecretariaVM
+@using Simir.Domain.Enuns
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    ViewBag.Title = "Geradores de Resíduos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.SecretariaID)
+    @Html.HiddenFor(x => x.Btn)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Secretaria
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.ValidationSummary(false, "(* campos obrigatórios)", new { @class = "text-danger" })
+
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.NomeSecretaria, tudoTamanho: 10, inputTamanho: 12)
+                        <div class="col-md-1" style="Margin-top: 3.8%; margin-left: -3%;">
+                            <div class="btn btn-success" onclick="CarregaGrid();" data-toggle="modal" data-target="#BuscaProgramacao">Localizar</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.NomeSecretario)
+                    </div>
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.SiteSecretaria)
+                    </div>
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.Telefone1)
+                        @Html.EditBootstrapFor(model => model.Telefone2)
+                    </div>
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.Email)
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Responsabilidade
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    @Html.ListBoxFor(model => model.ResponsabilidadesTodasIDs, Model.ResponsabilidadesTodas, new { @class = "form-control", size = "11" })
+                                </div>
+                                <div class="col-md-2 btn-xs">
+                                    <input type="button" class="btn btn-default btn-block" id="moveUm" value=">" /><br />
+                                    <input type="button" class="btn btn-default btn-block" id="moveTodos" value=">>" /><br />
+                                    <input type="button" class="btn btn-default btn-block" id="removeTodos" value="<<" /><br />
+                                    <input type="button" class="btn btn-default btn-block" id="removeUm" value="<" />
+                                </div>
+                                <div class="col-md-5">
+                                    @Html.ListBoxFor(model => model.ResponsabilidadesSuasIDs, Model.ResponsabilidadesSuas, new { @class = "form-control", size = "11" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Outros Serviços:</label>
+                                <div class="input-group">
+                                    <input class="form-control OutroServicoC" data-val="true" data-val-regex="Nome do novo serviço é inválido" data-val-regex-pattern="^[a-zA-ZáàâãéèêíïóôõöúñÁÀÂÃÉÈÍÏÓÔÕÖÚÑ][a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" id="OutroServico" name="OutroServico" onchange="changeCep(this)" type="text" value="" autocomplete="off">
+                                    <span class="form-group input-group-btn">
+
+                                        <button class="btn btn-default" type="button" onclick="incluirServico(this)">Incluir</button>
+                                    </span>
+                                </div>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="OutroServico" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    @Html.EditorFor(model => model.Endereco)
+                </div>
+                <div class="col-md-12">
+                    <hr />
+                    <div class="form-group  pull-right">
+
+                        @if (User.Identity.TemPermicao(TipoPermissao.Incluir) || User.Identity.TemPermicao(TipoPermissao.Alterar))
+                        {
+                            <a class="btn btn-default" href="@Url.Action("Editar", "Secretarias", new {area = "Configuracao", id = ""})">
+                                Novo
+                            </a>
+                        <div class="btn btn-success" onclick=" confirmaSecretaria(); " data-confirm="Tem certeza que deseja salvar?">Salvar</div>
+                        }
+                        @if (User.Identity.TemPermicao(TipoPermissao.Excluir))
+                        {
+                        <div id="btnExcluir" class="btn btn-danger" onclick=" excluirSecretaria(); " data-confirm="Tem certeza que deseja excluir?">Excluir</div>
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="modal fade" id="BuscaProgramacao" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div id="modal">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+@*@if (Model.Secretarias.Any())
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">Secretarias Cadastradas</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+            <div class="panel-body">
+
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Secretarias.First().NomeSecretaria)</th>
+                                <th>@Html.DisplayNameFor(model => model.Secretarias.First().NomeSecretario)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Secretarias)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NomeSecretaria)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NomeSecretario)
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Editar", "Secretarias", new { area = "Configuracao" , id =item.SecretariaID})">
+                                            <div class="btn btn-primary btn-xs"><i class="fa fa-edit "></i></div>
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+}*@
+
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function carregaPagina() {
+
+            if ($('#SecretariaID').val() == 0) {
+                $("#btnExcluir").hide();
+            };
+
+        }
+        $(window).load(disabilitaEndereco(true, false));
+        $(window).load(carregaPagina());
+
+
+
+        $('#moveUm').click(function () {
+            $('#ResponsabilidadesTodasIDs option:selected').appendTo('#ResponsabilidadesSuasIDs');
+            return false;
+        });
+
+        $('#removeUm').click(function () {
+            $('#ResponsabilidadesSuasIDs option:selected').appendTo('#ResponsabilidadesTodasIDs');
+            return false;
+        });
+
+        $('#moveTodos').click(function () {
+            $('#ResponsabilidadesTodasIDs option').appendTo('#ResponsabilidadesSuasIDs');
+            //$('#ResponsabilidadesSuasIDs option').attr('selected', 'selected');
+            return false;
+        });
+        $('#removeTodos').click(function () {
+            $('#ResponsabilidadesSuasIDs option').appendTo('#ResponsabilidadesTodasIDs');
+            return false;
+        });
+
+        function CarregaGrid() {
+            $.blockUI({ message: '<div class="ModalCarregando"></dic>' });
+            $("#modal").load("/Configuracao/Secretarias/BuscaProgramacao/");
+        }
+
+
+        function incluirServico(ele) {
+            if ($("form").validate().element(".OutroServicoC")) {
+
+
+                var nomeServ = $(ele).parent().parent().find("input.form-control").val();
+                $(ele).parent().parent().find("input.form-control").val('');
+
+                var op = $(document.createElement('option'))
+                    .text(nomeServ)
+                    .attr({ value: nomeServ });
+                $('#ResponsabilidadesSuasIDs').append(op);
+
+            }
+        };
+
+        function confirmaSecretaria() {
+
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#ResponsabilidadesSuasIDs option').attr('selected', 'selected');
+                $('#Btn').val("Salvar");
+                form.submit();
+                // return true;
+            }
+
+        }
+        function excluirSecretaria() {
+            var form = $('form', '#page-inner');
+            $('#Btn').val("Excluir");
+
+            //$.desabilitaValidacao();
+            $("[data-val='true']").attr('data-val', 'false');
+
+            //Reset validation message
+            $('.field-validation-error')
+            .removeClass('field-validation-error')
+            .addClass('field-validation-valid');
+
+            //Reset input, select and textarea style
+            $('.input-validation-error')
+            .removeClass('input-validation-error')
+            .addClass('valid');
+
+            //Reset validation summary
+            $(".validation-summary-errors")
+            .removeClass("validation-summary-errors")
+            .addClass("validation-summary-valid");
+
+            //To reenable lazy validation (no validation until you submit the form)
+            $('form').removeData('unobtrusiveValidation');
+            $('form').removeData('validator');
+            $.validator.unobtrusive.parse($('form'));
+
+            form.submit();
+
+        }
+
+
+    </script>
+}

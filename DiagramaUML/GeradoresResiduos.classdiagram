@@ -1,0 +1,1157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="6acc01da-7a4a-4b10-9ca7-58ca9896592a" name="GeradoresResiduos" linkedPackageId="c0e4bb69-e51a-4943-b7ca-b7bbaf77db67" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="445a9767-cc33-4e2e-84d7-9ba062efb42c" name="Empresa" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6881b55b-2579-45f3-85b2-6ece70c5df2a" />
+        <targetEnds>
+          <association Id="238d449b-80c8-4533-a383-6ec4fade9011" isDerived="false" sourceEndRoleName="Empresa" targetEndRoleName="Prefeitura" isLeaf="false" isAbstract="false">
+            <classMoniker Id="98c2dd8f-c202-4c91-aa42-36ab17a6bbe3" LastKnownName="Prefeitura" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8f8f4e0f-4668-4882-8954-5d7b19e63f5d" name="Empresa" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4c31ee24-03a1-47ab-8735-f773ac9f4cfb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="41d17869-8810-455f-89dd-fef4f082d7ce" name="Prefeitura" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="55c795bf-d2f1-435f-849a-20ba5cffed62" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f4cbaf8f-f50e-4748-bfbf-e5c475656064" />
+          </association>
+          <association Id="8f2af54a-79c3-4a27-9055-a562aa5a738a" isDerived="false" sourceEndRoleName="Empresa" targetEndRoleName="NaturezaJuridica" isLeaf="false" isAbstract="false">
+            <classMoniker Id="1f387800-1993-4985-b33f-9bf5378348a3" LastKnownName="NaturezaJuridica" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c82e2aa7-e54d-4fab-a2fa-3f65a9033dd5" name="Empresa" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9ec9ed00-81cc-4535-b57f-2fa275ec6093" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="afdd991b-191d-4aa0-b0e9-749135b23e5b" name="NaturezaJuridica" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c08e5748-3435-4ce3-b3d0-2e8b4cf54943" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="aef07076-caeb-43c9-848a-940d31a8792c" />
+          </association>
+          <association Id="6359b364-07d3-42e8-8ee1-2e6de65ae997" isDerived="false" sourceEndRoleName="Empresa" targetEndRoleName="Endereco" isLeaf="false" isAbstract="false">
+            <classMoniker Id="953fabd2-3058-4919-a26c-8048d4c1ba3f" LastKnownName="Endereco" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="38fccdb3-a4ad-4dbf-9a3a-c518bad34ed5" name="Empresa" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d8caa6a4-1b2b-4ded-946a-4d01e2923c39" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="baac8db6-b63c-4ee3-8985-d523a0110a04" name="Endereco" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="eb51e500-f3af-43f9-8096-7401226703ce" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6d8aeb68-62a6-473f-bbd0-2eac91eafaf2" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="c94290e3-40cb-45fd-9645-f10ffc4c3661" name="EmpresaID" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="5f1e4f0b-b0d0-4236-bc17-1d9bbf36b94d" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="46550906-52ed-47e0-93d9-d86d1b95d077" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="9a31572e-2453-4be6-b8e9-ec3154592b71" name="PrefeituraID" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="89ede30f-c470-4cd6-9289-ae8b70125bb1" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="67c1895a-b360-4a13-b7c8-e18a8e0cdd40" LastKnownName="Prefeitura" />
+            </type_NamedElement>
+          </property>
+          <property Id="86b3afd8-29e6-4bcd-9740-5b9cb2fb2713" name="NaturezaJuridicaID" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="837f5660-5d48-4f0d-babc-ab79ed07c867" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="6e70095d-3808-49f7-a8a5-5d6f64671790" LastKnownName="NaturezaJuridica" />
+            </type_NamedElement>
+          </property>
+          <property Id="0fe4278a-b4d7-45c6-b612-32f6c95d1c73" name="nmRazaoSocial" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="bb7d9e25-9eb6-4512-a908-82be999cea31" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="aff2cd99-eabd-4f0d-96f6-57957d3343ac" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="1f71bd87-c5e6-48b6-bf9d-b0ef696dc382" name="nmFantasia" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b3b97b57-37ff-4589-a83a-eca4ee5526a5" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="f0291818-763f-41ba-8650-e3b36975e16d" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="721a7f6d-e802-4635-8805-6c5bb3f90c81" name="CNPJ" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="abc6d394-7507-4128-bcdf-f74bbf9ad1ec" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="0f5b277b-1fd0-4c53-b2f2-e213cbc1e0e9" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="1268c172-d6dc-425f-af4c-049dc0590deb" name="InscricaoEstadual" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="fc8bc617-b9fc-4dea-a24b-19562d6f78a2" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="b716ca9c-71a9-4c00-9890-06b39198c6c9" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="853947ad-4d97-4146-8ee3-db6bbd12b154" name="CodigoCNAE" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d12e502f-eb36-4523-a5a8-334f7cb430ae" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="acede283-3629-4532-a7c9-4255c352f713" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="17a8560b-b865-4494-92fc-e763eadf62f2" name="Telefone" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="65fe70d8-d88c-49d6-8adb-27506dc15010" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="5819e385-3721-4608-a0e2-fe0b48bf88ad" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="c6c5154f-fbee-47dc-886d-2439ada48b01" name="Celular" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="98228d8e-f6c3-40f8-a4a5-bef57259c98c" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="901fbc7a-83c7-4ccc-9a13-9f70e7ed815a" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="47df16ae-c539-490e-bad7-18328dfcdc8b" name="Email" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7cfd12c7-658f-4ecd-bd83-b8ea0986ea25" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="a612531c-77a6-4765-ad9c-b557d3edc2f6" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="5f73ad35-e464-4fce-a50d-01ef738dd092" name="Site" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2e2775ab-8bea-459a-b10a-4900497a15cc" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="d742dcc1-ea9b-4c35-a4a6-3293883e1e4c" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="1f795adb-887b-429e-a98e-e1695da444b4" name="nmResponsavelEmpresa" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="69a45ffd-1169-48db-8de9-759d8e2cd74d" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="4c825a4d-9430-4d37-9edb-e145ac82bb7e" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="13ad8c59-dbe8-43ca-b498-b4ceca239500" name="AtividadeEmpresaID" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="adf257e2-38e6-4bfa-914f-08c48a4e2209" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="d80217ce-7b81-43b7-8f59-cf85ef0be4bc" LastKnownName="AtividadeEmpresa" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="901fbc7a-83c7-4ccc-9a13-9f70e7ed815a" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="0f5b277b-1fd0-4c53-b2f2-e213cbc1e0e9" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="acede283-3629-4532-a7c9-4255c352f713" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="a612531c-77a6-4765-ad9c-b557d3edc2f6" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="b716ca9c-71a9-4c00-9890-06b39198c6c9" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="d742dcc1-ea9b-4c35-a4a6-3293883e1e4c" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="5819e385-3721-4608-a0e2-fe0b48bf88ad" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="98c2dd8f-c202-4c91-aa42-36ab17a6bbe3" name="Prefeitura" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6426d3d4-c4cb-489f-9695-5c3cbc123260" />
+        <targetEnds>
+          <association Id="9ffddc42-480c-42b9-91b8-399dc215089e" isDerived="false" sourceEndRoleName="Prefeitura" targetEndRoleName="Endereco" isLeaf="false" isAbstract="false">
+            <classMoniker Id="953fabd2-3058-4919-a26c-8048d4c1ba3f" LastKnownName="Endereco" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="587143de-9678-47c7-8884-a49b40b1510a" name="Prefeitura" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="03f0d23e-3495-4530-b7f4-508c0eb05298" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8fffec57-fa3a-4ea1-8756-d85465eba3f6" name="Endereco" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="00b17596-42c6-4510-9254-4553ff2a2865" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6a999876-e416-49c9-9722-806284000bdd" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="115ce06e-20e3-4532-8e86-92fd57f46003" name="PrefeituraID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="96c80979-50dc-4a99-98fb-26b8e76a6431" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="842e73eb-12a7-45aa-aa51-c572e673a821" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="0a301684-2044-4ddd-a71e-26588f317768" name="nmPrefeitura" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7a1276bf-053f-47e9-b362-e129fd292557" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="6ba68c84-adf9-4c8c-8e22-ddbc0d6f8f40" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="9aa8b1ab-5f88-462b-b4b9-34ac069b3be5" name="CNPJ" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="214a8233-9545-437c-bbdb-92c264e94aad" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="e5964a26-fc1a-471f-a680-6b2169e4abae" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="0a23d74f-ba62-45c9-9d47-1f4dffdb9eb5" name="Site" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="211a364a-e954-4c0d-90be-92889742337d" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="2b79d7a0-1ddd-4a3e-91e2-abb5cd1dc126" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="7ffc5723-22d1-43c7-8c4a-54c5a67c24f9" name="Telefone" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="de11e484-3e69-4957-a5fe-23bbaddbe1db" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="ccfce413-85e4-4f50-b2ac-742fc33bddda" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="7f88a3a8-fd94-4881-86e2-71aa60772717" name="Prefeito" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f3bc5540-5608-4e15-ab32-f933743f3b3c" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="fca32514-4c7c-408d-9a24-e493c11b7fa7" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="cb1b6768-889f-40e7-9fb8-6544fbb0194a" name="EnderecoID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="43a0f5f5-d8b3-4e70-bf05-ee8d85973f04" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="44308963-c466-4c2a-a617-1f68a432b80e" LastKnownName="Endereco" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="842e73eb-12a7-45aa-aa51-c572e673a821" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="e5964a26-fc1a-471f-a680-6b2169e4abae" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="ccfce413-85e4-4f50-b2ac-742fc33bddda" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="2b79d7a0-1ddd-4a3e-91e2-abb5cd1dc126" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="fca32514-4c7c-408d-9a24-e493c11b7fa7" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="953fabd2-3058-4919-a26c-8048d4c1ba3f" name="Endereco" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6058c2f6-aaf6-4de4-9ca2-85586e4281d1" />
+        <targetEnds>
+          <association Id="fb610f58-10cf-47e6-a020-afe67e217d70" isDerived="false" sourceEndRoleName="Endereco" targetEndRoleName="EnderecoEstado" isLeaf="false" isAbstract="false">
+            <classMoniker Id="66bb3b2f-778b-4052-8398-5b9a4d062521" LastKnownName="EnderecoEstado" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a434e9f9-33e1-43ab-bf60-da7dbab1af1a" name="Endereco" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="64caf515-c843-48f1-8093-20588a9d64c3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e31e3d96-a24a-4bf0-ad8e-782d87e4472c" name="EnderecoEstado" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d060393b-1836-46cc-ad3f-ec2bd7de1604" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f5cb28c5-a2af-4e70-88c4-62fc9a1b9433" />
+          </association>
+          <association Id="8c89bd8d-0f5c-487d-bfc1-d20b69ceb0cf" isDerived="false" sourceEndRoleName="Endereco" targetEndRoleName="EnderecoMunicipio" isLeaf="false" isAbstract="false">
+            <classMoniker Id="45cd8a07-cef7-4324-aed3-1acef4c44307" LastKnownName="EnderecoMunicipio" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2ab2d8a7-5616-43fa-bf2c-5350467db722" name="Endereco" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="49efe8f4-79af-490c-bca7-4a56b4a825d4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c9e8fded-b78e-4c3d-be6e-da0d8308e310" name="EnderecoMunicipio" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8127c564-ad2b-46b5-8804-cc9b7b19e411" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8339d984-7767-4448-9703-8396294e80fc" />
+          </association>
+          <association Id="336e1289-1b3c-499e-af84-c62d995e96ca" isDerived="false" sourceEndRoleName="Endereco" targetEndRoleName="TipoLogradouro" isLeaf="false" isAbstract="false">
+            <classMoniker Id="89d28d87-55e7-4036-9860-ce3d96549894" LastKnownName="TipoLogradouro" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6bf8f877-360a-4f43-9f3f-805f672046a8" name="Endereco" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="83089c73-e158-4b2a-9dda-b391fa047e47" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5612beb5-3a0b-4487-8ce5-d9d8bea72b52" name="TipoLogradouro" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="37ee9243-40fe-4736-9e98-9edc5877099a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b69b1758-77e9-45d0-9d53-9be35f981f55" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="e82cb8d3-76b5-4c05-9f2f-87c0884cb296" name="EnderecoID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="64c5e0b5-3a15-4c87-877f-33757dbbb8ae" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="bb4c54f0-d485-4396-87d8-eb9e9757182c" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="fa7e4754-4b80-4ecd-867d-1603909a371a" name="EnderecoMunicipioID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="1ab06ca5-85af-4b4c-bb11-1992e1672389" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="26845cac-e043-4d22-b4cd-b5b639bdea22" LastKnownName="EnderecoMunicipio" />
+            </type_NamedElement>
+          </property>
+          <property Id="04641447-d605-44d5-a304-7bf2b985ad00" name="Complemento" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="72e0d675-b4f8-4b67-a45f-91f71cdfe0b1" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="8fcd874a-ea41-488f-9f88-1cb62dfaf08b" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="8ea7e6b0-0b1c-493d-9508-fcd55875bfce" name="Endereco" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="300242e7-d5a3-4bbd-8097-d246f29c0506" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="208d5446-e5e4-489c-989f-99584c1957c4" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="a09f9708-c626-47f0-a96e-bea0e6306143" name="TipoLogradouroID" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c6f1d7c3-d89c-4c38-a543-660543820424" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="7d0b20a1-64e8-4243-b18b-348b057aef33" LastKnownName="TipoLogradouro" />
+            </type_NamedElement>
+          </property>
+          <property Id="8a316d3b-1e14-4809-b6b5-b94639268894" name="Numero" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a3213ba9-838d-458c-a64e-3618c267d71a" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="96be379f-e02b-4137-b03c-7850d24af077" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="1db4fe39-8f11-4cee-877a-5f0febd0f42f" name="EnderecoEstadoID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c846f6b4-a4e6-479e-b049-943c4e3e401f" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="bec59eed-83c1-425e-baa7-9593c1c4797e" LastKnownName="EnderecoEstado" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="bb4c54f0-d485-4396-87d8-eb9e9757182c" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="208d5446-e5e4-489c-989f-99584c1957c4" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="96be379f-e02b-4137-b03c-7850d24af077" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="8fcd874a-ea41-488f-9f88-1cb62dfaf08b" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="89d28d87-55e7-4036-9860-ce3d96549894" name="TipoLogradouro" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f055a3ae-a74f-4c36-b5a8-67da6e126364" />
+        <ownedAttributesInternal>
+          <property Id="e9a26192-459b-4772-a84f-c8e5fbd2c83f" name="Tipo LogradouroID" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="9da89063-bb96-4417-879d-9f6afddaaad1" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="13389fed-481c-4343-b27f-2c8aa6351107" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="6f35af49-f69c-4b73-9e97-41238d82badd" name="nmLogradouro" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="573bcbd8-c09d-4a70-b6f3-a203080114b8" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="30c8b3ca-e5ba-41b4-b6e8-37ba42c7ac29" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="9874fda9-5c51-47db-9a0e-985bde0122cc" name="AtividadeEmpresa" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b3f1c8d2-cc46-4cde-9179-005469198601" />
+        <targetEnds>
+          <association Id="2f568a2e-9220-4d6b-836c-053579652915" isDerived="false" sourceEndRoleName="AtividadeEmpresa" targetEndRoleName="Empresa" isLeaf="false" isAbstract="false">
+            <classMoniker Id="445a9767-cc33-4e2e-84d7-9ba062efb42c" LastKnownName="Empresa" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="90c8e742-fc99-41b7-b130-32b0683faee3" name="AtividadeEmpresa" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="245c018e-c61b-493f-89c3-19f35576c04a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="768762e9-2a9a-471b-93e8-02ef3a8db28e" name="Empresa" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="cca03b63-c095-4d9c-b7fd-2d9253bc8321" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4ec67e3a-b94b-4474-9f02-c619fc5e97a2" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="1d42d9eb-dd6e-46fa-827a-1df5e5f21808" name="AtividadeEmpresaID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="dcde29d2-92cd-45a6-ac9b-49c49b579817" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="8d69b118-7556-44a2-bea3-bb17f9e16242" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="f08f5b99-75b9-49aa-aee4-6a50ce2323cb" name="EmpresaID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="18d7e1ec-3b95-44eb-823a-ceb8feca9263" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="d55372e2-a5a7-47b5-befd-b7aeceb8872a" LastKnownName="Empresa" />
+            </type_NamedElement>
+          </property>
+          <property Id="7a2a805d-b219-4eb3-b27c-7e82a6016e19" name="TipoAtividadeEmpresaID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="017f5f70-2a39-4bdd-92a9-812ab5b0164f" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="1ee97450-fc52-4303-81c1-7709a1684ebf" LastKnownName="TipoAtividadeEmpresa" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="8d69b118-7556-44a2-bea3-bb17f9e16242" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="fe78c080-e19c-4964-8c01-6c23303c6dc9" name="TipoAtividadeEmpresa" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="27c58340-59cd-4959-8a34-fbed203e31f6" />
+        <targetEnds>
+          <association Id="7140d03e-efac-40cd-bae3-8dcdc5aefbe1" isDerived="false" sourceEndRoleName="TipoAtividadeEmpresa" targetEndRoleName="AtividadeEmpresa" isLeaf="false" isAbstract="false">
+            <classMoniker Id="9874fda9-5c51-47db-9a0e-985bde0122cc" LastKnownName="AtividadeEmpresa" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9c6ca6f0-77e3-474b-a45b-fb6e2dc45c0c" name="TipoAtividadeEmpresa" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="19b6175c-5cac-4f32-b5de-4a6746609d58" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5fd558db-ec9f-4a98-ba20-afed96edeb06" name="AtividadeEmpresa" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2ff8fcaf-8d71-4059-aa83-38f176d8a54a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ea18d4f1-7dc7-47f2-beba-c146a4cc9810" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="65a9aeb3-81dc-4758-8979-0cf5a34782a0" name="TipoAtividadeEmpresaID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7757cd56-6e99-4081-a07e-aaabb34978fb" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="d2c28f8f-608d-405e-89cb-17d359547ebc" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="933e8a9e-7571-4cb2-bbee-b56e1b07f41d" name="nmTipoAtividadeEmpresa" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d8ab29b6-0cd1-4c64-88b9-2c66643194df" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="f1c5a47f-080e-41c3-bbcb-4f19c7352fd1" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="d2c28f8f-608d-405e-89cb-17d359547ebc" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1f387800-1993-4985-b33f-9bf5378348a3" name="NaturezaJuridica" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="1c990027-0e8f-4b07-aad0-c77ccf9fc497" />
+        <ownedAttributesInternal>
+          <property Id="600a2977-e9d0-490f-b587-d45b6361e5a1" name="NaturezaJuridicaID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6ddeef00-ac2e-431f-b0b8-d2cb80305ea3" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="48b60e99-df5c-4aad-9b32-b5b56dc6ebf8" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="20e09d07-1e0a-4cc7-96b9-a429410535d5" name="nmNaturezaJuridica" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c077d234-29e4-4ecb-aaf3-4367754d19c2" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="0d6f419b-0c8e-4a1f-8308-4d7198b51416" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="48b60e99-df5c-4aad-9b32-b5b56dc6ebf8" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="036be1be-eb0c-4996-b679-dda15ccc295c" name="ResiduosGerados" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f7b67f9d-1bee-4dec-8afa-aeeb1a579157" />
+        <targetEnds>
+          <association Id="15e1dfa6-67b2-479d-a676-d6a4d9c6159b" isDerived="false" sourceEndRoleName="ResiduosGerados" targetEndRoleName="UnidadeMonetaria" isLeaf="false" isAbstract="false">
+            <classMoniker Id="3f230938-d22a-4c39-94ac-56a02b301a58" LastKnownName="UnidadeMedida" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="68a53e6d-9d5d-415d-8db4-42af5e7b2eb7" name="ResiduosGerados" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b23dcddc-e9ee-4d65-89d2-90b3c34e1d89" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9544da99-6b42-482a-9628-1695f893aa6e" name="UnidadeMonetaria" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="23c47baa-6e11-4136-a1bb-a52ef938df97" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="531328b4-6915-40a8-a895-3ce4b1bd54b1" />
+          </association>
+          <association Id="00730e0f-c7e4-4af9-acf9-c05f0fb1f9c2" isDerived="false" sourceEndRoleName="ResiduosGerados" targetEndRoleName="Empresa" isLeaf="false" isAbstract="false">
+            <classMoniker Id="445a9767-cc33-4e2e-84d7-9ba062efb42c" LastKnownName="Empresa" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e40237b8-cdb3-443e-9abc-b9e9d8282648" name="ResiduosGerados" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="336acd54-8368-40b1-993c-dac8502cd629" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0fc20fca-4b54-40cc-b3fe-c477403e35e5" name="Empresa" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2501bfe5-fce3-4966-a659-dbdc09f8b26a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ff8ccfde-e585-40fa-a268-c4e887bda1ad" />
+          </association>
+          <association Id="edbd12da-b6b1-4c70-afb6-82bb22cad6fd" isDerived="false" sourceEndRoleName="ResiduosGerados" targetEndRoleName="SubCapituloResiduo" isLeaf="false" isAbstract="false">
+            <classMoniker Id="62e41e5a-f1fa-4915-a741-cc1fe8e435ec" LastKnownName="SubCapituloResiduo" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="910474bc-a7c9-46c0-9f5f-e0899bf6a19a" name="ResiduosGerados" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a896a621-a831-47f3-956a-75d252f4a8b7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0473a142-5c51-46ff-8c19-a6cd4183faea" name="SubCapituloResiduo" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="3b66e407-dcb9-4143-9d5e-2f99d2d56fb9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3c5246b2-c366-4e3c-9e7d-294bd4c2968f" />
+          </association>
+          <association Id="17b195e5-d744-4906-b592-e7dbbd5d3c1b" isDerived="false" sourceEndRoleName="ResiduosGerados" targetEndRoleName="CapituloResiduo" isLeaf="false" isAbstract="false">
+            <classMoniker Id="3533be10-521c-464e-9f3d-20e1ca5196fc" LastKnownName="CapituloResiduo" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f8c0bf91-9b54-4aea-8525-7c92a4c57cca" name="ResiduosGerados" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5908375f-68fe-449b-b07e-3cfc3eac7474" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="799bea05-9238-4349-aedd-a162d92f003a" name="CapituloResiduo" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="505d5ca7-b7c4-45db-a570-418dc2219360" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8e63fc56-a264-4644-bf76-ee7dad2a73d3" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="8eb1826e-8bfe-4a7e-9953-a9fa058e874e" name="ResiduosGeradosID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="10a817a9-7a66-49a2-993b-a476a2453c8f" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="95295e1a-441f-4ad3-b244-5adddc7c34b5" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="521647b4-3a31-4e12-8260-316d24141d3a" name="ResiduoID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6904fc48-6ebb-412e-90f6-72a87783563e" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="ecb8462e-bc67-4765-81ab-69278b1008c8" LastKnownName="Residuo" />
+            </type_NamedElement>
+          </property>
+          <property Id="a02f19b4-df71-4218-8417-5cb5ca50f728" name="dtFinalGerado" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="cd581a1f-300f-447f-9395-b0925f2fe32a" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="3efd577c-8323-4b9a-b840-081e9050c92b" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="256f13a4-5b9a-4e08-b4b2-ac0993479486" name="dtInicioGerado" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2892715d-4b88-48e0-944f-bd0f47feb3b0" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="51b19480-6b9a-485b-9a5d-642883caf9d4" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="3c49f3d4-11af-4b56-abbb-3ae10b5cd61d" name="EmpresaID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="0e0369ba-8336-4993-9bde-4c5a07b66592" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="d1ac475c-f81a-42c6-a25d-18de54341bb7" LastKnownName="Empresa" />
+            </type_NamedElement>
+          </property>
+          <property Id="bfd27af5-d376-44bb-94d5-ed3b43baa3a0" name="Quantidade" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="fab727fd-03cd-4f14-bdf8-6a8127afd6f1" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="8ec93505-f71e-4631-9f5c-9bb02b9d9fe1" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="146649a6-01ef-413e-b215-fd3770e4695c" name="UnidadeMedidaID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c838d5cd-9ec7-494a-87a5-536c5eef1eb0" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="2cb59615-7098-4a74-b8d9-9ddb23533c0c" LastKnownName="UnidadeMedida" />
+            </type_NamedElement>
+          </property>
+          <property Id="394c5c73-d9d4-4b91-b849-bb7d75268aae" name="SubCapituloResiduo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="79f6851f-5217-49f4-91d7-960e309ed98b" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="90312c73-246a-4c37-8213-04d53a705410" LastKnownName="SubCapituloResiduo" />
+            </type_NamedElement>
+          </property>
+          <property Id="0639c8dd-2c07-4595-8c1c-a3221481ebaf" name="CapituloResiduo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="800d27d0-fd69-4c48-aaee-030a14872a7e" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="a899cced-498e-4c4e-a18a-e707e1145fad" LastKnownName="CapituloResiduo" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="95295e1a-441f-4ad3-b244-5adddc7c34b5" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="8ec93505-f71e-4631-9f5c-9bb02b9d9fe1" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="6e70095d-3808-49f7-a8a5-5d6f64671790" name="NaturezaJuridica" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::NaturezaJuridica">
+        <elementDefinition Id="1c990027-0e8f-4b07-aad0-c77ccf9fc497" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="d80217ce-7b81-43b7-8f59-cf85ef0be4bc" name="AtividadeEmpresa" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::AtividadeEmpresa">
+        <elementDefinition Id="b3f1c8d2-cc46-4cde-9179-005469198601" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="67c1895a-b360-4a13-b7c8-e18a8e0cdd40" name="Prefeitura" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::Prefeitura">
+        <elementDefinition Id="6426d3d4-c4cb-489f-9695-5c3cbc123260" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="46550906-52ed-47e0-93d9-d86d1b95d077" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="d1ac475c-f81a-42c6-a25d-18de54341bb7" name="Empresa" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::Empresa">
+        <elementDefinition Id="6881b55b-2579-45f3-85b2-6ece70c5df2a" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="51b19480-6b9a-485b-9a5d-642883caf9d4" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="3efd577c-8323-4b9a-b840-081e9050c92b" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3f230938-d22a-4c39-94ac-56a02b301a58" name="UnidadeMedida" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="ef48ce2d-c12b-4088-8d4c-306d00580219" />
+        <ownedAttributesInternal>
+          <property Id="ed2099a2-4311-450c-9a80-746258cde13f" name="UnidadeMedidaID" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="861fa775-5566-4243-89d0-01b2bc458135" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="362c6b95-82c1-43aa-891b-22067ed15a9f" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="0ea253d6-276c-4999-9d7c-7615ea6a465b" name="nmUnidadeMedida" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f46268d9-49f0-4ae5-b2f8-cc2c397c5dff" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="eb6496f1-0f18-4f77-a99e-129a05504906" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="eb6496f1-0f18-4f77-a99e-129a05504906" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="362c6b95-82c1-43aa-891b-22067ed15a9f" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="2cb59615-7098-4a74-b8d9-9ddb23533c0c" name="UnidadeMedida" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::UnidadeMedida">
+        <elementDefinition Id="ef48ce2d-c12b-4088-8d4c-306d00580219" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3533be10-521c-464e-9f3d-20e1ca5196fc" name="CapituloResiduo" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b4698d80-f76d-4bb0-9510-5e583483e0d5" />
+        <ownedAttributesInternal>
+          <property Id="3e8e295c-f322-4279-8135-ff37bf485e4e" name="CapituloResiduoID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6409fcb0-6d3e-46af-ad13-47ccb5fe4790" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="3cac9115-c952-4816-ade6-c44961eabba5" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="326c54be-e8d1-4c97-a745-0eafe3d380df" name="DescricaoCapituloResiduo" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="93e1671b-a12f-4088-86f5-31aba4338494" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="ccb2bd7c-de6c-4ba6-be19-0c6c5b97ac07" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="3cac9115-c952-4816-ade6-c44961eabba5" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="ccb2bd7c-de6c-4ba6-be19-0c6c5b97ac07" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="62e41e5a-f1fa-4915-a741-cc1fe8e435ec" name="SubCapituloResiduo" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="1e2f15a1-e9bb-47a6-a518-a75842141b51" />
+        <targetEnds>
+          <association Id="93c4c09c-d16e-4a17-a42b-f181be595109" isDerived="false" sourceEndRoleName="SubCapituloResiduo" targetEndRoleName="CapituloResiduo" isLeaf="false" isAbstract="false">
+            <classMoniker Id="3533be10-521c-464e-9f3d-20e1ca5196fc" LastKnownName="CapituloResiduo" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cd25cbea-3179-4dba-b1ed-5c4c816e300f" name="SubCapituloResiduo" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f938438f-2315-43be-b0d7-d7d7d29d1d34" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="423c5669-e390-478a-b5f3-2e12cdd89d06" name="CapituloResiduo" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="967707ec-6d0f-4aac-a713-4736097a99e7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d24dbd48-3d99-48b1-95ff-077b82e10ee7" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="d42fde61-1fa7-46cc-a6a8-d8d672b7d629" name="DescricaoSubCapituloResiduo" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e6e702c6-ee73-4b9e-9e08-adfb0aea1b82" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="155a210f-5bd8-4be2-af76-4d628c8d861f" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="86d7795c-cf3f-4903-8969-d77620d7e4f7" name="CapituloResiduoID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6eb2caaf-2eac-485f-a9b1-f330c7f00e3e" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="79da459d-126b-4c1c-973f-a557793581fc" LastKnownName="CapituloResiduo" />
+            </type_NamedElement>
+          </property>
+          <property Id="5c52dfab-4047-4ab2-be3a-b991f40bb322" name="SubCapituloResiduoID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="1d073fbd-c4eb-476c-b69b-dfb4f71d74f5" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="a56e2383-a8d3-476e-9133-ac05ed5cb391" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="a56e2383-a8d3-476e-9133-ac05ed5cb391" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="155a210f-5bd8-4be2-af76-4d628c8d861f" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="79da459d-126b-4c1c-973f-a557793581fc" name="CapituloResiduo" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::CapituloResiduo">
+        <elementDefinition Id="b4698d80-f76d-4bb0-9510-5e583483e0d5" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="8b190081-2ea6-4f7b-9c87-ec2ada6feba3" name="Residuo" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="4e792809-785b-4a42-80d3-3440149aabfa" />
+        <targetEnds>
+          <association Id="0d0e95bf-9fa9-4ece-ae07-7137405cc2c2" isDerived="false" sourceEndRoleName="Residuo" targetEndRoleName="ResiduosGerados" isLeaf="false" isAbstract="false">
+            <classMoniker Id="036be1be-eb0c-4996-b679-dda15ccc295c" LastKnownName="ResiduosGerados" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5a8784c3-7534-40ad-ac03-63e2044f7926" name="Residuo" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="63a66b6a-7cf7-401a-8443-195011a13254" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a19eda9e-aa1a-40d1-919c-a6e2f9a77da4" name="ResiduosGerados" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2fb96088-b2c6-4350-a870-2fd22da8e2f9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="dc761b29-8042-4b73-884a-53f38ba48f6d" />
+          </association>
+          <association Id="90310152-0944-474a-9156-0ab052320e22" isDerived="false" sourceEndRoleName="Residuo" targetEndRoleName="SubCapituloResiduo" isLeaf="false" isAbstract="false">
+            <classMoniker Id="62e41e5a-f1fa-4915-a741-cc1fe8e435ec" LastKnownName="SubCapituloResiduo" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="74c234cc-75f4-4599-9f8c-45a0a0b93361" name="Residuo" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="04398f2a-7efe-4960-9a25-b82006c81b7e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="15923d2f-433b-4783-9e50-8f33161460fb" name="SubCapituloResiduo" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b12cb2d2-0098-4e30-87e0-6efa6134d11b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d5a54ff4-8ea1-4166-b733-1834366a5137" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="4e86532f-6fe8-45cc-8ae1-cfe4030a0f9c" name="ResiduoID" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7189d252-9bf3-4e1a-96a5-680ba3ebf110" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="6565565c-f955-4798-8bd2-963031d43427" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="a62e9ff3-3a23-4d4f-b708-84b470de391b" name="DescricaoResiduo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="278e111f-79fe-407a-bdf8-13a4eea52c50" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="54196abc-7c71-4e45-961c-d660d9d6e362" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="8d34fbea-c934-4be6-a244-61ffe7ca0f41" name="SubCapituloResiduo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="8d10341d-72a3-48f3-9cda-716f74b8ef79" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="40541f76-9a11-4a46-8f13-3980fbc47fc0" LastKnownName="SubCapituloResiduo" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="40541f76-9a11-4a46-8f13-3980fbc47fc0" name="SubCapituloResiduo" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::SubCapituloResiduo">
+        <elementDefinition Id="1e2f15a1-e9bb-47a6-a518-a75842141b51" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="6ba68c84-adf9-4c8c-8e22-ddbc0d6f8f40" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="44308963-c466-4c2a-a617-1f68a432b80e" name="Endereco" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::Endereco">
+        <elementDefinition Id="6058c2f6-aaf6-4de4-9ca2-85586e4281d1" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="f0291818-763f-41ba-8650-e3b36975e16d" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="aff2cd99-eabd-4f0d-96f6-57957d3343ac" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="4c825a4d-9430-4d37-9edb-e145ac82bb7e" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="30c8b3ca-e5ba-41b4-b6e8-37ba42c7ac29" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="0d6f419b-0c8e-4a1f-8308-4d7198b51416" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="d55372e2-a5a7-47b5-befd-b7aeceb8872a" name="Empresa" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::Empresa">
+        <elementDefinition Id="6881b55b-2579-45f3-85b2-6ece70c5df2a" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="1ee97450-fc52-4303-81c1-7709a1684ebf" name="TipoAtividadeEmpresa" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::TipoAtividadeEmpresa">
+        <elementDefinition Id="27c58340-59cd-4959-8a34-fbed203e31f6" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="f1c5a47f-080e-41c3-bbcb-4f19c7352fd1" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="ecb8462e-bc67-4765-81ab-69278b1008c8" name="Residuo" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::Residuo">
+        <elementDefinition Id="4e792809-785b-4a42-80d3-3440149aabfa" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="54196abc-7c71-4e45-961c-d660d9d6e362" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="6565565c-f955-4798-8bd2-963031d43427" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="a899cced-498e-4c4e-a18a-e707e1145fad" name="CapituloResiduo" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::CapituloResiduo">
+        <elementDefinition Id="b4698d80-f76d-4bb0-9510-5e583483e0d5" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="90312c73-246a-4c37-8213-04d53a705410" name="SubCapituloResiduo" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::SubCapituloResiduo">
+        <elementDefinition Id="1e2f15a1-e9bb-47a6-a518-a75842141b51" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="7d0b20a1-64e8-4243-b18b-348b057aef33" name="TipoLogradouro" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::TipoLogradouro">
+        <elementDefinition Id="f055a3ae-a74f-4c36-b5a8-67da6e126364" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="13389fed-481c-4343-b27f-2c8aa6351107" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="45cd8a07-cef7-4324-aed3-1acef4c44307" name="EnderecoMunicipio" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="8245091f-2b7a-4eeb-a0b2-8b126b034649" />
+        <ownedAttributesInternal>
+          <property Id="5267f285-49a1-46ce-8ae7-01e055a19ab1" name="EnderecoMunicipioID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="411255cd-60e8-49ca-bc00-06ff7d947df2" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="3faba2b1-676f-47ae-92c1-0a10e10043c4" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="59486ee8-39a0-47a5-b04b-d102d3ce65b5" name="nmEnderecoMunicipio" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2fd7417b-c05e-4a52-b38e-e3a2a1874399" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="405bebed-0aec-4124-acdf-39ec6c62c7d6" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="a03a6ebf-1bb0-4e7a-9899-a91d43481d4f" name="EnderecoEstadoID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="8662d907-6859-4db1-8abc-658f6bc5427f" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="e61b3a31-4a21-4b96-948c-8e82a2a12cfc" LastKnownName="EnderecoEstado" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="66bb3b2f-778b-4052-8398-5b9a4d062521" name="EnderecoEstado" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3c227a8b-0e2f-41bc-af56-e3d2aa47a55d" />
+        <ownedAttributesInternal>
+          <property Id="a7ff8b90-390a-46ff-84eb-db1c8ccd3241" name="EnderecoEstadoID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="40d47006-8376-4220-9d6f-80d1bc5cf7b4" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="2177afab-cf05-499f-9eb6-b0d538040fcc" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="5ab47843-3bd0-4da7-b533-2ae395a7d909" name="nmEnderecoEstado" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="eea8f490-bb05-4534-b041-e5bb2df5cdb7" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="2177afab-cf05-499f-9eb6-b0d538040fcc" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="3faba2b1-676f-47ae-92c1-0a10e10043c4" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="405bebed-0aec-4124-acdf-39ec6c62c7d6" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="e61b3a31-4a21-4b96-948c-8e82a2a12cfc" name="EnderecoEstado" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::EnderecoEstado">
+        <elementDefinition Id="3c227a8b-0e2f-41bc-af56-e3d2aa47a55d" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="bec59eed-83c1-425e-baa7-9593c1c4797e" name="EnderecoEstado" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::EnderecoEstado">
+        <elementDefinition Id="3c227a8b-0e2f-41bc-af56-e3d2aa47a55d" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="26845cac-e043-4d22-b4cd-b5b639bdea22" name="EnderecoMunicipio" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::EnderecoMunicipio">
+        <elementDefinition Id="8245091f-2b7a-4eeb-a0b2-8b126b034649" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="803a0035-1301-4163-af08-01f08467f21b" name="ColetoresResiduosGerados" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f02b6832-ef39-425f-a25b-0b97293d8111" />
+        <targetEnds>
+          <association Id="45d0f1ad-9c97-485b-bbf1-4682540661b5" isDerived="false" sourceEndRoleName="ColetoresResiduosGerados" targetEndRoleName="Empresa" isLeaf="false" isAbstract="false">
+            <classMoniker Id="445a9767-cc33-4e2e-84d7-9ba062efb42c" LastKnownName="Empresa" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="652becaf-0a82-455e-9f84-38d413571c64" name="ColetoresResiduosGerados" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ab0c50bc-6bf5-4d65-b880-34277754c805" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fafba370-9ea0-41b3-9797-4e6cda0f2363" name="Empresa" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d36e335c-852d-45d1-94b0-d65d5effa07a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="19107cbc-e65b-437e-8429-41e19d07d089" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="2587040d-ae68-404d-8059-272c69f5849c" name="ColetoresResiduosGeradosID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="06cd70c3-e20e-47e9-b63d-51859b961861" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="7f6d639a-7dff-4d97-b1b5-77d37af711af" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="03364e1f-a0b9-4abd-9dd9-9b030c0d8774" name="EmpresaID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="fbda136a-f4b7-438e-b870-1bafbbc4320d" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="aba18c45-c1b2-4ce4-822e-a82ccd2d2071" LastKnownName="Empresa" />
+            </type_NamedElement>
+          </property>
+          <property Id="136c0c1d-f72b-496f-824e-0337ff857921" name="PessoaJuridica" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="bf006db6-ed7d-47df-858e-8fd54347e598" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="72a58b94-8e96-420d-ada9-c9fcff88f43e" LastKnownName="Boolean" />
+            </type_NamedElement>
+          </property>
+          <property Id="acb7932b-974a-4c86-9631-ab669dfa0fe9" name="UnidadeMedida" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="16159411-c3c9-4736-abd0-0323962036f1" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="92cf5ba4-68a8-43bb-9b4b-c5ed98429fa1" LastKnownName="UnidadeMedida" />
+            </type_NamedElement>
+          </property>
+          <property Id="dd8ef8d7-93ed-47cf-97ac-68b98fc8d14c" name="vlResiduo" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="cf53d567-473f-4fe1-95ce-fc2753992ec4" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="220e42b3-4dbe-4eef-9ef8-e3b7f67c8a02" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="6e36bb08-0fc7-4085-9503-93fb6c065afa" name="dtFimColeta" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="0669a549-41b9-4bf5-b5c5-89171f710d80" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="6c7f9cb1-0440-4863-95c7-7f49c1b428d1" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="500c1273-b06f-4265-9128-fe1f652ca0fb" name="dtInicioColeta" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2f356998-00d4-445d-a8d0-8e372afd08b8" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="7f4cfc76-d24b-49fc-811a-cb5651526496" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="7f6d639a-7dff-4d97-b1b5-77d37af711af" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="aba18c45-c1b2-4ce4-822e-a82ccd2d2071" name="Empresa" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::Empresa">
+        <elementDefinition Id="6881b55b-2579-45f3-85b2-6ece70c5df2a" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="72a58b94-8e96-420d-ada9-c9fcff88f43e" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
+        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="92cf5ba4-68a8-43bb-9b4b-c5ed98429fa1" name="UnidadeMedida" isAbstract="false" isLeaf="false" cachedFullName="DiagramaUML::UnidadeMedida">
+        <elementDefinition Id="ef48ce2d-c12b-4088-8d4c-306d00580219" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="220e42b3-4dbe-4eef-9ef8-e3b7f67c8a02" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="7f4cfc76-d24b-49fc-811a-cb5651526496" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="6c7f9cb1-0440-4863-95c7-7f49c1b428d1" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="c0e4bb69-e51a-4943-b7ca-b7bbaf77db67" name="DiagramaUML">
+    <elementDefinition Id="5d9bb9a3-9a3c-40ba-b7e2-b7f3eb1fd6d9" />
+    <profileInstances>
+      <packageHasProfileInstances Id="0ed48097-4424-40bf-8e74-23df02285bc7">
+        <profileInstance Id="82a03fc7-e291-4022-bb3e-ad3d1c2a7fe6" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="f67f1a92-2adb-4959-8b27-55286997ffb2">
+        <profileInstance Id="88e027bd-2afd-4db0-bc75-c92c50b562dc" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

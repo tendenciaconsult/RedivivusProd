@@ -1,0 +1,100 @@
+﻿@model Simir.Application.ViewModels.FaleConoscoVM
+@using System.Web.Mvc.Html
+@using System.Web.Optimization
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    ViewBag.Title = "Fale Conosco";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Btn)
+    @Html.HiddenFor(x => x.IdUsuario)
+    @Html.HiddenFor(x => x.PrefeituraID)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div style="font-weight: bold; font-size: 15px;">
+                Fale Conosco
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div style="text-align: center; color: #337583;">
+                        <b>Seu contato é muito importante para a nós.</b> <br/>
+                        Você pode preencher os dados solicitados abaixo e enviar sua mensagem.
+                    </div>
+                        <div class="row">
+                            @Html.EditBootstrapFor(model => model.Nome, tudoTamanho: 12, inputTamanho: 5)
+                        </div>
+                        <div class="row">
+                            @Html.EditBootstrapFor(model => model.Email, tudoTamanho: 12, inputTamanho: 5)
+                        </div>
+                        <div class="row">
+                            @Html.EditBootstrapFor(model => model.Telefone, tudoTamanho: 12, inputTamanho: 5)
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6" style="margin-left: -1.5%;">
+                                @Html.DDLBootstrapFor(model => model.AssuntoID, model => model.nmAssunto, "/Suporte/FaleConosco/AssuntoEmail/", "", null)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Observação:</label><br />
+                            @Html.TextAreaFor(model => model.Descricao, 5, 130, new {maxlength = "8000", @class = "form-control"})
+                            <span class="caracteres">8000</span> Restantes <br>
+                        </div>
+                        <div class="col-md-12">
+                            <hr />
+                            <div class="form-group  pull-right">
+                                <div class="btn btn-success" onclick="Enviar();" data-confirm="Confirma o envio do e-mail?">Enviar</div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!-- Chat do Movidesk -->
+        <script type="text/javascript">var mdChatClient="42F3CC3ED00C4C0F9EEA43F15A0EE53E";</script>
+        <script src="http://chat.movidesk.com/Scripts/chat-widget.min.js"></script>
+        <!-- Chat do Movidesk fim -->
+    </div>
+}
+
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        function carregaPagina() {
+
+            if ($('#FeiraLivreID').val() == 0) {
+                $("#btnExcluir").hide();
+            }
+
+        }
+
+        $(window).load(carregaPagina());
+
+        $(document).on("input", "#Descricao", function () {
+            var limite = 8000;
+            var caracteresDigitados = $(this).val().length;
+            var caracteresRestantes = limite - caracteresDigitados;
+
+            $(".caracteres").text(caracteresRestantes);
+        });
+
+        function Enviar() {
+            $.blockUI({ message: '<div class="ModalCarregando"></dic>' });           
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#Btn').val("Enviar");
+                form.submit();
+                // return true;             
+            }
+        }
+
+    </script>
+}

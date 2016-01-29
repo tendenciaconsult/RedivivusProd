@@ -1,0 +1,464 @@
+﻿@model IList<Simir.Application.ViewModels.RegiaoAdministrativaLogradouroVM>
+
+    @using Simir.WebInterfaceComAuth.Helpers
+
+    @{
+        string nmPropriedade = ViewData.ModelMetadata.PropertyName;
+    }
+
+    <div id="@nmPropriedade" class="panel panel-default EquipamentosVM">
+        <div class="panel-heading">
+            @ViewData.ModelMetadata.DisplayName
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4" style="margin-left: 0%;">
+                    <div class="row" style="margin-left: -3%">
+                        <div class="col-md-12">
+                            <span class="field-validation-valid text-danger" data-valmsg-for="ValidaBairro" data-valmsg-replace="true"></span>
+                            <div class="form-group col-xs-12">
+                                <label for="EnderecoBairroID">Selecione um Bairro</label>
+                                <select class="form-control simir-ddl EnderecoBairroID" simir-ddl-url="/Configuracao/RegioesAdministrativas/GetBairros/"
+                                        simir-ddl-pai="nulo" simir-ddl-filho="nulo">
+                                    <option value="-1"> </option>
+                                </select>
+                                <input class="inpEnderecoBairroID hiddenFor" id="EnderecoBairroID" name="EnderecoBairroID" type="hidden" value="">
+                                <input class="inpnmEnderecoBairro hiddenFor" id="nmEnderecoBairro" name="nmEnderecoBairro" type="hidden" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="EnderecoBairroID" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7" style="margin-left: 0%;">
+                    <div class="row" style="margin-left: -3%">
+                        <div class="col-md-12">
+                            <span class="field-validation-valid text-danger" data-valmsg-for="ValidaBairro" data-valmsg-replace="true"></span>
+                            <div class="form-group col-xs-12">
+                                <label for="EnderecoLogradouroID">Selecione um Logradouro</label>
+                                <select class="form-control simir-ddl EnderecoLogradouroID" simir-ddl-url="/Configuracao/RegioesAdministrativas/GetHashLogradouro/"
+                                        simir-ddl-pai="EnderecoBairroID" simir-ddl-filho="nulo">
+                                    <option value="-1"> </option>
+                                </select>
+                                <input class="inpEnderecoLogradouroID hiddenFor" id="EnderecoLogradouroID" name="EnderecoLogradouroID" type="hidden" value="">
+                                <input class="inpnmEnderecoLogradouro hiddenFor" id="nmEnderecoLogradouro" name="nmEnderecoLogradouro" type="hidden" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="EnderecoBairroID" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4" style="margin-left: 3.5%">
+                    <div class="form-group row">
+                        <label>Extensão total do logradouro</label>
+                        <div class="input-group col-xs-6">
+                            <input class="inpiMetrosLogradouro form-control text-right" data-mask="000.000" data-mask-reverse="True" type="text" value="" autocomplete="off">
+                            <span class="input-group-addon">Metros</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group row">
+                        <label>Quantidade de Sargetas</label>
+                        <div class="input-group col-xs-6">
+                            <input class="inpiSargeta form-control text-right" data-mask="000.000" data-mask-reverse="True" type="text" value="" autocomplete="off">
+                            <span class="input-group-addon">Metros</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Extenção de pavimentação no logradouro
+                </div>
+                @*<div class="panel-body">*@
+                <div class="tab-content">
+                    <div style="margin-left: 2%; margin-top: 1%">
+                        <div class="row">
+                            <div class="col-xs-4" style="margin-left: 3.5%">
+                                <div class="form-group row">
+                                    <label>Extensão de Pavimento com blocos</label>
+                                    <div class="input-group col-xs-6">
+                                        <input class="inpBloco form-control text-right" data-mask="000.000" data-mask-reverse="True" type="text" value="" autocomplete="off">
+                                        <span class="input-group-addon">Metros</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="form-group row">
+                                    <label>Extensão de Pavimento com asfalto</label>
+                                    <div class="input-group col-xs-6">
+                                        <input class="inpAsfalto form-control text-right" data-mask="000.000" data-mask-reverse="True" type="text" value="" autocomplete="off">
+                                        <span class="input-group-addon">Metros</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4" style="margin-left: 3.5%">
+                                <div class="form-group row">
+                                    <label>Extensão sem pavimento</label>
+                                    <div class="input-group col-xs-6">
+                                        <input class=" inpsempavimento form-control text-right" data-mask="000.000" data-mask-reverse="True" type="text" value="" autocomplete="off">
+                                        <span class="input-group-addon">Metros</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7" style="margin-left: 3.5%">
+                                <div class="form-group row">
+                                    <label>Especifique outro tipo de pavimento caso haja</label>
+                                    <div class="input-group col-xs-10">
+                                        <input class="inpOutroPavimento form-control" maxlength="100" type="text" value="" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="form-group row">
+                                    <label>Extensão</label>
+                                    <div class="input-group col-xs-10">
+                                        <input class="inpqtOutroPavimento form-control text-right" data-mask="000.000" data-mask-reverse="True" type="text" value="" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4" style="margin-left: 3.5%">
+                    <div class="form-group row">
+                        <label>Quantidade de bocas de lobo</label>
+                        <div class="input-group col-xs-9">
+                            <input class="inpBocaLobo form-control text-right" data-mask="000.000" data-mask-reverse="True" type="text" value="" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group row">
+                        <label>Largura da via</label>
+                        <div class="input-group col-xs-9">
+                            <input class="inpLarguraVia form-control text-right" data-mask="000.000" data-mask-reverse="True" type="text" value="" autocomplete="off">
+                            <span class="input-group-addon">Metros</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-left: 1%">
+                <div class="form-group col-xs-4">
+                    <label>Realiza limpeza mecanizada? </label>
+                    <div class="inpbRealizaLimpezaMecanica input-group">
+                        <label class="switch">
+                            <input checked="checked" class="switch-input" data-val="true" data-val-required="The Unidade de medida field is required."
+                                   id="LimpezaMecanizadaNao" name="bRealizaLimpezaMecanica" type="radio" value="false">
+                            <label for="LimpezaMecanizadaNao" class="switch-label switch-label-off">Não</label>
+
+                            <input class="switch-input" id="LimpezaMecanizadaSim" name="bRealizaLimpezaMecanica" type="radio" value="true">
+                            <label for="LimpezaMecanizadaSim" class="switch-label switch-label-on">Sim</label>
+                            <span class="switch-selection"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>Realiza lavagem de vias? </label>
+                    <div class="inpbRealizaLavagem input-group">
+                        <label class="switch">
+                            <input checked="checked" class="switch-input" data-val="true" data-val-required="The Unidade de medida field is required."
+                                   id="LavagemNao" name="bRealizaLavagem" type="radio" value="false">
+                            <label for="LavagemNao" class="switch-label switch-label-off">Não</label>
+
+                            <input class="switch-input" id="LavagemSim" name="bRealizaLavagem" type="radio" value="true">
+                            <label for="LavagemSim" class="switch-label switch-label-on">Sim</label>
+                            <span class="switch-selection"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Possui área verde?
+                </div>
+                <div class="panel-body">
+                    <ul class="nav nav-pills">
+                        <li class="">
+                            <a href="#ComAreaVerde" data-toggle="tab" id="btn-Sim">Sim</a>
+                        </li>
+                        <li class="active">
+                            <a href="#SemAreaVerde" data-toggle="tab" id="btn-Nao">Não</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade" id="ComAreaVerde">
+                            <div class="row" style="margin-left: 1%">
+                                <div class="form-group col-xs-4">
+                                    <label>Possui canteiro central? </label>
+                                    <div class="inpbLogradouroArborizado input-group">
+                                        <label class="switch">
+                                            <input checked="checked" class="switch-input" data-val="true" data-val-required="The Unidade de medida field is required."
+                                                   id="CanteiroNao" name="bLogradouroArborizado" type="radio" value="false">
+                                            <label for="CanteiroNao" class="switch-label switch-label-off">Não</label>
+
+                                            <input class="switch-input" id="CanteiroSim" name="bLogradouroArborizado" type="radio" value="true">
+                                            <label for="CanteiroSim" class="switch-label switch-label-on">Sim</label>
+                                            <span class="switch-selection"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-4">
+                                    <label>Possui praça? </label>
+                                    <div class="inpbPraca input-group">
+                                        <label class="switch">
+                                            <input checked="checked" class="switch-input" data-val="true" data-val-required="The Unidade de medida field is required."
+                                                   id="PracaNao" name="bPraca" type="radio" value="false">
+                                            <label for="PracaNao" class="switch-label switch-label-off">Não</label>
+
+                                            <input class="switch-input" id="PracaSim" name="bPraca" type="radio" value="true">
+                                            <label for="PracaSim" class="switch-label switch-label-on">Sim</label>
+                                            <span class="switch-selection"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-4">
+                                    <label>Possui parque? </label>
+                                    <div class="inpbParque input-group">
+                                        <label class="switch">
+                                            <input checked="checked" class="switch-input" data-val="true" data-val-required="The Unidade de medida field is required."
+                                                   id="ParqueNao" name="bParque" type="radio" value="false">
+                                            <label for="ParqueNao" class="switch-label switch-label-off">Não</label>
+
+                                            <input class="switch-input" id="ParqueSim" name="bParque" type="radio" value="true">
+                                            <label for="ParqueSim" class="switch-label switch-label-on">Sim</label>
+                                            <span class="switch-selection"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4" style="margin-left: 3.5%">
+                                    <div class="form-group row">
+                                        <label>Quantidade de Árvores</label>
+                                        <div class="input-group col-xs-6">
+                                            <input class="inpqtArvore form-control text-right" data-mask="000.000" data-mask-reverse="True" type="text" value="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="SemAreaVerde">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-xs-2">
+                <label> </label>
+                <div class="input-group">
+                    <div class="btn btn-primary btnAddEquipamento">
+                        <i class="fa fa-plus-circle "></i> Incluir
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Bairro</th>
+                            <th>Logradouro</th>
+                            <th>Extensão da via</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr>
+                                <td class="tdBairro col-xs-3">
+                                    <span> @Model[i].nmEnderecoBairro </span>
+                                    <input class="inpnmEnderecoBairro form-control" maxlength="255" type="hidden" name="@String.Format("{0}[{1}].nmEnderecoBairro", nmPropriedade, i)" value="@Model[i].nmEnderecoBairro" />
+                                    <input class="inpEnderecoBairroID" type="hidden" name="@String.Format("{0}[{1}].EnderecoBairroID", nmPropriedade, i)" value="@Model[i].EnderecoBairroID"/>
+                                </td>
+                                <td class="tdLogradouro col-xs-5">
+                                    <span> @Model[i].nmEnderecoLogradouro </span>
+                                    <input class="inpnmEnderecoLogradouro  form-control" maxlength="255" type="hidden" name="@String.Format("{0}[{1}].nmEnderecoLogradouro", nmPropriedade, i)" value="@Model[i].nmEnderecoLogradouro" />
+                                    <input class="inpEnderecoLogradouroID" type="hidden"  name="@String.Format("{0}[{1}].EnderecoLogradouroID", nmPropriedade, i)" value="@Model[i].EnderecoLogradouroID"/>
+                                </td>
+                                <td class="tdExtensapVia col-xs-2">
+                                    <span> @Model[i].qtExtensaoTotal </span>
+                                    <input class="inpiMetrosLogradouro form-control text-right" data-mask="000.000.000" data-mask-reverse="True" type="hidden" name="@String.Format("{0}[{1}].qtExtensaoTotal", nmPropriedade, i)" value="@Model[i].qtExtensaoTotal" />
+                                </td>
+                                <td class="col-xs-2">
+                                    <input class="inpRegiaoAdministrativaLogradouroID" type="hidden" name="@String.Format("{0}[{1}].RegiaoAdministrativaLogradouroID", nmPropriedade, i)" value="@Model[i].RegiaoAdministrativaLogradouroID"/>
+                                    <input class="inpiSargeta" type="hidden" name="@String.Format("{0}[{1}].qtSargetas", nmPropriedade, i)" value="@Model[i].qtSargetas" />
+                                    <input class="inpBloco" type="hidden" name="@String.Format("{0}[{1}].qtBloco", nmPropriedade, i)" value="@Model[i].qtBloco" />
+                                    <input class="inpAsfalto" type="hidden" name="@String.Format("{0}[{1}].qtAsfalto", nmPropriedade, i)" value="@Model[i].qtAsfalto" />
+                                    <input class="inpsempavimento" type="hidden" name="@String.Format("{0}[{1}].qtSemPavimento", nmPropriedade, i)" value="@Model[i].qtSemPavimento" />
+                                    <input class="inpOutroPavimento" type="hidden" name="@String.Format("{0}[{1}].nmOutroPavimento", nmPropriedade, i)" value="@Model[i].nmOutroPavimento" />
+                                    <input class="inpqtOutroPavimento" type="hidden" name="@String.Format("{0}[{1}].qtOutroPavimento", nmPropriedade, i)" value="@Model[i].qtOutroPavimento" />
+                                    <input class="inpBocaLobo" type="hidden" name="@String.Format("{0}[{1}].qtBocaLobo", nmPropriedade, i)" value="@Model[i].qtBocaLobo" />
+                                    <input class="inpLarguraVia" type="hidden" name="@String.Format("{0}[{1}].qtLarguraVia", nmPropriedade, i)" value="@Model[i].qtLarguraVia" />
+                                    <input class="inpbRealizaLimpezaMecanica" type="hidden" name="@String.Format("{0}[{1}].bRealizaLimpezaMecanica", nmPropriedade, i)" value="@Model[i].bRealizaLimpezaMecanica" />
+                                    <input class="inpbRealizaLavagem" type="hidden" name="@String.Format("{0}[{1}].bRealizaLavagem", nmPropriedade, i)" value="@Model[i].bRealizaLavagem" />
+                                    <input class="btn-Com-Area-Verde" type="hidden" name="@String.Format("{0}[{1}].bPossuiAreaVerde", nmPropriedade, i)" value="@Model[i].bPossuiAreaVerde" />
+                                    <input class="inpbLogradouroArborizado" type="hidden" name="@String.Format("{0}[{1}].bLogradouroArborizado", nmPropriedade, i)" value="@Model[i].bLogradouroArborizado" />
+                                    <input class="inpbPraca" type="hidden" name="@String.Format("{0}[{1}].bPraca", nmPropriedade, i)" value="@Model[i].bPraca" />
+                                    <input class="inpbParque" type="hidden" name="@String.Format("{0}[{1}].bParque", nmPropriedade, i)" value="@Model[i].bParque" />
+                                    <input class="inpqtArvore" type="hidden" name="@String.Format("{0}[{1}].qtArvores", nmPropriedade, i)" value="@Model[i].qtArvores" />
+
+                                    <input class="inpExcluir" type="hidden" name="@String.Format("{0}[{1}].Status", nmPropriedade, i)" value="1" />
+
+                                    <div class="btn btn-danger btnExcluir">
+                                        <i class="fa fa-trash-o"></i>
+                                    </div>
+
+                                </td>
+
+                            </tr>
+                        }
+                        
+                        
+                    </tbody>
+                </table>
+            </div>
+
+    </div>
+
+
+    @using (Html.BeginScriptContext())
+    {
+        Html.AddScriptBlock(
+            @<script type="text/javascript">
+    $(".btnExcluir", "#@nmPropriedade").click(
+    function () {
+        var linha = $(this).closest('tr');
+        linha.find(".inpExcluir").val('8');
+        linha.hide();
+    });
+
+    $("input:text", "#@nmPropriedade .linhapronta").change(
+    function () {
+        var linha = $(this).closest('tr');
+        linha.find(".inpExcluir").val('2');
+    });
+
+    $(".btnAddEquipamento", "#@nmPropriedade").click(
+    function () {
+        var tabela = $(this).closest(".EquipamentosVM").find("tbody")
+        var i = $('tr', tabela).length;
+
+        var prefixo = '@nmPropriedade' + '[' + i + ']';
+
+        var nmEnderecoLogradouro = $(".inpnmEnderecoLogradouro", "#@nmPropriedade").val();
+        var EnderecoLogradouroID = $(".inpEnderecoLogradouroID", "#@nmPropriedade").val();
+        var nmEnderecoBairro = $(".inpnmEnderecoBairro", "#@nmPropriedade").val();
+        var EnderecoBairroID = $(".inpEnderecoBairroID", "#@nmPropriedade").val();
+        var qtExtensaoTotal = $(".inpiMetrosLogradouro", "#@nmPropriedade").val();
+
+        var nmOutroPavimento = $(".inpOutroPavimento", "#@nmPropriedade").val();
+
+        var qtSargetas = $(".inpiSargeta", "#@nmPropriedade").val();
+        var qtSemPavimento = $(".inpsempavimento", "#@nmPropriedade").val();
+        var qtAsfalto = $(".inpAsfalto", "#@nmPropriedade").val();
+        var qtBloco = $(".inpBloco", "#@nmPropriedade").val();
+        var qtOutroPavimento = $(".inpqtOutroPavimento", "#@nmPropriedade").val();
+        var qtBocaLobo = $(".inpBocaLobo", "#@nmPropriedade").val();
+        var qtLarguraVia = $(".inpLarguraVia", "#@nmPropriedade").val();
+        var qtArvores = $(".inpqtArvore", "#@nmPropriedade").val();
+
+        var bRealizaLimpezaMecanica = ($("#LimpezaMecanizadaNao").prop("checked") == true) ? 1 : 0;
+        var bRealizaLavagem = ($("#LavagemSim").prop("checked") == true) ? 1 : 0;
+        var bPossuiAreaVerde = ($("#btn-Com-Area-Verde").prop("checked") == true) ? 1 : 0;
+        var bLogradouroArborizado = ($("#CanteiroSim").prop("checked") == true) ? 1 : 0;
+        var bPraca = ($("#PracaSim").prop("checked") == true) ? 1 : 0;
+        var bParque = ($("#ParqueSim").prop("checked") == true) ? 1 : 0;
+
+
+
+        $(".inpnmEnderecoLogradouro", "#@nmPropriedade").val('');
+        $(".inpEnderecoLogradouroID", "#@nmPropriedade").val('');
+        $(".inpnmEnderecoBairro", "#@nmPropriedade").val('');
+        $(".inpEnderecoBairroID", "#@nmPropriedade").val('');
+        $(".inpOutroPavimento", "#@nmPropriedade").val('');
+        $(".inpiMetrosLogradouro", "#@nmPropriedade").val('');
+        $(".inpiSargeta", "#@nmPropriedade").val('');
+        $(".inpsempavimento", "#@nmPropriedade").val('');
+        $(".inpAsfalto", "#@nmPropriedade").val('');
+        $(".inpBloco", "#@nmPropriedade").val('');
+        $(".inpqtOutroPavimento", "#@nmPropriedade").val('');
+        $(".inpBocaLobo", "#@nmPropriedade").val('');
+        $(".inpLarguraVia", "#@nmPropriedade").val('');
+        $(".inpqtArvore", "#@nmPropriedade").val('');
+
+        $("#LimpezaMecanizadaNao", "#@nmPropriedade").click();
+        $("#btn-Nao", "#@nmPropriedade").click();
+        $("#CanteiroNao", "#@nmPropriedade").click();
+        $("#PracaNao", "#@nmPropriedade").click();
+        $("#ParqueNao", "#@nmPropriedade").click();
+        $("#LavagemNao", "#@nmPropriedade").click();
+
+        tabela.append('<tr> ' +
+                    '<td class="tdBairro col-xs-5">' +
+                    '<span>' + nmEnderecoBairro + '</span>' +
+                        '<input class="inpnmEnderecoBairro form-control" maxlength="255" type="hidden" name="' + prefixo + '.nmEnderecoBairro" value="' + nmEnderecoBairro + '" />' +
+                        '<input class="inpEnderecoBairroID" type="hidden" type="hidden" name="' + prefixo + '.EnderecoBairroID" value="' + EnderecoBairroID + '" />' +
+                    '</td>' +
+                    '<td class="tdLogradouro col-xs-3">' +
+                    '<span>' + nmEnderecoLogradouro + '</span>' +
+                        '<input class="inpnmEnderecoLogradouro  form-control" maxlength="255" type="hidden" name="' + prefixo + '.nmEnderecoLogradouro" value="' + nmEnderecoLogradouro + '" />' +
+                        '<input class="inpEnderecoLogradouroID" type="hidden" type="hidden" name="' + prefixo + '.EnderecoLogradouroID" value="' + EnderecoLogradouroID + '" />' +
+                    '</td>' +
+                    '<td class="tdExtensapVia col-xs-3">' +
+                    '<span>' + qtExtensaoTotal + '</span>' +
+                        '<input class="inpiMetrosLogradouro form-control text-right" data-mask="000.000.000" data-mask-reverse="True" type="hidden" name="' + prefixo + '.qtExtensaoTotal" value="' + qtExtensaoTotal + '" />' +
+                    '</td>' +
+                    '<td class="col-xs-2">' +
+                        '<input class="inpRegiaoAdministrativaLogradouroID" type="hidden" name="' + prefixo + '.RegiaoAdministrativaLogradouroID" value="0" />' +
+                        '<input class="inpiSargeta" type="hidden" name="' + prefixo + '.qtSargetas" value="' + qtSargetas + '" />' +
+                        '<input class="inpBloco" type="hidden" name="' + prefixo + '.qtBloco" value="' + qtBloco + '" />' +
+                        '<input class="inpAsfalto" type="hidden" name="' + prefixo + '.qtAsfalto" value="' + qtAsfalto + '" />' +
+                        '<input class="inpsempavimento" type="hidden" name="' + prefixo + '.qtSemPavimento" value="' + qtSemPavimento + '" />' +
+                        '<input class="inpOutroPavimento" type="hidden" name="' + prefixo + '.nmOutroPavimento" value="' + nmOutroPavimento + '" />' +
+                        '<input class="inpqtOutroPavimento" type="hidden" name="' + prefixo + '.qtOutroPavimento" value="' + qtOutroPavimento + '" />' +
+                        '<input class="inpBocaLobo" type="hidden" name="' + prefixo + '.qtBocaLobo" value="' + qtBocaLobo + '" />' +
+                        '<input class="inpLarguraVia" type="hidden" name="' + prefixo + '.qtLarguraVia" value="' + qtLarguraVia + '" />' +
+                        '<input class="inpbRealizaLimpezaMecanica" type="hidden" name="' + prefixo + '.bRealizaLimpezaMecanica" value="' + bRealizaLimpezaMecanica + '" />' +
+                        '<input class="inpbRealizaLavagem" type="hidden" name="' + prefixo + '.bRealizaLavagem" value="' + bRealizaLavagem + '" />' +
+                        '<input class="btn-Com-Area-Verde" type="hidden" name="' + prefixo + '.bPossuiAreaVerde" value="' + bPossuiAreaVerde + '" />' +
+                        '<input class="inpbLogradouroArborizado" type="hidden" name="' + prefixo + '.bLogradouroArborizado" value="' + bLogradouroArborizado + '" />' +
+                        '<input class="inpbPraca" type="hidden" name="' + prefixo + '.bPraca" value="' + bPraca + '" />' +
+                        '<input class="inpbParque" type="hidden" name="' + prefixo + '.bParque" value="' + bParque + '" />' +
+                        '<input class="inpqtArvores" type="hidden" name="' + prefixo + '.qtArvores" value="' + qtArvores + '" />' +
+
+                        '<input class="inpExcluir" type="hidden" name="' + prefixo + '.Status", nmPropriedade, i)" value="4" />' +
+
+                        '<div class="btn btn-danger btnExcluir">' +
+                            '<i class="fa fa-trash-o"></i>' +
+                        '</div>' +
+
+                    '</td>' +
+
+                '</tr>');
+
+
+        ultimalinha = $('tr', tabela).last();
+
+        ultimalinha.find('.btnExcluir').click(
+        function () {
+            var linha = $(this).closest('tr');
+            linha.remove();
+        });
+
+        $.applyDataMask(ultimalinha.find('.inpiMetrosLogradouro'));
+
+    });
+
+
+</script>
+, false);
+    }
+

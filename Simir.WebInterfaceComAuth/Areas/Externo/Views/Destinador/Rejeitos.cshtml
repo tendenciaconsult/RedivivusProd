@@ -1,0 +1,216 @@
+﻿@model Simir.Application.ViewModels.DestinadorVMs.RejeitosVM
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    ViewBag.Title = "Destinador";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Rejeitos
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                @Html.ValidationSummary()
+                
+                    <div class="col-md-12">
+                        @Html.HiddenFor(x => x.RejeitosNaoTratados)
+                        <label class="pull-right">
+                            No momento você possue
+                            <span class="ResiduosNaoTratados">@Model.RejeitosNaoTratados</span>
+
+                            Kg esperando ser tratado
+                        </label>
+                    </div>
+                <div class="row">
+                    <div class="col-md-6">
+                            @Html.EditBootstrapFor(model => model.RejeitosASerViculado)
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Dados da empresa coletora *
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DestinoFinalCnpj)
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.DestinoFinalCnpj, new { @class = "form-control", @data_mask = "99.999.999/9999-99", maxlength = "18" })
+                                    <span class="form-group input-group-btn">
+                                        <button class="btn btn-default buscaCnpj" type="button" simir-razaosocial="DestinoFinalSocial">Consultar!</button>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.DestinoFinalCnpj, "", new { @class = "text-danger" })
+
+                                <div class="row DestinoFinalSocial" style="display: none;">
+                                    @Html.EditBootstrapFor(model => model.DestinoFinalSocial)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Disposição Final
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DestinoFinalCnpj)
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.DestinoFinalCnpj, new { @class = "form-control", @data_mask = "99.999.999/9999-99", maxlength = "18" })
+                                    <span class="form-group input-group-btn">
+                                        <button class="btn btn-default buscaCnpj" type="button" simir-razaosocial="DestinoFinalSocial">Consultar!</button>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.DestinoFinalCnpj, "", new { @class = "text-danger" })
+
+                                <div class="row DestinoFinalSocial" style="display: none;">
+                                    @Html.EditBootstrapFor(model => model.DestinoFinalSocial)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <hr />
+                <div class="form-group  pull-right">
+                    <a class="btn btn-default" href="@Url.Action("Rejeitos", "Destinador", new {area = "Externo"})">
+                        Cancelar
+                    </a>
+                    <div onclick=" confirmar(); " data-confirm="Tem certeza que deseja salvar?" class="btn btn-success">
+                        Salvar
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+
+}
+
+@if (Model.ResiduosTratadosHistorico != null)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">Histórico de Movimentações</a>
+            </h4>
+
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+            <div class="panel-body">
+
+
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.ResiduosTratadosHistorico.First().DataColetada)</th>
+                                <th>@Html.DisplayNameFor(model => model.ResiduosTratadosHistorico.First().Quantidade)</th>
+                                <th>@Html.DisplayNameFor(model => model.ResiduosTratadosHistorico.First().Transbordou)</th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ResiduosTratadosHistorico)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataColetada)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Quantidade)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Transbordou)
+                                    </td>
+
+                                    <td></td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title ">
+            Histórico de Resíduos Gerados
+            <div class="pull-right">
+                <div style="display: inline-block;">
+
+                    <div id="carregando" style="display: none;">
+                        <i class="fa fa-refresh fa-spin fa-fw"></i>Carregando...
+                    </div>
+                </div>
+                <div class="btn btn-success btn-xs" onclick="CarregaGrid();" data-toggle="modal" data-target="#BuscaProgramacao"><i class="fa fa-angle-double-down fa-fw"></i></div>
+
+            </div>
+        </div>
+
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+        <div class="panel-body">
+            <div id="modal">
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        function CarregaGrid() {
+            $('.collapse').collapse('show');
+            $('#carregando').show();
+            $("#modal").load("/Externo/Gerador/HistoricoGeracao/", function () {
+                $('#carregando').hide();
+            });
+        }
+        function confirmar() {
+
+            var form = $("form", "#page-inner");
+
+            if (form.valid()) {
+                form.submit();
+                // return true;
+            }
+        }
+    </script>
+}
+
+

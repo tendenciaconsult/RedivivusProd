@@ -1,0 +1,3 @@
+﻿namespace Simir.Application.ViewModels
+{
+}

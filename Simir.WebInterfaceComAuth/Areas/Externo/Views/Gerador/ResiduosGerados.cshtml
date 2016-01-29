@@ -1,0 +1,551 @@
+﻿@model Simir.Application.ViewModels.ResiduosGeradosVM
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    ViewBag.Title = "Geradores de Resíduos";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.ResiduoGeradoID)
+    @Html.HiddenFor(x => x.isPublico)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Redíduo gerado
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                @Html.ValidationSummary()
+            </div>
+            <div class="row">
+                @Html.EditBootstrapFor(model => model.MesReferencia, tudoTamanho: 2)
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        @Html.DDLBootstrapFor(model => model.TipoListaValor, model => model.TipoListaDescricao, "/Cadastros/Residuo/TipoLista/", "", model => model.RamoValor)
+                        @Html.DDLBootstrapFor(model => model.RamoValor, model => model.RamoDescricao, "/Cadastros/Residuo/Ramo/", model => model.TipoListaValor, model => model.ClassificacaoResiduoValor)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        @Html.DDLBootstrapFor(model => model.ClassificacaoResiduoValor, model => model.ClassificacaoResiduoDescricao, "/Cadastros/Residuo/Classificacao/", model => model.RamoValor, null)
+
+                        <div class="form-group col-xs-5">
+                            <label> </label>
+                            <div onclick=" addResiduo() " class="form-control btn btn-default" data-confirm="Isso fará com que delete todos os dados da listas atual e iniciará uma nova lista. Tem certeza disso?">
+                                <i class="fa fa-list"></i> Listar
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ValidationMessageFor(model => model.Residuos, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="col-md-3">@Html.DisplayNameFor(model => model.Residuos.First().Nome)</th>
+                                <th class="col-md-5">@Html.DisplayNameFor(model => model.Residuos.First().Descricao)</th>
+                                <th class="col-md-2">@Html.DisplayNameFor(model => model.Residuos.First().Quantidade)</th>
+                                <th class="col-md-2">@Html.DisplayNameFor(model => model.Residuos.First().Medida)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblResiduoLista"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-2 pull-right">
+                    <div onclick=" incluirResiduos(); " class="form-control btn btn-default">
+                        <i class="fa fa-plus-circle"></i> Incluir
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Resíduos
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-md-2">@Html.DisplayNameFor(model => model.Residuos.First().Nome)</th>
+                                        <th class="col-md-5">@Html.DisplayNameFor(model => model.Residuos.First().Descricao)</th>
+                                        <th class="col-md-2">@Html.DisplayNameFor(model => model.Residuos.First().Quantidade)</th>
+                                        <th class="col-md-2">@Html.DisplayNameFor(model => model.Residuos.First().Medida)</th>
+                                        <th class="col-md-1"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblResiduo">
+                                    @for (int i = 0; i < Model.Residuos.Count; i++)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(m => m.Residuos[i].Nome)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(m => m.Residuos[i].Descricao)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.Residuos[i].Quantidade, new { @class = "form-control" })
+                                            </td>
+
+                                            <td>
+
+                                                <label class="switch">
+                                                    @Html.RadioButtonFor(m => m.Residuos[i].Medida, "True", new { id = "res" + i, @class = "switch-input" })
+                                                    <label for="@("res" + i)" class="switch-label switch-label-off">litro</label>
+
+                                                    @Html.RadioButtonFor(m => m.Residuos[i].Medida, "False", new { id = "kg" + i, @class = "switch-input" })
+                                                    <label for="@("kg" + i)" class="switch-label switch-label-on">Kg</label>
+                                                    <span class="switch-selection"></span>
+                                                </label>
+
+                                            </td>
+                                            @Html.HiddenFor(m => m.Residuos[i].Id)
+                                            @Html.HiddenFor(m => m.Residuos[i].IdItem)
+                                            @Html.HiddenFor(m => m.Residuos[i].Status, new { @class = "inpStatus" })
+
+                                            <td>
+                                                <div class="btn btn-danger btnExcluir">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Empresa que realizou a coleta: *</label>
+                    <ul class="nav nav-pills">
+                        @if (Model.isPublico)
+                {
+                            <li class="active">
+                                <a href="#publico-coleta" data-toggle="tab" id="btn-publico-coleta" aria-expanded="false">Prefeitura Municipal</a>
+                            </li>
+                            <li class="">
+                                <a href="#particular-coleta" data-toggle="tab" id="btn-particular-coleta" aria-expanded="true">Coletora contratada pela empresa</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="">
+                                <a href="#publico-coleta" data-toggle="tab" id="btn-publico-coleta" aria-expanded="false">Prefeitura Municipal</a>
+                            </li>
+                            <li class="active">
+                                <a href="#particular-coleta" data-toggle="tab" id="btn-particular-coleta" aria-expanded="true">Coletora contratada pela empresa</a>
+                            </li>
+                        }
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade @(Model.isPublico?"active in":"")" id="publico-coleta">
+                        </div>
+                        <div class="tab-pane fade @(Model.isPublico?"":"active in")" id="particular-coleta">
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Dados da empresa coletora
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.ColetoraCnpj)
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(model => model.ColetoraCnpj, new { @class = "form-control", @data_mask = "99.999.999/9999-99", maxlength = "18" })
+                                                    <span class="form-group input-group-btn">
+                                                        <button class="btn btn-default buscaCnpj" type="button" simir-razaosocial="ColetoraRazaoSocial">Consultar!</button>
+                                                    </span>
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.ColetoraCnpj, "", new { @class = "text-danger" })
+
+                                                <div class="row ColetoraRazaoSocial" style="display: none;">
+                                                    @Html.EditBootstrapFor(model => model.ColetoraRazaoSocial)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Dados da empresa de destino
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.DestinoCnpj)
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(model => model.DestinoCnpj, new { @class = "form-control", @data_mask = "99.999.999/9999-99", maxlength = "18" })
+                                                    <span class="form-group input-group-btn">
+                                                        <button class="btn btn-default buscaCnpj" type="button" simir-razaosocial="DestinoRazaoSocial">Consultar!</button>
+                                                    </span>
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.DestinoCnpj, "", new { @class = "text-danger" })
+
+                                                <div class="row DestinoRazaoSocial" style="display: none;">
+                                                    @Html.EditBootstrapFor(model => model.DestinoRazaoSocial)
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-12">
+                            <hr />
+                            <div class="form-group  pull-right">
+                                <a class="btn btn-default" href="@Url.Action("ResiduosGerados", "Gerador", new {area = "Externo"})">
+                                    Cancelar
+                                </a>
+                                <div onclick="confirmar();" data-confirm="Tem certeza que deseja salvar?" class="btn btn-success">
+                                    Salvar
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Manifesto do resíduo
+    </div>
+    <div class="panel-body">
+        <div class="row ">
+
+            <div class="form-group col-md-12">
+                <label>Incluir Manifesto do resíduo</label>
+
+
+                @using (Ajax.BeginForm("IncluirMtr", "Gerador", new AjaxOptions() { HttpMethod = "POST" }, new { id = "formInclirMtr", enctype = "multipart/form-data" }))
+                {
+                    <div class="input-group">
+                        @Html.AntiForgeryToken()
+                        <input class="form-control" type="file" name="files" />
+                        <span class="form-group input-group-btn">
+                            <input class="btn btn-default" type="submit" value="Upload">
+                        </span>
+                    </div>
+                }
+
+
+                <br />
+                <div>
+                    <div>
+                        @Html.ValidationMessage("Mtr")
+                    </div>
+                </div>
+                <div class="progress progress-striped active " style="display:none;">
+                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="sr-only">0%</span>
+                    </div>
+                </div>
+                <div id="status"></div>
+            </div>
+        </div>
+        <div class="panel panel-default" id="hitoricomtr">
+            <div class="panel-heading">
+                <div class="panel-title ">
+                    Histórico de MTR's
+                    <div class="pull-right">
+                        <div style="display: inline-block;">
+
+                            <div class="carregando" style="display: none;">
+                                <i class="fa fa-refresh fa-spin fa-fw"></i>Carregando...
+                            </div>
+                        </div>
+                        <div class="btn btn-success btn-xs" onclick="CarregaGrid('#hitoricomtr', '#modal1', '/Externo/Gerador/HistoricoMtr/');" ><i class="fa fa-angle-double-down fa-fw"></i></div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+                <div class="panel-body">
+                    <div id="modal1">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="panel panel-default" id="hitoricoGerados">
+    <div class="panel-heading">
+        <div class="panel-title ">Histórico de Resíduos Gerados
+            <div class="pull-right">
+                <div style="display: inline-block;">
+                    
+                    <div class="carregando" style="display: none;">
+                        <i class="fa fa-refresh fa-spin fa-fw"></i>Carregando...
+                    </div>
+                </div>
+                <div class="btn btn-success btn-xs" onclick="CarregaGrid('#hitoricoGerados', '#modal2', '/Externo/Gerador/HistoricoGeracao/');" ><i class="fa fa-angle-double-down fa-fw"></i></div>
+
+            </div>
+        </div>
+
+    </div>
+    <div id="collapseOne2" class="panel-collapse collapse" style="height: 0px;">
+        <div class="panel-body">
+            <div id="modal2">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+
+        function CarregaGrid(contexto,modal,url) {
+            $('.collapse', contexto).collapse('show');
+            $('.carregando', contexto).show();
+            $(modal).load(url, function () {
+                $('.carregando', contexto).hide();
+            });
+        }
+
+        $(".btnExcluir").click(
+            function () {
+                var linha = $(this).closest('tr');
+                linha.find(".inpStatus").val('8');
+                linha.find('input:eq(0)').val('0');
+                linha.hide();
+            });
+
+        function confirmar() {
+
+            var form = $("form", "#page-inner");
+
+            if (form.valid()) {
+                form.submit();
+                // return true;
+            }
+
+
+        }
+
+        function incluirResiduos() {
+
+            var linhasLista = $('tr', '#tblResiduoLista');
+            var linhas = $('#tblResiduo');
+            var indexLinha = $('tr', '#tblResiduo').length;
+
+            $.each(linhasLista, function (key, value) {
+                if (jQuery(value).find('td:eq(2) input').val() > 0) {
+                    var linha = $(document.createElement('tr'));
+                    linha.append(jQuery(value).find('td:eq(0)').clone());
+                    linha.append(jQuery(value).find('td:eq(1)').clone());
+                    var qti = jQuery(value).find('td:eq(2)').clone();
+                    jQuery(qti).find('input').attr("id", "Residuos_" + indexLinha + "__Quantidade");
+                    jQuery(qti).find('input').attr("name", "Residuos[" + indexLinha + "].Quantidade");
+                    linha.append(qti);
+
+                    var medida = jQuery(value).find('td:eq(3)').clone();
+                    jQuery(medida).find('input:eq(0)').attr("name", "Residuos[" + indexLinha + "].Medida");
+                    jQuery(medida).find('input:eq(1)').attr("name", "Residuos[" + indexLinha + "].Medida");
+                    linha.append(medida);
+
+                    var idResiduo = jQuery(value).children('input:eq(0)').clone();
+                    jQuery(idResiduo).attr("id", "Residuos_" + indexLinha + "__Id");
+                    jQuery(idResiduo).attr("name", "Residuos[" + indexLinha + "].Id");
+                    linha.append(idResiduo);
+
+
+                    linha.append('<input class="form-control" id="Residuos_[' + indexLinha + ']__IdItem" name="Residuos[' + indexLinha + '].IdItem" type="hidden" value="0">');
+                    linha.append('<input class="form-control" id="Residuos_[' + indexLinha + ']__Status" name="Residuos[' + indexLinha + '].Status" type="hidden" value="4">');
+                    linha.append('<td> <div class="btn btn-danger btnExcluirNovo"><i class="fa fa-trash-o"></i></div></td>');
+                    linha.find('.btnExcluirNovo').click(
+                        function () {
+                            var linha = $(this).closest('tr');
+                            linha.remove();
+                        });
+                    linhas.append(linha);
+                    indexLinha++;
+                }
+
+            });
+
+            $('#tblResiduoLista').html('');
+
+        };
+        function addResiduo() {
+            addErros("Residuos", []);
+            var listaId = $("#TipoListaValor").val();
+            var atividadeId = $("#RamoValor").val();
+            var classeId = $("#ClassificacaoResiduoValor").val();
+
+            if (listaId < 1) {
+                addErros("Residuos", "Selecione o tipo de lista");
+                return;
+            };
+            if (atividadeId < 1) {
+                addErros("Residuos", "Selecione a atividade desenvolvidade na geração do resíduo");
+                return;
+            }
+            if (classeId < 1) {
+                addErros("Residuos", "Selecione a classificação");
+                return;
+            }
+
+            $.ajax({
+                type: 'get',
+                url: '/Cadastros/Residuo/Residuos/?listaId=' + listaId + '&atividadeId=' + atividadeId + '&classeId=' + classeId,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    if (data.length > 0) {
+                        mudaResiduos(data);
+
+                    } else {
+                        addErros("Residuos", "Nenhum resíduo encontrado.");
+                    }
+                    console.log(data);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    addErros("Residuos", "Erro interno. Tente novamente mais tarde.");
+                    //$("span[data-valmsg-for='Mtr'").html("Erro interno. Tente novamente mais tarde.");
+                }
+            });
+
+        };
+
+
+        function mudaResiduos(data) {
+            var linhas = $('#tblResiduoLista');
+            linhas.html('');
+            $.each(data, function (index, value) {
+                var linha = $(document.createElement('tr'));
+                linha.append($('<td></td>').html(value[1]));
+                linha.append($('<td></td>').html(value[2]));
+                linha.append($('<td></td>').html('<input class="form-control" data-val-number="Qtde. não é um número." id="Residuos_' + index + '__Quantidade" name="Residuos[' + index + '].Quantidade" type="text" value="">'));
+                linha.append($('<td></td>').html('<label class="switch">' +
+                    '<input checked="checked" class="switch-input"  id="zzres' + index + '" type="radio" value="True">' +
+                    '<label for="zzres' + index + '" class="switch-label switch-label-off">litro</label>' +
+                    '<input class="switch-input" id="zzkg' + index + '" type="radio" value="False">' +
+                    '<label for="zzkg' + index + '" class="switch-label switch-label-on">Kg</label>' +
+                    '<span class="switch-selection"></span>' +
+                    '</label>'));
+                linha.append('<input class="form-control" type="hidden" value="' + value[0] + '">');
+
+                linhas.append(linha);
+
+            });
+
+        };
+
+        $("#btn-publico-coleta").click(function () {
+            $("#isPublico").val('True');
+        });
+
+        $("#btn-particular-coleta").click(function () {
+            $("#isPublico").val('False');
+        });
+
+
+
+
+
+        $(function () {
+
+            var progress = $('.progress');
+            var bar = $('.progress-bar');
+            var percent = $('.sr-only', '.progress-bar');
+            var status = $('#status');
+
+            $('#formInclirMtr').ajaxForm({
+                beforeSend: function () {
+
+                    status.empty();
+                    var percentVal = '0%';
+                    bar.width(percentVal)
+                    percent.html(percentVal);
+                    progress.show();
+                },
+                uploadProgress: function (event, position, total, percentComplete) {
+                    var percentVal = percentComplete + '%';
+                    bar.width(percentVal)
+                    percent.html(percentVal);
+                },
+                success: function () {
+                    var percentVal = '100%';
+                    bar.width(percentVal)
+                    percent.html(percentVal);
+                    progress.hide();
+                },
+                complete: function (xhr) {
+                    status.html(xhr.responseText);
+                    location.reload();
+                }
+            });
+
+        })();
+
+        function excluirMtr(id) {
+            $.ajax({
+                type: 'get',
+                url: '/Externo/Gerador/ExcluirMtr/' + id,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    if (data.length > 0) {
+                        addErros("Mtr", data);
+                    } else {
+                        location.reload();
+                    }
+                    console.log(data);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    addErros("Mtr", "Erro interno. Tente novamente mais tarde.");
+                    //$("span[data-valmsg-for='Mtr'").html("Erro interno. Tente novamente mais tarde.");
+                },
+            });
+        }
+
+        
+
+
+    </script>
+}

@@ -1,0 +1,193 @@
+﻿@model IList<Simir.Application.ViewModels.LicencaOperacionalVM>
+@using Simir.WebInterfaceComAuth.Helpers
+@{
+    string nmPropriedade = ViewData.ModelMetadata.PropertyName;
+}
+@{
+    ViewBag.Titulo = "Licença Operacional";
+    Layout = "~/Views/Shared/_Panel.cshtml";
+}
+
+<div id="@nmPropriedade" class="col-md-12 LicencaOperacionalVM">
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.ValidationMessage("LicencaOperacionalVM", new { @style = "color:red;" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-7">
+            <label for="AtividadeLicenciada">Atividade Licenciada</label> *
+            <div class="input-group col-xs-12">
+                <input class="form-control" 
+                       data-val-length="O campo Atividade Licenciada deve ser uma cadeia de caracteres com um comprimento máximo de 30."
+                       data-val-length-max="30" data-val-required="O campo Atividade Licenciada é obrigatório."
+                       id="AtividadeLicenciada" maxlength="30"
+                       name="AtividadeLicenciada" type="text" value="">
+            </div><span class="text-danger field-validation-valid" data-valmsg-for="AtividadeLicenciada" data-valmsg-replace="true"></span>
+        </div>
+        <div class="form-group col-xs-5">
+            <label for="NumeroLicencaOperacional">Nº Licença</label> *
+            <div class="input-group col-xs-12">
+                <input class="form-control" data-val-length="O campo Nº Licença deve ser uma cadeia de caracteres com um comprimento máximo de 12." data-val-length-max="12" data-val-required="O campo Nº Licença é obrigatório." id="NumeroLicencaOperacional" maxlength="12" name="NumeroLicencaOperacional" type="text" value="">
+            </div><span class="field-validation-valid text-danger" data-valmsg-for="NumeroLicencaOperacional" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-5">
+            <label for="OrgaoLicenciador">Orgão Licenciador</label> *
+            <div class="input-group col-xs-12">
+                <input class="form-control" data-val-required="O campo Orgão Licenciador é obrigatório." data-val-length="O campo Orgão Licenciador deve ser uma cadeia de caracteres com um comprimento máximo de 40." data-val-length-max="40" id="OrgaoLicenciador" maxlength="40" name="OrgaoLicenciador" type="text" value="">
+            </div><span class="field-validation-valid text-danger" data-valmsg-for="OrgaoLicenciador" data-valmsg-replace="true"></span>
+        </div>
+        <div class="form-group umadata col-xs-4">
+            <label for="VencimentoLicenca">Validade</label> *
+            <div class="input-group col-xs-12">
+                <input class="form-control" data-mask="99/99/9999"  data-val-required="O campo Validade é obrigatório." id="VencimentoLicenca" maxlength="10" name="VencimentoLicenca" type="text" value="" autocomplete="off">
+            </div><span class="field-validation-valid text-danger" data-valmsg-for="VencimentoLicenca" data-valmsg-replace="true"></span>
+        </div>
+        <div class="form-group col-xs-3 ">
+            <label></label>
+            <div class="input-group">
+                <div class="btn btn-primary btnAddEquipamento">
+                    <i class="fa fa-plus-circle "></i> Incluir
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Atividade Licenciada</th>
+                <th>Nº Licença</th>
+                <th>Orgão Licenciador</th>
+                <th>Validade</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr class="linhapronta">
+                    <td class="tdAtividadeLicenciada">
+                        <span>@Model[i].AtividadeLicenciada</span>
+                        <input class="inpAtividadeLicenciada" type="hidden" name="@String.Format("{0}[{1}].AtividadeLicenciada", nmPropriedade, i)" value="@Model[i].AtividadeLicenciada" />
+                    </td>
+                    <td class="tdNumeroLicencaOperacional">
+                        <span>@Model[i].NumeroLicencaOperacional</span>
+                        <input class="inpNumeroLicencaOperacional" type="hidden" name="@String.Format("{0}[{1}].NumeroLicencaOperacional", nmPropriedade, i)" value="@Model[i].NumeroLicencaOperacional" />
+                    </td>
+                    <td class="tdOrgaoLicenciador">
+                        <span>@Model[i].OrgaoLicenciador</span>
+                        <input class="inpOrgaoLicenciador" type="hidden" name="@String.Format("{0}[{1}].OrgaoLicenciador", nmPropriedade, i)" value="@Model[i].OrgaoLicenciador" />
+                    </td>
+                    <td class="tdVencimentoLicenca">
+                        <span>@Model[i].VencimentoLicenca</span>
+                        <input class="inpVencimentoLicenca" type="hidden" name="@String.Format("{0}[{1}].VencimentoLicenca", nmPropriedade, i)" value="@Model[i].VencimentoLicenca" />
+                    </td>
+                    <td class="">
+                        <input class="inpLicencaOperacionalId" type="hidden" name="@String.Format("{0}[{1}].LicencaOperacionalId", nmPropriedade, i)" value="@Model[i].LicencaOperacionalId" />
+                        <input class="inpExcluir" type="hidden" name="@String.Format("{0}[{1}].Status", nmPropriedade, i)" value="1" />
+
+                        <div class="btn btn-danger  btn-xs btnExcluir">
+                            <i class="fa fa-trash-o"></i>
+                        </div>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+    $(".btnExcluir", "#@nmPropriedade").click(
+    function () {
+        var linha = $(this).closest('tr');
+        linha.find(".inpExcluir").val('8');
+        linha.hide();
+    });
+
+    $("input:text", "#@nmPropriedade .linhapronta").change(
+    function () {
+        var linha = $(this).closest('tr');
+        linha.find(".inpExcluir").val('2');
+    });
+
+    $(".btnAddEquipamento", "#@nmPropriedade").click(
+            function () {
+                var tabela = $("tbody", "#@nmPropriedade");
+                        var i = $('tr', tabela).length;
+
+                if ($("#AtividadeLicenciada", "#@nmPropriedade").val() == '') {
+                    addErros("AtividadeLicenciada", "Campo requerido"); return;
+                }
+                if ($("#NumeroLicencaOperacional", "#@nmPropriedade").val() == '') {
+                    addErros("NumeroLicencaOperacional", "Campo requerido"); return; }
+                if ($("#OrgaoLicenciador", "#@nmPropriedade").val() == '') {
+                    addErros("OrgaoLicenciador", "Campo requerido"); return;
+                }
+                if ($("#VencimentoLicenca", "#@nmPropriedade").val() == '') {
+                    addErros("VencimentoLicenca", "Campo requerido"); return;
+                }
+
+
+
+                        var prefixo = '@nmPropriedade' + '[' + i + ']';
+
+                var Solicitante = $("#AtividadeLicenciada", "#@nmPropriedade").val();
+                var NumeroLicencaOperacional = $("#NumeroLicencaOperacional", "#@nmPropriedade").val();
+                var OrgaoLicenciador = $("#OrgaoLicenciador", "#@nmPropriedade").val();
+                var VencimentoLicenca = $("#VencimentoLicenca", "#@nmPropriedade").val();
+                $("#AtividadeLicenciada", "#@nmPropriedade").val('');
+                $("#NumeroLicencaOperacional", "#@nmPropriedade").val('');
+                $("#OrgaoLicenciador", "#@nmPropriedade").val('');
+                $("#VencimentoLicenca", "#@nmPropriedade").val('');
+
+                tabela.append('<tr>' +
+                                    '<td class="tdAtividadeLicenciada col-xs-2">' +
+                                       ' <span>' + Solicitante + '</span>' +
+                                        '<input class="inpAtividadeLicenciada" type="hidden" name="' + prefixo + '.AtividadeLicenciada" value="' + Solicitante + '" />' +
+                                    '</td>' +
+                                    '<td class="tdNumeroLicencaOperacional col-xs-2">' +
+                                        '<span>' + NumeroLicencaOperacional + '</span>' +
+                                        '<input class="inpNumeroLicencaOperacional" type="hidden" name="' + prefixo + '.NumeroLicencaOperacional"" value="' + NumeroLicencaOperacional + '" />' +
+                                    '</td>' +
+                                    '<td class="tdOrgaoLicenciador col-xs-3">' +
+                                        '<span>' + OrgaoLicenciador + '</span>' +
+                                        '<input class="inpOrgaoLicenciador" type="hidden" name="' + prefixo + '.OrgaoLicenciador" value="' + OrgaoLicenciador + '" />' +
+                                    '</td>' +
+                                    '<td class="tdVencimentoLicenca col-xs-3">' +
+                                        '<span>' + VencimentoLicenca + '</span>' +
+                                        '<input class="inpVencimentoLicenca" type="hidden" name="' + prefixo + '.VencimentoLicenca" value="' + VencimentoLicenca + '" />' +
+                                    '</td>' +
+                                    '<td class="col-xs-2">' +
+                                        '<input class="inpLicencaOperacionalId" type="hidden" name="' + prefixo + '.inpLicencaOperacionalId" value="0" />' +
+                                        '<input class="inpExcluir" type="hidden" name="' + prefixo + '.Status" value="4" />' +
+                                        '<div class="btn btn-danger btn-xs  btnExcluir"><i class="fa fa-trash-o "></i></div>' +
+                                    '</td>' +
+                                '</tr>');
+
+
+                ultimalinha = $('tr', tabela).last();
+
+                ultimalinha.find('.btnExcluir').click(
+                function () {
+                    var linha = $(this).closest('tr');
+                    linha.remove();
+                });
+            });
+        </script>
+, false);
+}
+
+
+
+
+

@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{45A6F483-3475-4837-9636-361BD0F79681}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Simir.Domain</RootNamespace>
+    <AssemblyName>Simir.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\AspNetAction.cs" />
+    <Compile Include="Entities\AspNetClaims.cs" />
+    <Compile Include="Entities\AspNetClient.cs" />
+    <Compile Include="Entities\AspNetController.cs" />
+    <Compile Include="Entities\AspNetFuncao.cs" />
+    <Compile Include="Entities\AspNetModulo.cs" />
+    <Compile Include="Entities\AspNetModuloPai.cs" />
+    <Compile Include="Entities\AspNetPerfil.cs" />
+    <Compile Include="Entities\AspNetPermissao.cs" />
+    <Compile Include="Entities\AspNetTipoPermissao.cs" />
+    <Compile Include="Entities\AspNetUser.cs" />
+    <Compile Include="Entities\Proc_ReturnListaMenu.cs" />
+    <Compile Include="Entities\Proc_Return_Total_Residuo_Diario.cs" />
+    <Compile Include="Entities\Proc_Return_Total_Residuo_Mes_Ano.cs" />
+    <Compile Include="Entities\TBAterro.cs" />
+    <Compile Include="Entities\TBAterroHistorico.cs" />
+    <Compile Include="Entities\TBColetaEventual.cs" />
+    <Compile Include="Entities\TBColetaEventualHistorico.cs" />
+    <Compile Include="Entities\TBColetaExecutada.cs" />
+    <Compile Include="Entities\TBColetaExecutadaDetalhada.cs" />
+    <Compile Include="Entities\TBColetaExecutadaDetalhadaHistorico.cs" />
+    <Compile Include="Entities\TBColetaExecutadaHistorico.cs" />
+    <Compile Include="Entities\TBColetaOrdinaria.cs" />
+    <Compile Include="Entities\TBColetaOrdinariaHistorico.cs" />
+    <Compile Include="Entities\TBContrato.cs" />
+    <Compile Include="Entities\TBContratoEquipamento.cs" />
+    <Compile Include="Entities\TBContratoHistorico.cs" />
+    <Compile Include="Entities\TBContratoVeiculo.cs" />
+    <Compile Include="Entities\TBEnderecosColetaEventual.cs" />
+    <Compile Include="Entities\TBEnderecosColetaEventualHistorico.cs" />
+    <Compile Include="Entities\TBEquipamentoColetaEventual.cs" />
+    <Compile Include="Entities\TBEquipamentoColetaEventualHistorico.cs" />
+    <Compile Include="Entities\TBEquipamentoColetaOrdinaria.cs" />
+    <Compile Include="Entities\TBEquipamentoColetaOrdinariaHistorico.cs" />
+    <Compile Include="Entities\TBEquipamentoLimpezaExecutada.cs" />
+    <Compile Include="Entities\TBEquipamentoLimpezaExecutadaHistorico.cs" />
+    <Compile Include="Entities\TBFaleConosco.cs" />
+    <Compile Include="Entities\TBFeiraLivre.cs" />
+    <Compile Include="Entities\TBFeiraLivreHistorico.cs" />
+    <Compile Include="Entities\TBLimpezaExecutada.cs" />
+    <Compile Include="Entities\TBLimpezaExecutadaHistorico.cs" />
+    <Compile Include="Entities\TBLimpezaOrdinaria.cs" />
+    <Compile Include="Entities\TBLimpezaOrdinariaHistory.cs" />
+    <Compile Include="Entities\TBResiduoAtividade.cs" />
+    <Compile Include="Entities\TBResiduoClassificado.cs" />
+    <Compile Include="Entities\TBResiduosColetadoItem.cs" />
+    <Compile Include="Entities\TBResiduosGeradoItem.cs" />
+    <Compile Include="Entities\TBRota.cs" />
+    <Compile Include="Entities\TBRotasDescricao.cs" />
+    <Compile Include="Entities\TBRotasDescricaoHistorico.cs" />
+    <Compile Include="Entities\TBRotasHistorico.cs" />
+    <Compile Include="Entities\TBResiduoLista.cs" />
+    <Compile Include="Entities\TBServico.cs" />
+    <Compile Include="Entities\TBServicoFuncaoSubtitulo.cs" />
+    <Compile Include="Entities\TBServicoFuncaoTitulo.cs" />
+    <Compile Include="Entities\TBServicoFuncionario.cs" />
+    <Compile Include="Entities\TBTransbordo.cs" />
+    <Compile Include="Entities\TBTransbordoHistorico.cs" />
+    <Compile Include="Entities\TBUsuario_Historico.cs" />
+    <Compile Include="Entities\TBLogEvento.cs" />
+    <Compile Include="Entities\TBArquivo.cs" />
+    <Compile Include="Entities\TBResiduoClasse.cs" />
+    <Compile Include="Entities\TBResiduosDestinadorRejeito.cs" />
+    <Compile Include="Entities\TBDisposicaoFinalResiduo.cs" />
+    <Compile Include="Entities\TBEmpresa.cs" />
+    <Compile Include="Entities\TBEndereco.cs" />
+    <Compile Include="Entities\TBEnderecoBairro.cs" />
+    <Compile Include="Entities\TBEnderecoCidade.cs" />
+    <Compile Include="Entities\TBEnderecoEstado.cs" />
+    <Compile Include="Entities\TBEnderecoLogradouro.cs" />
+    <Compile Include="Entities\TBEquipamentoLimpezaEventual.cs" />
+    <Compile Include="Entities\TBEquipamentoLimpezaEventualHistorico.cs" />
+    <Compile Include="Entities\TBFuncoesEmpresa.cs" />
+    <Compile Include="Entities\TBGeradorMtr.cs" />
+    <Compile Include="Entities\TBLicencaOperacao.cs" />
+    <Compile Include="Entities\TBLimpezaEventual.cs" />
+    <Compile Include="Entities\TBLimpezaEventualHistorico.cs" />
+    <Compile Include="Entities\TBPorteEmpresa.cs" />
+    <Compile Include="Entities\TBPrefeitura.cs" />
+    <Compile Include="Entities\TBPrefeitura_Historico.cs" />
+    <Compile Include="Entities\TBPrestadoraServico.cs" />
+    <Compile Include="Entities\TBPrestadoraServicosEquipamento.cs" />
+    <Compile Include="Entities\TBPrestadoraServicosEquipamentosHistorico.cs" />
+    <Compile Include="Entities\TBPrestadoraServicosHistorico.cs" />
+    <Compile Include="Entities\TBRamoEmpresa.cs" />
+    <Compile Include="Entities\TBRegiaoAdministrativa.cs" />
+    <Compile Include="Entities\TBRegiaoAdministrativaHistorico.cs" />
+    <Compile Include="Entities\TBRegiaoAdministrativaLogradouro.cs" />
+    <Compile Include="Entities\TBRegiaoAdministrativaLogradouroHistorico.cs" />
+    <Compile Include="Entities\TBResiduo.cs" />
+    <Compile Include="Entities\TBResiduosColetado.cs" />
+    <Compile Include="Entities\TBResiduosDestinadore.cs" />
+    <Compile Include="Entities\TBResiduosGerado.cs" />
+    <Compile Include="Entities\TBResiduosTratado.cs" />
+    <Compile Include="Entities\TBResiduoVinculado.cs" />
+    <Compile Include="Entities\TBResponsabilidade.cs" />
+    <Compile Include="Entities\TBSecretaria.cs" />
+    <Compile Include="Entities\TBSecretariasResponsabilidade.cs" />
+    <Compile Include="Entities\TBSecretariasResponsabilidade_Historico.cs" />
+    <Compile Include="Entities\TBSecretaria_Historico.cs" />
+    <Compile Include="Entities\TBUsuario.cs" />
+    <Compile Include="Enuns\Periodo.cs" />
+    <Compile Include="Enuns\TipoColeta.cs" />
+    <Compile Include="Enuns\TipoPermissao.cs" />
+    <Compile Include="Enuns\TipoPrestadoraServico.cs" />
+    <Compile Include="Enuns\TipoTratamento.cs" />
+    <Compile Include="Helpers\DaPrefeitura.cs" />
+    <Compile Include="Helpers\EnumExtensions.cs" />
+    <Compile Include="Helpers\Historico.cs" />
+    <Compile Include="Enuns\NaturezaJuridicaTipo.cs" />
+    <Compile Include="Enuns\ConsistenciaDado.cs" />
+    <Compile Include="Enuns\TipoEmpresa.cs" />
+    <Compile Include="Helpers\ErroValidacao.cs" />
+    <Compile Include="Helpers\Help.cs" />
+    <Compile Include="Interfaces\Repository\IContratoEquipamentoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IContratoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IContratoVeiculoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IAterroRepository.cs" />
+    <Compile Include="Interfaces\Repository\IDestinadorItemRepository.cs" />
+    <Compile Include="Interfaces\Repository\IDestinadorRepository.cs" />
+    <Compile Include="Interfaces\Repository\IDisposicaoFinalRepository.cs" />
+    <Compile Include="Interfaces\Repository\IFaleConoscoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IResiduosDestinadorRejeitoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IResiduosDestinadorTratadoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IServicoFuncaoSubtituloRepository.cs" />
+    <Compile Include="Interfaces\Repository\IServicoFuncaoTituloRepository.cs" />
+    <Compile Include="Interfaces\Repository\IServicoFuncionarioRepository.cs" />
+    <Compile Include="Interfaces\Repository\IServicoRepository.cs" />
+    <Compile Include="Interfaces\Repository\ITransbordoRepository.cs" />
+    <Compile Include="Interfaces\ServiceAgents\IArmazenamentoArquivo.cs" />
+    <Compile Include="Interfaces\Services\IAterroService.cs" />
+    <Compile Include="Interfaces\Services\IContratoEquipamentoService.cs" />
+    <Compile Include="Interfaces\Services\IContratoFuncionarioService.cs" />
+    <Compile Include="Interfaces\Services\IContratoService.cs" />
+    <Compile Include="Interfaces\Services\IContratoVeiculoService.cs" />
+    <Compile Include="Interfaces\Services\IDestinadorRejeitoService.cs" />
+    <Compile Include="Interfaces\Services\IDestinadorService.cs" />
+    <Compile Include="Interfaces\Repository\Common\IReositoryProc.cs" />
+    <Compile Include="Interfaces\Repository\IAspNetPermissaoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IColetaOrdinariaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IEquipamentoColetaOrdinariaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IEquipamentoLimpezaEventualRepository.cs" />
+    <Compile Include="Interfaces\Repository\IEquipamentoLimpezaExecutadaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IFeiraLivreRepository.cs" />
+    <Compile Include="Interfaces\Repository\ILimpezaEventualRepository.cs" />
+    <Compile Include="Interfaces\Repository\ILimpezaExecutadaRepository.cs" />
+    <Compile Include="Interfaces\Repository\ILimpezaOrdinariaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IPrestadoraServicoEquipamentoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IPrestadoraServicoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IResiduoAtividadeRepository.cs" />
+    <Compile Include="Interfaces\Repository\IRegiaoAdministrativaLogradouroRepository.cs" />
+    <Compile Include="Interfaces\Repository\IGeradorMtrRepository.cs" />
+    <Compile Include="Interfaces\Repository\IResiduoClasseRepository.cs" />
+    <Compile Include="Interfaces\Repository\ILogEventoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IPrefeituraRepository.cs" />
+    <Compile Include="Interfaces\Repository\IRegiaoAdministrativaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IResiduoClassificadoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IResiduoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IResiduosColetadoItemRepository.cs" />
+    <Compile Include="Interfaces\Repository\IResiduosColetadoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IResiduosGeradoItemRepository.cs" />
+    <Compile Include="Interfaces\Repository\IResiduosGeradoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IResponsabilidadesRepository.cs" />
+    <Compile Include="Interfaces\Repository\IRotasDescricaoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IRotasRepository.cs" />
+    <Compile Include="Interfaces\Repository\ISecretariaRepository.cs" />
+    <Compile Include="Interfaces\Repository\ISecretariaResponsabilidadesRepository.cs" />
+    <Compile Include="Interfaces\Repository\IColetaEventualRepository.cs" />
+    <Compile Include="Interfaces\Repository\IColetaExecutadaDetalhadaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IColetaExecutadaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IEnderecosColetaEventualRepository.cs" />
+    <Compile Include="Interfaces\Repository\IEquipamentoColetaEventualRepository.cs" />
+    <Compile Include="Interfaces\Repository\IResiduoListaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IUsuarioRepository.cs" />
+    <Compile Include="Interfaces\Services\IAspNetPermissaoService.cs" />
+    <Compile Include="Interfaces\Services\IColetaEventualService.cs" />
+    <Compile Include="Interfaces\Services\IColetaExecutadaDetalhadaService.cs" />
+    <Compile Include="Interfaces\Services\IColetaExecutadaService.cs" />
+    <Compile Include="Interfaces\Services\IColetaOrdinariaService.cs" />
+    <Compile Include="Interfaces\Services\IColetaTransporteService.cs" />
+    <Compile Include="Interfaces\Services\IDisposicaoFinalService.cs" />
+    <Compile Include="Interfaces\Services\IDestinadorTratadoService.cs" />
+    <Compile Include="Interfaces\Services\IEnderecosColetaEventualService.cs" />
+    <Compile Include="Interfaces\Services\IEquipamentoColetaEventualService.cs" />
+    <Compile Include="Interfaces\Services\IEquipamentoColetaOrdinariaService.cs" />
+    <Compile Include="Interfaces\Services\IEquipamentoLimpezaEventualService.cs" />
+    <Compile Include="Interfaces\Services\IEquipamentoLimpezaExecutadaService.cs" />
+    <Compile Include="Interfaces\Services\IFaleConoscoService.cs" />
+    <Compile Include="Interfaces\Services\IFeiraLivreService.cs" />
+    <Compile Include="Interfaces\Services\IGeradorService.cs" />
+    <Compile Include="Interfaces\Services\ILimpezaEventualService.cs" />
+    <Compile Include="Interfaces\Services\ILimpezaExecutadaService.cs" />
+    <Compile Include="Interfaces\Services\ILimpezaOrdinariaService.cs" />
+    <Compile Include="Interfaces\Services\IPrefeituraService.cs" />
+    <Compile Include="Interfaces\Services\IPrestadoraServicoService.cs" />
+    <Compile Include="Interfaces\Services\IRegiaoAdministrativaService.cs" />
+    <Compile Include="Interfaces\Services\IResiduoService.cs" />
+    <Compile Include="Interfaces\Repository\ILicencaOperacaoRepository.cs" />
+    <Compile Include="Interfaces\Services\IRotasDescricaoService.cs" />
+    <Compile Include="Interfaces\Services\IRotaService.cs" />
+    <Compile Include="Interfaces\Services\ISecretariaService.cs" />
+    <Compile Include="Interfaces\Services\IServicoService.cs" />
+    <Compile Include="Interfaces\Services\IStoredProceduresService.cs" />
+    <Compile Include="Interfaces\Services\ITransbordoService.cs" />
+    <Compile Include="Interfaces\Services\IUsuarioService.cs" />
+    <Compile Include="MensagensErro.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MensagensErro.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Repository\Common\IRepositoryContext.cs" />
+    <Compile Include="Interfaces\Repository\Common\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repository\IAspNetActionRepository.cs" />
+    <Compile Include="Interfaces\Repository\IAspNetControllerRepository.cs" />
+    <Compile Include="Interfaces\Repository\IAspNetFuncaoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IAspNetModuloRepository.cs" />
+    <Compile Include="Interfaces\Repository\IAspNetPerfilRepository.cs" />
+    <Compile Include="Interfaces\Repository\Common\IUnitOfWork.cs" />
+    <Compile Include="Interfaces\Repository\IEmpresaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IEnderecoBairroRepository.cs" />
+    <Compile Include="Interfaces\Repository\IEnderecoCidadeRepository.cs" />
+    <Compile Include="Interfaces\Repository\IEnderecoEstadoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IEnderecoLogradouroRepository.cs" />
+    <Compile Include="Interfaces\Repository\IEnderecoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IPorteEmpresaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IRamoEmpresaRepository.cs" />
+    <Compile Include="Interfaces\ServiceAgents\ISvcConsultCepApi.cs" />
+    <Compile Include="Interfaces\Services\Common\IServiceBase.cs" />
+    <Compile Include="Interfaces\Services\IAspNetFuncaoService.cs" />
+    <Compile Include="Interfaces\Services\IAspNetPerfilService.cs" />
+    <Compile Include="Interfaces\Services\IEmpresaService.cs" />
+    <Compile Include="Interfaces\Services\IEnderecoService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AspNetPermissaoService.cs" />
+    <Compile Include="Services\AterroService.cs" />
+    <Compile Include="Services\ColetaEventualService.cs" />
+    <Compile Include="Services\ColetaExecutadaDetalhadaService.cs" />
+    <Compile Include="Services\ColetaExecutadaService.cs" />
+    <Compile Include="Services\ColetaOrdinariaService.cs" />
+    <Compile Include="Services\ColetaTransporteService.cs" />
+    <Compile Include="Services\Common\ServiceBase.cs" />
+    <Compile Include="Services\AspNetFuncaoService.cs" />
+    <Compile Include="Services\AspNetPerfilService.cs" />
+    <Compile Include="Services\ContratoEquipamentoService.cs" />
+    <Compile Include="Services\ContratoFuncionarioService.cs" />
+    <Compile Include="Services\ContratoService.cs" />
+    <Compile Include="Services\ContratoVeiculoService.cs" />
+    <Compile Include="Services\DestinadorService.cs" />
+    <Compile Include="Services\DisposicaoFinalService.cs" />
+    <Compile Include="Services\DestinadorTratadoService.cs" />
+    <Compile Include="Services\EmpresaService.cs" />
+    <Compile Include="Services\EnderecosColetaEventualService.cs" />
+    <Compile Include="Services\EnderecoService.cs" />
+    <Compile Include="Services\EquipamentoColetaEventualService.cs" />
+    <Compile Include="Services\EquipamentoColetaOrdinariaService.cs" />
+    <Compile Include="Services\EquipamentoLimpezaEventualService.cs" />
+    <Compile Include="Services\EquipamentoLimpezaExecutadaService.cs" />
+    <Compile Include="Services\FaleConoscoService.cs" />
+    <Compile Include="Services\FeiraLivreService.cs" />
+    <Compile Include="Services\GeradorService.cs" />
+    <Compile Include="Services\LeftJoinExtension.cs" />
+    <Compile Include="Services\LimpezaEventualService.cs" />
+    <Compile Include="Services\LimpezaExecutadaService.cs" />
+    <Compile Include="Services\LimpezaOrdinariaService.cs" />
+    <Compile Include="Services\PrefeituraService.cs" />
+    <Compile Include="Services\PrestadoraServicoService.cs" />
+    <Compile Include="Services\RegiaoAdministrativaService.cs" />
+    <Compile Include="Services\ResiduoService.cs" />
+    <Compile Include="Services\RotasDescricaoService.cs" />
+    <Compile Include="Services\RotaService.cs" />
+    <Compile Include="Services\SecretariaService.cs" />
+    <Compile Include="Services\ServicoService.cs" />
+    <Compile Include="Services\StoredProceduresService.cs" />
+    <Compile Include="Services\TransbordoService.cs" />
+    <Compile Include="Services\UsuarioService.cs" />
+    <Compile Include="VariaveisDefault.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VariaveisDefault.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MensagensErro.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MensagensErro.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VariaveisDefault.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>VariaveisDefault.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

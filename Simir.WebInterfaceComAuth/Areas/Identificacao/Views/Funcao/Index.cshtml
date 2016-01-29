@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Simir.Application.ViewModels.FuncaoVM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-primary btn-xs" onclick="location.href='@Url.Action("CriarEditar")';return false;"><i class="fa fa-file-o "></i> </button>
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FuncaoId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descricao)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MaxFuncionarios)
+                        </th>
+                        <th>
+                            @Html.DisplayName(" PerfiL")
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FuncaoId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descricao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MaxFuncionarios)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Perfil.Nome)
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-xs" onclick="location.href='@Url.Action("CriarEditar", new { funcaoNome = item.Nome })';return false;"><i class="fa fa-edit "></i> </button>
+                                <button type="button" class="btn btn-danger btn-xs" onclick="location.href='@Url.Action("Excluir", new { funcaoNome = item.Nome })';return false;"><i class="fa fa-minus-circle"></i> </button>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

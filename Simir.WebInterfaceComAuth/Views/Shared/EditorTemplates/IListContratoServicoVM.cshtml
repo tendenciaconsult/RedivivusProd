@@ -1,0 +1,27 @@
+﻿@model IList<Simir.Application.ViewModels.ContratoVMs.ContratoServicoVM>
+
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    string nmPropriedade = ViewData.ModelMetadata.PropertyName;
+}
+
+<div id="@nmPropriedade" class="panel panel-default EquipamentosVM">
+    <div class="panel-heading">
+        @ViewData.ModelMetadata.DisplayName
+    </div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                @Html.HiddenFor(x => x[i].ID)
+                <div class="row">
+                    @Html.CheckBoxFor(x => x[i].Status) @Html.DisplayFor(x => x[i].Nome)
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+

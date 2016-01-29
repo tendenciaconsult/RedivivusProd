@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BDRedivivusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="Proc_Return_Total_Residuo_Diario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dtInicio" Type="datetime" Mode="In" />
+          <Parameter Name="dtFim" Type="datetime" Mode="In" />
+          <Parameter Name="idPrefeitura" Type="int" Mode="In" />
+          <Parameter Name="idRota" Type="int" Mode="In" />
+          <Parameter Name="idResiduo" Type="int" Mode="In" />
+          <Parameter Name="Prestadora" Type="int" Mode="In" />
+          <Parameter Name="bColetaRealizada" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Proc_Return_Total_Residuo_Mes_Ano" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dtInicio" Type="datetime" Mode="In" />
+          <Parameter Name="dtFim" Type="datetime" Mode="In" />
+          <Parameter Name="idPrefeitura" Type="int" Mode="In" />
+          <Parameter Name="idRota" Type="int" Mode="In" />
+          <Parameter Name="idResiduo" Type="int" Mode="In" />
+          <Parameter Name="Prestadora" Type="int" Mode="In" />
+          <Parameter Name="bColetaRealizada" Type="bit" Mode="In" />
+        </Function>
+        <EntityContainer Name="BDRedivivusModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDRedivivusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BDRedivivusEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="Proc_Return_Total_Residuo_Diario" ReturnType="Collection(BDRedivivusModel.Proc_Return_Total_Residuo_Diario_Result)">
+            <Parameter Name="dtInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="dtFim" Mode="In" Type="DateTime" />
+            <Parameter Name="idPrefeitura" Mode="In" Type="Int32" />
+            <Parameter Name="idRota" Mode="In" Type="Int32" />
+            <Parameter Name="idResiduo" Mode="In" Type="Int32" />
+            <Parameter Name="Prestadora" Mode="In" Type="Int32" />
+            <Parameter Name="bColetaRealizada" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Return_Total_Residuo_Mes_Ano" ReturnType="Collection(BDRedivivusModel.Proc_Return_Total_Residuo_Mes_Ano_Result)">
+            <Parameter Name="dtInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="dtFim" Mode="In" Type="DateTime" />
+            <Parameter Name="idPrefeitura" Mode="In" Type="Int32" />
+            <Parameter Name="idRota" Mode="In" Type="Int32" />
+            <Parameter Name="idResiduo" Mode="In" Type="Int32" />
+            <Parameter Name="Prestadora" Mode="In" Type="Int32" />
+            <Parameter Name="bColetaRealizada" Mode="In" Type="Boolean" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Proc_Return_Total_Residuo_Diario_Result">
+          <Property Type="String" Name="dtReferencia" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="nmResiduoColetado" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="TotalResiduo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Proc_Return_Total_Residuo_Mes_Ano_Result">
+          <Property Type="String" Name="MesRef" Nullable="true" MaxLength="9" />
+          <Property Type="String" Name="nmResiduoColetado" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="TotalResiduo" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDRedivivusModelStoreContainer" CdmEntityContainer="BDRedivivusEntities" >
+          <FunctionImportMapping FunctionImportName="Proc_Return_Total_Residuo_Diario" FunctionName="BDRedivivusModel.Store.Proc_Return_Total_Residuo_Diario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDRedivivusModel.Proc_Return_Total_Residuo_Diario_Result">
+                <ScalarProperty Name="dtReferencia" ColumnName="dtReferencia" />
+                <ScalarProperty Name="nmResiduoColetado" ColumnName="nmResiduoColetado" />
+                <ScalarProperty Name="TotalResiduo" ColumnName="TotalResiduo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_Return_Total_Residuo_Mes_Ano" FunctionName="BDRedivivusModel.Store.Proc_Return_Total_Residuo_Mes_Ano">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDRedivivusModel.Proc_Return_Total_Residuo_Mes_Ano_Result">
+                <ScalarProperty Name="MesRef" ColumnName="MesRef" />
+                <ScalarProperty Name="nmResiduoColetado" ColumnName="nmResiduoColetado" />
+                <ScalarProperty Name="TotalResiduo" ColumnName="TotalResiduo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

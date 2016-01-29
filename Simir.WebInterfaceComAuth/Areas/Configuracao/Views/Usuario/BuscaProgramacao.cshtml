@@ -1,0 +1,47 @@
+﻿@model IList<Simir.Application.ViewModels.UsuarioBasicoVM>
+
+    <table id="example" class="table table-hover" cellspacing="0">
+        <thead>
+            <tr>
+                <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().Nome)</th>
+                <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem[i].Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem[i].Email)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Index", "Usuario", new { area = "Configuracao", id = Model[i].Id })">
+                            <div class="btn btn-primary btn-xs"><i class="fa fa-edit "></i></div>
+                        </a>
+
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+
+    </table>
+
+    <script>
+        function carregaPagina() {
+            $.unblockUI();
+        }
+        $(window).load(carregaPagina());
+
+        $(document).ready(function () {
+            $('#example').dataTable({
+                "searching": false,
+                "lengthChange": false
+            });
+        });
+    </script>

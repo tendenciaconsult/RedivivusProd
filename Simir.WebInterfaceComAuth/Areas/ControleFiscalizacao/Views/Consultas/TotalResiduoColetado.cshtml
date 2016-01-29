@@ -1,0 +1,69 @@
+﻿@model  Simir.Application.ViewModels.GraficoTotalResiduoColetadoMesAnoVM<Simir.Application.ViewModels.TotalResiduoColetadoMesAnoVM>
+
+
+<div class="panel panel-default">
+
+    <div class="col-md-12">
+        <div>
+            @Html.EditorFor(x => x.Graficos, "Highcharts")
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="example" class="table table-hover" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.Dados.FirstOrDefault().MesRef)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.Dados.FirstOrDefault().nmResiduoColetado)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.Dados.FirstOrDefault().TotalResiduo)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    @foreach (var item in Model.Dados)
+                    {
+
+                        <tr align='center'>
+                            <td align='center'>
+                                @item.MesRef
+                            </td>
+                            <td align='center'>
+                                @item.nmResiduoColetado
+                            </td>
+                            <td align='center'>
+                                @item.TotalResiduo
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        function carregaPagina() {
+            $.unblockUI();
+        }
+
+        $(window).load(carregaPagina());
+
+
+        $(document).ready(function () {
+
+            $('#example').dataTable({
+                //dom: 'Bfrtip',
+                //buttons: [
+                //    'copy',
+                //    'excel',
+                //    'pdf'
+                //]
+            });
+
+        });
+
+
+    </script>
+

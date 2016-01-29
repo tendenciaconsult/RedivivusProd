@@ -1,0 +1,68 @@
+﻿@model IList<Simir.Application.ViewModels.ConsultasLimpezaEventualNaoRealizadaVM>
+
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table id="example" class="table table-hover" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().nmProgramacao)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().dtInicio)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().dtFim)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().Logradouro)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().OutroLocal)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].nmProgramacao)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].dtInicio)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].dtFim)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].Logradouro)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].OutroLocal)
+                            </td>
+                            @if (Model[i].bEditavel == true)
+                            {
+                                <td align='center'>
+                                    <a href="@Url.Action("Index", "ExecucaoLimpeza", new {area = "Limpeza", id = Model[i].LimpezaID})">
+                                        <div class="btn btn-primary btn-xs">
+                                            <i class="fa fa-edit "></i>
+                                        </div>
+                                    </a>
+
+                                </td>
+                            }
+                            else
+                            {
+                                <td align='center'></td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    function carregaPagina() {
+        $.unblockUI();
+    }
+    $(window).load(carregaPagina());
+    $(document).ready(function () {
+        $('#example').dataTable({
+        });
+    });
+</script>

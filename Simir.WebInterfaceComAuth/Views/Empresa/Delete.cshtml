@@ -1,0 +1,33 @@
+﻿@model Simir.WebInterface.Models.Empresa
+@{
+    ViewBag.Title = "Deletar";
+    Layout = "~/Views/Shared/_Modal.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-6">
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-group">
+                Tem certeza que deseja deletar?
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group  pull-right">
+                <button type="submit" value="Delete" class="btn btn-primary">sim</button>
+            </div>
+        </div>
+    </div>
+}
+
+@section footer{
+
+}
+
+
+

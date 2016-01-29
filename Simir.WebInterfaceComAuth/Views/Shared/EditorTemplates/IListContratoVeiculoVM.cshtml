@@ -1,0 +1,210 @@
+﻿@model IList<Simir.Application.ViewModels.ContratoVMs.ContratoVeiculoVM>
+
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    string nmPropriedade = ViewData.ModelMetadata.PropertyName;
+}
+
+<div id="@nmPropriedade" class="panel panel-default EquipamentosVM">
+    <div class="panel-heading">
+        @ViewData.ModelMetadata.DisplayName
+    </div>
+    <div class="panel-body">
+
+        <div>
+
+
+            <div class="col-xs-4">
+                <div class="form-group row">
+                    <label>Tipo</label>
+                    <div class="input-group col-xs-12">
+                        <input class="inpTipo form-control" maxlength="100" name="Tipo" type="text" value="" autocomplete="off">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-group row">
+                    <label>Placa</label>
+                    <div class="input-group col-xs-12">
+                        <input class="inpPlaca form-control" data-mask="AAA-0000" data-val-regex-pattern="^[A-Z]{3}-[0-9]{4}$"  maxlength="8" name="Placa" type="text" value="" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1">
+                <div class="form-group row">
+                    <label>Capacidade</label>
+                    <div class="input-group col-xs-12">
+                        <input class="inpCapacidade form-control text-right" data-mask="00" data-mask-reverse="True" maxlength="2" name="Capacidade" type="text" value="" autocomplete="off">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-group row ummes">
+                    <label>Ano do veículo</label>
+                    <div class="input-group col-xs-12">
+                        <input class="inpDataFabrica form-control " data-mask="99/9999"  maxlength="7" name="DataFabrica" type="text" value="" autocomplete="off">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-group row ummes">
+                    <label>Data limite de uso</label>
+                    <div class="input-group col-xs-12">
+                        <input class="inpDataLimiteUso form-control" data-mask="99/9999"  maxlength="7"  name="DataLimiteUso" type="text" value="" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1">
+                <div class="form-group row">
+                    <label> </label>
+                    <div class="input-group">
+                        <div class="btn btn-primary btnAddEquipamento">
+                            <i class="fa fa-plus-circle "></i> Incluir
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="col-xs-4">Tipo</th>
+                        <th class="col-xs-2">Placa</th>
+                        <th class="col-xs-1">Capacidade</th>
+                        <th class="col-xs-2">Ano do veículo</th>
+                        <th class="col-xs-2">Limite</th>
+                        <th class="col-xs-1"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr class="linhapronta">
+                            <td >
+                                @Model[i].Tipo
+                            </td>
+                            <td >
+                                @Model[i].Placa
+                            </td>
+                            <td>
+                                @Model[i].Capacidade
+                            </td>
+                            <td >
+                                @Model[i].DataFabrica
+                            </td>
+                            <td >
+                                @Model[i].DataLimiteUso
+                            </td>
+                            <td >
+                                <input class="Tipo" type="hidden" name="@String.Format("{0}[{1}].Tipo", nmPropriedade, i)" value="@Model[i].Tipo" />
+                                <input class="Placa" type="hidden" name="@String.Format("{0}[{1}].Placa", nmPropriedade, i)" value="@Model[i].Placa" />
+                                <input class="Capacidade" type="hidden" name="@String.Format("{0}[{1}].Capacidade", nmPropriedade, i)" value="@Model[i].Capacidade" />
+                                <input class="DataFabrica" type="hidden" name="@String.Format("{0}[{1}].DataFabrica", nmPropriedade, i)" value="@Model[i].DataFabrica" />
+                                <input class="DataLimiteUso" type="hidden" name="@String.Format("{0}[{1}].DataLimiteUso", nmPropriedade, i)" value="@Model[i].DataLimiteUso" />
+                                <input class="ID" type="hidden" name="@String.Format("{0}[{1}].ID", nmPropriedade, i)" value="@Model[i].ID" />
+                                <input class="inpExcluir" type="hidden" name="@String.Format("{0}[{1}].Status", nmPropriedade, i)" value="1" />
+
+                                <div class="btn btn-danger btnExcluir">
+                                    <i class="fa fa-trash-o"></i>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+            $(".btnExcluir", "#@nmPropriedade").click(
+            function () {
+                var linha = $(this).closest('tr');
+                linha.find(".inpExcluir").val('8');
+                linha.hide();
+            });
+
+            $("input:text", "#@nmPropriedade .linhapronta").change(
+            function () {
+                var linha = $(this).closest('tr');
+                linha.find(".inpExcluir").val('2');
+            });
+
+            $(".btnAddEquipamento", "#@nmPropriedade").click(
+            function () {
+                var tabela = $(this).closest(".EquipamentosVM").find("tbody");
+                var i = $('tr', tabela).length;
+
+                var prefixo = '@nmPropriedade' + '[' + i + ']';
+
+                var Tipo = $(".inpTipo", "#@nmPropriedade").val();
+                var Placa = $(".inpPlaca", "#@nmPropriedade").val();
+                var Capacidade = $(".inpCapacidade", "#@nmPropriedade").val();
+                var DataFabrica = $(".inpDataFabrica", "#@nmPropriedade").val();
+                var DataLimiteUso = $(".inpDataLimiteUso", "#@nmPropriedade").val();
+
+
+                $(".inpTipo", "#@nmPropriedade").val('');
+                $(".inpPlaca", "#@nmPropriedade").val('');
+                $(".inpCapacidade", "#@nmPropriedade").val('');
+                $(".inpDataFabrica", "#@nmPropriedade").val('');
+                $(".inpDataLimiteUso", "#@nmPropriedade").val('');
+                
+                tabela.append('<tr>' +
+                            '<td >' +
+                                 Tipo +
+                            '</td>' +
+                            '<td >' +
+                                 Placa +
+                            '</td>' +
+                            '<td >' +
+                                 Capacidade +
+                            '</td>' +
+                            '<td >' +
+                                 DataFabrica +
+                            '</td>' +
+                            '<td >' +
+                                 DataLimiteUso +
+                            '</td>' +
+                            '<td >' +
+                                '<input class="Tipo" type="hidden" name="' + prefixo + '.Tipo" value="' + Tipo + '" />' +
+                                '<input class="Placa" type="hidden" name="' + prefixo + '.Placa" value="' + Placa + '" />' +
+                                '<input class="Capacidade" type="hidden" name="' + prefixo + '.Capacidade" value="' + Capacidade + '" />' +
+                                '<input class="DataFabrica" type="hidden" name="' + prefixo + '.DataFabrica" value="' + DataFabrica + '" />' +
+                                '<input class="DataLimiteUso" type="hidden" name="' + prefixo + '.DataLimiteUso" value="' + DataLimiteUso + '" />' +
+                                '<input class="inpExcluir" type="hidden" name="' + prefixo + '.Status" value="4"  />' +
+                                '<div class="btn btn-danger btnExcluir"><i class="fa fa-trash-o "></i></div>' +
+                            '</td>' +
+                        '</tr>');
+                ultimalinha = $('tr', tabela).last();
+
+                ultimalinha.find('.btnExcluir').click(
+                function () {
+                    var linha = $(this).closest('tr');
+                    linha.remove();
+                });
+
+
+            });
+
+
+        </script>
+, false);
+}
+
+

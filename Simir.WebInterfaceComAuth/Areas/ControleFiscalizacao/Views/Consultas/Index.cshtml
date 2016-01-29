@@ -1,0 +1,219 @@
+﻿@model Simir.Application.ViewModels.ControleFiscalizacaoVM
+@using Simir.WebInterfaceComAuth.Helpers
+@using Simir.Domain.Enuns
+
+@{
+    ViewBag.Title = "Controle e Fiscalização";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.PrefeituraID)
+    @Html.HiddenFor(x => x.Btn)
+    @Html.HiddenFor(x => x.FormaExportacao)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div style="font-weight: bold; font-size: 15px;">
+                <b>Controle, Fiscalização e Gestão Interna da Prefeitura</b>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ValidationSummary(false, "(* campos obrigatórios)", new {@class = "text-danger"})
+                    <div class="col-md-12">
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    @Html.DDLBootstrapFor(model => model.RelatorioID, Model.nmRelatorio, "/ControleFiscalizacao/Consultas/CarregaTipoConsulta/")
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    @Html.DDLBootstrapFor(model => model.RegiaoAdministrativaID, Model.nmRegiaoAdministrativa, "/ControleFiscalizacao/Consultas/ReturnRegiaoAdministrativa/")
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    @Html.DDLBootstrapFor(model => model.PrestadoraServicosID, Model.nmPrestadoraServicos, "/ControleFiscalizacao/Consultas/ReturnPrestadoraServicos/")
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    @Html.DDLBootstrapFor(model => model.RotaID, Model.nmRota, "/ControleFiscalizacao/Consultas/ReturnRotas/")
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Período do Relatório
+                                </div>
+                                <div class="panel-body">
+                                    <ul class="nav nav-pills">
+                                        <li class="">
+                                            <a href="#Diario" data-toggle="tab" name="btnDiario" id="btnDiario">Diário</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="#Mensal" data-toggle="tab" id="btnMensal">Mensal</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade" id="Diario">
+                                            <div class="row">
+                                                @Html.EditBootstrapFor(model => model.dtInicio, tudoTamanho: 12, inputTamanho: 11)
+                                            </div>
+                                            <div class="row">
+                                                @Html.EditBootstrapFor(model => model.dtFim, tudoTamanho: 12, inputTamanho: 11)
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="Mensal">
+                                            <div class="row">
+                                                @Html.EditBootstrapFor(model => model.MesInicio, tudoTamanho: 6)
+                                            </div>
+                                            <div class="row">
+                                                @Html.EditBootstrapFor(model => model.MesFim, tudoTamanho: 6)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" row col-md-12" style="margin-left: 0%; width:50%">
+                            @Html.DDLBootstrapFor(model => model.ResiduoColetadoID, model => model.nmResiduoColetado, "/ControleFiscalizacao/Consultas/CarregarResiduoColetado/", "", null)
+                        </div>
+                        <div class=" row col-md-12" style="margin-left: 1.7%;">
+                            <div class="row"></div>
+                            <label class="switch">
+                                @Html.RadioButtonFor(m => m.bColetaRealizada, "True", new { id = "Sim", @class = "switch-input" })
+                                <label for="@("Sim")" class="switch-label switch-label-off">Sim</label>
+                                <span class="switch-selection"></span>
+
+                                @Html.RadioButtonFor(m => m.bColetaRealizada, "False", new { id = "Não", @class = "switch-input" })
+                                <label for="@("Não")" class="switch-label switch-label-on">Não</label>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group  pull-right">
+                    <div class="btn btn-success" onclick=" GeraPDF(); ">Consultar e Gerar em PDF</div>
+                    <div class="btn btn-success" onclick=" GeraExcel(); ">Salvar em Excel</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal">
+
+    </div>
+}
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/HighChart")
+
+
+    <script>
+
+        function carregaPagina() {
+
+        }
+
+        $(window).load(carregaPagina());
+
+        if ($("#btnDiario").click()) {
+            $("#bRelDiario").val(true);
+        }
+        if ($("#btnMensal").click()) {
+            $("#bRelDiario").val(false);
+        }
+
+
+        function GeraExcel() {
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#Btn').val("SalvarRelatorio");
+                $('#FormaExportacao').val("Excel");
+                
+                GerarRelatorio();
+
+                // return true;
+            }
+        }
+
+        function GeraPDF() {
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#Btn').val("SalvarRelatorio");
+                $('#FormaExportacao').val("PDF");
+
+                GerarRelatorio();
+            }
+        }
+
+        function GerarRelatorio() {
+
+            var url = "/ControleFiscalizacao/Consultas/SalvarRelatorio/"
+                + $("#RelatorioID").val()
+                + "?idResiduoColetado=" + $("#ResiduoColetadoID").val()
+                + "&idRota=" + $("#RotaID").val()
+                + "&idPrestServ=" + $("#PrestadoraServicosID").val()
+                + "&dtInicio=" + $("#dtInicio").val()
+                + "&dtFim=" + $("#dtFim").val()
+                + "&ColetaRealizada=" + $("#Sim").prop("checked")
+                + "&RelDiario=" + $("#btnDiario[aria-expanded='true']").length
+                + "&MesInicio=" + $("#MesInicio").val()
+                + "&MesFim=" + $("#MesFim").val()
+                + "&ExtensaoRel=" + $('#FormaExportacao').val();
+
+            if ($('#FormaExportacao').val() == "PDF") {
+                window.open(url, '_blank');
+            } else {
+                window.open(url);
+            }
+            
+
+        }
+    
+        //$(function Consultar() {
+        //    $(".btn").click(function() {
+        //        $.blockUI({ message: '<div class="ModalCarregando"></dic>' });
+        //        if ($("#RelatorioID").val() == "") {
+        //            addErros("RelatorioID", "Tipo de relatório não informado!")
+        //            $.unblockUI();
+        //        } else {
+        //            $("#modal").load("/ControleFiscalizacao/Consultas/Consultar/"
+        //                + $("#RelatorioID").val()
+        //                + "?idResiduoColetado=" + $("#ResiduoColetadoID").val()
+        //                + "&idRota=" + $("#RotaID").val()
+        //                + "&idPrestServ=" + $("#PrestadoraServicosID").val()
+        //                + "&dtInicio=" + $("#dtInicio").val()
+        //                + "&dtFim=" + $("#dtFim").val()
+        //                + "&ColetaRealizada=" + $("#Sim").prop("checked")
+        //                + "&RelDiario=" + $("#btnDiario[aria-expanded='true']").length
+        //                + "&MesInicio=" + $("#MesInicio").val()
+        //                + "&MesFim=" + $("#MesFim").val()
+        //            ).dialog();
+        //        }
+        //    });
+        //});
+       
+        
+        $("#dtInicio").change(function() {
+            if ($("#dtInicio").val() > $("#dtFim").val()) {
+                $("#dtFim").val($("#dtInicio").val());
+            }
+        });
+
+        $("#dtFim").change(function() {
+            if ($("#dtFim").val() < $("#dtInicio").val()) {
+                addErros("dtFim", "Data Inválida!");
+                $("#dtFim").val($("#dtInicio").val());
+            }
+        });
+
+    </script>
+
+}

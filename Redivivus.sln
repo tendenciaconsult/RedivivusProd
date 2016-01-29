@@ -1,0 +1,179 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 - Presentation", "00 - Presentation", "{8DEB4186-E9A7-44CF-8006-7DEB81CA942B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - ServiceAgents", "01 - ServiceAgents", "{38D73C55-4967-4890-83CD-8667E6CD3620}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Application", "02 - Application", "{0B673987-47B2-4039-967D-F1C485B5815F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Domain", "03 - Domain", "{EDCD1DBE-05D5-4842-91CE-4A4FBED5E713}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Infra", "04 - Infra", "{22ADCFED-CF51-44F0-BDE6-E91CC798C549}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99 - Estudos", "99 - Estudos", "{E47B7EAB-F540-4D7B-B6EF-0B6C9F6A8537}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redivivus.Domain", "Simir.Domain\Redivivus.Domain.csproj", "{45A6F483-3475-4837-9636-361BD0F79681}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redivivus.Infra.Data", "Simir.Infra.Data\Redivivus.Infra.Data.csproj", "{3407D0FD-F351-4D19-834D-682869372482}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redivivus.Application", "Simir.Application\Redivivus.Application.csproj", "{21533FE5-365A-418E-8F8B-CFA2121EBB09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redivivus.ServiceAgent.Correio", "Simir.ServiceAgent.Correio\Redivivus.ServiceAgent.Correio.csproj", "{71D4B1E2-DD0E-4FB8-BEFE-31D5CFEDEB7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redivivus.ServiceAgent.Excel", "Simir.ServiceAgent.Excel\Redivivus.ServiceAgent.Excel.csproj", "{C2DEFFE6-C3DD-4BEF-B0DB-0242D217C8AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redivivus.CrossCutting.InversionOfControl", "Simir.CrossCutting.InversionOfControl\Redivivus.CrossCutting.InversionOfControl.csproj", "{6F453E92-E7DD-4D94-8599-AABF70261D44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redivivus.WebInterfaceComAuth", "Simir.WebInterfaceComAuth\Redivivus.WebInterfaceComAuth.csproj", "{95B580E9-E429-439D-9859-1FD5328734C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redivivus.CrossCutting.Security", "Simir.CrossCutting.Security\Redivivus.CrossCutting.Security.csproj", "{783753C1-F7CF-4254-BCDF-ED87687F7607}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redivivus.ServiceAgent.Email", "Simir.ServiceAgent.Email\Redivivus.ServiceAgent.Email.csproj", "{C63C91F2-C4D2-47CF-9E16-E19DB23CCC6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anotacoes", "Anotacoes\Anotacoes.csproj", "{17842172-7386-49E8-9E05-21935EB4B6DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redivivus.DatamodelFrist", "Simir.DatamodelFrist\Redivivus.DatamodelFrist.csproj", "{CF7625D3-AA69-45AE-AD9E-EA1E733C590F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redivivus.ServiceAgent.DataFileStorage", "DataFileStorage3\Redivivus.ServiceAgent.DataFileStorage.csproj", "{6498E995-C760-4920-8FF8-4A3EE3842D20}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "100 - Diagramas de classe", "100 - Diagramas de classe", "{7233C7C5-B415-4061-84D3-8B761D420FD3}"
+EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Diagrama", "Diagrama\Diagrama.modelproj", "{60BC52BF-C4B2-423D-A0C3-4EDDD218CF1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45A6F483-3475-4837-9636-361BD0F79681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45A6F483-3475-4837-9636-361BD0F79681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45A6F483-3475-4837-9636-361BD0F79681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45A6F483-3475-4837-9636-361BD0F79681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3407D0FD-F351-4D19-834D-682869372482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3407D0FD-F351-4D19-834D-682869372482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3407D0FD-F351-4D19-834D-682869372482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3407D0FD-F351-4D19-834D-682869372482}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21533FE5-365A-418E-8F8B-CFA2121EBB09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21533FE5-365A-418E-8F8B-CFA2121EBB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21533FE5-365A-418E-8F8B-CFA2121EBB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21533FE5-365A-418E-8F8B-CFA2121EBB09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71D4B1E2-DD0E-4FB8-BEFE-31D5CFEDEB7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71D4B1E2-DD0E-4FB8-BEFE-31D5CFEDEB7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71D4B1E2-DD0E-4FB8-BEFE-31D5CFEDEB7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71D4B1E2-DD0E-4FB8-BEFE-31D5CFEDEB7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2DEFFE6-C3DD-4BEF-B0DB-0242D217C8AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2DEFFE6-C3DD-4BEF-B0DB-0242D217C8AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2DEFFE6-C3DD-4BEF-B0DB-0242D217C8AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2DEFFE6-C3DD-4BEF-B0DB-0242D217C8AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F453E92-E7DD-4D94-8599-AABF70261D44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F453E92-E7DD-4D94-8599-AABF70261D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F453E92-E7DD-4D94-8599-AABF70261D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F453E92-E7DD-4D94-8599-AABF70261D44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95B580E9-E429-439D-9859-1FD5328734C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95B580E9-E429-439D-9859-1FD5328734C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95B580E9-E429-439D-9859-1FD5328734C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95B580E9-E429-439D-9859-1FD5328734C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{783753C1-F7CF-4254-BCDF-ED87687F7607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{783753C1-F7CF-4254-BCDF-ED87687F7607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{783753C1-F7CF-4254-BCDF-ED87687F7607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{783753C1-F7CF-4254-BCDF-ED87687F7607}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C63C91F2-C4D2-47CF-9E16-E19DB23CCC6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C63C91F2-C4D2-47CF-9E16-E19DB23CCC6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C63C91F2-C4D2-47CF-9E16-E19DB23CCC6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C63C91F2-C4D2-47CF-9E16-E19DB23CCC6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17842172-7386-49E8-9E05-21935EB4B6DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17842172-7386-49E8-9E05-21935EB4B6DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17842172-7386-49E8-9E05-21935EB4B6DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17842172-7386-49E8-9E05-21935EB4B6DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF7625D3-AA69-45AE-AD9E-EA1E733C590F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF7625D3-AA69-45AE-AD9E-EA1E733C590F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF7625D3-AA69-45AE-AD9E-EA1E733C590F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF7625D3-AA69-45AE-AD9E-EA1E733C590F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6498E995-C760-4920-8FF8-4A3EE3842D20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6498E995-C760-4920-8FF8-4A3EE3842D20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6498E995-C760-4920-8FF8-4A3EE3842D20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6498E995-C760-4920-8FF8-4A3EE3842D20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60BC52BF-C4B2-423D-A0C3-4EDDD218CF1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60BC52BF-C4B2-423D-A0C3-4EDDD218CF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60BC52BF-C4B2-423D-A0C3-4EDDD218CF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60BC52BF-C4B2-423D-A0C3-4EDDD218CF1D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{45A6F483-3475-4837-9636-361BD0F79681} = {EDCD1DBE-05D5-4842-91CE-4A4FBED5E713}
+		{3407D0FD-F351-4D19-834D-682869372482} = {22ADCFED-CF51-44F0-BDE6-E91CC798C549}
+		{21533FE5-365A-418E-8F8B-CFA2121EBB09} = {0B673987-47B2-4039-967D-F1C485B5815F}
+		{71D4B1E2-DD0E-4FB8-BEFE-31D5CFEDEB7E} = {38D73C55-4967-4890-83CD-8667E6CD3620}
+		{C2DEFFE6-C3DD-4BEF-B0DB-0242D217C8AC} = {38D73C55-4967-4890-83CD-8667E6CD3620}
+		{6F453E92-E7DD-4D94-8599-AABF70261D44} = {22ADCFED-CF51-44F0-BDE6-E91CC798C549}
+		{95B580E9-E429-439D-9859-1FD5328734C1} = {8DEB4186-E9A7-44CF-8006-7DEB81CA942B}
+		{783753C1-F7CF-4254-BCDF-ED87687F7607} = {22ADCFED-CF51-44F0-BDE6-E91CC798C549}
+		{C63C91F2-C4D2-47CF-9E16-E19DB23CCC6C} = {38D73C55-4967-4890-83CD-8667E6CD3620}
+		{17842172-7386-49E8-9E05-21935EB4B6DE} = {E47B7EAB-F540-4D7B-B6EF-0B6C9F6A8537}
+		{CF7625D3-AA69-45AE-AD9E-EA1E733C590F} = {EDCD1DBE-05D5-4842-91CE-4A4FBED5E713}
+		{6498E995-C760-4920-8FF8-4A3EE3842D20} = {38D73C55-4967-4890-83CD-8667E6CD3620}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 14
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://redivivusdesenv.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Anotacoes\\Anotacoes.csproj
+		SccProjectTopLevelParentUniqueName1 = Redivivus.sln
+		SccProjectName1 = Anotacoes
+		SccLocalPath1 = Anotacoes
+		SccProjectUniqueName2 = Simir.Application\\Redivivus.Application.csproj
+		SccProjectTopLevelParentUniqueName2 = Redivivus.sln
+		SccProjectName2 = Simir.Application
+		SccLocalPath2 = Simir.Application
+		SccProjectUniqueName3 = Simir.CrossCutting.InversionOfControl\\Redivivus.CrossCutting.InversionOfControl.csproj
+		SccProjectTopLevelParentUniqueName3 = Redivivus.sln
+		SccProjectName3 = Simir.CrossCutting.InversionOfControl
+		SccLocalPath3 = Simir.CrossCutting.InversionOfControl
+		SccProjectUniqueName4 = Simir.CrossCutting.Security\\Redivivus.CrossCutting.Security.csproj
+		SccProjectTopLevelParentUniqueName4 = Redivivus.sln
+		SccProjectName4 = Simir.CrossCutting.Security
+		SccLocalPath4 = Simir.CrossCutting.Security
+		SccProjectUniqueName5 = Simir.DatamodelFrist\\Redivivus.DatamodelFrist.csproj
+		SccProjectTopLevelParentUniqueName5 = Redivivus.sln
+		SccProjectName5 = Simir.DatamodelFrist
+		SccLocalPath5 = Simir.DatamodelFrist
+		SccProjectUniqueName6 = Simir.Domain\\Redivivus.Domain.csproj
+		SccProjectTopLevelParentUniqueName6 = Redivivus.sln
+		SccProjectName6 = Simir.Domain
+		SccLocalPath6 = Simir.Domain
+		SccProjectUniqueName7 = Simir.Infra.Data\\Redivivus.Infra.Data.csproj
+		SccProjectTopLevelParentUniqueName7 = Redivivus.sln
+		SccProjectName7 = Simir.Infra.Data
+		SccLocalPath7 = Simir.Infra.Data
+		SccProjectUniqueName8 = Simir.ServiceAgent.Correio\\Redivivus.ServiceAgent.Correio.csproj
+		SccProjectTopLevelParentUniqueName8 = Redivivus.sln
+		SccProjectName8 = Simir.ServiceAgent.Correio
+		SccLocalPath8 = Simir.ServiceAgent.Correio
+		SccProjectUniqueName9 = Simir.ServiceAgent.Email\\Redivivus.ServiceAgent.Email.csproj
+		SccProjectTopLevelParentUniqueName9 = Redivivus.sln
+		SccProjectName9 = Simir.ServiceAgent.Email
+		SccLocalPath9 = Simir.ServiceAgent.Email
+		SccProjectUniqueName10 = Simir.ServiceAgent.Excel\\Redivivus.ServiceAgent.Excel.csproj
+		SccProjectTopLevelParentUniqueName10 = Redivivus.sln
+		SccProjectName10 = Simir.ServiceAgent.Excel
+		SccLocalPath10 = Simir.ServiceAgent.Excel
+		SccProjectUniqueName11 = Simir.WebInterfaceComAuth\\Redivivus.WebInterfaceComAuth.csproj
+		SccProjectTopLevelParentUniqueName11 = Redivivus.sln
+		SccProjectName11 = Simir.WebInterfaceComAuth
+		SccLocalPath11 = Simir.WebInterfaceComAuth
+		SccProjectUniqueName12 = DataFileStorage3\\Redivivus.ServiceAgent.DataFileStorage.csproj
+		SccProjectTopLevelParentUniqueName12 = Redivivus.sln
+		SccProjectName12 = DataFileStorage3
+		SccLocalPath12 = DataFileStorage3
+		SccProjectUniqueName13 = Diagrama\\Diagrama.modelproj
+		SccProjectName13 = Diagrama
+		SccLocalPath13 = Diagrama
+	EndGlobalSection
+EndGlobal

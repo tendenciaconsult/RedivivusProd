@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UC-CadastroContrato">
+  <useCaseModelRootMoniker Id="71c2cd83-65af-4017-83bc-f2b61b19f98e" />
+  <nestedChildShapes>
+    <actorShape Id="e8fabf74-c63b-4591-8a13-f913dc67231b" absoluteBounds="3.625, 2, 0.625, 0.75" isReference="false" heightOffset="0">
+      <actorMoniker Id="b6f38392-4ff1-4aec-badd-3d0ed86a0283" LastKnownName="Usuário" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseShape Id="2ebdba50-be07-4e1e-9189-237393417a74" absoluteBounds="4.875, 1, 1.875, 0.875" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="9f5984ca-1f98-45fd-8a26-f36d6489952c" LastKnownName="Cadastrar Novo Contrato" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(4.25 : 2.21875); (5.17282664028749 : 1.75733667985626)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="a47b431f-cb02-4c48-8e93-d022d6b60833" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="e8fabf74-c63b-4591-8a13-f913dc67231b" />
+        <useCaseShapeMoniker Id="2ebdba50-be07-4e1e-9189-237393417a74" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="c5b87c6a-3d63-40f0-855f-325f421421a5" absoluteBounds="5, 2.25, 1.875, 0.875" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="1a3a7485-df25-4291-a15c-45a9317d05fb" LastKnownName="Alterar Contrato" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(4.25 : 2.423828125); (5.04850707684939 : 2.54859485575772)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="949b3a95-7bd4-4e74-987d-e35f63a219f3" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="e8fabf74-c63b-4591-8a13-f913dc67231b" />
+        <useCaseShapeMoniker Id="c5b87c6a-3d63-40f0-855f-325f421421a5" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="7681dc79-25c6-48b0-81f8-787077f34da8" absoluteBounds="1.125, 0.875, 1.875, 0.875" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="06744a44-a6c8-4400-8e73-34432713546d" LastKnownName="Excluir Contrato" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(3.625 : 2.19791666666667); (2.65847554955728 : 1.65021947808246)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="03a2b0c5-9c5b-461d-85d1-5a00b9b337a3" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="e8fabf74-c63b-4591-8a13-f913dc67231b" />
+        <useCaseShapeMoniker Id="7681dc79-25c6-48b0-81f8-787077f34da8" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="35268797-0099-4346-9688-9d7a13fafbc9" absoluteBounds="1, 2.375, 1.875, 0.875" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="3f0f2801-8b38-427d-8f14-81e84dd000f4" LastKnownName="Vincular o contrato a uma prestadora de serviço" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(3.625 : 2.443359375); (2.78636775246144 : 2.62681017914906)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="5ea9c095-c709-42f7-a0a0-607999b012a6" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="e8fabf74-c63b-4591-8a13-f913dc67231b" />
+        <useCaseShapeMoniker Id="35268797-0099-4346-9688-9d7a13fafbc9" />
+      </nodes>
+    </useCaseAssociationConnector>
+  </nestedChildShapes>
+</useCaseDiagram>

@@ -1,0 +1,280 @@
+﻿@{
+    bool _semarea = !ViewContext.RouteData.Values.Keys.Contains("Area");
+    string _area = _semarea ? "" : ViewContext.RouteData.Values["Area"].ToString();
+    string _controller = ViewContext.RouteData.Values["Controller"].ToString();
+    string _action = ViewContext.RouteData.Values["Action"].ToString();
+
+}
+@using Simir.WebInterfaceComAuth.Helpers
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RediVivus - @ViewBag.Title </title>
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/custom1")
+    @Styles.Render("~/Content/tabela")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header simir-fundo">
+                @Html.ActionLink("RediVivus", "Index", "Home", new { @area = "" }, new { @class = "navbar-brand" })
+            </div>
+            @*/Contatos/FaleConosco/
+            @Url.Action("Index", "Prefeitura", new { area = "Configuracao" })*@
+
+            @*<div class="navbar-titulo">
+            </div>*@
+            <div class="navbar-suporte">
+                <a href="@Url.Action("Index", "FaleConosco", new { area = "Suporte" })" class="btn btn-default btn-xs"><i class="fa fa-envelope-o fa-2x"></i></a>
+                <a href="@Url.Action("Index", "Bootstrap")" class="btn btn-default btn-xs"><i class="fa fa-balance-scale fa-2x"></i></a>
+                <a href="@Url.Action("Index", "Bootstrap")" class="btn btn-default btn-xs"><i class="fa fa-leanpub fa-2x"></i></a>
+                
+            </div>
+            @Html.Partial("_LoginPartial")
+            
+        </nav>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <img src="~/Content/img/logo-brejetuba.png" class="user-image img-responsive" />
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu"></ul>
+            </div>
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-navegar">
+                Cadastros <i class="fa fa-angle-double-right fa-fw"></i> Prefeitura <i class="fa fa-angle-double-right fa-fw"></i> Editar
+</div>
+            <div id="page-pre-inner">
+                <div id="page-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @*<h2>@ViewBag.Title </h2>
+                                <h5>@ViewBag.Navegacao</h5>
+                                <hr />*@
+
+                            @RenderBody()
+                        </div>
+                    </div>
+                    <!-- /. ROW  -->
+                </div>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    </div>
+
+    <!-- /. WRAPPER  -->
+    @using (Html.BeginScriptContext())
+    {
+        //Html.AddScriptFile("~/bundles/scripts/core");
+        //Html.AddScriptFile("~/bundles/jquery");
+        //Html.AddScriptFile("~/bundles/modernizr");
+        Html.AddScriptBlock(
+            @<script>
+    function testSp() {
+
+        var listMenu = [];
+        var listInvi = [];
+        var listTitulo = [];
+        var listAviso = [];
+        @{
+                        var claimsIdentity = User.Identity as System.Security.Claims.ClaimsIdentity;
+
+                        foreach (var itemSecreto in claimsIdentity.Claims)
+                        {
+                            
+
+                            if (itemSecreto.Type.Length > 5 && itemSecreto.Type.Substring(0, 4) == "Menu")
+                            {
+                                @:var no = "@itemSecreto.Type".split(".");
+                                        @:no.push("@itemSecreto.Value");
+                                        @:listMenu.push(no);
+                                    }else
+                            if (itemSecreto.Type.Length > 5 && itemSecreto.Type.Substring(0, 4) == "Titu")
+                            {
+                                @:var no = "@itemSecreto.Type".split(".");
+                                        @:no.push("@itemSecreto.Value");
+                                        @:listTitulo.push(no);
+                                    }else
+
+                            if (itemSecreto.Type.Length > 5 && itemSecreto.Type.Substring(0, 5) == "Avis.")
+                            {
+                                @:var no = "@itemSecreto.Type".split(".");
+                                        @:no.push("@itemSecreto.Value");
+                                        @:listAviso.push(no);
+                                    }else
+                            if (itemSecreto.Type.Length > 5 && itemSecreto.Type.Substring(0, 5) == "Invi.")
+                            {
+                                @:var no = "@itemSecreto.Type".split(".");
+                                @:no.push("@itemSecreto.Value");
+                                @:listInvi.push(no);
+                            }
+                        }
+
+
+                        foreach (var itemSecreto in TempData)
+                        {
+
+                            if (itemSecreto.Key.Length > 5 && itemSecreto.Key.Substring(0, 5) == "Avis.")
+                            {
+                                @:var no = "@itemSecreto.Key".split(".");
+                                                                                                    @:no.push("@itemSecreto.Value");
+                                                                                                    @:listAviso.push(no);
+                                                                                                        }
+                        }
+
+                    }
+
+        listTitulo.sort(function (a, b) { return a[0] > b[0]; });
+        listMenu.sort(function (a, b) { return a[0] > b[0]; });
+
+        var hostUrl = '@String.Format("{0}://{1}:{2}/", Request.Url.Scheme, Request.Url.Host,Request.Url.Port)';
+
+        var hostCaminho = '@Request.Url.LocalPath';
+        //var mainmenu = document.getElementById('main-menu');
+        //var items = document.getElementById('main-menu');
+
+        var listCaminho =[];
+        var menu = $("#main-menu");
+
+        
+
+        $.each(listMenu, function (i, retorno) {
+            var titulo = null;
+            $.each(listTitulo, function (i, retorno2) {
+                if (retorno[1] == retorno2[3])
+                    titulo = retorno;
+            })
+            if (titulo == null) {
+
+                if ('/' + retorno[3] == hostCaminho) {
+                    menu.append('<li> <a class="active-menu" href="' + hostUrl + retorno[3] + '"> ' + retorno[2] + ' </a></li>');
+                } else {
+                    menu.append('<li> <a href="' + hostUrl + retorno[3] + '"> ' + retorno[2] + ' </a></li>');
+                }
+            }
+            else {
+                montaMenu(menu, listTitulo, titulo);
+                //alert(titulo);
+                if ('/' + retorno[3] == hostCaminho) {
+                    var ulPai = menu.find("#" + retorno[1]);
+                    ulPai.append('<li> <a class="active-menu" href="' + hostUrl + retorno[3] + '"> ' + retorno[2] + ' </a></li>');
+
+
+                    var liPai = ulPai.parent();
+                    liPai.addClass("active");
+                } else {
+                    menu.find("#" + retorno[1]).append('<li> <a href="' + hostUrl + retorno[3] + '"> ' + retorno[2] + ' </a></li>');
+                }
+
+            }
+
+        });
+
+        $.each(listInvi, function (i, retorno) {
+            if ('/' + retorno[3] == hostCaminho) {
+                $.each(listTitulo, function (j, retornoj) {
+                    if (retornoj[3] == retorno[1]) {
+                        listCaminho.push(retornoj[2])
+                    }
+                    
+                })
+                listCaminho.push(retorno[2]);
+            }
+        });
+
+        $.each(listMenu, function (i, retorno) {
+            if ('/' + retorno[3] == hostCaminho) {
+                $.each(listTitulo, function (j, retornoj) {
+                    if (retornoj[3] == retorno[1]) {
+                        listCaminho.push(retornoj[2])
+                    }
+
+                })
+                listCaminho.push(retorno[2]);
+            }
+        });
+
+        montaCaminho(listCaminho);
+
+        var altura = 8;
+        $.each(listAviso, function (i, retorno2) {
+            //var aviso = notificacao(retorno2[2]);
+            return new jBox('Notice', {
+                animation: { open: 'slide:top', close: 'slide:top' },
+                content: retorno2[2],
+                autoClose: 5000,
+                color: 'red',
+                position: { x: 'center', y: altura }
+            });
+
+            altura = altura + 30;
+        })
+    };
+
+                function montaCaminho(listCaminho) {
+                    var caminhoHtml = '';
+                    $.each(listCaminho, function (i, retorno2) {
+                        if (i > 0) {
+                            caminhoHtml = caminhoHtml + ' <i class="fa fa-angle-double-right fa-fw"></i> ';
+                        }
+                        caminhoHtml = caminhoHtml + retorno2;
+                    })
+                    $('#page-navegar').html(caminhoHtml);
+
+    };
+
+                function montaMenu(menu, listTitulo, titulo) {
+
+        var tituloPai = null;
+        $.each(listTitulo, function (i, retorno2) {
+            if (titulo[1] == retorno2[3])
+                tituloPai = retorno2;
+        })
+        if (tituloPai == null) {
+            if (!menu.find("#" + titulo[3]).length)
+                menu.append('<li class="' + titulo[3] + '"> <a class="nav-a-firt-level" href="#">' + titulo[2] + '<span class="fa arrow"></span></a><ul class="nav nav-second-level" id="' + titulo[3] + '">  </ul> </li>');
+        }
+        else {
+            montaMenu(menu, listTitulo, tituloPai);
+        }
+
+
+    };
+    $(window).load(testSp());
+
+
+            </script>
+, false);
+
+        Html.AddScriptFile("~/bundles/bootstrap");
+        Html.AddScriptFile("~/bundles/tabela");
+    }
+    @Html.RenderScripts(Scripts.Render)
+    @using (Html.BeginScriptContext())
+    {
+        Html.AddScriptFile("~/bundles/meuscript");
+    }
+    @Html.RenderScripts(Scripts.Render)
+
+    @RenderSection("scripts", required: false)
+
+
+   
+
+</body>
+</html>

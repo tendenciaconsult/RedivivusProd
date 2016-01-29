@@ -1,0 +1,62 @@
+﻿@model Simir.Application.ViewModels.ResiduoVM
+@using Simir.WebInterfaceComAuth.Helpers
+
+<div class="col-md-6">
+    <div class="residuo">
+        <div class=" panel panel-default ">
+            @Html.HiddenFor(x => x.Delete, new { @class = "mark-for-delete" })
+            @Html.HiddenFor(x => x.TipoResiduoCapituloId, new { @class = "capituloid" })
+            @Html.HiddenFor(x => x.TipoResiduoSubcapituloId, new { @class = "subcapituloid" })
+            @Html.HiddenFor(x => x.TipoResiduoDetalheId, new { @class = "detalheid" })
+
+
+            <div class="panel-heading">
+                <i class="fa fa-trash-o fa-fw"></i>
+                Resíduo
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu slidedown">
+                        <li>
+                            @Html.LinkToRemoveNestedForm("remover", "div.residuo", "input.mark-for-delete")
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Peso)
+                    @Html.EditorFor(model => model.Peso, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Peso, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TipoResiduoCapituloId)
+
+                    @*<select class="ddlCap form-control"> </select>*@
+                    @Html.DropDownList("ddlCap", (SelectList)(ViewBag.TipoResiduoCapituloSL),
+                        new { @class = "ddlCap form-control",  onchange = "changeGeneric(this,'div.residuo','input.capituloid','/Cadastros/ResiduoSolido/GetSubcapituloByCapitulo/','select.ddlSub')" })
+                    @Html.ValidationMessageFor(model => model.TipoResiduoCapituloId, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TipoResiduoSubcapituloId)
+                    @*<select class="ddlSub form-control" onchange="changeGeneric(this,'div.residuo','input.subcapituloid','/Cadastros/ResiduoSolido/GetDetalheBySubcapitulo/','select.ddlDetalhe')"> </select>*@
+                    @Html.DropDownList("ddlSub", (SelectList)(ViewBag.TipoResiduoSubcapituloSL),
+                        new { @class = "ddlSub form-control", onchange = "changeGeneric(this,'div.residuo','input.subcapituloid','/Cadastros/ResiduoSolido/GetDetalheBySubcapitulo/','select.ddlDetalhe')" })
+                    @Html.ValidationMessageFor(model => model.TipoResiduoSubcapituloId, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TipoResiduoDetalheId)
+                    @*<select class="ddlSub form-control" onchange="changeGeneric(this,'div.residuo','input.detalheid')"> </select>*@
+
+                    @Html.DropDownList("ddlDetalhe", (SelectList)(ViewBag.TipoResiduoDetalheSL), new { @class = "ddlDetalhe form-control", onchange = "changeGeneric(this,'div.residuo','input.detalheid')" })
+                    @Html.ValidationMessageFor(model => model.TipoResiduoDetalheId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

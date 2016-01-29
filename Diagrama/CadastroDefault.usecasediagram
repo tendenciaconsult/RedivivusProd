@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="692cb79e-224d-4e29-9f04-ac765e552e00" name="CadastroDefault" linkedPackageId="465a932b-57da-4de6-8c59-78231378d587" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="f8c74a12-31a4-4dc1-a86e-fdb4e395e9cd">
+      <profileInstance Id="71511678-78d0-482b-a8a0-92d530959280" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="1eed32c2-b3bf-49df-ae1a-91bb030fd71b">
+      <profileInstance Id="73c9f799-578b-4de8-9de9-69739a59a11e" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="b1acba8d-c9b2-4961-a98f-8ecb91be31f0" name="Usuário" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f1548bd3-a436-4daa-b8c6-85358e786374" />
+        <targetEnds>
+          <association Id="3139053c-270e-4316-b3ef-7d738fde77d3" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Consultar" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="c07b02bf-eb7c-47dc-9cc5-efca1cbede5e" LastKnownName="Consultar" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ad4af8c8-c1c2-4c3b-a75e-df977c375fb0" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8f75be38-df76-4225-bc0f-adacd59ac3ee" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f7f61d0a-e669-442e-99fc-826df59f45ac" name="Consultar" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5e0b0f2c-7cb4-489b-a466-601c74eb46e4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0711081c-1dcb-4c4b-9e8f-6d26b1b9d524" />
+          </association>
+          <association Id="0bc32fd5-5df9-4e06-9356-047a36aae157" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Incluir" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b75bfe98-7ae5-4a8b-9495-ed3769ffde90" LastKnownName="Incluir" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1d7085bc-a207-4588-9c86-8bfbc71876fd" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c105fdbb-c6e5-4c3a-b136-a9d3303f4f7f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="538b021a-7f04-4178-9776-7c85f77c9ab3" name="Incluir" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="9244dbb3-eb1d-4d1a-adbe-e8ebb4f2154b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="61af74f6-ace5-43e2-b3d9-7cd1e4951424" />
+          </association>
+          <association Id="80c9feb5-7709-41ff-b876-d4cb3741b09f" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Alterar" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="432475d3-50d5-4bc6-b635-e6429a50afd5" LastKnownName="Alterar" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="be4cd572-6959-4685-8553-ff8d55c2f511" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="efb2c36b-d0ce-4c05-b1e1-391a7ca0c6da" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bb73a3e9-e17f-4c91-88b9-3c8d5d660641" name="Alterar" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="aba7926c-1e4d-47b8-bc30-80a2fda038fb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="61780674-63fd-40c4-9c5e-f1652ae303ea" />
+          </association>
+          <association Id="b7a25e24-a7ae-4b83-9224-430185c145f0" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Excluir" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="dc89dc0c-4bd4-4d36-af48-1075989596fe" LastKnownName="Excluir" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a67df016-8b7e-465c-9f5c-18e8bc4530e4" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="99ecb11f-db79-44a1-984f-f0efb8f0dda1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="99184459-6d2f-46fb-b647-d5cea5383c8a" name="Excluir" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="881862af-6cc1-4d05-88d1-b602c538e239" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="96dc8d7c-078d-42fe-aff1-e524d5566e83" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c07b02bf-eb7c-47dc-9cc5-efca1cbede5e" name="Consultar" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="65a1b5d9-6056-4bdf-a816-7a41fa9ae14c" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b75bfe98-7ae5-4a8b-9495-ed3769ffde90" name="Incluir" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="75ad38f0-2c81-4c7c-bd6f-74d8b6892f15" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="dc89dc0c-4bd4-4d36-af48-1075989596fe" name="Excluir" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f5e8629b-1c30-429e-86ff-53cdd27b2f36" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="432475d3-50d5-4bc6-b635-e6429a50afd5" name="Alterar" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6ed5ad7c-c17d-4889-9792-4fdeb2539131" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="465a932b-57da-4de6-8c59-78231378d587" name="Diagrama">
+    <elementDefinition Id="aeb13fbb-4674-41c2-8bc9-87da3b00454c" />
+  </package>
+</useCaseModelRoot>

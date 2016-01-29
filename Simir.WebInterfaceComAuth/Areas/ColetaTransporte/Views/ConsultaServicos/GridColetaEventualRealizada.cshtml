@@ -1,0 +1,73 @@
+﻿@model IList<Simir.Application.ViewModels.ConsultasColetaEventualRealizadaVM>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table id="example" class="table" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().nmProgramacao)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().dtColeta)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().EnderecoColeta)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().Rota)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr class="em-dia" align='center'>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].nmProgramacao)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].dtColeta)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].EnderecoColeta)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].Rota)
+                            </td>
+                            @if (Model[i].bEditavel == true)
+                            {
+                                <td align='center'>
+                                    <a href="@Url.Action("Index", "ExecucaoColeta", new { area = "ColetaTransporte", id = Model[i].ColetaID })">
+                                        <div class="btn btn-primary btn-xs"><i class="fa fa-edit "></i></div>
+                                    </a>
+
+                                </td>
+                            }
+                            else
+                            {
+                                <td align='center'></td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function carregaPagina() {
+        $.unblockUI();
+    }
+    $(window).load(carregaPagina());
+
+    $(document).ready(function () {
+
+        $('#example').dataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy',
+                'excel',
+                'pdf'
+            ],
+        });
+    });
+
+</script>

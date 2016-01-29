@@ -1,0 +1,254 @@
+﻿@model Simir.Application.ViewModels.LogradouroRegiaoAdministrativaVM
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    ViewBag.Title = "Regiões Administrativas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.RegiaoAdministrativaLogradouroID)
+    @Html.HiddenFor(x => x.bAreaVerde)
+    @Html.HiddenFor(x => x.bTotalmenteAsfaltado)
+    @Html.HiddenFor(x => x.iRegiaoAdministrativaID)
+    @Html.HiddenFor(x => x.Btn)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div style="font-weight: bold;font-size:15px;">
+                <b>Incluir ou editar os logradouros referente à região Administrativa "</b>@Html.DisplayFor(model => model.sRegiaoAdministrativa)<b>"</b>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ValidationSummary(false, "(* campos obrigatórios)", new { @class = "text-danger" })
+
+                    <div class="row" style="margin-left:-3%">
+                        <div class="col-md-3">
+                            @Html.DDLBootstrapFor(model => model.sBairroValor, model => model.sBairroDescricao, "/Configuracao/RegioesAdministrativas/GetBairros/", "", model => model.sLogradouroValor)
+                        </div>
+                        <div class="col-md-6">
+                            @Html.DDLBootstrapFor(model => model.sLogradouroValor, model => model.sLogradouroDescricao, "/Configuracao/RegioesAdministrativas/GetHashLogradouro/", model => model.sBairroValor, null)
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.iMetrosLogradouro, tudoTamanho: 4, inputTamanho: 9)
+                        @Html.EditBootstrapFor(model => model.iSargeta, tudoTamanho: 3, inputTamanho: 7)
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Extenção de pavimentação no logradouro
+                        </div>
+                        @*<div class="panel-body">*@
+                            <div class="tab-content">
+                                <div style="margin-left:2%; margin-top:1%">
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.iBloco, tudoTamanho: 4, inputTamanho: 9)
+                                        @Html.EditBootstrapFor(model => model.iAsfalto, tudoTamanho: 4, inputTamanho: 9)
+                                    </div>
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.iSemPavimento, tudoTamanho: 4, inputTamanho: 9)                                        
+                                    </div>
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.sOutroPavimento, tudoTamanho: 7, inputTamanho: 12)
+                                        @Html.EditBootstrapFor(model => model.iOutroPavimento, tudoTamanho: 4, inputTamanho: 9)
+                                    </div>
+                                </div>
+                            </div>
+                        @*</div>*@
+                    </div>
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.iBocaLobo, tudoTamanho: 4, inputTamanho: 9)
+                        @Html.EditBootstrapFor(model => model.iLarguraVia, tudoTamanho: 4, inputTamanho: 9)
+                    </div>
+                    <div class="row" style="margin-left:1%">
+                        @Html.CheckBoxBootstrapFor(x => x.bLimpezaMecanizada)
+                        @Html.CheckBoxBootstrapFor(x => x.bLavagem)
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Possui área verde?
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills">
+                                <li class="">
+                                    <a href="#ComAreaVerde" data-toggle="tab" id="btn-Com-Area-Verde">Sim</a>
+                                </li>
+                                <li class="active">
+                                    <a href="#SemAreaVerde" data-toggle="tab" id="btn-Sem-Area-Verde">Não</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane fade" id="ComAreaVerde">
+                                    <div class="row" style="margin-left:1%">
+                                        <div class="col-md-4">
+                                            @Html.CheckBoxBootstrapFor(x => x.bCanteiros)
+                                        </div>
+                                        <div class="col-md-4">
+                                            @Html.CheckBoxBootstrapFor(x => x.bPraca)
+                                        </div>
+                                        <div class="col-md-4">
+                                            @Html.CheckBoxBootstrapFor(x => x.bParque)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.iArvore, tudoTamanho: 4, inputTamanho: 6)
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="SemAreaVerde">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <hr />
+                        <div class="form-group  pull-right">
+                            <a class="btn btn-default" href="@Url.Action("EditarLogradouro", "RegioesAdministrativas", new { area = "Configuracao", id = Model.iRegiaoAdministrativaID})">
+                                Novo
+                            </a>
+                            <div class="btn btn-success" onclick="confirmaAlteracao();" data-confirm="Tem certeza que deseja salvar?">Salvar</div>
+                            <div id="btnExcluir" class="btn btn-danger" onclick="ConfirmaExclusao();" data-confirm="Tem certeza que deseja excluir?">Excluir</div>
+                            <a class="btn btn-default" href="@Url.Action("Index", "RegioesAdministrativas", new { area = "Configuracao"})">Voltar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">Logradouros Cadastrados</a>
+        </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+        <div class="panel-body">
+
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.LogradourosCadastrados.First().sBairro)</th>
+                            <th>@Html.DisplayNameFor(model => model.LogradourosCadastrados.First().LogradouroID)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.LogradourosCadastrados)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.sBairro)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.sLogradouro)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("EditarLogradouro", "RegioesAdministrativas", new { area = "Configuracao", id = Model.iRegiaoAdministrativaID, idLogradouro = item.LogradouroID })">
+                                        <div class="btn btn-primary btn-xs"><i class="fa fa-edit "></i></div>
+                                    </a>
+
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        function carregaPagina() {
+
+            if ($('#RegiaoAdministrativaLogradouroID').val() == 0) {
+                $("#btnExcluir").hide();
+            };
+
+        }
+        $(window).load(carregaPagina());
+
+
+        function confirmaAlteracao() {
+
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#Btn').val("Salvar");
+                form.submit();
+                // return true;
+            }
+
+        }
+        function ConfirmaExclusao() {
+            var form = $('form', '#page-inner');
+            $('#Btn').val("Excluir");
+
+            //$.desabilitaValidacao();
+            $("[data-val='true']").attr('data-val', 'false');
+
+            //Reset validation message
+            $('.field-validation-error')
+            .removeClass('field-validation-error')
+            .addClass('field-validation-valid');
+
+            //Reset input, select and textarea style
+            $('.input-validation-error')
+            .removeClass('input-validation-error')
+            .addClass('valid');
+
+            //Reset validation summary
+            $(".validation-summary-errors")
+            .removeClass("validation-summary-errors")
+            .addClass("validation-summary-valid");
+
+            //To reenable lazy validation (no validation until you submit the form)
+            $('form').removeData('unobtrusiveValidation');
+            $('form').removeData('validator');
+            $.validator.unobtrusive.parse($('form'));
+
+            form.submit();
+
+        }
+
+        $("#btn-Com-Area-Verde").click(function () {
+            $("#bAreaVerde").val('True');
+        })
+
+        $("#btn-Sem-Area-Verde").click(function () {
+            $("#bAreaVerde").val('False');
+        })
+
+        //$("#btn-Com-Asfalto").click(function () {
+        //    $("#bTotalmenteAsfaltado").val('True');
+        //})
+
+        //$("#btn-Sem-Asfalto").click(function () {
+        //    $("#bTotalmenteAsfaltado").val('False');
+        //})
+
+        $('#sRegiaAdministrativaValor').parent().find('select').change(function () {
+            window.location.href = "/Configuracao/RegioesAdministrativas/CarregarLogradourosCadastrados/" + $('#sRegiaAdministrativaValor').val();
+        })
+
+    </script>
+}

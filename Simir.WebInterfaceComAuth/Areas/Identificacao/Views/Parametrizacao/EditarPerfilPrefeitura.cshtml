@@ -1,0 +1,69 @@
+﻿@model Simir.Application.ViewModels.PrefeituraEditBasicoVM
+@{
+    ViewBag.Title = "Editar informações sobre a Prefeitura";
+    Layout = "~/Views/Shared/_OnePanel.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-6">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NomeFantasia)
+
+            @Html.EditorFor(model => model.NomeFantasia, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NomeFantasia, "", new { @class = "text-danger" })
+
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Telefone1)
+
+            @Html.EditorFor(model => model.Telefone1, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Telefone1, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Telefone2)
+
+            @Html.EditorFor(model => model.Telefone2, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Telefone2, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Telefone3)
+
+            @Html.EditorFor(model => model.Telefone3, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Telefone3, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email)
+
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+    <div class="col-md-6">
+
+        @Html.EditorFor(x => x.Endereco)
+
+
+    </div>
+    <div class="col-md-12">
+        <div class="form-group  pull-right">
+            <button type="reset" class="btn btn-default">limpar</button>
+            <button type="submit" value="Save" class="btn btn-primary">Salvar</button>
+        </div>
+    </div>
+}

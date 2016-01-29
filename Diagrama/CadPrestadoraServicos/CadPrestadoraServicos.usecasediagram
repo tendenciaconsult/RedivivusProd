@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="9427979c-4f46-4bf3-9b83-3b51d54c91c0" name="CadPrestadoraServicos" linkedPackageId="4cc92f0b-c395-4621-819d-f30177dc3f33" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="1b81bf66-53ba-4a7a-a8c5-025e65ae97e9">
+      <profileInstance Id="9c64a3ed-dfd1-4057-9e29-3a9692496fc9" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="f259ef94-b0f0-4d1c-8d06-3b2e858d2bcc">
+      <profileInstance Id="c8e60bb0-1c87-4427-b29e-f7ee2d86916a" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="d03528e6-527d-48d4-89ec-8104c3403a09" name="Usuário" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="61079573-a128-4700-8e4a-0099c8480af5" />
+        <targetEnds>
+          <association Id="84599538-7b09-49f2-86d8-d2cb298256ee" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Desativar uma prestadora de servicos" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="06fd1faf-d456-4f71-b7e5-190ecee4e1d9" LastKnownName="Desativar uma prestadora de servicos" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6a400ae7-ce25-4e75-a730-2c121aa1cb39" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="7f1e22fa-f4f3-43a8-856b-d47f0f69d9d9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5cd58480-d946-495f-bdee-cc80f42d3f07" name="Desativar uma prestadora de servicos" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="15f7a157-77d9-4bcb-b7e1-fd38a0dfbd70" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fbbd51c4-a3b7-4977-8dad-212cfb716480" />
+          </association>
+          <association Id="7d24fd17-45a1-40dd-a19b-865dfd7ff707" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Consultar uma prestadora de Serviços" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="f251ecea-15c0-4461-8f85-ed4012eb491f" LastKnownName="Consultar uma prestadora de Serviços" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="493f7dbc-13df-4998-8025-2dbbdf49a6e3" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ca1a5328-830d-4092-bcd2-9e452ecc4f9c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b6d489e2-ae92-4202-85c7-626430647010" name="Consultar uma prestadora de Serviços" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="61134e53-759e-46b7-ac96-eb866f4e7633" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="a594b920-18a8-4eb1-a08e-da14f794aaf0" />
+          </association>
+          <association Id="30d4fdc5-1b4f-4540-967c-47938e955a8a" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Alterar a Prestadora de Serviços" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3809c820-b638-42b2-a79a-21af516b03fd" LastKnownName="Alterar a Prestadora de Serviços" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="59d4c266-41f3-432c-ab96-abb28c538173" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5d7c000c-d087-4602-845e-4c96afccd049" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="376b3a3d-5529-49d8-a148-3b24149aa57c" name="Alterar a Prestadora de Serviços" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="70d67bfe-7b76-4793-ac8a-e748e43e466e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="33c0b59f-a5d4-4bf1-a579-7ed848b0946d" />
+          </association>
+          <association Id="de35a083-1594-4ead-acc8-89a0455555cc" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Inserir Prestadora de Serviços" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="1de82955-019c-406c-a3eb-7e9aaf99ca57" LastKnownName="Inserir Prestadora de Serviços" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e35832cf-9fe4-44b3-85a3-336b1df4242d" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a5328349-37af-41b6-b945-ae531b270131" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c7c61aa1-c5f3-419f-ae1e-7f2172fb9dcd" name="Inserir Prestadora de Serviços" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ba9ae913-af18-4347-9059-6978ec5e7325" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="58406642-253e-45c9-b66c-dd6d2d45c4ac" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1de82955-019c-406c-a3eb-7e9aaf99ca57" name="Inserir Prestadora de Serviços" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5c495092-cc3d-453b-a867-3a8594b80caf" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3809c820-b638-42b2-a79a-21af516b03fd" name="Alterar a Prestadora de Serviços" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="85fc398d-bd8e-4614-bf72-bc84268a88b0" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="06fd1faf-d456-4f71-b7e5-190ecee4e1d9" name="Desativar uma prestadora de servicos" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3af2ada6-9ec9-4834-8a66-2cd5fa34b94f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f251ecea-15c0-4461-8f85-ed4012eb491f" name="Consultar uma prestadora de Serviços" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="fe68fe28-a9e9-4933-aa4b-f5666199cbda" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="4cc92f0b-c395-4621-819d-f30177dc3f33" name="Diagrama">
+    <elementDefinition Id="aeb13fbb-4674-41c2-8bc9-87da3b00454c" />
+  </package>
+</useCaseModelRoot>

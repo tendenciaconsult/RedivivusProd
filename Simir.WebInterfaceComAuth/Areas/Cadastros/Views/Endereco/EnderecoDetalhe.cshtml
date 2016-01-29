@@ -1,0 +1,12 @@
+﻿@model Simir.Application.ViewModels.EnderecoDetalheVM
+@{
+    ViewBag.Titulo = "Endereço";
+    Layout = "~/Views/Shared/_Panel.cshtml";
+}
+
+
+<div class="form-group text-center">
+    @Html.DisplayFor(model => model.Logradouro) , nº @Html.DisplayFor(model => model.Numero) @Html.DisplayFor(model => model.Complemento), CEP @Html.DisplayFor(model => model.Cep).
+    <br /> @Html.DisplayFor(model => model.Bairro) - @Html.DisplayFor(model => model.Municipio) - @Html.DisplayFor(model => model.Uf)
+</div>
+

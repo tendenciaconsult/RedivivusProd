@@ -1,0 +1,75 @@
+﻿@model Simir.Application.ViewModels.FuncionarioVM
+
+@{
+    ViewBag.Title = "Editar perfil do Servidor";
+    Layout = "~/Views/Shared/_OnePanel.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-6">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.FuncionarioId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Funcao)
+            @Html.EditorFor(model => model.Funcao, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Funcao, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome)
+            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sobrenome)
+            @Html.EditorFor(model => model.Sobrenome, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Sobrenome, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cpf)
+            @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Identidade)
+            @Html.EditorFor(model => model.Identidade, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Identidade, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Telefone)
+            @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Celular)
+            @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email)
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-md-6">
+
+        @Html.EditorFor(model => model.Endereco)
+    </div>
+    <div class="col-md-12">
+        <div class="form-group  pull-right">
+            <button type="reset" class="btn btn-default">limpar</button>
+            <button type="submit" value="Save" class="btn btn-primary">Salvar</button>
+        </div>
+    </div>
+
+}

@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Confirmação de Cadastro";
+    Layout = "~/Views/Shared/_LayoutNaoLogado.cshtml";
+}
+
+<div class="col-md-4 col-center-block" style="margin-top: 90px;">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @ViewBag.Title
+        </div>
+        <div class="panel-body">
+            <p>
+                <label> Foi enviado uma mensagem para o e-mail informado, contendo usuário e a senha para acesso.</label>
+            </p>
+            <div class="form-group  pull-right">
+                <a class="btn btn-default" href='@Url.Action("Logar", "Autenticacao", new { area = "Identificacao", id = "" })'>
+                    Entrar no Sistema
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

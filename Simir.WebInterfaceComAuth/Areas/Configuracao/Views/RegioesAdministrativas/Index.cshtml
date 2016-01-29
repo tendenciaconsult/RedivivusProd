@@ -1,0 +1,152 @@
+﻿@model Simir.Application.ViewModels.RegiaoAdministrativaVM
+@using Simir.WebInterfaceComAuth.Helpers
+@using Simir.Domain.Enuns
+
+
+@{
+    ViewBag.Title = "Regiões Administrativas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.RegiaoAdministrativaID)
+    @Html.HiddenFor(x => x.PrefeituraID)
+    @Html.HiddenFor(x => x.Btn)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div style="font-weight: bold;font-size:15px;">
+                <b>Cadastro de Região Administrativa</b>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ValidationSummary(false, "(* campos obrigatórios)", new { @class = "text-danger" })
+
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.nmRegiaoAdministrativa, tudoTamanho: 8, inputTamanho: 12)
+                        <div class="col-md-1" style="Margin-top:1.9%;margin-left:-1%;">
+                            <div class="btn btn-success" onclick="CarregaGrid();" data-toggle="modal" data-target="#BuscaProgramacao">Localizar</div>
+                        </div>
+                    </div>
+                    <div class="tab-pane">
+                        <div class="col-md-12" style="margin-top:2%;">
+                            @Html.EditorFor(model => model.Logradouros, "IListaEnderecoRegiaoAdministrativa")
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <hr />
+                        <div class="form-group  pull-right">
+                            @if (User.Identity.TemPermicao(TipoPermissao.Incluir) || User.Identity.TemPermicao(TipoPermissao.Alterar))
+                            {
+                                <div class="btn btn-default" onclick=" Novo();">Novo</div>
+                                <div class="btn btn-success" onclick=" confirmaAlteracao(); " data-confirm="Tem certeza que deseja salvar?">Salvar</div>
+                            }
+                            @if (User.Identity.TemPermicao(TipoPermissao.Excluir))
+                            {
+                                <div id="btnExcluir" class="btn btn-danger" onclick=" ConfirmaExclusao(); " data-confirm="Tem certeza que deseja excluir?">Excluir</div>
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="modal fade" id="BuscaProgramacao" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div id="modal">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        function carregaPagina() {
+
+            if ($("#RegiaoAdministrativaID").val() == 0) {
+                $("#btnExcluir").hide();
+            }
+
+        }
+
+        $(window).load(carregaPagina());
+
+        function Novo() {
+
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#Btn').val("Novo");
+                form.submit();
+                // return true;
+            }
+
+        }
+
+        function confirmaAlteracao() {
+
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#Btn').val("Salvar");
+                form.submit();
+                // return true;
+            }
+
+        }
+
+        function ConfirmaExclusao() {
+            var form = $('form', '#page-inner');
+            $('#Btn').val("Excluir");
+
+            //$.desabilitaValidacao();
+            $("[data-val='true']").attr('data-val', 'false');
+
+            //Reset validation message
+            $('.field-validation-error')
+                .removeClass('field-validation-error')
+                .addClass('field-validation-valid');
+
+            //Reset input, select and textarea style
+            $('.input-validation-error')
+                .removeClass('input-validation-error')
+                .addClass('valid');
+
+            //Reset validation summary
+            $(".validation-summary-errors")
+                .removeClass("validation-summary-errors")
+                .addClass("validation-summary-valid");
+
+            //To reenable lazy validation (no validation until you submit the form)
+            $('form').removeData('unobtrusiveValidation');
+            $('form').removeData('validator');
+            $.validator.unobtrusive.parse($('form'));
+
+            form.submit();
+
+        }
+
+        function CarregaGrid() {
+            $.blockUI({ message: '<div class="ModalCarregando"></dic>' });
+            $("#modal").load("/Configuracao/RegioesAdministrativas/BuscaProgramacao/");
+        }
+
+    </script>
+}

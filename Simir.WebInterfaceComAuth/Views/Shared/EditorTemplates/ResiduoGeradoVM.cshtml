@@ -1,0 +1,134 @@
+﻿@model Simir.Application.ViewModels.ResiduoGeradoVM
+@using Simir.WebInterfaceComAuth.Helpers
+@{
+    ViewBag.Titulo = "Classificar o Resíduo";
+    Layout = "~/Views/Shared/_Panel.cshtml";
+}
+
+<div class="col-md-12">
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Pesquisar tipo de resíduos
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="input-group">
+                    @Html.TextBoxFor(model => model.CapituloResiduoDescricao, new { @class = "form-control" })
+                    <span class="form-group input-group-btn">
+                        <button class="btn btn-default" type="button" onclick="BuscarResiduo(this)">Buscar!</button>
+                    </span>
+                </div>
+            </div>
+            <div id="temporario"></div>
+        </div>
+
+    </div>
+
+    @*<div class="row">
+            @Html.DDLBootstrapFor(model => model.CapituloResiduoValor, Model.CapituloResiduoDescricao, "/Cadastros/Fornecedor/GetHashNaturezaJuridicas/")
+        </div>
+
+        <div class="row">
+            @Html.DDLBootstrapFor(model => model.SubCapituloResiduoValor, Model.SubCapituloResiduoDescricao, "/Cadastros/Fornecedor/GetHashNaturezaJuridicas/")
+        </div>
+
+        <div class="row">
+            @Html.DDLBootstrapFor(model => model.ResiduoValor, Model.ResiduoDescricao, "/Cadastros/Fornecedor/GetHashNaturezaJuridicas/")
+        </div>*@
+
+    <div class="row">
+        <div class="form-group col-xs-12"><label for="ResiduoGerado_CapituloResiduoValor">Capítulo</label><select id="selCap" class="form-control"><option value="-1" selected="selected"> Selecione um capítulo... </option></select><input class="hiddenFor" data-val="true" data-val-length="O campo Capítulo deve ser uma cadeia de caracteres com um comprimento máximo de 200." data-val-length-max="200" id="ResiduoGerado_CapituloResiduoValor" name="ResiduoGerado.CapituloResiduoValor" type="hidden" value=""><span class="field-validation-valid text-danger" data-valmsg-for="ResiduoGerado.CapituloResiduoValor" data-valmsg-replace="true"></span> </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-12"><label for="ResiduoGerado_SubCapituloResiduoValor">Subcapítulo</label><select id="selSub" class="form-control" ><option value="-1" selected="selected"> </option><option> </option><option> </option><option> </option><option> </option><option> </option></select><input class="hiddenFor" data-val="true" data-val-length="O campo Subcapítulo deve ser uma cadeia de caracteres com um comprimento máximo de 200." data-val-length-max="200" id="ResiduoGerado_SubCapituloResiduoValor" name="ResiduoGerado.SubCapituloResiduoValor" type="hidden" value=""><span class="field-validation-valid text-danger" data-valmsg-for="ResiduoGerado.SubCapituloResiduoValor" data-valmsg-replace="true"></span> </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-12"><label for="ResiduoGerado_ResiduoValor">Resíduo</label><select id="selRes" class="form-control" ><option value="-1" selected="selected"> </option><option> </option><option> </option><option> </option><option> </option><option> </option></select><input class="hiddenFor" data-val="true" data-val-length="O campo Resíduo deve ser uma cadeia de caracteres com um comprimento máximo de 200." data-val-length-max="200" id="ResiduoGerado_ResiduoValor" name="ResiduoGerado.ResiduoValor" type="hidden" value=""><span class="field-validation-valid text-danger" data-valmsg-for="ResiduoGerado.ResiduoValor" data-valmsg-replace="true"></span> </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="row">
+            @Html.EditBootstrapFor(model => model.Inicio)
+            @Html.EditBootstrapFor(model => model.Fim)
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            @Html.EditBootstrapFor(model => model.Quantidade)
+
+        </div>
+    </div>
+    <div class="col-md-12">
+        <hr />
+        <div class="form-group  pull-right">
+            <button class="btn btn-default" type="button" onclick="AddResiduoALista(this)"> <i class=" fa fa-plus-circle"></i> Adicionar à lista</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function BuscarResiduo(este) {
+
+        if (document.getElementById('ResiduoGerado_CapituloResiduoDescricao').value != "plastico") return;
+
+        var tipo01 = '<a onclick="AddAlertToForm(1);" >';
+        tipo01 += '<ul><li>Resíduos de embalagens; absorventes, panos de limpeza, materiais filtrantes e vestuário de proteção não anteriormente especificados';
+        tipo01 += '<ul><li>Embalagens (incluindo resíduos urbanos e equiparados de embalagens, recolhidos separadamente)([ii])';
+        tipo01 += '<ul><li>Embalagens de plástico</li></ul></li></ul></li></ul></a>';
+
+        var tipo02 = '<a onclick="AddAlertToForm(2);" >';
+        tipo02 += '<ul><li>Resíduos de construção e demolição (incluindo solos escavados de locais contaminados)';
+        tipo02 += '<ul><li>Madeira, vidro e plástico';
+        tipo02 += '<ul><li>Plástico</li></ul></li></ul></li></ul></a>';
+
+
+        var alerta = NovoAlerta(tipo01) + NovoAlerta(tipo02);
+        document.getElementById('temporario').innerHTML = alerta;
+
+
+
+    };
+
+    function NovoAlerta(msg) {
+        var retorno = '<div class="alert alert-info alert-dismissable"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+        retorno += msg;
+        retorno += ' </div>';
+        return retorno;
+    };
+
+
+    function AddAlertToForm(tipo) {
+        if (tipo == 1) {
+            $("#selCap option:selected").text('Resíduos de embalagens; absorventes, panos de limpeza, materiais filtrantes e vestuário de proteção não anteriormente especificados');
+            $("#selSub option:selected").text('Embalagens (incluindo resíduos urbanos e equiparados de embalagens, recolhidos separadamente)([ii])');
+            $("#selRes option:selected").text('Embalagens de plástico');
+        }
+        if (tipo == 2) {
+            $("#selCap option:selected").text('Resíduos de construção e demolição (incluindo solos escavados de locais contaminados)');
+            $("#selSub option:selected").text('Madeira, vidro e plástico');
+            $("#selRes option:selected").text('Plástico');
+        }
+    };
+
+    function AddResiduoALista(este) {
+        var retorno = '<ul><li>Resíduos de embalagens; absorventes, panos de limpeza, materiais filtrantes e vestuário de proteção não anteriormente especificados';
+        retorno += '<ul><li>Embalagens (incluindo resíduos urbanos e equiparados de embalagens, recolhidos separadamente)([ii])';
+        retorno += '<ul><li>Embalagens de plástico</li></ul></li></ul></li></ul>';
+
+        var $ret = $("#selRes option:selected");
+        var $ini = $('input[name="ResiduoGerado.Inicio"]');
+        var $fim = $('input[name="ResiduoGerado.Fim"]');
+        var $qti = $('input[name="ResiduoGerado.Quantidade"]');
+
+
+        retorno = '<tr><td> ' + $ret.text() + ' </td><td>' + $ini.val() + '</td><td>' + $fim.val() + '</td><td>' + $qti.val() + ' kg</td><td><button class="btn btn-danger" type="button" onclick="DeleteRow(this)"> <i class=" fa fa-trash-o"></i></button></td></tr>';
+
+        $('#tabelaTemp').before(retorno);
+
+
+    };
+
+</script>

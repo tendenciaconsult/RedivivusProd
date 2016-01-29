@@ -1,0 +1,48 @@
+﻿@model IList<Simir.Application.ViewModels.PrestadoraServicoBasicoVM>
+
+    <table id="example" class="table table-hover" cellspacing="0">
+        <thead>
+            <tr>
+                <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().nmPrestadoraServico)</th>
+                <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().nmRazaoSocial)</th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem[i].nmPrestadoraServico)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem[i].nmRazaoSocial)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Index", "PrestadoraServico", new { area = "Configuracao" , id =Model[i].PrestadoraServicosID})">
+                            <div class="btn btn-primary btn-xs"><i class="fa fa-edit "></i></div>
+                        </a>
+
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+
+    </table>
+
+    <script>
+        function carregaPagina() {
+            $.unblockUI();
+        }
+        $(window).load(carregaPagina());
+
+        $(document).ready(function () {
+            $('#example').dataTable({
+                "searching": false,
+                "lengthChange": false
+            });
+        });
+    </script>

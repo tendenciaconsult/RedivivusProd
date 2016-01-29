@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{60bc52bf-c4b2-423d-a0c3-4eddd218cf1d}</ProjectGuid>
+    <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
+    <Name>Diagrama</Name>
+    <RootNamespace>Diagrama</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ItemGroup>
+    <Content Include="CadContratos\CadContratos.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="CadContratos\CadContratos.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>CadContratos\CadContratos.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="CadContratos\UC-CadastroContrato.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="CadContratos\UC-CadastroContrato.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>CadContratos\UC-CadastroContrato.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="CadPrefeitura\UC-CadastroPrefeitura.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="CadPrefeitura\UC-CadastroPrefeitura.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>CadPrefeitura\UC-CadastroPrefeitura.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="CadPrestadoraServicos\CadPrestadoraServicos.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="CadPrestadoraServicos\CadPrestadoraServicos.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>CadPrestadoraServicos\CadPrestadoraServicos.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="CadastroDefault.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="CadastroDefault.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>CadastroDefault.usecasediagram</DependentUpon>
+    </Content>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="ModelDefinition\Diagrama.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Folder Include="CadPrefeitura" />
+    <Folder Include="CadPrestadoraServicos" />
+    <Folder Include="CadContratos" />
+  </ItemGroup>
+</Project>

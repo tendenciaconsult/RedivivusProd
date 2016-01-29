@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="71c2cd83-65af-4017-83bc-f2b61b19f98e" name="UC-CadastroContrato" linkedPackageId="bb9edc9a-72cb-4ccf-8b1f-94af17b18e20" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="d035c5ae-0b9c-44a1-90ab-bd9fac1bce80">
+      <profileInstance Id="25e7a830-7680-4b2f-9b5b-6d87a1ee06bd" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="4169df7c-9236-437b-8285-83f83eff4e96">
+      <profileInstance Id="b3dc1607-5eff-4c49-a78c-8b4b8cdb1e45" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="b6f38392-4ff1-4aec-badd-3d0ed86a0283" name="Usuário" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f9f04978-9757-4060-a317-fdd488b7bea4" />
+        <targetEnds>
+          <association Id="03a2b0c5-9c5b-461d-85d1-5a00b9b337a3" isDerived="false" sourceEndRoleName="Actor1" targetEndRoleName="Excluir Contrato" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="06744a44-a6c8-4400-8e73-34432713546d" LastKnownName="Excluir Contrato" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9f289011-c39f-449c-942c-d8fdc05e7333" name="Actor1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ee18426e-dc6e-4264-b02c-8cd933d59ec1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="694869e7-99f2-4f06-9a04-8c307710dcef" name="Excluir Contrato" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="94d5e468-8748-4805-889a-a92a684e45cd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ac677746-4333-4c29-82e0-34785ca18a97" />
+          </association>
+          <association Id="a47b431f-cb02-4c48-8e93-d022d6b60833" isDerived="false" sourceEndRoleName="Actor1" targetEndRoleName="Cadastrar Novo Contrato" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="9f5984ca-1f98-45fd-8a26-f36d6489952c" LastKnownName="Cadastrar Novo Contrato" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f18f930f-af17-421e-9874-58f628d329f5" name="Actor1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="1b21d33f-f9fa-46c7-aaab-81523462ef7b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3157f415-5c39-483f-ad4e-fb519ea0e688" name="Cadastrar Novo Contrato" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="400cf424-4bd9-498d-8415-b3cee3954e8c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="62996391-684c-429c-a5ae-92ad1fd98af5" />
+          </association>
+          <association Id="949b3a95-7bd4-4e74-987d-e35f63a219f3" isDerived="false" sourceEndRoleName="Actor1" targetEndRoleName="Alterar Contrato" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="1a3a7485-df25-4291-a15c-45a9317d05fb" LastKnownName="Alterar Contrato" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ad3cc0fe-7b87-4eff-8629-645d028cc72a" name="Actor1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="61f0cd48-3b83-4ded-a970-fa6c40a45cb2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="abfcf4d5-9118-4ead-87bc-786aaa0ae18a" name="Alterar Contrato" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="dfedcbf0-dc8d-41a3-b074-273d0333c402" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6282c87e-ad30-45f5-a0bb-149535317485" />
+          </association>
+          <association Id="5ea9c095-c709-42f7-a0a0-607999b012a6" isDerived="false" sourceEndRoleName="Actor1" targetEndRoleName="Vincular o contrato a uma prestadora de serviço" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3f0f2801-8b38-427d-8f14-81e84dd000f4" LastKnownName="Vincular o contrato a uma prestadora de serviço" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="95a45d42-10bc-43e3-bb1c-84e3ad4bdac8" name="Actor1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d5e758c0-3578-427a-8544-7ddb2e534c0f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4c508f81-4d3d-4f65-a3f8-8737a1b43e74" name="Vincular o contrato a uma prestadora de serviço" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7a984531-4536-44a6-950b-9dafc26ffd28" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="38a0ab86-e2c0-45a8-beef-a7bbd372f257" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9f5984ca-1f98-45fd-8a26-f36d6489952c" name="Cadastrar Novo Contrato" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="82e4818c-450b-409a-93f5-04799f99b0f1" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1a3a7485-df25-4291-a15c-45a9317d05fb" name="Alterar Contrato" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="605b1b67-5380-41db-93f8-a83fb7dc01ac" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="06744a44-a6c8-4400-8e73-34432713546d" name="Excluir Contrato" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9a4381f6-04c2-429d-884a-ce22deae5e25" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3f0f2801-8b38-427d-8f14-81e84dd000f4" name="Vincular o contrato a uma prestadora de serviço" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="dd63c7cc-f9e1-4498-8277-a274c89cd2b9" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="bb9edc9a-72cb-4ccf-8b1f-94af17b18e20" name="Diagrama">
+    <elementDefinition Id="aeb13fbb-4674-41c2-8bc9-87da3b00454c" />
+  </package>
+</useCaseModelRoot>

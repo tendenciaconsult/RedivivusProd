@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- Form Elements -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @ViewBag.TituloPanel
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </div>
+            <div class="panel-back">
+
+            </div>
+        </div>
+        <!-- End Form Elements -->
+    </div>
+</div>
+
+
+
+
+@section scripts{
+    @RenderSection("scripts", false)
+}

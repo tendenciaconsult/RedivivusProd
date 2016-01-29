@@ -1,0 +1,172 @@
+﻿@model Simir.Application.ViewModels.DadosCadastraisVM
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    ViewBag.Title = "Dados Cadastrais";
+    ViewBag.TituloPanel = "Dados Cadastrais";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+
+<div class="row" id="EditorDadosCadastraisVM">
+    <div class="col-md-12">
+
+        <!-- Form Elements -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @ViewBag.TituloPanel
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="col-md-6">
+                            @Html.ValidationSummary(false, "(* campos obrigatórios)", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.DadosCadastraisId)
+
+                            <div class="row">
+                                @Html.EditBootstrapFor(model => model.Nome)
+                            </div>
+                            <div class="row">
+                                @Html.EditBootstrapFor(model => model.NomeFantasia)
+                            </div>
+
+
+
+                            <div class="row">
+                                @Html.DDLBootstrapFor(model => model.PorteEmpresaValor, Model.PorteEmpresaDescricao, "/Cadastros/Empresa/GetHashPorteEmpresa/")
+                                @Html.DDLBootstrapFor(model => model.RamoEmpresaValor, Model.RamoEmpresaDescricao, "/Cadastros/Empresa/GetHashRamoEmpresa/")
+
+                            </div>
+                            <div class="row">
+                                @Html.EditBootstrapFor(model => model.InscricaoEstadual)
+                                @Html.EditBootstrapFor(model => model.InscricaoMunicipal)
+                                @Html.EditBootstrapFor(model => model.Cnae)
+                            </div>
+                            <div class="row">
+                                @Html.EditBootstrapFor(model => model.Site)
+                            </div>
+                            <div class="row">
+                                @Html.EditBootstrapFor(model => model.Telefone)
+                                @Html.EditBootstrapFor(model => model.Celular)
+                            </div>
+
+                            <div class="">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Alvará
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            @Html.EditBootstrapFor(model => model.Alvara)
+                                            @Html.EditBootstrapFor(model => model.dtEmissaoAlvara, tudoTamanho: 6, inputTamanho: 6)
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="form-group col-xs-5">
+                                                <label for="bVencIndeterminadoAlvara">Vencimento Indeterminado</label>
+                                                <div class="input-group col-xs-12">
+                                                    @Html.CheckBoxFor(model => model.bVencIndeterminadoAlvara) Indeterminado
+                                                </div>
+
+                                            </div>
+                                            @if (Model.bVencIndeterminadoAlvara)
+                                            {
+                                                <div id="tododtVencAlvara" style="display:none">
+                                                    @Html.EditBootstrapFor(model => model.dtVencAlvara)
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div id="tododtVencAlvara">
+                                                    @Html.EditBootstrapFor(model => model.dtVencAlvara)
+                                                </div>
+                                            }
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            @Html.EditorFor(x => x.Endereco)
+                            @{ Html.EnableClientValidation(false); }
+
+
+                            @Html.EditorFor(x => x.LicencaOperacional, "IListLicencaOperacionalVM")
+                            @{ Html.EnableClientValidation(true); }
+
+
+                        </div>
+
+
+
+
+                    }
+                    <div class="col-md-6">
+
+                        
+                    </div>
+
+
+                    <div class="col-md-12" id="btnInv1">
+                        <hr />
+                        <div class="form-group  pull-right">
+                            <a class="btn btn-default" href="@Url.Action("Index", "DadosCadastrais", new { area = "Externo" })">
+                                Cancelar
+                            </a>
+                            <div onclick="confirmar();" data-confirm="Tem certeza que deseja salvar?" class="btn btn-success">Salvar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-back">
+
+            </div>
+        </div>
+        <!-- End Form Elements -->
+    </div>
+</div>
+
+
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(window).load(disabilitaEndereco(true, false));
+
+        function carregaPagina() {
+            $('input:checkbox[name=bVencIndeterminadoAlvara]').change(function () {
+                if ($(this).is(":checked")) {
+                    $("#tododtVencAlvara").hide();
+                } else {
+                    $("#tododtVencAlvara").show();
+                }
+            });
+        }
+        $(window).load(carregaPagina());
+
+
+
+        function confirmar() {
+
+            var form = $("form", "#page-inner");
+
+            if (form.valid()) {
+                form.submit();
+                // return true;
+            }
+
+        }
+    
+    </script>
+}
+
+

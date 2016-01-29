@@ -1,0 +1,111 @@
+﻿@model IList<Simir.Application.ViewModels.ListaGrupoAcessoVM>
+
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    string nmPropriedade = ViewData.ModelMetadata.PropertyName;
+}
+
+<div id="@nmPropriedade" class="panel panel-default EquipamentosVM">
+    <div class="panel-heading">
+        @ViewData.ModelMetadata.DisplayName
+    </div>
+    <div class="panel-body">
+
+        <div class="">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Menu</th>
+                        <th style="text-align: center;">Consultar</th>
+                        <th style="text-align: center;">Incluir</th>
+                        <th style="text-align: center;">Alterar</th>
+                        <th style="text-align: center;">Excluir</th>
+                        <th style="text-align: center;">Imprimir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            @if (Model[i].MenuPai != "")
+                            {
+                                <td class="inpMenu col-xs-6">
+
+                                    <span><b>@Model[i].MenuPai</b></span>
+                                    <input class="form-control" type="hidden" name="@String.Format("{0}[{1}].MenuPai", nmPropriedade, i)" value="@Model[i].MenuPai" />
+                                </td>
+                                <td align='center' class="inpConsultar col-xs-1">
+                                </td>
+                                <td align='center' class="inpIncluir col-xs-1">
+                                </td>
+                                <td align='center' class="inpAlterar col-xs-1">
+                                </td>
+                                <td align='center' class="inpExcluir col-xs-1">
+                                </td>
+                                <td align='center' class="inpImprimir col-xs-1">
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="inpMenu col-xs-6">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model[i].MenuFilho</span>
+                                    <input class="form-control" type="hidden" name="@String.Format("{0}[{1}].MenuFilho", nmPropriedade, i)" value="@Model[i].MenuFilho" />
+                                </td>
+                                <td align='center' class="inpConsultar col-xs-1">
+                                    @Html.CheckBoxFor(model => model[i].Consultar)
+                                </td>
+                                <td align='center' class="inpIncluir col-xs-1">
+                                    @Html.CheckBoxFor(model => model[i].Incluir)
+                                    @*<input type="checkbox" name="@String.Format("{0}[{1}].Incluir", nmPropriedade, i)" checked="@Model[i].Incluir"/>*@
+
+                                </td>
+                                <td align='center' class="inpAlterar col-xs-1">
+                                    @Html.CheckBoxFor(model => model[i].Alterar)
+                                    @*<input type="checkbox" name="@String.Format("{0}[{1}].Alterar", nmPropriedade, i)" checked="@Model[i].Alterar"/>*@
+                                </td>
+                                <td align='center' class="inpExcluir col-xs-1">
+                                    @Html.CheckBoxFor(model => model[i].Excluir)
+                                    @*<input type="checkbox" name="@String.Format("{0}[{1}].Excluir", nmPropriedade, i)" checked="@Model[i].Excluir"/>*@
+                                </td>
+                                <td align='center' class="inpImprimir col-xs-1">
+                                    @Html.CheckBoxFor(model => model[i].Imprimir)
+                                    @*<input type="checkbox" name="@String.Format("{0}[{1}].Imprimir", nmPropriedade, i)" checked="@Model[i].Imprimir"/>*@
+                                </td>
+                            }
+
+                            <td class="col-xs-2">
+                                <input class="inpidModulo" type="hidden" name="@String.Format("{0}[{1}].idModulo", nmPropriedade, i)" valu value="@Model[i].idModulo"/>
+                                <input class="inpPermissaoId" type="hidden" name="@String.Format("{0}[{1}].PermissaoId", nmPropriedade, i)" valu value="@Model[i].PermissaoId" />
+                                <input class="inpExcluir" type="hidden" name="@String.Format("{0}[{1}].Status", nmPropriedade, i)" value="1" />
+
+                            </td>
+
+                        </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+
+            $("input:text", "#@nmPropriedade .linhapronta").change(
+            function () {
+                alert($('#ListaAcesso[1].Consultar').val());
+                var linha = $(this).closest('tr');
+                linha.find(".inpExcluir").val('2');
+            })
+
+        </script>
+, false);
+}
+

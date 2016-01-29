@@ -1,0 +1,186 @@
+﻿@model Simir.Application.ViewModels.EmpresaNovaVM
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    ViewBag.TituloPanel = "Novo Cadastro";
+    ViewBag.Title = "Novo Cadastro";
+    Layout = "~/Views/Shared/_LayoutNaoLogado.cshtml";
+}
+
+@using (Html.BeginForm("Novo", "Empresa", FormMethod.Post, new { id = "logar" }))
+{
+
+    @Html.AntiForgeryToken()
+    <div class="col-md-10 col-center-block" style="margin-top: 90px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Nova empresa
+            </div>
+            <div class="panel-body">
+
+
+                <div class="col-md-6">
+                    @Html.ValidationSummary(true, "(* campos obrigatórios)", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.EmpresaId)
+
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.Nome)
+                    </div>
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.NomeFantasia)
+                    </div>
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.Cnpj)
+
+                    </div>
+                    <div class="row">
+                        @Html.DDLBootstrapFor(model => model.PorteEmpresaValor, Model.PorteEmpresaDescricao, "/Cadastros/Empresa/GetHashPorteEmpresa/")
+                        @Html.DDLBootstrapFor(model => model.RamoEmpresaValor, Model.RamoEmpresaDescricao, "/Cadastros/Empresa/GetHashRamoEmpresa/")
+
+                    </div>
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.Email)
+                    </div>
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.EmailConfirme)
+                    </div>
+                    <div class="row">
+                        <div id="atividadesEmpresa" class="form-group col-xs-12">
+                            <label>Atividades da empresa</label> *
+                            @Html.ValidationMessage("atividadesEmpresa", "", new { @class = "text-danger" })
+
+
+                            @Html.CheckBoxBootstrapFor(x => x.TipoEmpresaGerador)
+                            @Html.CheckBoxBootstrapFor(x => x.TipoEmpresaColetor)
+                            @Html.CheckBoxBootstrapFor(x => x.TipoEmpresaDestinacao)
+                            @Html.CheckBoxBootstrapFor(x => x.TipoEmpresaDestinadorFinal)
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.Site)
+                    </div>
+
+
+                </div>
+                <div class="col-md-6">
+
+                    @Html.EditorFor(x => x.Endereco)
+
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.Telefone)
+                        @Html.EditBootstrapFor(model => model.Celular)
+                    </div>
+
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.InscricaoEstadual)
+                        @Html.EditBootstrapFor(model => model.InscricaoMunicipal)
+                        @Html.EditBootstrapFor(model => model.Cnae)
+                    </div>
+
+                    <div class="">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Alvará
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    @Html.EditBootstrapFor(model => model.Alvara)
+                                    @Html.EditBootstrapFor(model => model.dtEmissaoAlvara, tudoTamanho: 6, inputTamanho: 6)
+                                </div>
+                                <div class="row">
+                                    
+                                    <div class="form-group col-xs-5">
+                                        <label for="bVencIndeterminadoAlvara">Vencimento Indeterminado</label>
+                                        <div class="input-group col-xs-12">
+                                            @Html.CheckBoxFor(model => model.bVencIndeterminadoAlvara) Indeterminado
+                                        </div>
+
+                                    </div>
+
+                                    <div id="tododtVencAlvara">
+                                        @Html.EditBootstrapFor(model => model.dtVencAlvara)
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group  pull-right">
+                        <div class="btn btn-primary" onclick="confirmaNovo();" data-confirm="Seu dados serão analisados e cadastrados em nosso sistema. Uma mensagem será enviado automaticamente para o e-mail cadastrado.">Cadastrar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function carrega() {
+            $('input:checkbox[name=bVencIndeterminadoAlvara]').change(function () {
+                if ($(this).is(":checked")) {
+                    $("#tododtVencAlvara").hide();
+                } else {
+                    $("#tododtVencAlvara").show();
+                }
+            });
+        }
+        $(window).load(disabilitaEndereco(true, true));
+
+        $(window).load(carrega());
+
+        function confirmaNovo() {
+            //("atividadesEmpresa", "", new { data_val = "true", data_val_atividadesEmpresa = "Preenchea ao menos uma atividade" })
+
+            var form = $('form#logar');
+
+            if (!$("input[type='checkbox']", '#atividadesEmpresa').is(":checked")) {
+
+                addErros("atividadesEmpresa", "Preencha ao menos uma atividade");
+                return;
+            }
+
+            if (form.validate()) {
+                form.submit();
+            }
+
+        }
+
+        function changeGeneric(element, container, valorElement, urlFunc, ddlPendente) {
+
+            $container = $(element).parent(container);
+            //alert($container);
+            $container.find(valorElement).val(element.value);
+            // alert($container.find('select.ddlSub :selected').val())
+            if (ddlPendente === undefined) return;
+
+            $.ajax({
+                type: 'GET',
+                url: urlFunc + element.value,//'/Cadastros/Localidade/GetMunicipiosByUf/' + valor,
+                dataType: 'json',
+                cache: false,
+                async: true,
+                success: function (data) {
+                    var items = '<option> </option>';
+                    $.each(data, function (i, retorno) {
+                        items += "<option value='" + retorno.Value + "'>" + retorno.Text + "</option>";
+                    });
+                    $container.find(ddlPendente).html(items);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    //alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+            //*/
+        }
+
+    </script>
+}

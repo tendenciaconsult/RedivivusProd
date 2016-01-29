@@ -1,0 +1,102 @@
+﻿Linhas de codigo 
+
+total-----data------só c#---------------expressão-----------------------------
+45217   01/04/15   ~12000    (não lembro ql expressão eu usei)
+92059   09/04/15   ~35005    (            //                )
+84591   23/04/15    32005    (^(?!(\s*//.+)))+(^(?!(#.+)))+(^(?!(\s*\{.+)))+(^(?!(\s*\}.+)))+(^(?!(\s*\r?$)))+
+85197   28/04/15    32550    (            //                )
+
+****** CRONOGRAMA *****
+
+30/03
+
+Criação da logomarca
+Alteração no interface web
+
+*Povoamento das tabelas de Localidade
+
+*Elaboração do domínio Localidade
+Elaboração do domínio Pessoas
+Elaboração do domínio Pessoas Juridicas
+Elaboração do domínio Funcionário
+
+Camadas CrossCutting
+	Elaboração do domínio Identificação
+	Criação de regras de autenticação
+Camadas Agente Externo
+*	Integração com Correio
+*	Integração com Excel
+	Integração com Email
+Cadastro
+*	Endereço
+Parametrização do sistema
+	Gerenciar perfil Mantenedor
+	Gerenciar operador do Mantenedor
+	Gerenciar perfil Prefeitura
+	Gerenciar servidor master Prefeitura
+	Gerenciar funcionarios Prefeitura
+
+
+****** FUNCAO *****
+Empresa
+	0..* Funcionarios
+	0..* Funcoes
+
+Funcao
+	0..* Usuario
+	0..* Perfil
+	Descricao
+	MaxUser
+
+Usuario
+	0..* Funcao
+
+Perfil
+	0..* Funcao
+	0..* Modulos
+
+Modulo (abstract)
+	Nome
+	Display
+	0..* Perfil
+
+ModuloPai : Modulo
+	1 Avo (ModuloPai)
+	0..* Action
+
+Action : Modulo
+	1 Controller
+
+Controller
+	Nome
+	Display
+	0..* Actions
+
+
+
+
+****** PARAMETRIZAÇÃO *****
+
+Operador (a pessoa que irá implantar o sistema; ter somente um)(ex: o programador)
+	-Edita o perfil da mantenedora (Tendencia consultoria)
+	-Edita seu perfil
+	-Cria o perfil inicial da prefeitura (cnpj, nome, etc)
+	-Cria o Perfil inicial do servidor master da prefeitura
+	-Associa uma conta ao servidor master da prefeitura
+
+Servidor Master ( o servidor da prefeitura responsável pelo sistema; ter somente um )
+	-Confirma sua conta
+	-Termina de editar seu perfil
+	-Edita o perfil da prefeitura ( com restrição, como o cnpj, nome, etc)
+	-Cria o perfil inicial dos servidores
+		-Associa uma função no sistema a ele
+		-Associa uma conta a ele
+
+Servidor 
+	-Confirma sua conta
+	-Termina de editar seu perfil
+
+*******************
+
+UserManager = Service Domain
+UserStore = Repository no identity

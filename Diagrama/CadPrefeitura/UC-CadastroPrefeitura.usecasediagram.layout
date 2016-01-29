@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Cadastro de Prefeitura">
+  <useCaseModelRootMoniker Id="47fb9ac7-2a08-44b0-8c7f-662115439ce8" />
+  <nestedChildShapes>
+    <actorShape Id="a7561bf8-793e-4f05-9500-70c494f7d5f5" absoluteBounds="3.125, 1.875, 0.875, 1.125" isReference="false" heightOffset="0">
+      <actorMoniker Id="49beb548-27e6-4bd6-a415-a4b616bd2abe" LastKnownName="Usuário" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseShape Id="6c44a125-3e72-467c-9d8c-6412aa640aaa" absoluteBounds="4.625, 0.875, 2.375, 1.125" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="3959bace-5a8f-4bf3-a413-8155770595da" LastKnownName="Visualizar dados da Prefeitura" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(4 : 2.24305555555556); (4.94650805031325 : 1.82238531097189)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="032c9766-b087-42d8-aba4-59daddf752d2" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="a7561bf8-793e-4f05-9500-70c494f7d5f5" />
+        <useCaseShapeMoniker Id="6c44a125-3e72-467c-9d8c-6412aa640aaa" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="0a42896a-214c-4fc5-b21a-2aa73467fd96" absoluteBounds="4.75, 2.5, 2.375, 1.125" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="dc122b5c-bbcb-4c25-b1e3-2da4de1aabd5" LastKnownName="Alterar dados da Prefeitura" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(4 : 2.55263157894737); (4.89943823460567 : 2.78932585121202)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="35d30f98-d1af-4f8e-8e98-2f165f7762c8" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="a7561bf8-793e-4f05-9500-70c494f7d5f5" />
+        <useCaseShapeMoniker Id="0a42896a-214c-4fc5-b21a-2aa73467fd96" />
+      </nodes>
+    </useCaseAssociationConnector>
+  </nestedChildShapes>
+</useCaseDiagram>

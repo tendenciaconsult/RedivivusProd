@@ -1,0 +1,85 @@
+﻿@model Simir.Application.ViewModels.LogradouroVM
+@using Simir.WebInterfaceComAuth.Helpers
+
+
+<div class="col-md-12">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cep)
+        <div class="input-group">
+
+            @Html.TextBoxFor(model => model.Cep, new { @class = "form-control" })
+            <span class="form-group input-group-btn">
+                @*@Ajax.ActionLink("Consultar", "ConsultaCep", new AjaxOptions { HttpMethod = "POST",UpdateTargetId="divLogradouro",InsertionMode = InsertionMode.Replace })*@
+                <button class="btn btn-default" type="button" onclick="consultaCep()">Consultar!</button>
+            </span>
+        </div>
+    </div>
+
+
+    @Html.HiddenFor(model => model.LogradouroVMId)
+
+    <div class="row">
+        @Html.DDLBootstrapFor(model => model.LocalidadeLogradouroTipoValor, Model.LocalidadeLogradouroTipoDescricao, "/Cadastros/Fornecedor/GetHashNaturezaJuridicas/")
+        @Html.EditBootstrapFor(model => model.Nome)
+    </div>
+
+    <div class="row">
+        @Html.DDLBootstrapFor(model => model.LocalidadeUfValor, Model.LocalidadeUfDescricao, "/Cadastros/Fornecedor/GetHashNaturezaJuridicas/")
+        @Html.DDLBootstrapFor(model => model.LocalidadeMunicipioValor, Model.LocalidadeMunicipioValor, "/Cadastros/Fornecedor/GetHashNaturezaJuridicas/")
+
+    </div>
+    <div class="row">
+        @Html.EditBootstrapFor(model => model.nmBairro)
+    </div>
+
+</div>
+
+<script>
+    function consultaCep() {
+        //alert("clicoooou! " + document.getElementsByName('Endereco.LogradouroVM.Cep').item(0).nodeValue);
+        var cep = document.getElementById('Endereco_LogradouroVM_Cep').value;
+
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:64548/Cadastros/Localidade/ConsultaCep/' + cep,
+            dataType: 'json',
+            cache: false,
+            async: true,
+            success: function (data) {
+                document.getElementById('Endereco_LogradouroVM_Nome').value = data.Nome;
+                document.getElementById('Endereco_LogradouroVM_LocalidadeLogradouroTipoId').value = data.LocalidadeLogradouroTipoId;
+                document.getElementById('Endereco_LogradouroVM_LocalidadeUfId').value = data.LocalidadeUfId;
+                document.getElementById('Endereco_LogradouroVM_BairroVM_LocalidadeMunicipioId').value = data.BairroVM.LocalidadeMunicipioId;
+                document.getElementById('Endereco_LogradouroVM_BairroVM_Nome').value = data.BairroVM.Nome;
+                document.getElementById('Endereco_LogradouroVM_LogradouroVMId').value = data.LogradouroVMId;
+                document.getElementById('Endereco_LogradouroVM_BairroVM_BairroVMId').value = data.BairroVM.BairroVMId;
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                //alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    };
+
+    function changeUf(valor) {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:64548/Cadastros/Localidade/GetMunicipiosByUf/' + valor,
+            dataType: 'json',
+            cache: false,
+            async: true,
+            success: function (data) {
+                var items = '<option> </option>';
+                $.each(data, function (i, municipio) {
+                    items += "<option value='" + municipio.Value + "'>" + municipio.Text + "</option>";
+                });
+                $('#Endereco_LogradouroVM_BairroVM_LocalidadeMunicipioId').html(items);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                //alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    };
+</script>
+

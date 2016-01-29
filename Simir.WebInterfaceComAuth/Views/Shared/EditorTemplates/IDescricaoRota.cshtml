@@ -1,0 +1,277 @@
+﻿@model IList<Simir.Application.ViewModels.RotasDescricaoVM>
+
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    string nmPropriedade = ViewData.ModelMetadata.PropertyName;
+}
+
+<div id="@nmPropriedade" class="panel panel-default EquipamentosVM">
+    <div class="panel-heading">
+        @ViewData.ModelMetadata.DisplayName
+    </div>
+    <div class="panel-body">
+
+        <div>
+            <div class="row">
+                @* -----------------------------Selecione a Região Administrativa-------------------------- *@
+                <div class="col-md-6" style="margin-left:-1.5%;">
+                    <div class="form-group col-xs-12">
+                        <label for="RegiaoAdministrativaID">Selecione uma Região Administrativa</label>
+                        <select class="form-control simir-ddl RegiaoAdministrativaID" simir-ddl-url="/ColetaTransporte/CadastroRotas/ReturnRegiaoAdministrativa/"
+                                simir-ddl-pai="nulo" simir-ddl-filho="nulo">
+                            <option value="-1"> </option>
+                        </select>
+                        <input class="inpRegiaoAdministrativaID hiddenFor" data-val="true" data-val-required="Obrigatório informar uma Região Administrativa."
+                               id="RegiaoAdministrativaID" name="RegiaoAdministrativaID" type="hidden" value="">
+                        <input class="inpnmRegiaoAdministrativa hiddenFor" id="nmRegiaoAdministrativa" name="nmRegiaoAdministrativa" type="hidden" value="">
+                        <span class="field-validation-valid text-danger" data-valmsg-for="RegiaoAdministrativaID" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                @* -----------------------------Selecione o Bairro-------------------------- *@
+                <div class="col-md-4" style="margin-left: 0%;">
+                    <div class="row" style="margin-left: -3%">
+                        <div class="col-md-12">
+                            <span class="field-validation-valid text-danger" data-valmsg-for="ValidaBairro" data-valmsg-replace="true"></span>
+                            <div class="form-group col-xs-12">
+                                <label for="EnderecoBairroID">Selecione um Bairro</label>
+                                <select class="form-control simir-ddl EnderecoBairroID" simir-ddl-url="/Limpeza/ServicosEventuais/ReturnBairros/"
+                                        simir-ddl-pai="RegiaoAdministrativaID" simir-ddl-filho="nulo">
+                                    <option value="-1"> </option>
+                                </select>
+                                <input class="inpEnderecoBairroID hiddenFor" id="EnderecoBairroID" name="EnderecoBairroID" type="hidden" value="">
+                                <input class="inpnmEnderecoBairro hiddenFor" id="nmEnderecoBairro" name="nmEnderecoBairro" type="hidden" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="EnderecoBairroID" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-xs-2">
+                    <label> </label>
+                    <div class="input-group">
+                        <div class="btn btn-primary btnAddEquipamento">
+                            <i class="fa fa-plus-circle "></i> Incluir
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inpDirecionamento col-xs-2">
+                <div class="form-group row">
+                    <label>Direção</label>
+                    <div class="input-group col-xs-12">
+                        <select class="form-control simir-ddl " id="DirecionamentoId">
+                            <option value="Início da Rota">Início da Rota</option>
+                            <option value="Vire a Direita">Vire a Direita</option>
+                            <option value="Vire a Esquerda">Vire a Esquerda</option>
+                            <option value="na Rotatória pegue a 1º saída">na Rotatória pegue a 1º saída</option>
+                            <option value="na Rotatória pegue a 2º saída">na Rotatória pegue a 2º saída</option>
+                            <option value="na Rotatória pegue a 3º saída">na Rotatória pegue a 3º saída</option>
+                            <option value="na Rotatória pegue a 4º saída">na Rotatória pegue a 4º saída</option>
+                            <option value="na Rotatória pegue a 5º saída">na Rotatória pegue a 5º saída</option>
+                            <option value="na Rotatória pegue a 6º saída">na Rotatória pegue a 6º saída</option>
+                            <option value="Fim da Rota">Fim da Rota</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <span class="field-validation-valid text-danger" data-valmsg-for="ValidaLogradouro" data-valmsg-replace="true"></span>
+                <div class="form-group col-xs-12">
+                    <label for="EnderecoLogradouroID">Selecione um Logradouro</label>
+                    <select class="form-control simir-ddl EnderecoLogradouroID" simir-ddl-url="/Limpeza/ServicosEventuais/ReturnLogradouro/"
+                            simir-ddl-pai="RegiaoAdministrativaID EnderecoBairroID" simir-ddl-filho="nulo">
+                        <option value="-1"> </option>
+                    </select>
+                    <input class="inpEnderecoLogradouroID hiddenFor" id="EnderecoLogradouroID" name="EnderecoLogradouroID" type="hidden" value="">
+                    <input class="inpnmEnderecoLogradouro hiddenFor" id="nmEnderecoLogradouro" name="nmEnderecoLogradouro" type="hidden" value="">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="EnderecoLogradouroID" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="col-xs-2">
+                <div class="form-group row">
+                    <label>Extensão Percorrida</label>
+                    <div class="input-group col-xs-12">
+                        <input class="inpExtensao form-control text-right" data-mask="000.000" data-mask-reverse="True" type="text" value="" autocomplete="off">
+                        <span class="input-group-addon">Metros</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-2">
+                <label>Possui Pevs? </label>
+                <div class="inpPevs input-group">
+                    <label class="switch">
+                        <input checked="checked" class="switch-input" data-val="true" data-val-required="The Unidade de medida field is required."
+                               id="Sim" name="Residuos[0].Medida" type="radio" value="True">
+                        <label for="Sim" class="switch-label switch-label-off">Sim</label>
+
+                        <input class="switch-input" id="Nao" name="Residuos[0].Medida" type="radio" value="False">
+                        <label for="Nao" class="switch-label switch-label-on">Não</label>
+                        <span class="switch-selection"></span>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Direcionamento</th>
+                        <th style="text-align: center;">Logradouro</th>
+                        <th style="text-align: center;">Extensão Percorrida</th>
+                        <th style="text-align: center;">Possui Pevs?</th>
+                        <th style="text-align: center;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td align='center' class="tdnmDirecionamento col-xs-2">
+                                <span>@Model[i].nmDirecionamento</span>
+                                <input class="inpDirecionamento" type="hidden" name="@String.Format("{0}[{1}].nmDirecionamento", nmPropriedade, i)" value="@Model[i].nmDirecionamento" />
+                            </td>
+                            <td align='center' class="tdnmLogradouro col-xs-5">
+                                <span>@Model[i].nmLogradouro</span>
+                                <input class="inpnmEnderecoLogradouro" type="hidden" name="@String.Format("{0}[{1}].nmLogradouro", nmPropriedade, i)" value="@Model[i].nmLogradouro" />
+                                <input class="inpEnderecoLogradouroID" type="hidden" name="@String.Format("{0}[{1}].LogradouroID", nmPropriedade, i)" value="@Model[i].LogradouroID" />
+                            </td>
+                            <td align='center' class="tdExtensaoPercorrida col-xs-2">
+                                <span>@Model[i].ExtensaoPercorrida</span>
+                                <input class="inpExtensao  form-control text-right" data-mask="000.000" data-mask-reverse="True" type="hidden" name="@String.Format("{0}[{1}].ExtensaoPercorrida", nmPropriedade, i)" value="@Model[i].ExtensaoPercorrida" />
+                            </td>
+                            <td align='center' class="tdPossuiPevs col-xs-2">
+                                <span>@Model[i].PossuiPevs</span>
+                                <input class="inpPevs" type="hidden" name="@String.Format("{0}[{1}].PossuiPevs", nmPropriedade, i)" value="@Model[i].PossuiPevs" />
+                            </td>
+                            <td class="col-xs-2">
+                                <input class="inpRotasDescricaoID" type="hidden" name="@String.Format("{0}[{1}].RotasDescricaoID", nmPropriedade, i)" value="@Model[i].RotasDescricaoID" />
+                                <input class="inpExcluir" type="hidden" name="@String.Format("{0}[{1}].Status", nmPropriedade, i)" value="1" />
+
+                                <div class="btn btn-danger btnExcluir">
+                                    <i class="fa fa-trash-o"></i>
+                                </div>
+                            </td>
+                            <td class="tdnmLogradouro col-xs-0">
+                                <input class="inpRegiaoAdministrativaID" type="hidden" name="@String.Format("{0}[{1}].RegiaoAdministrativaID", nmPropriedade, i)" value="@Model[i].RegiaoAdministrativaID" />
+                                <input class="inpnmRegiaoAdministrativa" type="hidden" name="@String.Format("{0}[{1}].nmRegiaoAdministrativa", nmPropriedade, i)" value="@Model[i].nmRegiaoAdministrativa" />
+                            </td>
+                            <td class="tdnmLogradouro col-xs-0">
+                                <input class="inpEnderecoBairroID" type="hidden" name="@String.Format("{0}[{1}].BairroID", nmPropriedade, i)" value="@Model[i].BairroID" />
+                                <input class="inpnmEnderecoBairro" type="hidden" name="@String.Format("{0}[{1}].nmBairro", nmPropriedade, i)" value="@Model[i].nmBairro" />
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+    $(".btnExcluir", "#@nmPropriedade").click(
+    function () {
+        var linha = $(this).closest('tr');
+        linha.find(".inpExcluir").val('8');
+        linha.hide();
+    });
+
+    $("input:text", "#@nmPropriedade .linhapronta").change(
+    function () {
+        var linha = $(this).closest('tr');
+        linha.find(".inpExcluir").val('2');
+    });
+
+    $(".btnAddEquipamento", "#@nmPropriedade").click(
+    function () {
+        var tabela = $(this).closest(".EquipamentosVM").find("tbody")
+        var i = $('tr', tabela).length;
+
+        var prefixo = '@nmPropriedade' + '[' + i + ']';
+
+        var RegiaoAdministrativaID = $(".inpRegiaoAdministrativaID", "#@nmPropriedade").val();
+        var nmRegiaoAdministrativa = $(".inpnmRegiaoAdministrativa", "#@nmPropriedade").val();
+        var BairroID = $(".inpEnderecoBairroID", "#@nmPropriedade").val();
+        var nmBairro = $(".inpnmEnderecoBairro", "#@nmPropriedade").val();
+        var LogradouroID = $(".inpEnderecoLogradouroID", "#@nmPropriedade").val();
+        var nmLogradouro = $(".inpnmEnderecoLogradouro", "#@nmPropriedade").val();
+
+        var e = document.getElementById("DirecionamentoId");
+        var nmDirecionamento = e.options[e.selectedIndex].value;
+
+        var ExtensaoPercorrida = $(".inpExtensao", "#@nmPropriedade").val();
+   
+        var PossuiPevs = ($("#Sim").prop("checked") == true) ? "Sim" : "Não";
+
+        @*$(".inpRegiaoAdministrativaID", "#@nmPropriedade").val('');
+        $(".inpnmRegiaoAdministrativa", "#@nmPropriedade").val('');
+        $(".inpEnderecoBairroID", "#@nmPropriedade").val('');
+        $(".inpnmEnderecoBairro", "#@nmPropriedade").val('');
+        $(".inpEnderecoLogradouroID", "#@nmPropriedade").val('');
+        $(".inpnmEnderecoLogradouro", "#@nmPropriedade").val('');
+        $(".inpDirecionamento", "#@nmPropriedade").val('');
+        $(".inpExtensao", "#@nmPropriedade").val('');
+        $(".inpPevs", "#@nmPropriedade").val('');*@
+
+
+        tabela.append('<tr>' +
+                            '<td align="center" class="tdnmDirecionamento col-xs-2">' +
+                                '<span>' + nmDirecionamento + '</span>' +
+                                '<input class="inpDirecionamento" type="hidden" name="' + prefixo + '.nmDirecionamento" value="' + nmDirecionamento + '" />' +
+                            '</td>' +
+                            '<td align=center"  class="tdnmLogradouro col-xs-5">' +
+                                '<span>' + nmLogradouro + '</span>' +
+                                '<input class="inpnmEnderecoLogradouro" type="hidden" name="' + prefixo + '.nmLogradouro" value="' + nmLogradouro + '" />' +
+                                '<input class="inpEnderecoLogradouroID" type="hidden" name="' + prefixo + '.LogradouroID" value="' + LogradouroID + '" />' +
+                            '</td>' +
+                            '<td align="center" class="tdExtensaoPercorrida col-xs-2">' +
+                                '<span>' + ExtensaoPercorrida + '</span>' +
+                                '<input class="inpExtensao  form-control text-right" data-mask="000.000" data-mask-reverse="True" type="hidden" name="' + prefixo + '.ExtensaoPercorrida" value="' + ExtensaoPercorrida + '" />' +
+                            '</td>' +
+                            '<td align="center" class="tdPossuiPevs col-xs-2">' +
+                                '<span>' + PossuiPevs + '</span>' +
+                                '<input class="inpPevs" type="hidden" name="' + prefixo + '.PossuiPevs" value="' + PossuiPevs + '" />' +
+                            '</td>' +
+                            '<td class="col-xs-2">' +
+                                '<input class="inpRotasDescricaoID" type="hidden" name="' + prefixo + '.RotasDescricaoID", nmPropriedade, i)" value="0"/>' +
+                                '<input class="inpExcluir" type="hidden" name="' + prefixo + '.Status", nmPropriedade, i)" value="4"/>' +
+
+                                '<div class="btn btn-danger btnExcluir">' +
+                                    '<i class="fa fa-trash-o"></i>' +
+                                '</div>' +
+                            '</td>' +
+                             '<td  align="center" class="tdnmLogradouro col-xs-0">' +
+                                '<input class="inpRegiaoAdministrativaID" type="hidden" name="' + prefixo + '.RegiaoAdministrativaID" value="' + RegiaoAdministrativaID + '" />' +
+                                '<input class="inpnmRegiaoAdministrativa" type="hidden" name="' + prefixo + '.nmRegiaoAdministrativa" value="' + nmRegiaoAdministrativa + '" />' +
+                            '</td>' +
+                            '<td align="center" class="tdnmLogradouro col-xs-0">' +
+                                '<input class="inpEnderecoBairroID" type="hidden" name="' + prefixo + '.BairroID" value="' + BairroID + '" />' +
+                                '<input class="inpnmEnderecoBairro" type="hidden" name="' + prefixo + '.nmBairro" value="' + nmBairro + '" />' +
+                            '</td>' +
+                        '</tr>');
+
+        ultimalinha = $('tr', tabela).last();
+
+        ultimalinha.find('.btnExcluir').click(
+        function () {
+            var linha = $(this).closest('tr');
+            linha.remove();
+        });
+
+        $.applyDataMask(ultimalinha.find('.inpqtEquipamento'));
+
+    });
+
+
+        </script>
+, false);
+}
+

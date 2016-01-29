@@ -1,0 +1,79 @@
+﻿@model IList<Simir.Application.ViewModels.ConsultasColetaEventualVM>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table id="example" class="table" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().nmProgramacao)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().dtColeta)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().EnderecoColeta)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().Rota)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().Status)</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        var classe = "em-dia";
+
+                        if (Model[i].ProgramacaoRealizada == true)
+                        {
+                            classe = "realizado";
+                        }
+                        else if (Model[i].ProgramacaonNaoRealizada == true)
+                        {
+                            classe = "nao-realizado";
+                        }
+                        else if (Model[i].ProgramacaoPendente == true)
+                        {
+                            classe = "pendente";
+                        }
+
+
+                        <tr class="@classe" align='center'>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].nmProgramacao)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].dtColeta)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].EnderecoColeta)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].Rota)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].Status)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function carregaPagina() {
+        $.unblockUI();
+    }
+    $(window).load(carregaPagina());
+    
+    $(document).ready(function () {
+
+        $('#example').dataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy',
+                'excel',
+                'pdf'
+            ],
+        });
+    });
+
+</script>

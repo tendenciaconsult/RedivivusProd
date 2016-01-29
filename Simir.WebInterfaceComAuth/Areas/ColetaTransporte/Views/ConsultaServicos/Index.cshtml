@@ -1,0 +1,134 @@
+﻿@model Simir.Application.ViewModels.ColetaConsultaVM
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    ViewBag.Title = "Consulta de Serviços";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Btn)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div style="font-weight: bold;font-size:15px;">
+                <b>Consulta das Programações de Coleta de Resíduos</b>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        @Html.DDLBootstrapFor(model => model.PrestadoraServicosID, Model.nmPrestadoraServicos, "/ColetaTransporte/ConsultaServicos/ReturnPrestadoraServicos/")
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        @Html.DDLBootstrapFor(model => model.RotaID, Model.nmRota, "/ColetaTransporte/ConsultaServicos/ReturnRotas/")
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class=" row col-md-5" style="margin-left:0.5%">
+                                        @Html.DDLBootstrapFor(model => model.TipoConsultaID, Model.nmTipoConsulta, "/ColetaTransporte/ConsultaServicos/CarregaTipoConsulta/")
+                                    </div>
+                                    <div class=" row col-md-7" style="margin-top:1.5%;">
+                                        <div class="radio-inline">
+                                            @Html.CheckBoxBootstrapFor(model => model.bOrdinaria)
+                                        </div>
+                                        <div class="radio-inline">
+                                            @Html.CheckBoxBootstrapFor(model => model.bEventual)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default" style="float:right">
+                                    <div class="panel-heading">
+                                        Intervalo da Coleta
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group" id="GrupoTipoProgramacao">
+                                            <div class="row">
+                                                @Html.EditBootstrapFor(model => model.dtInicio, tudoTamanho: 12, inputTamanho: 11)
+                                            </div>
+                                            <div class="row">
+                                                @Html.EditBootstrapFor(model => model.dtFim, tudoTamanho: 12, inputTamanho: 11)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+
+                </div>
+                <div class="form-group  pull-right">
+                    <div style="margin-left:-20%" data-toggle="collapse" data-parent="#accordion" class="btn btn-success" onclick="Consultar();">Consultar</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div id="modal">
+
+</div>
+
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        function carregaPagina() {
+
+        }
+
+        $(window).load(carregaPagina());
+
+
+        $(function Consultar() {
+            $(".btn").click(function () {
+                $.blockUI({ message: '<div class="ModalCarregando"></dic>' });
+                if ($("#TipoConsultaID").val() == "") {
+                    addErros("TipoConsultaID", "Tipo de relatório não informado!")
+                    $.unblockUI();
+                }
+                else {
+                    $("#modal").load("/ColetaTransporte/ConsultaServicos/CarregaGrig/"
+                        + $("#TipoConsultaID").val()
+                        + "?idPrestadora=" + $("#PrestadoraServicosID").val()
+                        + "&idRota=" + $("#EnderecoLogradouroID").val()
+                        + "&dtInicio=" + $("#dtInicio").val()
+                        + "&dtFim=" + $("#dtFim").val()                        
+                        + "&Ordinario=" + $("input[name='bOrdinaria']:checked").attr("checked")
+                        + "&Eventual=" + $("input[name='bEventual']:checked").attr("checked")
+                        ).dialog();
+                }
+            });
+
+        });
+
+        $("#dtInicio").change(function () {
+            if($("#dtInicio").val() >  $("#dtFim").val())
+            {
+                $("#dtFim").val($("#dtInicio").val())
+            }
+        });
+
+        $("#dtFim").change(function () {
+            if ($("#dtFim").val() < $("#dtInicio").val()) {
+                addErros("dtFim", "Data Inválida!")
+                $("#dtFim").val($("#dtInicio").val())
+            }
+        });
+    </script>
+}

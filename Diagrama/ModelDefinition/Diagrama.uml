@@ -1,0 +1,1205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
+  dslVersion="1.0.0.0"
+  Id="aeb13fbb-4674-41c2-8bc9-87da3b00454c"
+  name="Diagrama" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <actor
+        Id="f9f04978-9757-4060-a317-fdd488b7bea4"
+        name="Usuário"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="ac677746-4333-4c29-82e0-34785ca18a97"
+            isDerived="false"
+            sourceEndRoleName="Actor1"
+            targetEndRoleName="Excluir Contrato"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="9a4381f6-04c2-429d-884a-ce22deae5e25"
+              LastKnownName="Excluir Contrato"
+              LastKnownLocation="Diagrama.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ee18426e-dc6e-4264-b02c-8cd933d59ec1"
+                  name="Actor1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="94d5e468-8748-4805-889a-a92a684e45cd"
+                  name="Excluir Contrato"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="62996391-684c-429c-a5ae-92ad1fd98af5"
+            isDerived="false"
+            sourceEndRoleName="Actor1"
+            targetEndRoleName="Cadastrar Novo Contrato"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="82e4818c-450b-409a-93f5-04799f99b0f1"
+              LastKnownName="Cadastrar Novo Contrato"
+              LastKnownLocation="Diagrama.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1b21d33f-f9fa-46c7-aaab-81523462ef7b"
+                  name="Actor1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="400cf424-4bd9-498d-8415-b3cee3954e8c"
+                  name="Cadastrar Novo Contrato"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="6282c87e-ad30-45f5-a0bb-149535317485"
+            isDerived="false"
+            sourceEndRoleName="Actor1"
+            targetEndRoleName="Alterar Contrato"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="605b1b67-5380-41db-93f8-a83fb7dc01ac"
+              LastKnownName="Alterar Contrato"
+              LastKnownLocation="Diagrama.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="61f0cd48-3b83-4ded-a970-fa6c40a45cb2"
+                  name="Actor1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="dfedcbf0-dc8d-41a3-b074-273d0333c402"
+                  name="Alterar Contrato"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="38a0ab86-e2c0-45a8-beef-a7bbd372f257"
+            isDerived="false"
+            sourceEndRoleName="Actor1"
+            targetEndRoleName="Vincular o contrato a uma prestadora de serviço"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="dd63c7cc-f9e1-4498-8277-a274c89cd2b9"
+              LastKnownName="Vincular o contrato a uma prestadora de serviço"
+              LastKnownLocation="Diagrama.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d5e758c0-3578-427a-8544-7ddb2e534c0f"
+                  name="Actor1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7a984531-4536-44a6-950b-9dafc26ffd28"
+                  name="Vincular o contrato a uma prestadora de serviço"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="82e4818c-450b-409a-93f5-04799f99b0f1"
+        name="Cadastrar Novo Contrato"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="428a002f-6867-474b-b5d8-f5167f494b9a"
+        name="UseCase1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="066571e9-37b9-4ec1-a4b8-14638a70d40d"
+        name="UseCase2"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b6ca4ad6-5bac-4981-9ab6-57ce270a1abe"
+        name="UseCase3"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="605b1b67-5380-41db-93f8-a83fb7dc01ac"
+        name="Alterar Contrato"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="9a4381f6-04c2-429d-884a-ce22deae5e25"
+        name="Excluir Contrato"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="dd63c7cc-f9e1-4498-8277-a274c89cd2b9"
+        name="Vincular o contrato a uma prestadora de serviço"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="4c3d2d81-d1b4-4af4-97b5-7967b347934f"
+        name="Usuário"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="ec60aad1-95de-437f-b375-b124ddbd0a1b"
+            isDerived="false"
+            sourceEndRoleName="Usuário"
+            targetEndRoleName="Visualizar dados da Prefeitura"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="56574820-1604-4247-b0b3-c7273f4e0c74"
+              LastKnownName="Visualizar dados da Prefeitura"
+              LastKnownLocation="Diagrama.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2dcd54f5-ae28-4eea-b1b3-d09e2f8751e2"
+                  name="Usuário"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8603eab6-f222-463b-8001-2791e77631b7"
+                  name="Visualizar dados da Prefeitura"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="382008ae-3c14-4397-af18-7d3bde7d789b"
+            isDerived="false"
+            sourceEndRoleName="Usuário"
+            targetEndRoleName="Alterar dados da Prefeitura"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="89d90afc-6528-418c-9c06-82d53337e87c"
+              LastKnownName="Alterar dados da Prefeitura"
+              LastKnownLocation="Diagrama.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d91c2bf5-b43c-4641-b078-6db08d5c7a4d"
+                  name="Usuário"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d20f0550-81a0-4c3c-916f-ce7b99ffb1c9"
+                  name="Alterar dados da Prefeitura"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="56574820-1604-4247-b0b3-c7273f4e0c74"
+        name="Visualizar dados da Prefeitura"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="89d90afc-6528-418c-9c06-82d53337e87c"
+        name="Alterar dados da Prefeitura"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="941cc360-edf3-41b3-aa47-8bf62955f466"
+        name="AtividadePrefeitura"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="d337c83c-0bcb-4082-b28c-7319fc83f8da"
+            name="Initial1"
+            isLeaf="false" />
+          <opaqueAction
+            Id="d837da22-d3c7-499f-bb7d-f8384dfb0b14"
+            name="Visualiza os dados cadastrais da prefeitura"
+            isLeaf="false" />
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="61079573-a128-4700-8e4a-0099c8480af5"
+        name="Usuário"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="fbbd51c4-a3b7-4977-8dad-212cfb716480"
+            isDerived="false"
+            sourceEndRoleName="Usuário"
+            targetEndRoleName="Desativar uma prestadora de servicos"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="3af2ada6-9ec9-4834-8a66-2cd5fa34b94f"
+              LastKnownName="Desativar uma prestadora de servicos"
+              LastKnownLocation="Diagrama.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7f1e22fa-f4f3-43a8-856b-d47f0f69d9d9"
+                  name="Usuário"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="15f7a157-77d9-4bcb-b7e1-fd38a0dfbd70"
+                  name="Desativar uma prestadora de servicos"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="a594b920-18a8-4eb1-a08e-da14f794aaf0"
+            isDerived="false"
+            sourceEndRoleName="Usuário"
+            targetEndRoleName="Consultar uma prestadora de Serviços"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="fe68fe28-a9e9-4933-aa4b-f5666199cbda"
+              LastKnownName="Consultar uma prestadora de Serviços"
+              LastKnownLocation="Diagrama.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ca1a5328-830d-4092-bcd2-9e452ecc4f9c"
+                  name="Usuário"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="61134e53-759e-46b7-ac96-eb866f4e7633"
+                  name="Consultar uma prestadora de Serviços"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="33c0b59f-a5d4-4bf1-a579-7ed848b0946d"
+            isDerived="false"
+            sourceEndRoleName="Usuário"
+            targetEndRoleName="Alterar a Prestadora de Serviços"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="85fc398d-bd8e-4614-bf72-bc84268a88b0"
+              LastKnownName="Alterar a Prestadora de Serviços"
+              LastKnownLocation="Diagrama.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5d7c000c-d087-4602-845e-4c96afccd049"
+                  name="Usuário"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="70d67bfe-7b76-4793-ac8a-e748e43e466e"
+                  name="Alterar a Prestadora de Serviços"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="58406642-253e-45c9-b66c-dd6d2d45c4ac"
+            isDerived="false"
+            sourceEndRoleName="Usuário"
+            targetEndRoleName="Inserir Prestadora de Serviços"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="5c495092-cc3d-453b-a867-3a8594b80caf"
+              LastKnownName="Inserir Prestadora de Serviços"
+              LastKnownLocation="Diagrama.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a5328349-37af-41b6-b945-ae531b270131"
+                  name="Usuário"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ba9ae913-af18-4347-9059-6978ec5e7325"
+                  name="Inserir Prestadora de Serviços"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5c495092-cc3d-453b-a867-3a8594b80caf"
+        name="Inserir Prestadora de Serviços"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="85fc398d-bd8e-4614-bf72-bc84268a88b0"
+        name="Alterar a Prestadora de Serviços"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3af2ada6-9ec9-4834-8a66-2cd5fa34b94f"
+        name="Desativar uma prestadora de servicos"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="fe68fe28-a9e9-4933-aa4b-f5666199cbda"
+        name="Consultar uma prestadora de Serviços"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="643c98fe-75d6-47ee-9f66-671f5fe2571f"
+        name="CadContratos"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="f2649059-31cc-4106-9517-21f7523ead63"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="8240a2e9-c830-4456-8517-340ee2b79220"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="cf353508-b5f4-42b0-beb6-e4e4f069fac0"
+                  LastKnownName="Acessa Tela de Cadastro de Contrato"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction
+            Id="cf353508-b5f4-42b0-beb6-e4e4f069fac0"
+            name="Acessa Tela de Cadastro de Contrato"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="d3adcd47-fd2f-497b-aac6-c4b832f9c564"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="ce286e87-e0c4-42e5-a24c-54416475ca30"
+                  LastKnownName="Informe os dados solicitados, como número do contrato, data de início e fim e prestadora de serviço"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="ce286e87-e0c4-42e5-a24c-54416475ca30"
+            name="Informe os dados solicitados, como número do contrato, data de início e fim e prestadora de serviço"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="29cc8972-ea8a-4c30-99a9-4470f1db74b9"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="fc6b2ab0-3281-48a1-9f7c-9ad4bfc71aee"
+                  LastKnownName="Inlcuir Serviços Contratados?"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="580f3411-f495-4939-b9ff-d410b24ae926"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="bb6647ba-7b0a-43fa-911b-73aa7bc57311"
+                guard="Sim"
+                name="Sim"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="c9704208-f617-485b-9897-702f6764363d"
+                  LastKnownName="Seleciona um Serviço"
+                  LastKnownLocation="Diagrama.uml" />
+                <description>Sim</description>
+              </controlFlow>
+              <controlFlow
+                Id="21ba5d3c-5874-4842-b0a3-db32641d2239"
+                guard="Não"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="fb938d72-3657-44b7-bcca-126a896c26a9"
+                  LastKnownName="Cadastre um novo serviço se sub serviços que desejar"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="dfedf283-097c-4233-a7a9-f670fe26ad2d"
+            name="Serviços contratados está na lista?"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="e04b4f48-6784-4e6c-86ef-4c02c0142936"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="580f3411-f495-4939-b9ff-d410b24ae926"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="c9704208-f617-485b-9897-702f6764363d"
+            name="Seleciona um Serviço"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="606e8e61-2eea-4297-aa1f-d71dfce7f6e0"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="ea82d5e0-9a3c-464b-a835-7d8f1ba10619"
+                  LastKnownName="Encontrou o sub servico desejado?"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="ea82d5e0-9a3c-464b-a835-7d8f1ba10619"
+            name="Encontrou o sub servico desejado?"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="3bb804aa-27e8-4663-9657-7d2c867c6e72"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="f2b2006c-62d7-4ea5-a66f-68539bb0629c"
+                  LastKnownName="Decision2"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="fb938d72-3657-44b7-bcca-126a896c26a9"
+            name="Cadastre um novo serviço se sub serviços que desejar"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="2a74bd30-73f0-4124-8ddd-2d0399c296fb"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="c9704208-f617-485b-9897-702f6764363d"
+                  LastKnownName="Seleciona um Serviço"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="a86a5a2d-0338-4247-b68d-1fbc6a7d9886"
+            name="Cadastre um novo sub serviço"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="d6a2d41c-bbb2-4b53-8c4a-f74b4317dc91"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="1bdca687-a644-40b8-9e6e-6b1b0e45647f"
+                  LastKnownName="Selecione o sub serviço"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="f2b2006c-62d7-4ea5-a66f-68539bb0629c"
+            name="Decision2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="3870ed29-f542-4b69-a537-98d4aa5545a4"
+                guard="Não"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="a86a5a2d-0338-4247-b68d-1fbc6a7d9886"
+                  LastKnownName="Cadastre um novo sub serviço"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="307e2bed-18e3-4d58-b050-72181ee94bc1"
+                guard="Sim"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="1bdca687-a644-40b8-9e6e-6b1b0e45647f"
+                  LastKnownName="Selecione o sub serviço"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="1bdca687-a644-40b8-9e6e-6b1b0e45647f"
+            name="Selecione o sub serviço"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="5d43a054-e2ad-4d19-a561-0495504db918"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="e3b249d0-bc9b-4fcc-9e0c-8f0a62299d6f"
+                  LastKnownName="Informar a quantidade de funcionários"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="e3b249d0-bc9b-4fcc-9e0c-8f0a62299d6f"
+            name="Informar a quantidade de funcionários"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="a2ed02f1-42fc-458d-8e58-44b9b0a2f76c"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="37032f8b-d8ce-4403-afb9-380a9042c11e"
+                  LastKnownName="Valor pago"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="37032f8b-d8ce-4403-afb9-380a9042c11e"
+            name="Valor pago"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="510c3e4e-2202-451f-b9c2-6f3e95adb95b"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="b2d1ebd0-088c-4c01-b23f-51e4323ba341"
+                  LastKnownName="Encargos"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="b2d1ebd0-088c-4c01-b23f-51e4323ba341"
+            name="Encargos"
+            isLeaf="false" />
+          <opaqueAction
+            Id="59dfe30d-0cad-40e4-a963-cca02b3af41a"
+            name="Incluir mais?"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="ac77dae7-4f35-443b-87eb-8176c89accb5"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="68a611d1-6f36-460c-897b-34e69bbbe371"
+                  LastKnownName="Decision4"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="fc6b2ab0-3281-48a1-9f7c-9ad4bfc71aee"
+            name="Inlcuir Serviços Contratados?"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="95765b67-8782-4400-a3c5-dab2ca61190f"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="77be9c9d-4d78-46fd-97db-46d3ca1c687b"
+                  LastKnownName="Decision3"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="77be9c9d-4d78-46fd-97db-46d3ca1c687b"
+            name="Decision3"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="a5d57156-abee-4ca6-94d1-29732b49c138"
+                guard="Sim"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="dfedf283-097c-4233-a7a9-f670fe26ad2d"
+                  LastKnownName="Serviços contratados está na lista?"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="b32a82a8-faac-46ef-bbd6-f2d68b78e1bb"
+                guard="Não"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="d829bb02-13b9-4497-ae52-b82e4c458cf4"
+                  LastKnownName="Incluir dados Referente aos veículos utilizados"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="d829bb02-13b9-4497-ae52-b82e4c458cf4"
+            name="Incluir dados Referente aos veículos utilizados"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="1a2d1a41-f36e-477a-b68d-748a511c196a"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="50205299-6a22-40d0-a1e2-6ab519d52d23"
+                  LastKnownName="Incluir mais veículos?"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="68a611d1-6f36-460c-897b-34e69bbbe371"
+            name="Decision4"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="3fdbebf1-fd4f-4e59-b69a-ef26d5f934a7"
+                guard="Não"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="d829bb02-13b9-4497-ae52-b82e4c458cf4"
+                  LastKnownName="Incluir dados Referente aos veículos utilizados"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="1a6781fd-f174-4e98-9a52-8cea9cbbe347"
+                guard="Sim"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="dfedf283-097c-4233-a7a9-f670fe26ad2d"
+                  LastKnownName="Serviços contratados está na lista?"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="50205299-6a22-40d0-a1e2-6ab519d52d23"
+            name="Incluir mais veículos?"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="34179681-9352-4dc1-aa74-d905e0b1f397"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="f5bb3390-f170-4b90-af8e-c077172e60ed"
+                  LastKnownName="incluir"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="f5bb3390-f170-4b90-af8e-c077172e60ed"
+            name="incluir"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="6be28124-eb40-43d2-9766-c600921f06c7"
+                guard="Sim"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="d829bb02-13b9-4497-ae52-b82e4c458cf4"
+                  LastKnownName="Incluir dados Referente aos veículos utilizados"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="ed3aff3c-0a54-41be-bf77-39c436673e26"
+                guard="Não"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="733200cf-3693-417a-9d54-f2c06d576f35"
+                  LastKnownName="Inlcuir dados Referente a Equipamentos"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="733200cf-3693-417a-9d54-f2c06d576f35"
+            name="Inlcuir dados Referente a Equipamentos"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="d67ebf2b-69af-4b0a-9e5c-53a6ff075f5a"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="eb55b771-cb0b-48b8-81f9-5154d52aea54"
+                  LastKnownName="Incluir outro equipamento?"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="8b542bb8-6c10-49d8-b17e-bea083f7654d"
+            name="incluir1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="a968510a-2c26-4b21-9f0a-8c5ec8e68386"
+                guard="Sim"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="733200cf-3693-417a-9d54-f2c06d576f35"
+                  LastKnownName="Inlcuir dados Referente a Equipamentos"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="904238ec-0b03-4a10-9fee-1825aabd368c"
+                guard="Não"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="959b967f-e061-4275-9276-72fce8f16106"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <activityFinalNode
+            Id="959b967f-e061-4275-9276-72fce8f16106"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <opaqueAction
+            Id="eb55b771-cb0b-48b8-81f9-5154d52aea54"
+            name="Incluir outro equipamento?"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="5b5c981d-8a39-49a9-abf5-ffa7045b451c"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="8b542bb8-6c10-49d8-b17e-bea083f7654d"
+                  LastKnownName="incluir1"
+                  LastKnownLocation="Diagrama.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="f1548bd3-a436-4daa-b8c6-85358e786374"
+        name="Usuário"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="0711081c-1dcb-4c4b-9e8f-6d26b1b9d524"
+            isDerived="false"
+            sourceEndRoleName="Usuário"
+            targetEndRoleName="Consultar"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="65a1b5d9-6056-4bdf-a816-7a41fa9ae14c"
+              LastKnownName="Consultar"
+              LastKnownLocation="Diagrama.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8f75be38-df76-4225-bc0f-adacd59ac3ee"
+                  name="Usuário"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5e0b0f2c-7cb4-489b-a466-601c74eb46e4"
+                  name="Consultar"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="61af74f6-ace5-43e2-b3d9-7cd1e4951424"
+            isDerived="false"
+            sourceEndRoleName="Usuário"
+            targetEndRoleName="Incluir"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="75ad38f0-2c81-4c7c-bd6f-74d8b6892f15"
+              LastKnownName="Incluir"
+              LastKnownLocation="Diagrama.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c105fdbb-c6e5-4c3a-b136-a9d3303f4f7f"
+                  name="Usuário"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9244dbb3-eb1d-4d1a-adbe-e8ebb4f2154b"
+                  name="Incluir"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="61780674-63fd-40c4-9c5e-f1652ae303ea"
+            isDerived="false"
+            sourceEndRoleName="Usuário"
+            targetEndRoleName="Alterar"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="6ed5ad7c-c17d-4889-9792-4fdeb2539131"
+              LastKnownName="Alterar"
+              LastKnownLocation="Diagrama.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="efb2c36b-d0ce-4c05-b1e1-391a7ca0c6da"
+                  name="Usuário"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="aba7926c-1e4d-47b8-bc30-80a2fda038fb"
+                  name="Alterar"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="96dc8d7c-078d-42fe-aff1-e524d5566e83"
+            isDerived="false"
+            sourceEndRoleName="Usuário"
+            targetEndRoleName="Excluir"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="f5e8629b-1c30-429e-86ff-53cdd27b2f36"
+              LastKnownName="Excluir"
+              LastKnownLocation="Diagrama.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="99ecb11f-db79-44a1-984f-f0efb8f0dda1"
+                  name="Usuário"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="881862af-6cc1-4d05-88d1-b602c538e239"
+                  name="Excluir"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="65a1b5d9-6056-4bdf-a816-7a41fa9ae14c"
+        name="Consultar"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="a1079e79-d505-40c5-b964-969c368e233a"
+        name="Actor1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="75ad38f0-2c81-4c7c-bd6f-74d8b6892f15"
+        name="Incluir"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f5e8629b-1c30-429e-86ff-53cdd27b2f36"
+        name="Excluir"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6ed5ad7c-c17d-4889-9792-4fdeb2539131"
+        name="Alterar"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

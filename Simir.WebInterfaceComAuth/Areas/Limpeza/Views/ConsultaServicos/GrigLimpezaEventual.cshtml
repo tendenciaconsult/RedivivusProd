@@ -1,0 +1,86 @@
+﻿@model IList<Simir.Application.ViewModels.ConsultasLimpezaEventualVM>
+
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table id="example" class="table table-hover" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().nmProgramacao)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().dtInicio)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().dtFim)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().Logradouro)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().OutroLocal)</th>
+                        <th style="text-align: center;">@Html.DisplayNameFor(model => model.FirstOrDefault().Status)</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        var classe = "em-dia";
+
+                        if (Model[i].ProgramacaoRealizada == true)
+                        {
+                            classe = "realizado";
+                        }
+                        else if (Model[i].ProgramacaonNaoRealizada == true)
+                        {
+                            classe = "nao-realizado";
+                        }
+                        else if (Model[i].ProgramacaoPendente == true)
+                        {
+                            classe = "pendente";
+                        }
+                        <tr class="@classe" align='center'>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].nmProgramacao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(item => item[i].dtInicio)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].dtFim)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].Logradouro)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].OutroLocal)
+                            </td>
+                            <td align='center'>
+                                @Html.DisplayFor(item => item[i].Status)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function carregaPagina() {
+        $.unblockUI();
+    }
+    $(window).load(carregaPagina());
+
+
+    $(document).ready(function () {
+
+        $('#example').dataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy',
+                'excel',
+                'pdf'
+            ]
+        });
+
+    });
+
+
+
+</script>

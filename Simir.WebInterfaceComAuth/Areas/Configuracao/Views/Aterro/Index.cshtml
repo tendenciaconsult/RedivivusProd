@@ -1,0 +1,166 @@
+﻿@model Simir.Application.ViewModels.AterroVM
+@using Simir.Domain.Enuns
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    ViewBag.Title = "Cadastro de Aterro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.AterroID)
+    @Html.HiddenFor(x => x.PrefeituraID)
+    @Html.HiddenFor(x => x.Btn)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Cadastro de Aterros
+        </div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                @Html.ValidationSummary(false, "(* campos obrigatórios)", new { @class = "text-danger" })
+                <div class="row" style="margin-left:-3%">
+                    <div class="col-md-11"style="margin-left:-3%">
+                        @Html.EditBootstrapFor(model => model.nmRazaoSocialAterro, tudoTamanho: 12, inputTamanho: 12)
+                    </div>
+                    <div class="col-md-1" style="Margin-top:4%;margin-left:-8%;">
+                        <div class="btn btn-success" onclick="CarregaGrid();" data-toggle="modal" data-target="#BuscaProgramacao">Localizar</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    @Html.EditBootstrapFor(model => model.nmFantasiaAterro)
+                </div>
+                <div class="row">
+                    @Html.EditBootstrapFor(model => model.CNPJ)
+                </div>
+                <div class="row">
+                    @Html.EditBootstrapFor(model => model.numeroLicencaOp)
+                </div>
+
+                <div class="form-group">
+                    <label>@Html.DisplayNameFor(model => model.bAterroControlado)</label>
+                    <div class="input-group">
+                        <label class="switch">
+                            <input checked="checked" class="switch-input" data-val="true" data-val-required="The Unidade de medida field is required."
+                                   id="Sim" name="bAterroControlado" type="radio" value="true">
+                            <label for="Sim" class="switch-label switch-label-off">Sim</label>
+
+                            <input class="switch-input" id="Nao" name="bAterroControlado" type="radio" value="false">
+                            <label for="Nao" class="switch-label switch-label-on">Não</label>
+                            <span class="switch-selection"></span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(x => x.Endereco)
+            </div>
+            <div class="row">
+                <div class="modal fade" id="BuscaProgramacao" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div id="modal">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group  pull-right">
+                    @if (User.Identity.TemPermicao(TipoPermissao.Incluir) || User.Identity.TemPermicao(TipoPermissao.Alterar))
+                {
+                        <div class="btn btn-default" onclick=" Novo(); ">Novo</div>
+                                <div class="btn btn-success" onclick=" Salvar(); " data-confirm="Tem certeza que deseja salvar?">Salvar</div>
+                    }
+                    @if (User.Identity.TemPermicao(TipoPermissao.Excluir))
+                {
+                        <div id="btnExcluir" class="btn btn-danger" onclick=" Excluir(); " data-confirm="Tem certeza que deseja excluir?">Excluir</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function carregaPagina() {
+            if ($('#AterroID').val() == 0) {
+                $("#btnExcluir").hide();
+            }
+            $("#bAterroControlado").val(true)
+        }
+
+        $(window).load(carregaPagina());
+
+        function Salvar() {
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#Btn').val("Salvar");
+                form.submit();
+                // return true;
+            }
+        }
+        function Novo() {
+
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#Btn').val("Novo");
+                form.submit();
+                // return true;
+            }
+        }
+
+        function Excluir() {
+            var form = $('form', '#page-inner');
+            $('#Btn').val("Excluir");
+
+            //$.desabilitaValidacao();
+            $("[data-val='true']").attr('data-val', 'false');
+
+            //Reset validation message
+            $('.field-validation-error')
+            .removeClass('field-validation-error')
+            .addClass('field-validation-valid');
+
+            //Reset input, select and textarea style
+            $('.input-validation-error')
+            .removeClass('input-validation-error')
+            .addClass('valid');
+
+            //Reset validation summary
+            $(".validation-summary-errors")
+            .removeClass("validation-summary-errors")
+            .addClass("validation-summary-valid");
+
+            //To reenable lazy validation (no validation until you submit the form)
+            $('form').removeData('unobtrusiveValidation');
+            $('form').removeData('validator');
+            $.validator.unobtrusive.parse($('form'));
+
+            form.submit();
+
+        }
+
+        $("#Sim").change(function () {
+            $("#bAterroControlado").val(true)
+        });
+        $("#Nao").change(function () {
+            $("#bAterroControlado").val(false)
+        });
+
+        function CarregaGrid() {
+            $("#modal").load("/Configuracao/Aterro/BuscaProgramacao/");
+        }
+
+    </script>
+}

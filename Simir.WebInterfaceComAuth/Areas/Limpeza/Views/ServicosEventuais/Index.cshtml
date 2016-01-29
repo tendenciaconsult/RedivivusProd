@@ -1,0 +1,359 @@
+﻿@model Simir.Application.ViewModels.LimpezaEventualVM
+@using Simir.WebInterfaceComAuth.Helpers
+@using Simir.Domain.Enuns
+
+@{
+    ViewBag.Title = "Limpeza Eventual";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.LimpezaEventualID)
+    @Html.HiddenFor(x => x.Btn)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+               Limpeza Eventual
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ValidationSummary(false, "(* campos obrigatórios)", new { @class = "text-danger" })
+                    <div class="row" style="margin-left:-3%">
+                        <div class="col-md-7">
+                            @Html.EditBootstrapFor(model => model.nmProgramacao, tudoTamanho: 12, inputTamanho: 12)
+                        </div>
+                        <div class="col-md-1" style="Margin-top:2%;margin-left:-3%;">
+                            <div class="btn btn-success" onclick="CarregaGrid();" data-toggle="modal" data-target="#BuscaProgramacao">Localizar</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="modal fade" id="BuscaProgramacao" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div id="modal">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left:-3%">
+                        <div class="col-md-6">
+                            @Html.DDLBootstrapFor(model => model.RegiaoAdministrativaID, model => model.nmRegiaoAdministrativa, "/Limpeza/ServicosEventuais/ReturnRegiaoAdministrativa/", "", null)
+                        </div>
+                        <div class="col-md-6">
+                            @Html.EditBootstrapFor(model => model.dtInicio)
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left:-3%">
+                        <div class="col-md-6">
+                            @Html.DDLBootstrapFor(model => model.PrestadoraServicosID, Model.nmPrestadoraServicos, "/Limpeza/ServicosEventuais/ReturnPrestadoraServicos/")
+                        </div>
+                        <div class="col-md-6">
+                            @Html.EditBootstrapFor(model => model.dtFim)
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left:-3%">
+                        <div class="col-md-3">
+                            @Html.ValidationMessage("ValidaBairro", new { @class = "text-danger" })
+                            @Html.DDLBootstrapFor(model => model.EnderecoBairroID, model => model.nmEnderecoBairro, "/Limpeza/ServicosEventuais/ReturnBairros/", model => model.RegiaoAdministrativaID, null)
+                        </div>
+                        <div class="col-md-6">
+                            @Html.ValidationMessage("ValidaLogradouro", new { @class = "text-danger" })
+                            @Html.DDLBootstrapFor(model => model.EnderecoLogradouroID, model => model.nmEnderecoLogradouro, "/Limpeza/ServicosEventuais/ReturnLogradouro/", "RegiaoAdministrativaID EnderecoBairroID", null)
+                        </div>
+                    </div>
+                    @* --------------------- Especificar outro tipo de logradouro -------------- *@
+                    <div class="col-md-12" style="margin-left:-1.5%">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Especificar outro local?
+                            </div>
+                            <div class="panel-body">
+                                <ul class="nav nav-pills">
+                                    <li class="">
+                                        <a href="#OutroEnderecoSim" data-toggle="tab" id="btnComOutroLocal">Sim</a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#OutroEnderecoNao" data-toggle="tab" id="btnSemOutroLocal">Não</a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane fade" id="OutroEnderecoSim">
+                                        <div class="row" style="margin-left:1%; margin-top:8px;">
+                                            @Html.EditBootstrapFor(model => model.nmLogradouro, tudoTamanho: 11, inputTamanho: 10)
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="OutroEnderecoNao">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @* -------------------Informe o tipo de programação-------------------- *@
+                    <div class="col-md-12" style="margin-left:-1.7%;">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Informe o tipo de programação
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group" id="GrupoTipoProgramacao">
+                                    <div class="radio-inline" style="margin-left:1.5%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoProgramacao, 1) Capina
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoProgramacao, 2) Varrição
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoProgramacao, 3) Roçagem
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoProgramacao, 4) Raspagem
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoProgramacao, 5) Podas ou Arranquios de Árvores
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoProgramacao, 6) Lavagem de vias
+                                        </label>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.TipoProgramacao, 7) Limpeza de Galerias pluviais
+                                            </label>
+                                        </div>
+                                        <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.TipoProgramacao, 8, new { @class = "Pintura" }) Pintura de guias
+                                            </label>
+                                        </div>
+                                        <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.TipoProgramacao, 9) Limpeza de boca de lobos
+                                            </label>
+                                        </div>
+                                        <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.TipoProgramacao, 10) Multirão de Limpeza
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                @Html.EditBootstrapFor(model => model.qtGaris, tudoTamanho: 9, inputTamanho: 2)
+                                <div class="row" id="Pintura" style="margin-left:0.3%; margin-top:8px; display:none;">
+                                    @Html.EditBootstrapFor(model => model.qtTintasUtilizados, tudoTamanho: 7, inputTamanho: 4)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @* -------------------Utilizará algum equipamento?-------------------- *@
+
+                    <div class="col-md-12" style="margin-left:-1.5%">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Utilizará algum equipamento?
+                            </div>
+                            <div class="panel-body">
+                                <ul class="nav nav-pills">
+                                    <li class="">
+                                        <a href="#Sim" data-toggle="tab" id="btn-Sim">Sim</a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#Nao" data-toggle="tab" id="btn-Nao">Não</a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane fade" id="Sim">
+                                        <div style="margin-top:1%">
+                                            @Html.EditorFor(model => model.Equipamentos, "IListEquipamentoVM")
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="Nao">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <hr />
+                        <div class="form-group  pull-right">
+                            @if (User.Identity.TemPermicao(TipoPermissao.Incluir) || User.Identity.TemPermicao(TipoPermissao.Alterar))
+                            {
+                                <div class="btn btn-default" onclick=" Novo();">Novo</div>
+                                <div class="btn btn-success" onclick=" confirmaAlteracao(); " data-confirm="Tem certeza que deseja salvar?">Salvar</div>
+                            }
+                            @if (User.Identity.TemPermicao(TipoPermissao.Excluir))
+                            {
+                                <div id="btnExcluir" class="btn btn-danger" onclick=" ConfirmaExclusao(); " data-confirm="Tem certeza que deseja excluir?">Excluir</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        function carregaPagina() {
+
+            if ($('#LimpezaEventualID').val() == 0) {
+                $("#btnExcluir").hide();
+            }
+            if ($("input[name='TipoProgramacao']:checked").val() == 8) {
+                $("#Pintura").show();
+            }
+            if ($("input[name='Equipamentos[0].qtEquipamento']").val() != null) {
+                $("#btn-Sim").click();
+            }
+            else {
+                $("#btn-Nao").click();
+            }
+            if ($("#OutroEnderecoNao").val() != "") {
+
+                $("#btnComOutroLocal").click();
+            }
+            else {
+                $("#btnSemOutroLocal").click();
+            }
+
+        }
+
+        $(window).load(carregaPagina());
+
+        $("input[name='TipoProgramacao']").change(function () {
+            if ($("input[name='TipoProgramacao']:checked").val() == 8) {
+                $("#Pintura").show();
+            }
+            else {
+                $("#Pintura").hide();
+            }
+
+        })
+        function Novo() {
+
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#Btn').val("Novo");
+                form.submit();
+                // return true;
+            }
+        }
+
+        function confirmaAlteracao() {
+            $.blockUI({ message: '<div class="ModalCarregando"></dic>' });
+            if (($('#EnderecoLogradouroID').val() == 0) && ($('#EnderecoBairroID').val() == 0) && ($('#nmLogradouro').val() == ""))
+            {
+                addErros("ValidaBairro", "Nenhum Bairro informado")
+                addErros("ValidaLogradouro", "Nenhum Logradouro informado")
+                $.unblockUI();
+            }
+            else if (($('#EnderecoLogradouroID').val() == 0) && ($('#EnderecoBairroID').val() != 0)) {
+                addErros("ValidaLogradouro", "Nenhum Logradouro informado")
+                $.unblockUI();
+            }
+            else {
+                var form = $('form', '#page-inner');
+                if (form.validate()) {
+                    $('#Btn').val("Salvar");
+                    form.submit();
+                    // return true;
+                }
+            }
+
+        }
+        function ConfirmaExclusao() {
+            var form = $('form', '#page-inner');
+            $('#Btn').val("Excluir");
+
+            //$.desabilitaValidacao();
+            $("[data-val='true']").attr('data-val', 'false');
+
+            //Reset validation message
+            $('.field-validation-error')
+            .removeClass('field-validation-error')
+            .addClass('field-validation-valid');
+
+            //Reset input, select and textarea style
+            $('.input-validation-error')
+            .removeClass('input-validation-error')
+            .addClass('valid');
+
+            //Reset validation summary
+            $(".validation-summary-errors")
+            .removeClass("validation-summary-errors")
+            .addClass("validation-summary-valid");
+
+            //To reenable lazy validation (no validation until you submit the form)
+            $('form').removeData('unobtrusiveValidation');
+            $('form').removeData('validator');
+            $.validator.unobtrusive.parse($('form'));
+
+            form.submit();
+
+        }
+
+        function CarregaGrid() {
+            $("#modal").load("/Limpeza/ServicosEventuais/CarregaGrig/");
+        }
+
+        $("#nmLogradouro").change(function () {
+            if ($("#nmLogradouro").val() != "")
+            {
+                $(".EnderecoBairroID").val("0")
+                $("#nmEnderecoBairro").val('')
+                $('#EnderecoBairroID').val(0)
+
+                $(".EnderecoLogradouroID").val("0")
+                $("#nmEnderecoLogradouro").val('')
+                $('#EnderecoLogradouroID').val(0)
+            }
+        })
+
+        $(".EnderecoBairroID").change(function () {
+            if ($("#nmLogradouro").val() != "") {
+                $("#nmLogradouro").val("");
+                $("#btnSemOutroLocal").click();
+            }
+        })
+        $("#dtInicio").change(function () {
+            if ($("#dtInicio").val() > $("#dtFim").val()) {
+                $("#dtFim").val($("#dtInicio").val());
+            }
+        });
+
+        $("#dtFim").change(function () {
+            if ($("#dtFim").val() < $("#dtInicio").val()) {
+                addErros("dtFim", "Data Inválida!");
+                $("#dtFim").val($("#dtInicio").val());
+            }
+        });
+
+    </script>
+}

@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIMIR - @ViewBag.Title </title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/tabela")
+
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("SIMIR", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;">Olá Ernani Gaspar, bem vindo ao SIMIR &nbsp;<a href="#" class="btn btn-danger square-btn-adjust">Logout</a></div>
+        </nav>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li class="text-center">
+                        <img src="~/Content/img/ernani.jpg" class="user-image img-responsive" />
+                    </li>
+
+
+                    <li>
+                        <a class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Home" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active-menu" : "")" href="@Url.Action("Index", "Home")"><i class="fa fa-desktop fa-3x"></i> Home </a>
+                    </li>
+                    <li>
+                        <a class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Bootstrap" ? "active-menu" : "")" href="#"><i class="fa fa-dashboard fa-3x"></i> Bootstrap Exemplos <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <
+                            <li>
+                                <a href="@Url.Action("Index", "Bootstrap")"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("ui", "Bootstrap")"><i class="fa fa-desktop fa-3x"></i> UI Elements</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("tabpanel", "Bootstrap")"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("chart", "Bootstrap")"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("table", "Bootstrap")"><i class="fa fa-table fa-3x"></i> Table Examples</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("form", "Bootstrap")"><i class="fa fa-edit fa-3x"></i> Forms </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Empresa" ? "active" : "")">
+                        <a class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Empresa" ? "active-menu" : "")" href="#"><i class="fa fa-edit fa-3x"></i> Cadastros <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Pessoas</a>
+                            </li>
+                            <li>
+                                <a href="#">Resíduos</a>
+                            </li>
+                            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Empresa" ? "active" : "")">
+                                <a href="#">Empresa<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active-menu" : "")" href="@Url.Action("Index", "Empresa")">Listar</a>
+                                    </li>
+                                    <li>
+                                        <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Edit" ? "active-menu" : "")" href="@Url.Action("Edit", "Empresa")">Inserir Nova</a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+                    <li>
+                        <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contato" ? "active-menu" : "")" href="@Url.Action("Contato", "Home")"><i class="fa fa-envelope-o fa-3x"></i> Contato </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>@ViewContext.RouteData.Values["Controller"] > @ViewBag.Title </h2>
+                        <h5>@ViewBag.Descricao</h5>
+
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <hr />
+                @RenderBody()
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    </div>
+    <!-- /. WRAPPER  -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/tabela")
+
+    @RenderSection("scripts", required: false)
+    <script>
+        $('#myModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id = button.data('id');
+            var action = button.data('action');
+            var controller = button.data('controller');
+            if (typeof controller === 'undefined') {
+                controller = '@ViewContext.RouteData.Values["Controller"].ToString()';
+            };
+            //alert(button + id + action + controller);
+
+            $.ajax({
+                type: 'GET',
+                url: controller + '/' + action + '/' + id,
+                dataType: 'html',
+                cache: false,
+                async: false,
+                success: function (data) {
+                    $('#myModal').html(data);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    //alert(xhr.status);
+                    //alert(thrownError);
+                }
+            });
+
+        });
+        $('#myModal').on('hide.bs.modal', function (event) {
+            //alert('fechou!!');
+        })
+    </script>
+</body>
+</html>
+

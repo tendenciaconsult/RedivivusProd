@@ -1,0 +1,138 @@
+﻿@model Simir.Application.ViewModels.DisposicaoFinalVM
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    ViewBag.Title = "Disposição Final";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Btn)
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Resíduos Recebido
+        </div>
+        <div class="panel-body">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Dados da Transportadora
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TransportadoraCnpj)
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.TransportadoraCnpj, new {@class = "form-control", @data_mask = "99.999.999/9999-99", maxlength = "18"})
+                                    <span class="form-group input-group-btn">
+                                        <button class="btn btn-default" type="button" onclick="BuscarResiduo(this)">Consultar!</button>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.TransportadoraCnpj, "", new { @class = "text-danger" })
+                                <div class="row">
+                                    @Html.EditBootstrapFor(model => model.TransportadoraSocial)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Informações referente aos Rejeitos recebidos
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                @Html.EditBootstrapFor(model => model.DataEntrega, tudoTamanho: 6, inputTamanho: 7)
+                                <div class="row">
+                                    @Html.EditBootstrapFor(model => model.Quantidade)
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group ">
+                                        @Html.LabelFor(model => model.bAterroControlado)
+                                        <label class="switch input-group col-xs-12">
+                                            @Html.RadioButtonFor(model => model.bAterroControlado, "True", new { id = "simAterroControlado", @class = "switch-input" })
+                                            <label for="simAterroControlado" class="switch-label switch-label-off">Sim</label>
+
+                                            @Html.RadioButtonFor(model => model.bAterroControlado, "False", new { id = "naoAterroControlado", @class = "switch-input" })
+                                            <label for="naoAterroControlado" class="switch-label switch-label-on">Não</label>
+                                            <span class="switch-selection"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-12">
+                <hr />
+                <div class="form-group  pull-right">
+                    <div class="btn btn-success" onclick="Salvar();" data-confirm="Tem certeza que deseja salvar?">Salvar</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title ">
+            Histórico de Destinação
+            <div class="pull-right">
+                <div style="display: inline-block;">
+
+                    <div id="carregando" style="display: none;">
+                        <i class="fa fa-refresh fa-spin fa-fw"></i>Carregando...
+                    </div>
+                </div>
+                <div class="btn btn-success btn-xs" onclick="CarregaGrid();" data-toggle="modal" data-target="#BuscaProgramacao"><i class="fa fa-angle-double-down fa-fw"></i></div>
+
+            </div>
+        </div>
+
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+        <div class="panel-body">
+            <div id="modal">
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+        
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function CarregaGrid() {
+            $('.collapse').collapse('show');
+            $('#carregando').show();
+            $("#modal").load("/Externo/DisposicaoFinal/HistoricoDisposicaoFinal/", function () {
+                $('#carregando').hide();
+            });
+        }
+        function Salvar() {
+            var form = $('form', '#page-inner');
+            if (form.validate()) {
+                $('#Btn').val("Salvar");
+                form.submit();
+                // return true;
+            }
+        }
+    </script>
+}

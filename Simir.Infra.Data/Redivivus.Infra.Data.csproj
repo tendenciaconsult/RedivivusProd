@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3407D0FD-F351-4D19-834D-682869372482}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Simir.Infra.Data</RootNamespace>
+    <AssemblyName>Simir.Infra.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqToExcel">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\LinqToExcel.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\Remotion.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\Remotion.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Interfaces">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\Remotion.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntityConfig\AspNetPermissaoMap.cs" />
+    <Compile Include="EntityConfig\AspNetTipoPermissaoMap.cs" />
+    <Compile Include="Context\BaseDbContext.cs" />
+    <Compile Include="Context\IContextManager.cs" />
+    <Compile Include="Context\IDbContext.cs" />
+    <Compile Include="Context\IUnitOfWork.cs" />
+    <Compile Include="Context\RepositoryContext.cs" />
+    <Compile Include="Context\SimirContext.cs" />
+    <Compile Include="Context\UnitOfWork.cs" />
+    <Compile Include="EntityConfig\AspNetActionConfig.cs" />
+    <Compile Include="EntityConfig\AspNetClaimsConfig.cs" />
+    <Compile Include="EntityConfig\AspNetClientConfig.cs" />
+    <Compile Include="EntityConfig\AspNetControllerConfig.cs" />
+    <Compile Include="EntityConfig\AspNetFuncaoConfig.cs" />
+    <Compile Include="EntityConfig\AspNetModuloConfig.cs" />
+    <Compile Include="EntityConfig\AspNetModuloPaiConfig.cs" />
+    <Compile Include="EntityConfig\AspNetPerfilConfig.cs" />
+    <Compile Include="EntityConfig\AspNetUserConfig.cs" />
+    <Compile Include="EntityConfig\TBAterroHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBAterroMap.cs" />
+    <Compile Include="EntityConfig\TBColetaEventualHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBColetaEventualMap.cs" />
+    <Compile Include="EntityConfig\TBColetaExecutadaDetalhadaHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBColetaExecutadaDetalhadaMap.cs" />
+    <Compile Include="EntityConfig\TBColetaExecutadaHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBColetaExecutadaMap.cs" />
+    <Compile Include="EntityConfig\TBColetaOrdinariaHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBColetaOrdinariaMap.cs" />
+    <Compile Include="EntityConfig\TBContratoEquipamentoMap.cs" />
+    <Compile Include="EntityConfig\TBContratoHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBContratoMap.cs" />
+    <Compile Include="EntityConfig\TBContratoVeiculoMap.cs" />
+    <Compile Include="EntityConfig\TBEnderecosColetaEventualHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBEnderecosColetaEventualMap.cs" />
+    <Compile Include="EntityConfig\TBEquipamentoColetaEventualHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBEquipamentoColetaEventualMap.cs" />
+    <Compile Include="EntityConfig\TBEquipamentoColetaOrdinariaHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBEquipamentoColetaOrdinariaMap.cs" />
+    <Compile Include="EntityConfig\TBEquipamentoLimpezaEventualHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBEquipamentoLimpezaEventualMap.cs" />
+    <Compile Include="EntityConfig\TBEquipamentoLimpezaExecutadaHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBEquipamentoLimpezaExecutadaMap.cs" />
+    <Compile Include="EntityConfig\TBFaleConoscoMap.cs" />
+    <Compile Include="EntityConfig\TBFeiraLivreHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBFeiraLivreMap.cs" />
+    <Compile Include="EntityConfig\TBLimpezaExecutadaHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBLimpezaExecutadaMap.cs" />
+    <Compile Include="EntityConfig\TBLimpezaOrdinariaHistoryMap.cs" />
+    <Compile Include="EntityConfig\TBLimpezaOrdinariaMap.cs" />
+    <Compile Include="EntityConfig\TBLimpezaEventualHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBLimpezaEventualMap.cs" />
+    <Compile Include="EntityConfig\TBLogEventoMap.cs" />
+    <Compile Include="EntityConfig\TBArquivoMap.cs" />
+    <Compile Include="EntityConfig\TBResiduoClasseMap.cs" />
+    <Compile Include="EntityConfig\TBResiduosDestinadorRejeitoMap.cs" />
+    <Compile Include="EntityConfig\TBDisposicaoFinalResiduoMap.cs" />
+    <Compile Include="EntityConfig\TBEmpresaMap.cs" />
+    <Compile Include="EntityConfig\TBEnderecoBairroMap.cs" />
+    <Compile Include="EntityConfig\TBEnderecoCidadeMap.cs" />
+    <Compile Include="EntityConfig\TBEnderecoEstadoMap.cs" />
+    <Compile Include="EntityConfig\TBEnderecoLogradouroMap.cs" />
+    <Compile Include="EntityConfig\TBEnderecoMap.cs" />
+    <Compile Include="EntityConfig\TBFuncoesEmpresaMap.cs" />
+    <Compile Include="EntityConfig\TBGeradorMtrMap.cs" />
+    <Compile Include="EntityConfig\TBLicencaOperacaoMap.cs" />
+    <Compile Include="EntityConfig\TBPorteEmpresaMap.cs" />
+    <Compile Include="EntityConfig\TBPrefeituraMap.cs" />
+    <Compile Include="EntityConfig\TBPrefeitura_HistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBPrestadoraServicoMap.cs" />
+    <Compile Include="EntityConfig\TBPrestadoraServicosEquipamentoMap.cs" />
+    <Compile Include="EntityConfig\TBPrestadoraServicosEquipamentosHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBPrestadoraServicosHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBRamoEmpresaMap.cs" />
+    <Compile Include="EntityConfig\TBResiduoAtividadeMap.cs" />
+    <Compile Include="EntityConfig\TBRegiaoAdministrativaHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBRegiaoAdministrativaLogradouroHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBRegiaoAdministrativaLogradouroMap.cs" />
+    <Compile Include="EntityConfig\TBRegiaoAdministrativaMap.cs" />
+    <Compile Include="EntityConfig\TBResiduoClassificadoMap.cs" />
+    <Compile Include="EntityConfig\TBResiduoMap.cs" />
+    <Compile Include="EntityConfig\TBResiduosColetadoItemMap.cs" />
+    <Compile Include="EntityConfig\TBResiduosColetadoMap.cs" />
+    <Compile Include="EntityConfig\TBResiduosDestinadoreItemMap.cs" />
+    <Compile Include="EntityConfig\TBResiduosDestinadoreMap.cs" />
+    <Compile Include="EntityConfig\TBResiduosGeradoItemMap.cs" />
+    <Compile Include="EntityConfig\TBResiduosGeradoMap.cs" />
+    <Compile Include="EntityConfig\TBResiduosTratadoMap.cs" />
+    <Compile Include="EntityConfig\TBResiduoVinculadoMap.cs" />
+    <Compile Include="EntityConfig\TBResponsabilidadeMap.cs" />
+    <Compile Include="EntityConfig\TBRotaMap.cs" />
+    <Compile Include="EntityConfig\TBRotasDescricaoHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBRotasDescricaoMap.cs" />
+    <Compile Include="EntityConfig\TBRotasHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBSecretariaMap.cs" />
+    <Compile Include="EntityConfig\TBSecretariasResponsabilidadeMap.cs" />
+    <Compile Include="EntityConfig\TBSecretariasResponsabilidade_HisctoricoMap.cs" />
+    <Compile Include="EntityConfig\TBSecretaria_HistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBResiduoListaMap.cs" />
+    <Compile Include="EntityConfig\TBTransbordoHistoricoMap.cs" />
+    <Compile Include="EntityConfig\TBTransbordoMap.cs" />
+    <Compile Include="EntityConfig\TBServicoFuncaoSubtituloMap.cs" />
+    <Compile Include="EntityConfig\TBServicoFuncaoTituloMap.cs" />
+    <Compile Include="EntityConfig\TBServicoFuncionarioMap.cs" />
+    <Compile Include="EntityConfig\TBServicoMap.cs" />
+    <Compile Include="EntityConfig\TBUsuarioMap.cs" />
+    <Compile Include="EntityConfig\TBUsuario_HistoricoMap.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AspNetPermissaoRepository.cs" />
+    <Compile Include="Repositories\AterroRepository.cs" />
+    <Compile Include="Repositories\ColetaEventualRepository.cs" />
+    <Compile Include="Repositories\ColetaExecutadaDetalhadaRepository.cs" />
+    <Compile Include="Repositories\ColetaExecutadaRepository.cs" />
+    <Compile Include="Repositories\ColetaOrdinariaRepository.cs" />
+    <Compile Include="Repositories\Common\RepositoryProc.cs" />
+    <Compile Include="Repositories\ContratoRepository.cs" />
+    <Compile Include="Repositories\DisposicaoFinalRepository.cs" />
+    <Compile Include="Repositories\EnderecosColetaEventualRepository.cs" />
+    <Compile Include="Repositories\EquipamentoColetaEventualRepository.cs" />
+    <Compile Include="Repositories\EquipamentoColetaOrdinariaRepository.cs" />
+    <Compile Include="Repositories\EquipamentoLimpezaEventualRepository.cs" />
+    <Compile Include="Repositories\EquipamentoLimpezaExecutadaRepository.cs" />
+    <Compile Include="Repositories\FaleConoscoRepository.cs" />
+    <Compile Include="Repositories\FeiraLivreRepository.cs" />
+    <Compile Include="Repositories\GeradorMtrRepository.cs" />
+    <Compile Include="Repositories\ClassificacaoResidoRepository.cs" />
+    <Compile Include="Repositories\Common\ContextManager.cs" />
+    <Compile Include="Repositories\Common\RepositoryBase.cs" />
+    <Compile Include="Repositories\AspNetActionRepository.cs" />
+    <Compile Include="Repositories\AspNetControllerRepository.cs" />
+    <Compile Include="Repositories\AspNetFuncaoRepository.cs" />
+    <Compile Include="Repositories\AspNetModuloRepository.cs" />
+    <Compile Include="Repositories\AspNetPerfilRepository.cs" />
+    <Compile Include="Repositories\EmpresaRepository.cs" />
+    <Compile Include="Repositories\EnderecoBairroRepository.cs" />
+    <Compile Include="Repositories\EnderecoCidadeRepository.cs" />
+    <Compile Include="Repositories\EnderecoEstadoRepository.cs" />
+    <Compile Include="Repositories\EnderecoLogradouroRepository.cs" />
+    <Compile Include="Repositories\EnderecoRepository.cs" />
+    <Compile Include="Repositories\LicencaOperacaoRepository.cs" />
+    <Compile Include="Repositories\LimpezaEventualRepository.cs" />
+    <Compile Include="Repositories\LimpezaExecutadaRepository.cs" />
+    <Compile Include="Repositories\LimpezaOrdinariaRepository.cs" />
+    <Compile Include="Repositories\PorteEmpresaRepository.cs" />
+    <Compile Include="Repositories\PrefeituraRepository.cs" />
+    <Compile Include="Repositories\PrestadoraServicoEquipamentoRepository.cs" />
+    <Compile Include="Repositories\PrestadoraServicoRepository.cs" />
+    <Compile Include="Repositories\RamoEmpresaRepository.cs" />
+    <Compile Include="Repositories\RegiaoAdministrativaLogradouroRepository.cs" />
+    <Compile Include="Repositories\RegioesAdministrativasRepository.cs" />
+    <Compile Include="Repositories\ResiduoRepository.cs" />
+    <Compile Include="Repositories\ResiduosGeradoRepository.cs" />
+    <Compile Include="Repositories\RotaRepository.cs" />
+    <Compile Include="Repositories\RotasDescricaoRepository.cs" />
+    <Compile Include="Repositories\SecretariaRepository.cs" />
+    <Compile Include="Repositories\SecretariaResponsabilidadesRepository.cs" />
+    <Compile Include="Repositories\TransbordoRepository.cs" />
+    <Compile Include="Repositories\UsuarioRepository.cs" />
+    <Compile Include="ServiceAgents\ServiceExcel.cs" />
+    <Compile Include="ServiceAgents\ServiceExcelLogradouro.cs" />
+    <Compile Include="ServiceAgents\ServiceExcelNaturezaJuridica.cs" />
+    <Compile Include="ServiceAgents\ServiceExcelRS.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Simir.Domain\Redivivus.Domain.csproj">
+      <Project>{45a6f483-3475-4837-9636-361bd0f79681}</Project>
+      <Name>Redivivus.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="ServiceAgents\dtb_2013.xls" />
+    <None Include="ServiceAgents\Lista_RS.xlsx" />
+    <None Include="ServiceAgents\Tipos_Logradouros.xls" />
+    <None Include="ServiceAgents\Tipos_naturezaJuridica.xls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

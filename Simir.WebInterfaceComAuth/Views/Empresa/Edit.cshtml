@@ -1,0 +1,62 @@
+﻿@model Simir.WebInterface.Models.Empresa
+@{
+    ViewBag.Title = "Editar";
+    //Layout = "~/Views/Shared/_OnePanel.cshtml";
+
+    //Layout = "~/Views/Shared/_Modal.cshtml";
+    Layout = ViewBag.Layout;
+}
+<div class="row">
+    @using (Html.BeginForm())
+    {
+
+        @Html.AntiForgeryToken()
+        <div class="col-md-6">
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nome)
+                @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Nome)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Cnpj)
+                @Html.TextBoxFor(model => model.Cnpj, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Cnpj)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ramo)
+                @Html.TextBoxFor(model => model.Ramo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Ramo)
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Endereco)
+                @Html.TextAreaFor(model => model.Endereco, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Endereco)
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Telefone)
+                @Html.TextBoxFor(model => model.Telefone, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Telefone)
+            </div>
+
+        </div>
+        <div class="col-md-12">
+            <div class="form-group  pull-right">
+                <button type="reset" class="btn btn-default">limpar</button>
+                <button type="submit" value="Save" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    }
+</div>
+@section footer{
+
+}

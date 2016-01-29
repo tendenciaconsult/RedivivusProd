@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Confirmação de redefinição de senha";
+    Layout = "~/Views/Shared/_LayoutNaoLogado.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6 col-sm-12 col-xs-12 col-center-block">
+        <!-- Form Elements -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @ViewBag.Title
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        Sua senha foi redefinida. Por favor @Html.ActionLink("clique aqui para efetuar login", "Logar", "Autenticacao", new { area = "Identificacao" }, htmlAttributes: new { id = "loginLink" })
+
+                    </div>
+                </div>
+            </div>
+            <div class="panel-back">
+
+            </div>
+        </div>
+        <!-- End Form Elements -->
+    </div>
+</div>
+

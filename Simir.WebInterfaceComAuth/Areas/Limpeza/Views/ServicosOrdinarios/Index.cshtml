@@ -1,0 +1,505 @@
+﻿@model Simir.Application.ViewModels.LimpezaOrdinariaVM
+@using Simir.WebInterfaceComAuth.Helpers
+@using Simir.Domain.Enuns
+
+@{
+    ViewBag.Title = "Limpeza Ordinária";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.LimpezaOrdinariaID)
+    @Html.HiddenFor(x => x.Btn)
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div style="font-weight: bold;font-size:15px;">
+                <b>Limpeza Ordinária</b>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ValidationSummary(false, "(* campos obrigatórios)", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-md-7">
+                            @Html.EditBootstrapFor(model => model.nmProgramacao, tudoTamanho: 12, inputTamanho: 12)
+                        </div>
+                        <div class="col-md-1" style="Margin-top:2%;margin-left:-3%;">
+                            <div class="btn btn-success" onclick="CarregaGrid();" data-toggle="modal" data-target="#BuscaProgramacao">Localizar</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.DDLBootstrapFor(model => model.RegiaoAdministrativaID, Model.nmRegiaoAdministrativa, "/Limpeza/ServicosOrdinarios/ReturnRegiaoAdministrativa/")
+                        </div>
+                        <div class="col-md-6">
+                            @Html.DDLBootstrapFor(model => model.PrestadoraServicosID, Model.nmPrestadoraServicos, "/Limpeza/ServicosOrdinarios/ReturnPrestadoraServicos/")
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="modal fade" id="BuscaProgramacao" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div id="modal">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-left:0.4%;">
+                        @Html.EditBootstrapFor(model => model.ExtensaoSargetas, tudoTamanho: 11, inputTamanho: 3)
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Limpeza de uma Feira Livre? *
+                            </div>
+                            <div class="panel-body">
+                                <ul class="nav nav-pills">
+                                    @Html.ValidationMessage("ValidacaoEndereco", new { @class = "text-danger" })
+                                    <li class="">
+                                        <a href="#FeiraLivreSim" data-toggle="tab" id="btnFeiraLivreSim">Sim</a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#FeiraLivreNao" data-toggle="tab" id="btnFeiraLivreNao">Não</a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane fade" id="FeiraLivreSim">
+                                        <div class="row" style="margin-left:1%; margin-top:1%; width: 70%;">
+                                            @Html.DDLBootstrapFor(model => model.FeiraLivreID, model => model.nmFeiraLivre, "/Limpeza/ServicosOrdinarios/ReturnFeiraLivre/", model => model.RegiaoAdministrativaID, null)
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="FeiraLivreNao">
+                                        <div class="row" style="margin-left:-3%; margin-top:1%;">
+                                            <div class="col-md-4">
+                                                @Html.DDLBootstrapFor(model => model.BairroID, model => model.nmBairro, "/Limpeza/ServicosOrdinarios/ReturnBairros/", model => model.RegiaoAdministrativaID, null)
+                                            </div>
+                                            <div class="col-md-7">
+                                                @Html.DDLBootstrapFor(model => model.LogradouroID, model => model.nmLogradouro, "/Limpeza/ServicosOrdinarios/ReturnLogradouro/", "RegiaoAdministrativaID BairroID", null)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @* -------------------Informe o tipo de programação-------------------- *@
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Informe o tipo de programação *
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group" id="GrupoTipoProgramacao" style="text-align:center;">
+                                    <div class="radio-inline" style="margin-left:1.5%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoServico, 11) Varrição Manual
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoServico, 12) Varrição Mecanizada
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoServico, 13) Lavagem
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-left:3%; margin-top: 1%;">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.TipoServico, 14) Outros
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row" id="OutroServico" style="margin-left:0.3%; margin-top:8px; display:none;">
+                                    @Html.EditBootstrapFor(model => model.nmOutroServico, tudoTamanho: 7, inputTamanho: 4)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Periodicidade da limpeza
+                            </div>
+                            <div class="panel-body">
+                                <div class="tab-content">
+                                    <div class="row">
+                                        <div class="col-md-10" style="margin-left:6%">
+                                            @Html.ValidationMessage("ValidaProgramacao", new { @class = "text-danger" })
+                                            <div class="row">
+                                                @*Segunda*@
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    @Html.CheckBoxBootstrapFor(x => x.bSegunda)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditBootstrapFor(model => model.qtVarricaoSegunda, tudoTamanho: 12, inputTamanho: 11)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditBootstrapFor(model => model.qtGarisSegunda, tudoTamanho: 12, inputTamanho: 10)
+                                                </div>
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    @Html.CheckBoxBootstrapFor(x => x.bSegundaFiscalizado)
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                @*Terça feira*@
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    @Html.CheckBoxBootstrapFor(x => x.bTerca)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditBootstrapFor(model => model.qtVarricaoTerca, tudoTamanho: 12, inputTamanho: 11)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditBootstrapFor(model => model.qtGarisTerca, tudoTamanho: 12, inputTamanho: 10)
+                                                </div>
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    @Html.CheckBoxBootstrapFor(x => x.bTercaFiscalizado)
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                @*Quarta feira*@
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    @Html.CheckBoxBootstrapFor(x => x.bQuarta)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditBootstrapFor(model => model.qtVarricaoQuarta, tudoTamanho: 12, inputTamanho: 11)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditBootstrapFor(model => model.qtGarisQuarta, tudoTamanho: 12, inputTamanho: 10)
+                                                </div>
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    @Html.CheckBoxBootstrapFor(x => x.bQuartaFiscalizado)
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                @*Quinta feira*@
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    @Html.CheckBoxBootstrapFor(x => x.bQuinta)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditBootstrapFor(model => model.qtVarricaoQuinta, tudoTamanho: 12, inputTamanho: 11)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditBootstrapFor(model => model.qtGarisQuinta, tudoTamanho: 12, inputTamanho: 10)
+                                                </div>
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    @Html.CheckBoxBootstrapFor(x => x.bQuintaFiscalizado)
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                @*Sexta feira*@
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    @Html.CheckBoxBootstrapFor(x => x.bSexta)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditBootstrapFor(model => model.qtVarricaoSexta, tudoTamanho: 12, inputTamanho: 11)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditBootstrapFor(model => model.qtGarisSexta, tudoTamanho: 12, inputTamanho: 10)
+                                                </div>
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    @Html.CheckBoxBootstrapFor(x => x.bSextaFiscalizado)
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                @*Sabado*@
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    @Html.CheckBoxBootstrapFor(x => x.bSabado)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditBootstrapFor(model => model.qtVarricaoSabado, tudoTamanho: 12, inputTamanho: 11)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditBootstrapFor(model => model.qtGarisSabado, tudoTamanho: 12, inputTamanho: 10)
+                                                </div>
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    @Html.CheckBoxBootstrapFor(x => x.bSabadoFiscalizado)
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                @*Domingo*@
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    @Html.CheckBoxBootstrapFor(x => x.bDomingo)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditBootstrapFor(model => model.qtVarricaoDomingo, tudoTamanho: 12, inputTamanho: 11)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditBootstrapFor(model => model.qtGarisDomingo, tudoTamanho: 12, inputTamanho: 10)
+                                                </div>
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    @Html.CheckBoxBootstrapFor(x => x.bDomingoFiscalizado)
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-12">
+                    <hr />
+                    <div class="form-group  pull-right">
+                        @if (User.Identity.TemPermicao(TipoPermissao.Incluir) || User.Identity.TemPermicao(TipoPermissao.Alterar))
+                        {
+                            <a href="@Url.Action("Index", "ServicosOrdinarios", new { area = "Limpeza", id = 0})">
+                                <div class="btn btn-default">Novo</div>
+                            </a>
+                            <div class="btn btn-success" onclick=" confirmaAlteracao(); " data-confirm="Tem certeza que deseja salvar?">Salvar</div>
+                        }
+                        @if (User.Identity.TemPermicao(TipoPermissao.Excluir))
+                        {
+                            <div id="btnExcluir" class="btn btn-danger" onclick=" ConfirmaExclusao(); " data-confirm="Tem certeza que deseja excluir?">Excluir</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        function carregaPagina() {
+
+            if ($('#LimpezaOrdinariaID').val() == 0) {
+                $("#btnExcluir").hide();
+            };
+            if ($("#LogradouroID").val() != "") {
+                $("#btnFeiraLivreNao").click()
+            }
+            else if ($("#FeiraLivreID").val() != "") {
+                $("#btnFeiraLivreSim").click()
+            }
+
+        }
+        $(window).load(carregaPagina());
+
+        function Novo() {
+
+            var form = $('form', '#page-inner');
+    
+                $('#Btn').val("Novo");
+                form.submit();
+                // return true;
+
+        }
+        function confirmaAlteracao() {
+            $.blockUI({ message: '<div class="ModalCarregando"></dic>' });
+            if (($("#FeiraLivreID").val() == 0) && ($("#LogradouroID").val() == 0) && ($("#BairroID").val() == 0)) {
+                addErros("ValidacaoEndereco", "Nenhum endereço informado")
+                $.unblockUI();
+            }
+            else if (($("#bSegunda").is(':checked') == false) && ($("#bTerca").is(':checked') == false) &&
+                ($("#bQuarta").is(':checked') == false) && ($("#bQuinta").is(':checked') == false) &&
+                ($("#bSexta").is(':checked') == false) && ($("#bSabado").is(':checked') == false) &&
+                ($("#bDomingo").is(':checked') == false)) {
+                $.blockUI({ message: '<div class="ModalCarregando"></dic>' });
+                addErros("ValidaProgramacao", "Obrigatório selecionar ao menos um dia da semana para criar uma programação!")
+                $.unblockUI();
+            }
+            else {
+                var form = $('form', '#page-inner');
+                if (form.validate()) {
+                    $('#Btn').val("Salvar");
+                    form.submit();
+                    // return true;
+                }
+            }
+
+        }
+        function ConfirmaExclusao() {
+            var form = $('form', '#page-inner');
+            $('#Btn').val("Excluir");
+
+            //$.desabilitaValidacao();
+            $("[data-val='true']").attr('data-val', 'false');
+
+            //Reset validation message
+            $('.field-validation-error')
+            .removeClass('field-validation-error')
+            .addClass('field-validation-valid');
+
+            //Reset input, select and textarea style
+            $('.input-validation-error')
+            .removeClass('input-validation-error')
+            .addClass('valid');
+
+            //Reset validation summary
+            $(".validation-summary-errors")
+            .removeClass("validation-summary-errors")
+            .addClass("validation-summary-valid");
+
+            //To reenable lazy validation (no validation until you submit the form)
+            $('form').removeData('unobtrusiveValidation');
+            $('form').removeData('validator');
+            $.validator.unobtrusive.parse($('form'));
+
+            form.submit();
+
+        }
+
+
+        function CarregaGrid() {
+            $("#modal").load("/Limpeza/ServicosOrdinarios/CarregaGrig/");
+        }
+
+        $("input[name='TipoServico']").change(function () {
+            if ($("input[name='TipoServico']:checked").val() == 4) {
+                $("#OutroServico").show()
+            }
+            else {
+                $("#OutroServico").hide()
+            }
+
+        })
+
+        $("#bSegunda").change(function () {
+            if ($("#bSegunda").is(':checked') == true) {
+                $("#qtVarricaoSegunda").val(1)
+            }
+            else {
+                $("#qtVarricaoSegunda").val(0)
+            }
+        })
+        $("#bTerca").change(function () {
+            if ($("#bTerca").is(':checked') == true) {
+                $("#qtVarricaoTerca").val(1)
+            }
+            else {
+                $("#qtVarricaoTerca").val(0)
+            }
+        })
+        $("#bQuarta").change(function () {
+            if ($("#bQuarta").is(':checked') == true) {
+                $("#qtVarricaoQuarta").val(1)
+            }
+            else {
+                $("#qtVarricaoQuarta").val(0)
+            }
+        })
+        $("#bQuinta").change(function () {
+            if ($("#bQuinta").is(':checked') == true) {
+                $("#qtVarricaoQuinta").val(1)
+            }
+            else {
+                $("#qtVarricaoQuinta").val(0)
+            }
+        })
+        $("#bSexta").change(function () {
+            if ($("#bSexta").is(':checked') == true) {
+                $("#qtVarricaoSexta").val(1)
+            }
+            else {
+                $("#qtVarricaoSexta").val(0)
+            }
+        })
+        $("#bSabado").change(function () {
+            if ($("#bSabado").is(':checked') == true) {
+                $("#qtVarricaoSabado").val(1)
+            }
+            else {
+                $("#qtVarricaoSabado").val(0)
+            }
+        })
+        $("#bDomingo").change(function () {
+            if ($("#bDomingo").is(':checked') == true) {
+                $("#qtVarricaoDomingo").val(1)
+            }
+            else {
+                $("#qtVarricaoDomingo").val(0)
+            }
+        })
+        //------------Valida Quantidade de varrição na SEGUNDA FEIRA----------------------
+        $("#qtVarricaoSegunda").change(function () {
+            if ($("#qtVarricaoSegunda").val() < 1) {
+                $("#qtVarricaoSegunda").val(0)
+                $("#bSegunda").attr("checked", false)
+                $("#qtGarisSegunda").val("")
+                $("#bSegundaFiscalizado").attr("checked", false)
+            }
+        });
+        //------------Valida Quantidade de varrição na TERÇA FEIRA----------------------
+        $("#qtVarricaoTerca").change(function () {
+            if ($("#qtVarricaoTerca").val() < 1) {
+                $("#qtVarricaoTerca").val(0)
+                $("#bTerca").attr("checked", false)
+                $("#qtGarisTerca").val("")
+                $("#bTercaFiscalizado").attr("checked", false)
+            }
+        });
+        //------------Valida Quantidade de varrição na QUARTA FEIRA----------------------
+        $("#qtVarricaoQuarta").change(function () {
+            if ($("#qtVarricaoQuarta").val() < 1) {
+                $("#qtVarricaoQuarta").val(0)
+                $("#bQuarta").attr("checked", false)
+                $("#qtGarisQuarta").val("")
+                $("#bQuartaFiscalizado").attr("checked", false)
+            }
+        });
+        //------------Valida Quantidade de varrição na QUINTA FEIRA----------------------
+        $("#qtVarricaoQuinta").change(function () {
+            if ($("#qtVarricaoQuinta").val() < 1) {
+                $("#qtVarricaoQuinta").val(0)
+                $("#bQuinta").attr("checked", false)
+                $("#qtGarisQuinta").val("")
+                $("#bQuintaFiscalizado").attr("checked", false)
+            }
+        });
+        //------------Valida Quantidade de varrição na SEXTA FEIRA----------------------
+        $("#qtVarricaoSexta").change(function () {
+            if ($("#qtVarricaoSexta").val() < 1) {
+                $("#qtVarricaoSexta").val(0)
+                $("#bSexta").attr("checked", false)
+                $("#qtGarisSexta").val("")
+                $("#bSextaFiscalizado").attr("checked", false)
+            }
+        });
+        //------------Valida Quantidade de varrição na SABADO----------------------
+        $("#qtVarricaoSabado").change(function () {
+            if ($("#qtVarricaoSabado").val() < 1) {
+                $("#qtVarricaoSabado").val(0)
+                $("#bSabado").attr("checked", false)
+                $("#qtGarisSabado").val("")
+                $("#bSabadoFiscalizado").attr("checked", false)
+            }
+        });
+        //------------Valida Quantidade de varrição na DOMING----------------------
+        $("#qtVarricaoDomingo").change(function () {
+            if ($("#qtVarricaoDomingo").val() < 1) {
+                $("#qtVarricaoDomingo").val(0)
+                $("#bDomingo").attr("checked", false)
+                $("#qtGarisDomingo").val("")
+                $("#bDomingoFiscalizado").attr("checked", false)
+            }
+        });
+        $("#FeiraLivreSim").click(function () {
+            $("#BairroID").val(null)
+            $("#BairroID").val(null)
+        })
+
+    </script>
+}

@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="c194ceec-81fe-45b3-afc2-12147ade72f1" name="CadContratos" linkedPackageId="b559e4df-f339-4912-8851-f26104706c6f" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="1f45140f-b989-4370-aa54-eb6d44c1a574" name="CadContratos" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="643c98fe-75d6-47ee-9f66-671f5fe2571f" />
+        <nodes>
+          <initialNode Id="ec4bb282-9d40-4084-899b-ad2210d6be1e" name="Initial1" isLeaf="false">
+            <elementDefinition Id="f2649059-31cc-4106-9517-21f7523ead63" />
+            <flowNodeTargets>
+              <controlFlow Id="264e3390-2ef1-499d-9d6f-56f0f949f444" isLeaf="false">
+                <opaqueActionMoniker Id="54b79c72-a131-4c54-8fc6-fa7425cac84d" LastKnownName="Acessa Tela de Cadastro de Contrato" />
+                <elementDefinition Id="8240a2e9-c830-4456-8517-340ee2b79220" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction Id="54b79c72-a131-4c54-8fc6-fa7425cac84d" name="Acessa Tela de Cadastro de Contrato" isLeaf="false">
+            <elementDefinition Id="cf353508-b5f4-42b0-beb6-e4e4f069fac0" />
+            <flowNodeTargets>
+              <controlFlow Id="70ae7e0c-cf81-48b3-8ae6-53f905300e2a" isLeaf="false">
+                <opaqueActionMoniker Id="0c98d51b-a1e3-495b-88f3-65b828c8852f" LastKnownName="Informe os dados solicitados, como número do contrato, data de início e fim e prestadora de serviço" />
+                <elementDefinition Id="d3adcd47-fd2f-497b-aac6-c4b832f9c564" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="0c98d51b-a1e3-495b-88f3-65b828c8852f" name="Informe os dados solicitados, como número do contrato, data de início e fim e prestadora de serviço" isLeaf="false">
+            <elementDefinition Id="ce286e87-e0c4-42e5-a24c-54416475ca30" />
+            <flowNodeTargets>
+              <controlFlow Id="1f89d06c-0d2a-4c0d-b847-a8729757020e" isLeaf="false">
+                <opaqueActionMoniker Id="97b49945-d086-41ae-9bd2-74bf070eeab6" LastKnownName="Inlcuir Serviços Contratados?" />
+                <elementDefinition Id="29cc8972-ea8a-4c30-99a9-4470f1db74b9" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="3f676e95-781d-4a26-a0ae-6116fa26ef9b" name="Decision1" isLeaf="false">
+            <elementDefinition Id="580f3411-f495-4939-b9ff-d410b24ae926" />
+            <flowNodeTargets>
+              <controlFlow Id="cbb7574c-f78c-411d-b80d-a1bdce719aa1" guard="Sim" name="Sim" isLeaf="false">
+                <opaqueActionMoniker Id="14fb85b9-31a5-4484-b9ec-49eca3aeac55" LastKnownName="Seleciona um Serviço" />
+                <description>Sim</description>
+                <elementDefinition Id="bb6647ba-7b0a-43fa-911b-73aa7bc57311" />
+              </controlFlow>
+              <controlFlow Id="6fc813d3-edeb-4710-a01b-9ab8506a447b" guard="Não" isLeaf="false">
+                <opaqueActionMoniker Id="9a784117-ddfa-4b4d-a5b2-3344a9af306c" LastKnownName="Cadastre um novo serviço se sub serviços que desejar" />
+                <elementDefinition Id="21ba5d3c-5874-4842-b0a3-db32641d2239" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="3abfa62e-4299-4dd1-a437-0012ebc68e02" name="Serviços contratados está na lista?" isLeaf="false">
+            <elementDefinition Id="dfedf283-097c-4233-a7a9-f670fe26ad2d" />
+            <flowNodeTargets>
+              <controlFlow Id="d14e6dbe-83fa-4edc-8b26-a90ba5457e35" isLeaf="false">
+                <decisionNodeMoniker Id="3f676e95-781d-4a26-a0ae-6116fa26ef9b" LastKnownName="Decision1" />
+                <elementDefinition Id="e04b4f48-6784-4e6c-86ef-4c02c0142936" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="14fb85b9-31a5-4484-b9ec-49eca3aeac55" name="Seleciona um Serviço" isLeaf="false">
+            <elementDefinition Id="c9704208-f617-485b-9897-702f6764363d" />
+            <flowNodeTargets>
+              <controlFlow Id="2bdfd51d-1da4-45ed-b4c4-b222cd043ef2" isLeaf="false">
+                <opaqueActionMoniker Id="710152b3-ea0e-40bc-a2d1-1f87cc6fb50c" LastKnownName="Encontrou o sub servico desejado?" />
+                <elementDefinition Id="606e8e61-2eea-4297-aa1f-d71dfce7f6e0" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="710152b3-ea0e-40bc-a2d1-1f87cc6fb50c" name="Encontrou o sub servico desejado?" isLeaf="false">
+            <elementDefinition Id="ea82d5e0-9a3c-464b-a835-7d8f1ba10619" />
+            <flowNodeTargets>
+              <controlFlow Id="fb181f33-14d3-490f-8a89-d2007e75967d" isLeaf="false">
+                <decisionNodeMoniker Id="6f847070-d7ab-4a2c-9225-e789aedfce95" LastKnownName="Decision2" />
+                <elementDefinition Id="3bb804aa-27e8-4663-9657-7d2c867c6e72" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="9a784117-ddfa-4b4d-a5b2-3344a9af306c" name="Cadastre um novo serviço se sub serviços que desejar" isLeaf="false">
+            <elementDefinition Id="fb938d72-3657-44b7-bcca-126a896c26a9" />
+            <flowNodeTargets>
+              <controlFlow Id="c79d92b6-19f6-469d-ad07-c8c0db87e46c" isLeaf="false">
+                <opaqueActionMoniker Id="14fb85b9-31a5-4484-b9ec-49eca3aeac55" LastKnownName="Seleciona um Serviço" />
+                <elementDefinition Id="2a74bd30-73f0-4124-8ddd-2d0399c296fb" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="0b9284b3-dd11-4b63-8d03-94726145c0ea" name="Cadastre um novo sub serviço" isLeaf="false">
+            <elementDefinition Id="a86a5a2d-0338-4247-b68d-1fbc6a7d9886" />
+            <flowNodeTargets>
+              <controlFlow Id="c1b61658-3531-4691-879b-d218aa653e71" isLeaf="false">
+                <opaqueActionMoniker Id="aa16906f-7945-4295-9103-21aa967292dc" LastKnownName="Selecione o sub serviço" />
+                <elementDefinition Id="d6a2d41c-bbb2-4b53-8c4a-f74b4317dc91" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="6f847070-d7ab-4a2c-9225-e789aedfce95" name="Decision2" isLeaf="false">
+            <elementDefinition Id="f2b2006c-62d7-4ea5-a66f-68539bb0629c" />
+            <flowNodeTargets>
+              <controlFlow Id="3c2ac5bc-cfd5-448d-b6bc-10b25027be6f" guard="Não" isLeaf="false">
+                <opaqueActionMoniker Id="0b9284b3-dd11-4b63-8d03-94726145c0ea" LastKnownName="Cadastre um novo sub serviço" />
+                <elementDefinition Id="3870ed29-f542-4b69-a537-98d4aa5545a4" />
+              </controlFlow>
+              <controlFlow Id="5ce5e94b-2eb2-4ab9-b6fc-89799a85e73e" guard="Sim" isLeaf="false">
+                <opaqueActionMoniker Id="aa16906f-7945-4295-9103-21aa967292dc" LastKnownName="Selecione o sub serviço" />
+                <elementDefinition Id="307e2bed-18e3-4d58-b050-72181ee94bc1" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="aa16906f-7945-4295-9103-21aa967292dc" name="Selecione o sub serviço" isLeaf="false">
+            <elementDefinition Id="1bdca687-a644-40b8-9e6e-6b1b0e45647f" />
+            <flowNodeTargets>
+              <controlFlow Id="c367da5a-913f-4c3c-bec1-1e1bbdc62d73" isLeaf="false">
+                <opaqueActionMoniker Id="c9784233-418f-4513-b131-0cceb288bbb8" LastKnownName="Informar a quantidade de funcionários" />
+                <elementDefinition Id="5d43a054-e2ad-4d19-a561-0495504db918" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="c9784233-418f-4513-b131-0cceb288bbb8" name="Informar a quantidade de funcionários" isLeaf="false">
+            <elementDefinition Id="e3b249d0-bc9b-4fcc-9e0c-8f0a62299d6f" />
+            <flowNodeTargets>
+              <controlFlow Id="f3acbdf1-4d9b-48cc-a326-ba1b66cfbd6b" isLeaf="false">
+                <opaqueActionMoniker Id="5b5ec17c-be4e-492b-92b7-ec038a9ea7a6" LastKnownName="Valor pago" />
+                <elementDefinition Id="a2ed02f1-42fc-458d-8e58-44b9b0a2f76c" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="5b5ec17c-be4e-492b-92b7-ec038a9ea7a6" name="Valor pago" isLeaf="false">
+            <elementDefinition Id="37032f8b-d8ce-4403-afb9-380a9042c11e" />
+            <flowNodeTargets>
+              <controlFlow Id="778d811d-c80a-4ddf-b395-99b4bde3b46a" isLeaf="false">
+                <opaqueActionMoniker Id="994383b6-db66-429f-9f96-764508504c26" LastKnownName="Encargos" />
+                <elementDefinition Id="510c3e4e-2202-451f-b9c2-6f3e95adb95b" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="994383b6-db66-429f-9f96-764508504c26" name="Encargos" isLeaf="false">
+            <elementDefinition Id="b2d1ebd0-088c-4c01-b23f-51e4323ba341" />
+          </opaqueAction>
+          <opaqueAction Id="ab580b2b-9ff6-4b87-835a-6409e5bdbb74" name="Incluir mais?" isLeaf="false">
+            <elementDefinition Id="59dfe30d-0cad-40e4-a963-cca02b3af41a" />
+            <flowNodeTargets>
+              <controlFlow Id="490e5233-3ee5-4245-93cb-cc756ba94c82" isLeaf="false">
+                <decisionNodeMoniker Id="ba90f456-5b00-49d1-adf1-88e232a24168" LastKnownName="Decision4" />
+                <elementDefinition Id="ac77dae7-4f35-443b-87eb-8176c89accb5" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="97b49945-d086-41ae-9bd2-74bf070eeab6" name="Inlcuir Serviços Contratados?" isLeaf="false">
+            <elementDefinition Id="fc6b2ab0-3281-48a1-9f7c-9ad4bfc71aee" />
+            <flowNodeTargets>
+              <controlFlow Id="faf91bab-03a2-4c17-9495-6644b5d9308d" isLeaf="false">
+                <decisionNodeMoniker Id="1686565d-c64f-47d5-86af-32702ac61702" LastKnownName="Decision3" />
+                <elementDefinition Id="95765b67-8782-4400-a3c5-dab2ca61190f" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="1686565d-c64f-47d5-86af-32702ac61702" name="Decision3" isLeaf="false">
+            <elementDefinition Id="77be9c9d-4d78-46fd-97db-46d3ca1c687b" />
+            <flowNodeTargets>
+              <controlFlow Id="96913d06-a3e2-4af5-8109-8fb67c27de39" guard="Sim" isLeaf="false">
+                <opaqueActionMoniker Id="3abfa62e-4299-4dd1-a437-0012ebc68e02" LastKnownName="Serviços contratados está na lista?" />
+                <elementDefinition Id="a5d57156-abee-4ca6-94d1-29732b49c138" />
+              </controlFlow>
+              <controlFlow Id="bb607992-a9fa-4541-bb72-4eb982da9a3c" guard="Não" isLeaf="false">
+                <opaqueActionMoniker Id="04a90372-3c3d-4210-9fd4-ba68b6083481" LastKnownName="Incluir dados Referente aos veículos utilizados" />
+                <elementDefinition Id="b32a82a8-faac-46ef-bbd6-f2d68b78e1bb" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="04a90372-3c3d-4210-9fd4-ba68b6083481" name="Incluir dados Referente aos veículos utilizados" isLeaf="false">
+            <elementDefinition Id="d829bb02-13b9-4497-ae52-b82e4c458cf4" />
+            <flowNodeTargets>
+              <controlFlow Id="ce1a9f75-b0e1-4029-8526-73d6401f801e" isLeaf="false">
+                <opaqueActionMoniker Id="70a76fac-a62b-4252-98bc-56c2d9148391" LastKnownName="Incluir mais veículos?" />
+                <elementDefinition Id="1a2d1a41-f36e-477a-b68d-748a511c196a" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="ba90f456-5b00-49d1-adf1-88e232a24168" name="Decision4" isLeaf="false">
+            <elementDefinition Id="68a611d1-6f36-460c-897b-34e69bbbe371" />
+            <flowNodeTargets>
+              <controlFlow Id="f3d7b440-ba1c-4f11-8fab-4505b3847cc9" guard="Não" isLeaf="false">
+                <opaqueActionMoniker Id="04a90372-3c3d-4210-9fd4-ba68b6083481" LastKnownName="Incluir dados Referente aos veículos utilizados" />
+                <elementDefinition Id="3fdbebf1-fd4f-4e59-b69a-ef26d5f934a7" />
+              </controlFlow>
+              <controlFlow Id="3ae8d47b-7350-4637-bd76-03f33bb4bac7" guard="Sim" isLeaf="false">
+                <opaqueActionMoniker Id="3abfa62e-4299-4dd1-a437-0012ebc68e02" LastKnownName="Serviços contratados está na lista?" />
+                <elementDefinition Id="1a6781fd-f174-4e98-9a52-8cea9cbbe347" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="70a76fac-a62b-4252-98bc-56c2d9148391" name="Incluir mais veículos?" isLeaf="false">
+            <elementDefinition Id="50205299-6a22-40d0-a1e2-6ab519d52d23" />
+            <flowNodeTargets>
+              <controlFlow Id="5d665ab8-7d9b-4464-82cb-e1de22970c14" isLeaf="false">
+                <decisionNodeMoniker Id="7e5e9b09-dc67-4505-bd60-044ac0587408" LastKnownName="incluir" />
+                <elementDefinition Id="34179681-9352-4dc1-aa74-d905e0b1f397" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="7e5e9b09-dc67-4505-bd60-044ac0587408" name="incluir" isLeaf="false">
+            <elementDefinition Id="f5bb3390-f170-4b90-af8e-c077172e60ed" />
+            <flowNodeTargets>
+              <controlFlow Id="ad99470f-4320-43f0-9bb2-0b771df760b8" guard="Sim" isLeaf="false">
+                <opaqueActionMoniker Id="04a90372-3c3d-4210-9fd4-ba68b6083481" LastKnownName="Incluir dados Referente aos veículos utilizados" />
+                <elementDefinition Id="6be28124-eb40-43d2-9766-c600921f06c7" />
+              </controlFlow>
+              <controlFlow Id="113a94d7-7223-4d46-92ff-acf258f021ea" guard="Não" isLeaf="false">
+                <opaqueActionMoniker Id="f7020c21-cbac-4199-ae61-40ef9fcab04a" LastKnownName="Inlcuir dados Referente a Equipamentos" />
+                <elementDefinition Id="ed3aff3c-0a54-41be-bf77-39c436673e26" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="f7020c21-cbac-4199-ae61-40ef9fcab04a" name="Inlcuir dados Referente a Equipamentos" isLeaf="false">
+            <elementDefinition Id="733200cf-3693-417a-9d54-f2c06d576f35" />
+            <flowNodeTargets>
+              <controlFlow Id="7f2f6e0a-bf62-4339-9013-5192fb404da8" isLeaf="false">
+                <opaqueActionMoniker Id="7947f7c4-196f-4e6c-87a2-8dca543bfa70" LastKnownName="Incluir outro equipamento?" />
+                <elementDefinition Id="d67ebf2b-69af-4b0a-9e5c-53a6ff075f5a" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="a28b392e-4640-4fef-b0c8-91ee5f8a9017" name="incluir1" isLeaf="false">
+            <elementDefinition Id="8b542bb8-6c10-49d8-b17e-bea083f7654d" />
+            <flowNodeTargets>
+              <controlFlow Id="d723705b-67d6-4416-8450-5579a5e63074" guard="Sim" isLeaf="false">
+                <opaqueActionMoniker Id="f7020c21-cbac-4199-ae61-40ef9fcab04a" LastKnownName="Inlcuir dados Referente a Equipamentos" />
+                <elementDefinition Id="a968510a-2c26-4b21-9f0a-8c5ec8e68386" />
+              </controlFlow>
+              <controlFlow Id="3ca16cf2-bd7b-4467-8032-2f0499179754" guard="Não" isLeaf="false">
+                <activityFinalNodeMoniker Id="9aaaa481-d70a-416b-899a-174893a5e5cb" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="904238ec-0b03-4a10-9fee-1825aabd368c" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <activityFinalNode Id="9aaaa481-d70a-416b-899a-174893a5e5cb" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="959b967f-e061-4275-9276-72fce8f16106" />
+          </activityFinalNode>
+          <opaqueAction Id="7947f7c4-196f-4e6c-87a2-8dca543bfa70" name="Incluir outro equipamento?" isLeaf="false">
+            <elementDefinition Id="eb55b771-cb0b-48b8-81f9-5154d52aea54" />
+            <flowNodeTargets>
+              <controlFlow Id="e4fb8ca3-5dfa-441f-9c6f-c66ab4724a6a" isLeaf="false">
+                <decisionNodeMoniker Id="a28b392e-4640-4fef-b0c8-91ee5f8a9017" LastKnownName="incluir1" />
+                <elementDefinition Id="5b5c981d-8a39-49a9-abf5-ffa7045b451c" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="b559e4df-f339-4912-8851-f26104706c6f" name="Diagrama">
+    <elementDefinition Id="aeb13fbb-4674-41c2-8bc9-87da3b00454c" />
+    <profileInstances>
+      <packageHasProfileInstances Id="40b4d9e2-2101-4ce3-ab24-e3791a738af0">
+        <profileInstance Id="f92a77cf-9f1b-42d8-9513-7dc9c0d14a5a" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="687e34e8-c7ce-45ce-9e45-eda76f18c5a8">
+        <profileInstance Id="c872f5dd-ca92-4550-8262-9c0f10196d9d" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</activityRootModel>

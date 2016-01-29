@@ -1,0 +1,96 @@
+﻿@model Simir.Application.ViewModels.PrefeituraVM
+
+@{
+    ViewBag.Title = "Cadastro da Prefeitura";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div>
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Prefeito)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Prefeito)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CNPJ)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CNPJ)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Site)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Site)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.qtHabitantesUrbanos)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.qtHabitantesUrbanos) pessoas
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.qthabitantesTotalAtendido)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.qthabitantesTotalAtendido) pessoas
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.qthabitantesAtendidoColetaDomiciliar)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.qthabitantesAtendidoColetaDomiciliar) pessoas
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.qthabitantesAtendidoColetaSeletiva)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.qthabitantesAtendidoColetaSeletiva) pessoas
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EnderecoCurto)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EnderecoCurto)
+            </dd>
+
+        </dl>
+    </div>
+    <div class="col-md-12" id="btnInv1">
+    <hr />
+    <div class="form-group  pull-right">
+        <a href="@Url.Action("Editar", "Prefeitura", new { area = "Configuracao" })">
+            <button class="btn btn-default">Editar</button>
+        </a>
+
+    </div>
+</div>
+
+
+
+

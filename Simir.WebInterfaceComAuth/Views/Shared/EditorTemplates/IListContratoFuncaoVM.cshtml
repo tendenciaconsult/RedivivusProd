@@ -1,0 +1,204 @@
+﻿@model IList<Simir.Application.ViewModels.ContratoVMs.ContratoFuncaoVM>
+
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    string nmPropriedade = ViewData.ModelMetadata.PropertyName;
+}
+
+<div id="@nmPropriedade" class="panel panel-default EquipamentosVM">
+    <div class="panel-heading">
+        @ViewData.ModelMetadata.DisplayName
+    </div>
+    <div class="panel-body">
+
+        <div>
+            <div class="col-xs-2">
+                <div class="form-group row">
+                    <label for="ContratoFuncaoTipoValor">Categoria</label><select class="form-control simir-ddl ContratoFuncaoTipoValor" simir-ddl-url="/Configuracao/Contrato/FuncaoTitulo/" simir-ddl-pai="nulo" simir-ddl-filho="ContratoFuncaoSubTipoValor"><option value="-1"> Selecione uma opção... </option> </select><input class="hiddenFor" data-val="true" data-val-length="O campo Categoria deve ser uma cadeia de caracteres com um comprimento máximo de 6." data-val-length-max="6" id="ContratoFuncaoTipoValor" name="ContratoFuncaoTipoValor" type="hidden" value="-1"><input class="hiddenFor" id="ContratoFuncaoTipoDescricao" name="ContratoFuncaoTipoDescricao" type="hidden" value="Selecione uma opção..."><span class="field-validation-valid text-danger" data-valmsg-for="ContratoFuncaoTipoValor" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="form-group row">
+                    <label for="ContratoFuncaoSubTipoValor">Subcategoria</label><select class="form-control simir-ddl ContratoFuncaoSubTipoValor" simir-ddl-url="/Configuracao/Contrato/FuncaoSubtitulo/" simir-ddl-pai="ContratoFuncaoTipoValor" simir-ddl-filho="nulo"><option value="-1"> Selecione uma opção... </option> </select><input class="hiddenFor" data-val="true" data-val-length="O campo Subcategoria deve ser uma cadeia de caracteres com um comprimento máximo de 6." data-val-length-max="6" id="ContratoFuncaoSubTipoValor" name="ContratoFuncaoSubTipoValor" type="hidden" value="-1"><input class="hiddenFor" id="ContratoFuncaoSubTipoDescricao" name="ContratoFuncaoSubTipoDescricao" type="hidden" value="Selecione uma opção..."><span class="field-validation-valid text-danger" data-valmsg-for="ContratoFuncaoSubTipoValor" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+
+            <div class="col-xs-2">
+                <div class="form-group row">
+                    <label>Valor por Func.</label>
+                    <div class="input-group col-xs-12">
+                        <input class="inpNovoValor form-control text-right" data-mask="00.000.000,00" data-mask-reverse="True" maxlength="13" name="ValorTotalContrato" type="text" value="" autocomplete="off">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-group row">
+                    <label>Encargo por Func.</label>
+                    <div class="input-group col-xs-12">
+                        <input class="inpNovoEncargo form-control text-right" data-mask="00.000.000,00" data-mask-reverse="True" maxlength="13" name="ValorTotalContrato" type="text" value="" autocomplete="off">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-group row">
+                    <label>Quantidade</label>
+                    <div class="input-group col-xs-12">
+                        <input class="inpNovoQt form-control text-right" data-mask="000.000.000" data-mask-reverse="True" type="text" value="" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1">
+                <div class="form-group row">
+                    <label> </label>
+                    <div class="input-group">
+                        <div class="btn btn-primary btnAddEquipamento">
+                            <i class="fa fa-plus-circle "></i> Incluir
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="col-xs-3">Categoria</th>
+                        <th class="col-xs-3">Subcategoria</th>
+                        <th class="col-xs-2">Valor por Func.</th>
+                        <th class="col-xs-2">Encargo por Func.</th>
+                        <th class="col-xs-1">Quantidade</th>
+                        <th class="col-xs-1"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr class="linhapronta">
+                            <td >
+                                @Model[i].ContratoFuncaoTipo
+                            </td>
+                            <td>
+                                @Model[i].ContratoFuncaoSubTipoDescricao
+                            </td>
+                            <td >
+                                @Model[i].ValorPagoPorFunc
+                            </td>
+                            <td >
+                                @Model[i].EncargoPagoPorFunc
+                            </td>
+                            <td>
+                                @Model[i].Quantidade
+                            </td>
+                            <td>
+                                <input class="ContratoFuncaoTipo" type="hidden" name="@String.Format("{0}[{1}].ContratoFuncaoTipo", nmPropriedade, i)" value="@Model[i].ContratoFuncaoTipo" />
+                                <input class="ContratoFuncaoSubTipoDescricao" type="hidden" name="@String.Format("{0}[{1}].ContratoFuncaoSubTipoDescricao", nmPropriedade, i)" value="@Model[i].ContratoFuncaoSubTipoDescricao" />
+                                <input class="ValorPagoPorFunc" type="hidden" name="@String.Format("{0}[{1}].ValorPagoPorFunc", nmPropriedade, i)" value="@Model[i].ValorPagoPorFunc" />
+                                <input class="EncargoPagoPorFunc" type="hidden" name="@String.Format("{0}[{1}].EncargoPagoPorFunc", nmPropriedade, i)" value="@Model[i].EncargoPagoPorFunc" />
+                                <input class="Quantidade" type="hidden" name="@String.Format("{0}[{1}].Quantidade", nmPropriedade, i)" value="@Model[i].Quantidade" />
+                                <input class="ID" type="hidden" name="@String.Format("{0}[{1}].ID", nmPropriedade, i)" value="@Model[i].ID" />
+                                <input class="ContratoFuncaoSubTipoValor" type="hidden" name="@String.Format("{0}[{1}].ContratoFuncaoSubTipoValor", nmPropriedade, i)" value="@Model[i].ContratoFuncaoSubTipoValor" />
+                                <input class="inpExcluir" type="hidden" name="@String.Format("{0}[{1}].Status", nmPropriedade, i)" value="1" />
+
+                                <div class="btn btn-danger btnExcluir">
+                                    <i class="fa fa-trash-o"></i>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+            $(".btnExcluir", "#@nmPropriedade").click(
+            function () {
+                var linha = $(this).closest('tr');
+                linha.find(".inpExcluir").val('8');
+                linha.hide();
+            });
+
+            $("input:text", "#@nmPropriedade .linhapronta").change(
+            function () {
+                var linha = $(this).closest('tr');
+                linha.find(".inpExcluir").val('2');
+            });
+
+            $(".btnAddEquipamento", "#@nmPropriedade").click(
+            function () {
+                var tabela = $(this).closest(".EquipamentosVM").find("tbody");
+                var i = $('tr', tabela).length;
+
+                var prefixo = '@nmPropriedade' + '[' + i + ']';
+
+                var ContratoFuncaoTipo = $("#ContratoFuncaoTipoDescricao", "#@nmPropriedade").val();
+                var ContratoFuncaoSubTipoDescricao = $("#ContratoFuncaoSubTipoDescricao", "#@nmPropriedade").val();
+                var ValorPagoPorFunc = $(".inpNovoValor", "#@nmPropriedade").val();
+                var EncargoPagoPorFunc = $(".inpNovoEncargo", "#@nmPropriedade").val();
+                var Quantidade = $(".inpNovoQt", "#@nmPropriedade").val();
+                var ContratoFuncaoSubTipoValor = $("#ContratoFuncaoSubTipoValor", "#@nmPropriedade").val();
+
+
+                $(".inpNovoValor", "#@nmPropriedade").val('');
+                $(".inpNovoEncargo", "#@nmPropriedade").val('');
+                $(".inpNovoQt", "#@nmPropriedade").val('');
+
+                tabela.append('<tr>' +
+                            '<td >' +
+                                 ContratoFuncaoTipo +
+                            '</td>' +
+                            '<td >' +
+                                 ContratoFuncaoSubTipoDescricao +
+                            '</td>' +
+                            '<td >' +
+                                 ValorPagoPorFunc +
+                            '</td>' +
+                            '<td >' +
+                                 EncargoPagoPorFunc +
+                            '</td>' +
+                            '<td >' +
+                                 Quantidade +
+                            '</td>' +
+                            '<td >' +
+                                '<input class="ContratoFuncaoTipo" type="hidden" name="' + prefixo + '.ContratoFuncaoTipo" value="' + ContratoFuncaoTipo + '" />' +
+                                '<input class="ContratoFuncaoSubTipoDescricao" type="hidden" name="' + prefixo + '.ContratoFuncaoSubTipoDescricao" value="' + ContratoFuncaoSubTipoDescricao + '" />' +
+                                '<input class="ValorPagoPorFunc" type="hidden" name="' + prefixo + '.ValorPagoPorFunc" value="' + ValorPagoPorFunc + '" />' +
+                                '<input class="EncargoPagoPorFunc" type="hidden" name="' + prefixo + '.EncargoPagoPorFunc" value="' + EncargoPagoPorFunc + '" />' +
+                                '<input class="Quantidade" type="hidden" name="' + prefixo + '.Quantidade" value="' + Quantidade + '" />' +
+                                '<input class="ContratoFuncaoSubTipoValor" type="hidden" name="' + prefixo + '.ContratoFuncaoSubTipoValor" value="' + ContratoFuncaoSubTipoValor + '" />' +
+                                '<input class="inpExcluir" type="hidden" name="' + prefixo + '.Status" value="4"  />' +
+                                '<div class="btn btn-danger btnExcluir"><i class="fa fa-trash-o "></i></div>' +
+                            '</td>' +
+                        '</tr>');
+                ultimalinha = $('tr', tabela).last();
+
+                ultimalinha.find('.btnExcluir').click(
+                function () {
+                    var linha = $(this).closest('tr');
+                    linha.remove();
+                });
+
+
+            });
+
+
+        </script>
+, false);
+}
+
+

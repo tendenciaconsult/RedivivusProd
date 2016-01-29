@@ -1,0 +1,34 @@
+﻿@model Simir.CrossCutting.Security.ViewModels.AlterarSenhaViewModel
+@using Simir.WebInterfaceComAuth.Helpers
+
+@{
+    ViewBag.Title = "Senha Alterada";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-6 col-sm-12 col-xs-12 col-center-block">
+        <!-- Form Elements -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @ViewBag.Title
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            Senha alterada com sucesso!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-back">
+
+            </div>
+        </div>
+        <!-- End Form Elements -->
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

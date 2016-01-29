@@ -1,0 +1,405 @@
+﻿@model Simir.Application.ViewModels.PrestadoraServicoVM
+@using Simir.WebInterfaceComAuth.Helpers
+@using Simir.Domain.Enuns
+
+@{
+    ViewBag.Title = "Geradores de Resíduos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.PrestadoraServicosID)
+    @Html.HiddenFor(x => x.Btn)
+    
+
+    @*@Html.HiddenFor(model => model.bRealizaPintura)
+    @Html.HiddenFor(model => model.bRealizaVarricao)
+    @Html.HiddenFor(model => model.bRealizaPodasArvores)
+    @Html.HiddenFor(model => model.bRealizaLavagem)
+    @Html.HiddenFor(model => model.bRealizaColeta)*@
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Cadastro de Prestadoras Públicas ou Privadas Executoras dos Serviços de LU e MR
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.ValidationSummary(false, "(* campos obrigatórios)", new { @class = "text-danger" })
+
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.nmPrestadoraServico, tudoTamanho: 10, inputTamanho: 12)
+                        <div class="col-md-1" style="Margin-top: 3.8%; margin-left: -3%;">
+                            <div class="btn btn-success" onclick="CarregaGrid();" data-toggle="modal" data-target="#BuscaProgramacao">Localizar</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.nmRazaoSocial)
+                    </div>
+                    <div class="row">
+                        @Html.EditBootstrapFor(model => model.CNPJ)
+                    </div>
+                    <div class="form-group ">
+                        <label>Tipo de Prestadora de Serviços</label>
+
+                        <div class="form-group col-md-12">
+                            <div class="radio">
+
+                                <label>
+
+                                    @Html.RadioButtonFor(x => x.tipoPrestadoraServicos, TipoPrestadoraServico.PrestadoraServicoPublica) Prestadora de Serviços Pública
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    @Html.RadioButtonFor(x => x.tipoPrestadoraServicos, TipoPrestadoraServico.PrestadoraServicoPrivada) Prestadora de Serviços Privada
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    @Html.RadioButtonFor(x => x.tipoPrestadoraServicos, TipoPrestadoraServico.Cooperativa)	Cooperativa
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    @Html.RadioButtonFor(x => x.tipoPrestadoraServicos, TipoPrestadoraServico.AssociacaoCatadores)	Associação de Catadores
+                                </label>
+                            </div>
+
+                            <div class="radio">
+                                <label>
+                                    @Html.RadioButtonFor(x => x.tipoPrestadoraServicos, TipoPrestadoraServico.Outros)	Outros
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*
+                        <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group ">
+                                @Html.LabelFor(m => m.bPrefeitura)
+                                <label class="switch input-group col-xs-12">
+                                    @Html.RadioButtonFor(m => m.bPrefeitura, "True", new { id = "SimPrefeitura", @class = "switch-input" })
+                                    <label for="SimPrefeitura" class="switch-label switch-label-off">Sim</label>
+
+                                    @Html.RadioButtonFor(m => m.bPrefeitura, "False", new { id = "NaoPrefeitura", @class = "switch-input" })
+                                    <label for="NaoPrefeitura" class="switch-label switch-label-on">Não</label>
+                                    <span class="switch-selection"></span>
+                                </label>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            @Html.EditBootstrapFor(model => model.nmResponsavel)
+                        </div>
+                        <div class="row">
+                            @Html.EditBootstrapFor(model => model.Telefone1)
+                            @Html.EditBootstrapFor(model => model.Telefone2)
+                        </div>
+                        <div class="row">
+                            @Html.EditBootstrapFor(model => model.vlTotalContratado)
+                            @Html.EditBootstrapFor(model => model.dtVencimento, tudoTamanho: 6, inputTamanho: 9)
+                        </div>
+                        <div class="row">
+                            @Html.EditBootstrapFor(model => model.qtTotalTrabalhadoresContratados, tudoTamanho: 12, inputTamanho: 5)
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="well">
+
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.vlGari, tudoTamanho: 12, inputTamanho: 6)
+                                    </div>
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.VlColetor, tudoTamanho: 12, inputTamanho: 6)
+                                    </div>
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.vlEncarregadoServico, tudoTamanho: 12, inputTamanho: 6)
+                                    </div>
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.vlMotoristaCaminhaoAberto, tudoTamanho: 12, inputTamanho: 6)
+                                    </div>
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.vlMotoristaaminhaoCompactador, tudoTamanho: 12, inputTamanho: 6)
+                                    </div>
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.vlOperadorVarredeira, tudoTamanho: 12, inputTamanho: 6)
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Realiza pintura de guias (meio-fios)?
+                            </div>
+                            <div class="panel-body">
+
+                                <ul class="nav nav-pills">
+                                    <li class="">
+                                        <a href="#ComGuias" data-toggle="tab" id="btn-sim-Guias">Sim</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="#SemGuias" data-toggle="tab" id="btn-nao-Guias">Não</a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane fade" id="ComGuias">
+                                        <div class="row">
+                                            @Html.EditBootstrapFor(model => model.qtFuncPintura, tudoTamanho: 12, inputTamanho: 6)
+                                        </div>
+                                        <div class="row">
+                                            @Html.EditBootstrapFor(model => model.qtFundoReservaPintura, tudoTamanho: 12, inputTamanho: 3)
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="SemGuias">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Realiza Podas de Árvore?
+                            </div>
+                            <div class="panel-body">
+                                <ul class="nav nav-pills">
+                                    <li class="">
+                                        <a href="#ComPodas" data-toggle="tab" id="btn-sim-podas">Sim</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="#SemPodas" data-toggle="tab" id="btn-nao-podas">Não</a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane fade" id="ComPodas">
+                                        <div class="row">
+                                            @Html.EditBootstrapFor(model => model.qtFuncPodasArvores, tudoTamanho: 12, inputTamanho: 6)
+                                        </div>
+                                        <div class="row">
+                                            @Html.EditBootstrapFor(model => model.qtFundoReservaPodasArvores, tudoTamanho: 12, inputTamanho: 3)
+                                        </div>
+
+                                        @Html.EditorFor(model => model.Equipamentos,"IListEquipamentoVM")
+
+                                    </div>
+                                    <div class="tab-pane fade" id="SemPodas">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+
+                    </div>
+
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.Endereco)
+
+                    @*<div class="panel panel-default">
+                        <div class="panel-heading">
+                            Realiza Varrição?
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills">
+                                <li class="">
+                                    <a href="#ComVarricao" data-toggle="tab" id="btn-sim-varri">Sim</a>
+                                </li>
+                                <li class="active">
+                                    <a href="#SemVarricao" data-toggle="tab" id="btn-nao-varri">Não</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane fade" id="ComVarricao">
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.qtFuncVarricao, tudoTamanho: 12, inputTamanho: 6)
+                                    </div>
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.qtFundoReservaVarricao, tudoTamanho: 12, inputTamanho: 3)
+                                    </div>
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.qtkmSargetaVarridoContratados, tudoTamanho: 12, inputTamanho: 4)
+                                    </div>
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.vlKmVarrido, tudoTamanho: 12, inputTamanho: 5)
+                                    </div>
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.vlKgResidoVarrido, tudoTamanho: 12, inputTamanho: 5)
+                                    </div>
+                                    @Html.EditorFor(model => model.Varredeiros, "IListEquipamentoVM")
+                                </div>
+                                <div class="tab-pane fade" id="SemVarricao">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Realiza Coleta e/ou Transporte de Resíduo?
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills">
+                                <li class="">
+                                    <a href="#ComColeta" data-toggle="tab" id="btn-sim-coleta">Sim</a>
+                                </li>
+                                <li class="active">
+                                    <a href="#SemColeta" data-toggle="tab" id="btn-nao-coleta">Não</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane fade" id="ComColeta">
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.qtColetores, tudoTamanho: 12, inputTamanho: 6)
+                                    </div>
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.qtMotoristas, tudoTamanho: 12, inputTamanho: 6)
+                                    </div>
+                                    <div class="row">
+                                        @Html.EditBootstrapFor(model => model.qtEncarregados, tudoTamanho: 12, inputTamanho: 6)
+                                    </div>
+                                    @Html.EditorFor(model => model.Caminhoes, "IListCaminhaoVM")
+                                </div>
+                                <div class="tab-pane fade" id="SemColeta">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+
+
+                    
+                </div>
+            <div class="col-md-12">
+                <hr/>
+                <div class="form-group  pull-right">
+                    <a class="btn btn-default" href="@Url.Action("Index", "PrestadoraServico", new {area = "Configuracao", id = ""})">
+                        Novo
+                    </a>
+                    <div class="btn btn-success" onclick="confirmaSecretaria();" data-confirm="Tem certeza que deseja salvar?">Salvar</div>
+                    <div id="btnExcluir" class="btn btn-danger" onclick="excluirSecretaria();" data-confirm="Tem certeza que deseja excluir?">Excluir</div>
+
+                </div>
+            </div>
+                <div class="row">
+                    <div class="modal fade" id="BuscaProgramacao" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div id="modal">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function carregaPagina() {
+
+            if ($('#PrestadoraServicosID').val() == 0) {
+                $("#btnExcluir").hide();
+            };
+
+            btnPanel("#bRealizaPintura", "Guias");
+            btnPanel("#bRealizaVarricao", "varri");
+            btnPanel("#bRealizaPodasArvores", "podas");
+            btnPanel("#bRealizaColeta", "coleta");
+
+            if ($('#bRealizaLavagem').val() == 'True') {
+                //$("#btn-sim-podas").click();
+            };
+        }
+
+        function btnPanel(idVar, idPanel) {
+            $("#btn-sim-" + idPanel).click(function () {
+                $(idVar).val('True');
+            })
+
+            $("#btn-nao-" + idPanel).click(function () {
+                $(idVar).val('False');
+            })
+
+            if ($(idVar).val() == 'True') {
+                $("#btn-sim-" + idPanel).click();
+            };
+
+            if ($(idVar).val() == 'False') {
+                $("#btn-nao-" + idPanel).click();
+            };
+        };
+
+        $(window).load(disabilitaEndereco(true, false));
+        $(window).load(carregaPagina());
+
+
+
+        function confirmaSecretaria() {
+
+            var form = $("form", "#page-inner");
+            if (form.validate()) {
+                $("#Btn").val("Salvar");
+                form.submit();
+                // return true;
+            }
+
+        }
+        function excluirSecretaria() {
+            var form = $('form', '#page-inner');
+            $('#Btn').val("Excluir");
+
+            //$.desabilitaValidacao();
+            $("[data-val='true']").attr('data-val', 'false');
+
+            //Reset validation message
+            $('.field-validation-error')
+            .removeClass('field-validation-error')
+            .addClass('field-validation-valid');
+
+            //Reset input, select and textarea style
+            $('.input-validation-error')
+            .removeClass('input-validation-error')
+            .addClass('valid');
+
+            //Reset validation summary
+            $(".validation-summary-errors")
+            .removeClass("validation-summary-errors")
+            .addClass("validation-summary-valid");
+
+            //To reenable lazy validation (no validation until you submit the form)
+            $('form').removeData('unobtrusiveValidation');
+            $('form').removeData('validator');
+            $.validator.unobtrusive.parse($('form'));
+
+            form.submit();
+
+        }
+
+
+        function CarregaGrid() {
+            $.blockUI({ message: '<div class="ModalCarregando"></dic>' });
+            $("#modal").load("/Configuracao/PrestadoraServico/BuscaProgramacao/");
+        }
+
+
+    </script>
+}
